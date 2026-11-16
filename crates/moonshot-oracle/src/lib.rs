@@ -26,9 +26,181 @@ pub const CMD_TOOL_SET: usize = 26;
 pub const CMD_TOOL_ADD: usize = 27;
 pub const CMD_TOOL_COPY: usize = 28;
 pub const CMD_TOOL_COMMIT: usize = 29;
+pub const CMD_TOOL_BRANCH: usize = 30;
+pub const CMD_TOOL_RECOVER: usize = 31;
 
 // Value tokens: 32..48 (integers 0..15)
 pub const VAL_BASE: usize = 32;
+
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct SandboxState {
+    pub registers: [i32; 4],
+    pub memory: [i32; 4],
+    pub has_error: bool,
+    pub committed: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct ExecutionResult {
+    pub is_legal_trace: bool,
+    pub final_state: SandboxState,
+    pub steps_executed: usize,
+    pub failure_reason: Option<String>,
+}
+
+impl SandboxState {
+    pub fn new() -> Self {
+        Self {
+            registers: [0; 4],
+            memory: [0; 4],
+            has_error: false,
+            committed: false,
+        }
+    }
+
+    pub fn execute_tokens(tokens: &[usize]) -> ExecutionResult {
+        let mut state = Self::new();
+        let mut i = 0;
+        let mut steps = 0;
+
+        while i < tokens.len() {
+            let tok = tokens[i];
+            if tok == EOS_TOKEN {
+                break;
+            }
+            steps += 1;
+            if steps > 32 {
+                return ExecutionResult {
+                    is_legal_trace: false,
+                    final_state: state,
+                    steps_executed: steps,
+                    failure_reason: Some("Exceeded max step budget".into()),
+                };
+            }
+
+            match tok {
+                CMD_TOOL_SET => {
+                    if i + 2 >= tokens.len() {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Truncated CMD_TOOL_SET".into()),
+                        };
+                    }
+                    let reg_tok = tokens[i + 1];
+                    let val_tok = tokens[i + 2];
+                    if reg_tok < VAL_BASE || reg_tok >= VAL_BASE + 4 || val_tok < VAL_BASE || val_tok >= VAL_BASE + 16 {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Invalid operand for SET".into()),
+                        };
+                    }
+                    let reg = reg_tok - VAL_BASE;
+                    let val = (val_tok - VAL_BASE) as i32;
+                    state.registers[reg] = val;
+                    i += 3;
+                }
+                CMD_TOOL_ADD => {
+                    if i + 3 >= tokens.len() {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Truncated CMD_TOOL_ADD".into()),
+                        };
+                    }
+                    let s1_tok = tokens[i + 1];
+                    let s2_tok = tokens[i + 2];
+                    let dst_tok = tokens[i + 3];
+                    if s1_tok < VAL_BASE || s1_tok >= VAL_BASE + 4
+                        || s2_tok < VAL_BASE || s2_tok >= VAL_BASE + 4
+                        || dst_tok < VAL_BASE || dst_tok >= VAL_BASE + 4 {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Invalid register operands for ADD".into()),
+                        };
+                    }
+                    let s1 = s1_tok - VAL_BASE;
+                    let s2 = s2_tok - VAL_BASE;
+                    let dst = dst_tok - VAL_BASE;
+                    state.registers[dst] = (state.registers[s1] + state.registers[s2]) % 16;
+                    i += 4;
+                }
+                CMD_TOOL_COPY => {
+                    if i + 2 >= tokens.len() {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Truncated CMD_TOOL_COPY".into()),
+                        };
+                    }
+                    let src_tok = tokens[i + 1];
+                    let dst_tok = tokens[i + 2];
+                    if src_tok < VAL_BASE || src_tok >= VAL_BASE + 4
+                        || dst_tok < VAL_BASE || dst_tok >= VAL_BASE + 4 {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Invalid register/memory operands for COPY".into()),
+                        };
+                    }
+                    let src = src_tok - VAL_BASE;
+                    let dst = dst_tok - VAL_BASE;
+                    state.memory[dst] = state.registers[src];
+                    i += 3;
+                }
+                CMD_TOOL_RECOVER => {
+                    if i + 1 >= tokens.len() {
+                        return ExecutionResult {
+                            is_legal_trace: false,
+                            final_state: state,
+                            steps_executed: steps,
+                            failure_reason: Some("Truncated CMD_TOOL_RECOVER".into()),
+                        };
+                    }
+                    let _code = tokens[i + 1];
+                    state.has_error = false;
+                    i += 2;
+                }
+                CMD_TOOL_COMMIT => {
+                    state.committed = true;
+                    i += 1;
+                }
+                _ => {
+                    return ExecutionResult {
+                        is_legal_trace: false,
+                        final_state: state,
+                        steps_executed: steps,
+                        failure_reason: Some(format!("Unknown command token {}", tok)),
+                    };
+                }
+            }
+        }
+
+        if !state.committed {
+            return ExecutionResult {
+                is_legal_trace: false,
+                final_state: state,
+                steps_executed: steps,
+                failure_reason: Some("Trace did not terminate with COMMIT".into()),
+            };
+        }
+
+        ExecutionResult {
+            is_legal_trace: true,
+            final_state: state,
+            steps_executed: steps,
+            failure_reason: None,
+        }
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum TaskFamilyType {
@@ -40,6 +212,7 @@ pub enum TaskFamilyType {
     SymbolicCompositional,// Meta-test (held-out)
     ToolWorkflowBasic,    // Meta-train
     ToolWorkflowChained,  // Meta-test (held-out)
+    ToolWorkflowSandbox,  // Wave 4: Applied multi-step sandbox domain (held-out)
 }
 
 impl TaskFamilyType {
@@ -53,13 +226,14 @@ impl TaskFamilyType {
             Self::SymbolicCompositional => "symbolic_compositional_test",
             Self::ToolWorkflowBasic => "tool_workflow_basic_train",
             Self::ToolWorkflowChained => "tool_workflow_chained_test",
+            Self::ToolWorkflowSandbox => "tool_workflow_sandbox_test",
         }
     }
 
     pub fn is_held_out(&self) -> bool {
         matches!(
             self,
-            Self::FsmHierarchicalTree | Self::SymbolicCompositional | Self::ToolWorkflowChained
+            Self::FsmHierarchicalTree | Self::SymbolicCompositional | Self::ToolWorkflowChained | Self::ToolWorkflowSandbox
         )
     }
 }
@@ -92,6 +266,7 @@ impl TaskGenerator {
             TaskFamilyType::SymbolicCompositional => Self::generate_symbolic_compositional(rng),
             TaskFamilyType::ToolWorkflowBasic => Self::generate_tool_basic(rng),
             TaskFamilyType::ToolWorkflowChained => Self::generate_tool_chained(rng),
+            TaskFamilyType::ToolWorkflowSandbox => Self::generate_tool_sandbox(rng),
         }
     }
 
@@ -300,6 +475,52 @@ impl TaskGenerator {
 
         TaskExample { input_tokens, target_tokens }
     }
+
+    // Tool Workflow Sandbox (Wave 4 Applied Domain): Multi-step register arithmetic, conditional fallback, memory copy, commit
+    fn generate_tool_sandbox(rng: &mut ChaCha8Rng) -> TaskExample {
+        let a = rng.gen_range(1..8);
+        let b = rng.gen_range(0..8);
+        let fallback = rng.gen_range(2..6);
+
+        let input_tokens = vec![
+            BOS_TOKEN,
+            CMD_TOOL_SET,
+            VAL_BASE + a,
+            VAL_BASE + b,
+            VAL_BASE + fallback,
+            SEP_TOKEN,
+        ];
+
+        let mut target_tokens = vec![
+            CMD_TOOL_SET,
+            VAL_BASE + 0,
+            VAL_BASE + a,
+            CMD_TOOL_SET,
+            VAL_BASE + 1,
+            VAL_BASE + b,
+        ];
+
+        if b == 0 {
+            target_tokens.push(CMD_TOOL_RECOVER);
+            target_tokens.push(VAL_BASE + 1);
+            target_tokens.push(CMD_TOOL_SET);
+            target_tokens.push(VAL_BASE + 2);
+            target_tokens.push(VAL_BASE + fallback);
+        } else {
+            target_tokens.push(CMD_TOOL_ADD);
+            target_tokens.push(VAL_BASE + 0);
+            target_tokens.push(VAL_BASE + 1);
+            target_tokens.push(VAL_BASE + 2);
+        }
+
+        target_tokens.push(CMD_TOOL_COPY);
+        target_tokens.push(VAL_BASE + 2);
+        target_tokens.push(VAL_BASE + 0);
+        target_tokens.push(CMD_TOOL_COMMIT);
+        target_tokens.push(EOS_TOKEN);
+
+        TaskExample { input_tokens, target_tokens }
+    }
 }
 
 pub struct ImmutableOracle;
@@ -378,6 +599,17 @@ mod tests {
         assert!(TaskFamilyType::FsmHierarchicalTree.is_held_out());
         assert!(TaskFamilyType::SymbolicCompositional.is_held_out());
         assert!(TaskFamilyType::ToolWorkflowChained.is_held_out());
+        assert!(TaskFamilyType::ToolWorkflowSandbox.is_held_out());
+    }
+
+    #[test]
+    fn test_sandbox_state_execution() {
+        let split = TaskGenerator::generate_split(TaskFamilyType::ToolWorkflowSandbox, 101, 10, 5, 5);
+        for ex in &split.train_examples {
+            let res = SandboxState::execute_tokens(&ex.target_tokens);
+            assert!(res.is_legal_trace, "Target tokens must form legal trace: {:?}", res.failure_reason);
+            assert!(res.final_state.committed, "Target tokens must commit state");
+        }
     }
 
     #[test]
