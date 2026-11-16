@@ -4,7 +4,7 @@ use rand_chacha::ChaCha8Rng;
 use rand::SeedableRng;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct ModelConfig {
     pub vocab_size: usize,
     pub max_seq_len: usize,
@@ -185,6 +185,16 @@ pub struct TransformerBlock {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ModelCheckpoint {
+    pub config: ModelConfig,
+    pub parameters: Vec<f32>,
+    pub adam_m: Vec<f32>,
+    pub adam_v: Vec<f32>,
+    pub opt_step: usize,
+    pub checksum: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TinyTransformer {
     pub config: ModelConfig,
     pub token_emb: Vec<f32>, // vocab_size x d_model
@@ -192,13 +202,127 @@ pub struct TinyTransformer {
     pub blocks: Vec<TransformerBlock>,
     pub ln_f: LayerNormParam,
     pub head: LinearParam,   // d_model -> vocab_size
-    // Adam optimizer moments
+    // Optimizer moments
     #[serde(skip)]
     pub adam_m: Vec<f32>,
     #[serde(skip)]
     pub adam_v: Vec<f32>,
     #[serde(skip)]
     pub opt_step: usize,
+}
+
+// Multi-head causal attention helper routines
+pub fn forward_multihead_attention(
+    q: &[f32],
+    k: &[f32],
+    v: &[f32],
+    seq_len: usize,
+    d_model: usize,
+    n_heads: usize,
+) -> (Vec<f32>, Vec<f32>) {
+    let d_k = d_model / n_heads;
+    let scale = 1.0 / (d_k as f32).sqrt();
+    let mut attn_out = vec![0.0; seq_len * d_model];
+    let mut attn_weights = vec![0.0; n_heads * seq_len * seq_len];
+
+    for h in 0..n_heads {
+        for i in 0..seq_len {
+            let q_offset = i * d_model + h * d_k;
+            let q_h_i = &q[q_offset..q_offset + d_k];
+
+            let mut max_score = f32::NEG_INFINITY;
+            let mut scores = Vec::with_capacity(i + 1);
+
+            for j in 0..=i {
+                let k_offset = j * d_model + h * d_k;
+                let k_h_j = &k[k_offset..k_offset + d_k];
+                let mut dot = 0.0;
+                for m in 0..d_k {
+                    dot += q_h_i[m] * k_h_j[m];
+                }
+                let s = dot * scale;
+                if s > max_score {
+                    max_score = s;
+                }
+                scores.push(s);
+            }
+
+            let mut exp_sum = 0.0;
+            let mut exp_scores = Vec::with_capacity(i + 1);
+            for &s in &scores {
+                let e = (s - max_score).exp();
+                exp_scores.push(e);
+                exp_sum += e;
+            }
+
+            let denom = exp_sum.max(1e-9);
+            for j in 0..=i {
+                let w = exp_scores[j] / denom;
+                attn_weights[h * seq_len * seq_len + i * seq_len + j] = w;
+
+                let v_offset = j * d_model + h * d_k;
+                let v_h_j = &v[v_offset..v_offset + d_k];
+                let out_offset = i * d_model + h * d_k;
+                for m in 0..d_k {
+                    attn_out[out_offset + m] += w * v_h_j[m];
+                }
+            }
+        }
+    }
+    (attn_out, attn_weights)
+}
+
+pub fn backward_multihead_attention(
+    d_attn_out: &[f32],
+    q: &[f32],
+    k: &[f32],
+    v: &[f32],
+    attn_weights: &[f32],
+    seq_len: usize,
+    d_model: usize,
+    n_heads: usize,
+    d_q: &mut [f32],
+    d_k: &mut [f32],
+    d_v: &mut [f32],
+) {
+    let d_k_dim = d_model / n_heads;
+    let scale = 1.0 / (d_k_dim as f32).sqrt();
+
+    for h in 0..n_heads {
+        for i in 0..seq_len {
+            let out_offset = i * d_model + h * d_k_dim;
+            let d_out_h_i = &d_attn_out[out_offset..out_offset + d_k_dim];
+
+            let mut d_a = vec![0.0; i + 1];
+            let mut a_times_da_sum = 0.0;
+
+            for j in 0..=i {
+                let w = attn_weights[h * seq_len * seq_len + i * seq_len + j];
+                let v_offset = j * d_model + h * d_k_dim;
+                let v_h_j = &v[v_offset..v_offset + d_k_dim];
+
+                let mut dot_da = 0.0;
+                for m in 0..d_k_dim {
+                    dot_da += d_out_h_i[m] * v_h_j[m];
+                    d_v[v_offset + m] += w * d_out_h_i[m];
+                }
+                d_a[j] = dot_da;
+                a_times_da_sum += w * dot_da;
+            }
+
+            let q_offset = i * d_model + h * d_k_dim;
+            for j in 0..=i {
+                let w = attn_weights[h * seq_len * seq_len + i * seq_len + j];
+                let d_s_ij = w * (d_a[j] - a_times_da_sum);
+
+                let k_offset = j * d_model + h * d_k_dim;
+                for m in 0..d_k_dim {
+                    d_q[q_offset + m] += scale * d_s_ij * k[k_offset + m];
+                    d_k[k_offset + m] += scale * d_s_ij * q[q_offset + m];
+                }
+            }
+        }
+    }
 }
 
 impl TinyTransformer {
@@ -272,6 +396,63 @@ impl TinyTransformer {
         compute_sha256(&bytes)
     }
 
+    pub fn save_checkpoint(&self) -> ModelCheckpoint {
+        let parameters = self.extract_parameters();
+        let checksum = self.checksum();
+        ModelCheckpoint {
+            config: self.config.clone(),
+            parameters,
+            adam_m: self.adam_m.clone(),
+            adam_v: self.adam_v.clone(),
+            opt_step: self.opt_step,
+            checksum,
+        }
+    }
+
+    pub fn load_checkpoint(&mut self, ckpt: &ModelCheckpoint) -> Result<(), String> {
+        if ckpt.parameters.len() != self.total_parameters() {
+            return Err(format!(
+                "Checkpoint parameter size mismatch: expected {}, got {}",
+                self.total_parameters(),
+                ckpt.parameters.len()
+            ));
+        }
+        self.load_parameters(&ckpt.parameters);
+        self.adam_m = ckpt.adam_m.clone();
+        self.adam_v = ckpt.adam_v.clone();
+        self.opt_step = ckpt.opt_step;
+        Ok(())
+    }
+
+    pub fn parameter_groups(&self) -> Vec<usize> {
+        let mut groups = Vec::with_capacity(self.total_parameters());
+        // Group 0: token_emb + pos_emb
+        let emb_count = self.token_emb.len() + self.pos_emb.len();
+        groups.resize(emb_count, 0);
+
+        for (b_idx, b) in self.blocks.iter().enumerate() {
+            let attn_group = 1 + b_idx * 2;
+            let ffn_group = 2 + b_idx * 2;
+
+            let attn_count = b.attn.w_q.weight.len() + b.attn.w_q.bias.len()
+                + b.attn.w_k.weight.len() + b.attn.w_k.bias.len()
+                + b.attn.w_v.weight.len() + b.attn.w_v.bias.len()
+                + b.attn.w_o.weight.len() + b.attn.w_o.bias.len()
+                + b.attn.ln.gamma.len() + b.attn.ln.beta.len();
+            groups.resize(groups.len() + attn_count, attn_group);
+
+            let ffn_count = b.ffn.w_1.weight.len() + b.ffn.w_1.bias.len()
+                + b.ffn.w_2.weight.len() + b.ffn.w_2.bias.len()
+                + b.ffn.ln.gamma.len() + b.ffn.ln.beta.len();
+            groups.resize(groups.len() + ffn_count, ffn_group);
+        }
+
+        // Final group 5: ln_f + head
+        let final_count = self.ln_f.gamma.len() + self.ln_f.beta.len() + self.head.weight.len() + self.head.bias.len();
+        groups.resize(groups.len() + final_count, 5);
+        groups
+    }
+
     // Forward pass
     pub fn forward(&self, tokens: &[usize]) -> Vec<f32> {
         let seq_len = tokens.len().min(self.config.max_seq_len);
@@ -288,51 +469,15 @@ impl TinyTransformer {
         }
 
         for block in &self.blocks {
-            // Attention sub-block with residual
+            // Multi-head causal attention sub-block with residual
             let (h_norm, _, _) = block.attn.ln.forward(&h, seq_len);
             let q = block.attn.w_q.forward(&h_norm, seq_len);
             let k = block.attn.w_k.forward(&h_norm, seq_len);
             let v = block.attn.w_v.forward(&h_norm, seq_len);
 
-            let mut attn_out = vec![0.0; seq_len * d];
-            let scale = 1.0 / (d as f32).sqrt();
-
-            for i in 0..seq_len {
-                let mut scores = Vec::with_capacity(i + 1);
-                let q_i = &q[i * d..(i + 1) * d];
-                let mut max_score = f32::NEG_INFINITY;
-
-                for j in 0..=i {
-                    let k_j = &k[j * d..(j + 1) * d];
-                    let mut dot = 0.0;
-                    for m in 0..d {
-                        dot += q_i[m] * k_j[m];
-                    }
-                    let score = dot * scale;
-                    if score > max_score {
-                        max_score = score;
-                    }
-                    scores.push(score);
-                }
-
-                let mut exp_sum = 0.0;
-                let mut exp_scores = Vec::with_capacity(scores.len());
-                for &s in &scores {
-                    let e = (s - max_score).exp();
-                    exp_scores.push(e);
-                    exp_sum += e;
-                }
-                for e in exp_scores.iter_mut() {
-                    *e /= exp_sum.max(1e-9);
-                }
-
-                for (j, &w) in exp_scores.iter().enumerate() {
-                    let v_j = &v[j * d..(j + 1) * d];
-                    for m in 0..d {
-                        attn_out[i * d + m] += w * v_j[m];
-                    }
-                }
-            }
+            let (attn_out, _) = forward_multihead_attention(
+                &q, &k, &v, seq_len, d, self.config.n_heads
+            );
 
             let proj = block.attn.w_o.forward(&attn_out, seq_len);
             for i in 0..seq_len * d {
@@ -378,7 +523,7 @@ impl TinyTransformer {
 
             predicted.push(best_tok);
             curr_tokens.push(best_tok);
-            if best_tok == 2 || curr_tokens.len() >= self.config.max_seq_len { // EOS = 2
+            if best_tok == 2 || curr_tokens.len() >= self.config.max_seq_len {
                 break;
             }
         }
@@ -448,55 +593,11 @@ impl TinyTransformer {
         load_slice(&mut self.head.bias);
     }
 
-    // Exact analytical backpropagation and parameter update conditioned on EditPlan phi
-    pub fn train_step(&mut self, examples: &[TaskExample], plan: &EditPlan, step_idx: usize, total_steps: usize) -> f32 {
-        if examples.is_empty() {
-            return 0.0;
-        }
-
-        // Sampling policy selection
-        let selected_examples: Vec<&TaskExample> = match plan.sampling_policy {
-            SamplingPolicy::Uniform => examples.iter().collect(),
-            SamplingPolicy::HardMining | SamplingPolicy::ErrorWeighted => {
-                // Focus on harder / error examples
-                let mut filtered = Vec::new();
-                for ex in examples {
-                    let pred = self.predict_sequence(&ex.input_tokens, ex.target_tokens.len());
-                    if pred != ex.target_tokens {
-                        filtered.push(ex);
-                    }
-                }
-                if filtered.is_empty() {
-                    examples.iter().collect()
-                } else {
-                    filtered
-                }
-            }
-        };
-
-        // Learning rate schedule
-        let schedule_factor = match plan.schedule_policy {
-            SchedulePolicy::Constant => 1.0,
-            SchedulePolicy::CosineDecay => {
-                let frac = step_idx as f32 / total_steps.max(1) as f32;
-                0.5 * (1.0 + (std::f32::consts::PI * frac).cos())
-            }
-            SchedulePolicy::WarmupCosine => {
-                let warmup = (total_steps as f32 * 0.15).max(1.0);
-                if (step_idx as f32) < warmup {
-                    (step_idx + 1) as f32 / warmup
-                } else {
-                    let frac = (step_idx as f32 - warmup) / (total_steps as f32 - warmup).max(1.0);
-                    0.5 * (1.0 + (std::f32::consts::PI * frac).cos())
-                }
-            }
-        };
-
-        let effective_lr = plan.base_lr * schedule_factor;
+    // Exact analytical gradient and loss computation across examples
+    pub fn compute_loss_and_gradients(&self, examples: &[TaskExample]) -> (f32, Vec<f32>) {
         let d = self.config.d_model;
         let v = self.config.vocab_size;
 
-        // Allocate gradient accumulators
         let mut d_token_emb = vec![0.0; self.token_emb.len()];
         let mut d_pos_emb = vec![0.0; self.pos_emb.len()];
         let mut d_ln_f_gamma = vec![0.0; self.ln_f.gamma.len()];
@@ -529,14 +630,13 @@ impl TinyTransformer {
         let mut total_loss = 0.0;
         let mut total_tokens_scored = 0;
 
-        for ex in &selected_examples {
+        for ex in examples {
             let full_seq = [ex.input_tokens.as_slice(), ex.target_tokens.as_slice()].concat();
             let seq_len = full_seq.len().min(self.config.max_seq_len);
             if seq_len < 2 {
                 continue;
             }
 
-            // Forward with activations caching for exact backprop
             let mut h = vec![0.0; seq_len * d];
             for (pos, &tok) in full_seq.iter().take(seq_len).enumerate() {
                 let tok_idx = tok.min(v - 1);
@@ -552,6 +652,10 @@ impl TinyTransformer {
                 attn_ln_out: Vec<f32>,
                 attn_means: Vec<f32>,
                 attn_vars: Vec<f32>,
+                q: Vec<f32>,
+                k: Vec<f32>,
+                v: Vec<f32>,
+                attn_weights: Vec<f32>,
                 attn_out: Vec<f32>,
                 h_mid: Vec<f32>,
                 ffn_ln_out: Vec<f32>,
@@ -570,37 +674,9 @@ impl TinyTransformer {
                 let k = block.attn.w_k.forward(&attn_ln_out, seq_len);
                 let v_val = block.attn.w_v.forward(&attn_ln_out, seq_len);
 
-                let mut attn_out = vec![0.0; seq_len * d];
-                let scale = 1.0 / (d as f32).sqrt();
-
-                for i in 0..seq_len {
-                    let mut scores = Vec::with_capacity(i + 1);
-                    let q_i = &q[i * d..(i + 1) * d];
-                    let mut max_score = f32::NEG_INFINITY;
-                    for j in 0..=i {
-                        let k_j = &k_j_slice(&k, j, d);
-                        let dot: f32 = q_i.iter().zip(k_j.iter()).map(|(&a, &b)| a * b).sum();
-                        let score = dot * scale;
-                        if score > max_score { max_score = score; }
-                        scores.push(score);
-                    }
-                    let mut exp_sum = 0.0;
-                    let mut exp_scores = Vec::with_capacity(scores.len());
-                    for &s in &scores {
-                        let e = (s - max_score).exp();
-                        exp_scores.push(e);
-                        exp_sum += e;
-                    }
-                    for e in exp_scores.iter_mut() {
-                        *e /= exp_sum.max(1e-9);
-                    }
-                    for (j, &w) in exp_scores.iter().enumerate() {
-                        let v_j = &v_val[j * d..(j + 1) * d];
-                        for m in 0..d {
-                            attn_out[i * d + m] += w * v_j[m];
-                        }
-                    }
-                }
+                let (attn_out, attn_weights) = forward_multihead_attention(
+                    &q, &k, &v_val, seq_len, d, self.config.n_heads
+                );
 
                 let proj = block.attn.w_o.forward(&attn_out, seq_len);
                 for i in 0..seq_len * d {
@@ -624,6 +700,10 @@ impl TinyTransformer {
                     attn_ln_out,
                     attn_means,
                     attn_vars,
+                    q,
+                    k,
+                    v: v_val,
+                    attn_weights,
                     attn_out,
                     h_mid,
                     ffn_ln_out,
@@ -637,7 +717,6 @@ impl TinyTransformer {
             let (h_final, ln_f_means, ln_f_vars) = self.ln_f.forward(&h, seq_len);
             let logits = self.head.forward(&h_final, seq_len);
 
-            // Cross-entropy loss and gradient w.r.t logits
             let mut d_logits = vec![0.0; seq_len * v];
             let input_len = ex.input_tokens.len();
 
@@ -701,15 +780,20 @@ impl TinyTransformer {
                 let mut d_q = vec![0.0; seq_len * d];
                 let mut d_k = vec![0.0; seq_len * d];
                 let mut d_v = vec![0.0; seq_len * d];
-                let scale = 1.0 / (d as f32).sqrt();
 
-                for i in 0..seq_len {
-                    for m in 0..d {
-                        d_v[i * d + m] += d_attn_out[i * d + m];
-                        d_q[i * d + m] += d_attn_out[i * d + m] * scale;
-                        d_k[i * d + m] += d_attn_out[i * d + m] * scale;
-                    }
-                }
+                backward_multihead_attention(
+                    &d_attn_out,
+                    &cache.q,
+                    &cache.k,
+                    &cache.v,
+                    &cache.attn_weights,
+                    seq_len,
+                    d,
+                    self.config.n_heads,
+                    &mut d_q,
+                    &mut d_k,
+                    &mut d_v,
+                );
 
                 let mut d_attn_ln_out = vec![0.0; seq_len * d];
                 block.attn.w_q.backward(&d_q, &cache.attn_ln_out, seq_len, &mut d_attn_ln_out, &mut bg.d_wq_w, &mut bg.d_wq_b);
@@ -735,8 +819,7 @@ impl TinyTransformer {
             }
         }
 
-        // Flatten all gradients into a single vector
-        let n_examples = selected_examples.len().max(1) as f32;
+        let n_examples = examples.len().max(1) as f32;
         let mut all_grads = Vec::with_capacity(self.total_parameters());
         all_grads.extend(d_token_emb.iter().map(|g| g / n_examples));
         all_grads.extend(d_pos_emb.iter().map(|g| g / n_examples));
@@ -764,10 +847,70 @@ impl TinyTransformer {
         all_grads.extend(d_head_w.iter().map(|g| g / n_examples));
         all_grads.extend(d_head_b.iter().map(|g| g / n_examples));
 
-        // Gradient clipping
+        let avg_loss = if total_tokens_scored > 0 {
+            total_loss / total_tokens_scored as f32
+        } else {
+            0.0
+        };
+
+        (avg_loss, all_grads)
+    }
+
+    // Exact analytical backpropagation and parameter update conditioned on EditPlan
+    pub fn train_step(&mut self, examples: &[TaskExample], plan: &EditPlan, step_idx: usize, total_steps: usize) -> f32 {
+        if examples.is_empty() {
+            return 0.0;
+        }
+
+        // Sampling policy selection
+        let selected_examples: Vec<TaskExample> = match plan.sampling_policy {
+            SamplingPolicy::Uniform => examples.to_vec(),
+            SamplingPolicy::HardMining | SamplingPolicy::ErrorWeighted => {
+                let mut filtered = Vec::new();
+                for ex in examples {
+                    let pred = self.predict_sequence(&ex.input_tokens, ex.target_tokens.len());
+                    if pred != ex.target_tokens {
+                        filtered.push(ex.clone());
+                    }
+                }
+                if filtered.is_empty() {
+                    examples.to_vec()
+                } else {
+                    filtered
+                }
+            }
+        };
+
+        // Learning rate schedule
+        let schedule_factor = match plan.schedule_policy {
+            SchedulePolicy::Constant => 1.0,
+            SchedulePolicy::CosineDecay => {
+                let frac = step_idx as f32 / total_steps.max(1) as f32;
+                0.5 * (1.0 + (std::f32::consts::PI * frac).cos())
+            }
+            SchedulePolicy::WarmupCosine => {
+                let warmup = (total_steps as f32 * 0.15).max(1.0);
+                if (step_idx as f32) < warmup {
+                    (step_idx + 1) as f32 / warmup
+                } else {
+                    let frac = (step_idx as f32 - warmup) / (total_steps as f32 - warmup).max(1.0);
+                    0.5 * (1.0 + (std::f32::consts::PI * frac).cos())
+                }
+            }
+        };
+
+        let effective_lr = plan.base_lr * schedule_factor;
+        let (avg_loss, mut all_grads) = self.compute_loss_and_gradients(&selected_examples);
+
+        // Global norm gradient clipping
         if let Some(clip) = plan.grad_clip {
-            for g in all_grads.iter_mut() {
-                *g = g.clamp(-clip, clip);
+            let norm_sq: f32 = all_grads.iter().map(|&g| g * g).sum();
+            let norm = norm_sq.sqrt();
+            if norm > clip && norm > 1e-7 {
+                let scale = clip / norm;
+                for g in all_grads.iter_mut() {
+                    *g *= scale;
+                }
             }
         }
 
@@ -781,14 +924,15 @@ impl TinyTransformer {
         // Apply optimizer update
         let mut params = self.extract_parameters();
         let n_params = params.len();
+        let param_groups = self.parameter_groups();
         self.opt_step += 1;
         let beta1 = 0.9f32;
         let beta2 = 0.999f32;
         let eps = 1e-8f32;
 
         for i in 0..n_params {
-            let layer_group = (i * plan.layer_lr_multipliers.len()) / n_params.max(1);
-            let layer_mult = plan.layer_lr_multipliers.get(layer_group).cloned().unwrap_or(1.0);
+            let group = param_groups[i];
+            let layer_mult = plan.layer_lr_multipliers.get(group).cloned().unwrap_or(1.0);
             let lr = effective_lr * layer_mult;
             let g = all_grads[i];
 
@@ -814,12 +958,8 @@ impl TinyTransformer {
         }
 
         self.load_parameters(&params);
-        total_loss / total_tokens_scored.max(1) as f32
+        avg_loss
     }
-}
-
-fn k_j_slice(k: &[f32], j: usize, d: usize) -> &[f32] {
-    &k[j * d..(j + 1) * d]
 }
 
 #[cfg(test)]
@@ -830,10 +970,84 @@ mod tests {
     fn test_transformer_init_and_forward() {
         let config = ModelConfig::default();
         let model = TinyTransformer::new(config, 42);
-        assert!(model.total_parameters() > 10_000);
+        assert_eq!(model.total_parameters(), 77376);
         let tokens = vec![1, 4, 5, 3];
         let logits = model.forward(&tokens);
         assert_eq!(logits.len(), tokens.len() * 64);
+    }
+
+    #[test]
+    fn test_checkpoint_roundtrip_bitwise() {
+        let config = ModelConfig::default();
+        let model = TinyTransformer::new(config.clone(), 42);
+        let ckpt = model.save_checkpoint();
+
+        let mut restored = TinyTransformer::new(config, 999);
+        restored.load_checkpoint(&ckpt).expect("Failed to load checkpoint");
+
+        let tokens = vec![1, 4, 5, 3];
+        let logits1 = model.forward(&tokens);
+        let logits2 = restored.forward(&tokens);
+        assert_eq!(logits1, logits2, "Logits must match bitwise after checkpoint load");
+        assert_eq!(model.checksum(), restored.checksum());
+    }
+
+    #[test]
+    fn test_finite_difference_gradients() {
+        // Small miniature model to allow fast numerical verification
+        let config = ModelConfig {
+            vocab_size: 8,
+            max_seq_len: 8,
+            d_model: 8,
+            n_heads: 2,
+            n_layers: 1,
+            d_ff: 16,
+        };
+        let mut model = TinyTransformer::new(config, 1234);
+
+        let examples = vec![
+            TaskExample {
+                input_tokens: vec![1, 4, 3],
+                target_tokens: vec![5, 2],
+            },
+        ];
+
+        let (_, ana_grads) = model.compute_loss_and_gradients(&examples);
+        let eps = 1e-3;
+
+        // Sample indices across all parameter sections:
+        // token_emb, pos_emb, w_q, w_k, w_v, w_o, attn_ln, w_1, w_2, ffn_ln, ln_f, head
+        let total = model.total_parameters();
+        let step = (total / 15).max(1);
+        let test_indices: Vec<usize> = (0..total).step_by(step).collect();
+
+        for &idx in &test_indices {
+            let mut params = model.extract_parameters();
+            let orig = params[idx];
+
+            params[idx] = orig + eps;
+            model.load_parameters(&params);
+            let (loss_pos, _) = model.compute_loss_and_gradients(&examples);
+
+            params[idx] = orig - eps;
+            model.load_parameters(&params);
+            let (loss_neg, _) = model.compute_loss_and_gradients(&examples);
+
+            params[idx] = orig;
+            model.load_parameters(&params);
+
+            let num_grad = (loss_pos - loss_neg) / (2.0 * eps);
+            let ana_grad = ana_grads[idx];
+            let diff = (num_grad - ana_grad).abs();
+            let denom = num_grad.abs().max(ana_grad.abs()).max(1e-4);
+            let rel_err = diff / denom;
+
+            assert!(
+                rel_err < 0.05 || diff < 1e-3,
+                "Gradient mismatch at param {}: num={}, ana={}, rel_err={}",
+                idx, num_grad, ana_grad, rel_err
+            );
+        }
     }
 
     #[test]

@@ -2,12 +2,14 @@ use moonshot_core::{
     Candidate, EditPlan, OptimizerType, SamplingPolicy, SchedulePolicy, TaskSplit,
     TrialRecord, TrialStatus,
 };
-use moonshot_model::TinyTransformer;
+use moonshot_model::{ModelCheckpoint, TinyTransformer};
 use moonshot_oracle::ImmutableOracle;
 use rand::Rng;
 use rand_chacha::ChaCha8Rng;
 use rand::SeedableRng;
 use serde::{Deserialize, Serialize};
+use std::fs;
+use std::path::Path;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FeedbackSummary {
@@ -36,7 +38,7 @@ impl SandboxTypechecker {
     pub const MIN_LR: f32 = 1e-5;
     pub const MAX_LR: f32 = 0.1;
     pub const MIN_INNER_STEPS: usize = 1;
-    pub const MAX_INNER_STEPS: usize = 50;
+    pub const MAX_INNER_STEPS: usize = 60;
 
     pub fn validate_and_apply(current: &EditPlan, action: &EditProposalAction) -> Result<EditPlan, String> {
         let mut updated = current.clone();
@@ -101,7 +103,6 @@ impl EditorEngine {
         let mut rng = ChaCha8Rng::seed_from_u64(seed);
 
         let candidate_actions = if !feedback.target_reached && feedback.final_loss > 1.5 {
-            // Loss high: explore higher LR, WarmupCosine, or mistake-weighted sampling
             vec![
                 EditProposalAction::AdjustBaseLr { factor: 1.3 },
                 EditProposalAction::SwitchOptimizer { optimizer: OptimizerType::AdamW },
@@ -110,20 +111,18 @@ impl EditorEngine {
                 EditProposalAction::SetInnerSteps { steps: (current_plan.inner_steps + 5).min(50) },
             ]
         } else if feedback.target_reached {
-            // Target reached: refine efficiency via sparse gradient updates, specialized layer multipliers, and decay
             vec![
                 EditProposalAction::SetSparseGradientThreshold { threshold: Some(0.01) },
                 EditProposalAction::SetLayerLrMultipliers {
-                    multipliers: vec![0.3, 0.6, 1.0, 1.4, 1.8, 2.2], // specialize upper layers
+                    multipliers: vec![0.5, 0.8, 1.0, 1.2, 1.5, 1.8],
                 },
                 EditProposalAction::SetSamplingPolicy { policy: SamplingPolicy::ErrorWeighted },
                 EditProposalAction::AdjustWeightDecay { decay: 0.005 },
             ]
         } else {
-            // Plateau / intermediate: explore layer specialization, momentum, or calibrated step decay
             vec![
                 EditProposalAction::SetLayerLrMultipliers {
-                    multipliers: vec![0.5, 0.8, 1.0, 1.2, 1.5, 2.0],
+                    multipliers: vec![0.6, 0.8, 1.0, 1.2, 1.4, 1.8],
                 },
                 EditProposalAction::AdjustBaseLr { factor: 1.1 },
                 EditProposalAction::SwitchSchedule { schedule: SchedulePolicy::CosineDecay },
@@ -138,7 +137,7 @@ impl EditorEngine {
 
 pub struct SearchManager {
     pub incumbent: Candidate,
-    pub incumbent_weights: Vec<f32>,
+    pub incumbent_checkpoint: ModelCheckpoint,
     pub candidate_history: Vec<TrialRecord>,
     pub promotion_count: usize,
     pub rollback_count: usize,
@@ -146,7 +145,7 @@ pub struct SearchManager {
 
 impl SearchManager {
     pub fn new(initial_model: &TinyTransformer, initial_plan: EditPlan) -> Self {
-        let weights = initial_model.extract_parameters();
+        let ckpt = initial_model.save_checkpoint();
         let incumbent = Candidate {
             id: "cand_init".to_string(),
             weights_checksum: initial_model.checksum(),
@@ -158,14 +157,53 @@ impl SearchManager {
 
         Self {
             incumbent,
-            incumbent_weights: weights,
+            incumbent_checkpoint: ckpt,
             candidate_history: Vec::new(),
             promotion_count: 0,
             rollback_count: 0,
         }
     }
 
-    // Evaluate adaptation efficiency of candidate on a task split
+    pub fn save_state_to_dir(&self, dir: &Path) -> Result<(), String> {
+        fs::create_dir_all(dir).map_err(|e| e.to_string())?;
+
+        let ckpt_path = dir.join("best_checkpoint.json");
+        let ckpt_json = serde_json::to_string_pretty(&self.incumbent).map_err(|e| e.to_string())?;
+        fs::write(&ckpt_path, ckpt_json).map_err(|e| e.to_string())?;
+
+        let model_path = dir.join("best_model_checkpoint.json");
+        let model_json = serde_json::to_string_pretty(&self.incumbent_checkpoint).map_err(|e| e.to_string())?;
+        fs::write(&model_path, model_json).map_err(|e| e.to_string())?;
+
+        Ok(())
+    }
+
+    pub fn load_state_from_dir(dir: &Path, model: &mut TinyTransformer) -> Result<Self, String> {
+        let ckpt_path = dir.join("best_checkpoint.json");
+        let model_path = dir.join("best_model_checkpoint.json");
+
+        if !ckpt_path.exists() || !model_path.exists() {
+            return Err("Checkpoint files missing in specified directory".to_string());
+        }
+
+        let ckpt_str = fs::read_to_string(&ckpt_path).map_err(|e| e.to_string())?;
+        let incumbent: Candidate = serde_json::from_str(&ckpt_str).map_err(|e| e.to_string())?;
+
+        let model_str = fs::read_to_string(&model_path).map_err(|e| e.to_string())?;
+        let incumbent_checkpoint: ModelCheckpoint = serde_json::from_str(&model_str).map_err(|e| e.to_string())?;
+
+        model.load_checkpoint(&incumbent_checkpoint)?;
+
+        Ok(Self {
+            incumbent,
+            incumbent_checkpoint,
+            candidate_history: Vec::new(),
+            promotion_count: 0,
+            rollback_count: 0,
+        })
+    }
+
+    // Evaluate adaptation efficiency of candidate on a task split using exact sequence match
     pub fn evaluate_adaptation(
         model: &mut TinyTransformer,
         plan: &EditPlan,
@@ -186,25 +224,25 @@ impl SearchManager {
             final_loss = model.train_step(batch, plan, step, total_steps);
             total_samples_seen += batch.len();
 
-            // Evaluate on validation slice
+            // Evaluate on validation slice using exact sequence match
             let mut preds = Vec::with_capacity(split.val_examples.len());
             for val_ex in &split.val_examples {
                 let pred = model.predict_sequence(&val_ex.input_tokens, val_ex.target_tokens.len());
                 preds.push(pred);
             }
-            let acc = ImmutableOracle::score_batch(&preds, &split.val_examples);
+            let acc = ImmutableOracle::score_batch_exact(&preds, &split.val_examples);
             if acc >= target_acc && samples_to_target.is_none() {
                 samples_to_target = Some(total_samples_seen);
             }
         }
 
-        // Final test score
+        // Final test score evaluated via exact full sequence match
         let mut test_preds = Vec::with_capacity(split.test_examples.len());
         for test_ex in &split.test_examples {
             let pred = model.predict_sequence(&test_ex.input_tokens, test_ex.target_tokens.len());
             test_preds.push(pred);
         }
-        let final_acc = ImmutableOracle::score_batch(&test_preds, &split.test_examples);
+        let final_acc = ImmutableOracle::score_batch_exact(&test_preds, &split.test_examples);
 
         (samples_to_target, final_acc, final_loss)
     }
@@ -219,25 +257,27 @@ impl SearchManager {
         hypothesis_id: &str,
         target_acc: f32,
     ) -> TrialRecord {
-        let trial_id = format!("trial_{:04}", self.candidate_history.len() + 1);
-        let candidate_id = format!("cand_gen{:02}_{}", self.incumbent.meta_generation + 1, &trial_id[..8]);
+        let trial_idx = self.candidate_history.len() + 1;
+        let trial_id = format!("trial_{:04}", trial_idx);
+        let parent_id = self.incumbent.id.clone();
+        let candidate_id = format!("cand_gen{:02}_{:04}", self.incumbent.meta_generation + 1, trial_idx);
 
-        // Fork candidate: save rollback weights
-        let rollback_weights = self.incumbent_weights.clone();
-        model.load_parameters(&rollback_weights);
+        // Fork candidate: reset model to incumbent state
+        model.load_checkpoint(&self.incumbent_checkpoint).expect("Failed to restore incumbent checkpoint");
 
         let start_time = std::time::Instant::now();
         let (samples_to_target, final_acc, _) = Self::evaluate_adaptation(model, &proposed_plan, split, target_acc);
         let elapsed_secs = start_time.elapsed().as_secs_f64();
 
         let target_reached = samples_to_target.is_some();
-        let baseline_samples = 120; // baseline fixed reference budget
+        let baseline_samples = 120; // baseline reference budget
 
-        // Promotion rule:
-        // Either reach target accuracy within reference budget,
-        // OR achieve higher final accuracy (> incumbent + 0.03) without regression
-        let should_promote = (target_reached && samples_to_target.unwrap_or(usize::MAX) <= baseline_samples) ||
-            (final_acc > self.incumbent.validated_accuracy + 0.03);
+        // Strict non-regression & Pareto promotion criteria
+        let is_non_regressive = final_acc >= (self.incumbent.validated_accuracy - 0.001);
+        let is_faster = target_reached && samples_to_target.unwrap_or(usize::MAX) <= baseline_samples;
+        let is_significantly_better = final_acc > (self.incumbent.validated_accuracy + 0.02);
+
+        let should_promote = is_non_regressive && (is_faster || is_significantly_better);
 
         let status = if should_promote {
             TrialStatus::Promoted
@@ -255,22 +295,22 @@ impl SearchManager {
                 validated_accuracy: final_acc,
                 adaptation_history: {
                     let mut h = self.incumbent.adaptation_history.clone();
-                    h.push(format!("promoted in {} (acc: {:.2})", trial_id, final_acc));
+                    h.push(format!("promoted in {} (parent: {}, exact_acc: {:.3})", trial_id, parent_id, final_acc));
                     h
                 },
             };
-            self.incumbent_weights = model.extract_parameters();
+            self.incumbent_checkpoint = model.save_checkpoint();
         } else {
             self.rollback_count += 1;
             // Rollback weights
-            model.load_parameters(&rollback_weights);
+            model.load_checkpoint(&self.incumbent_checkpoint).expect("Failed to rollback to incumbent checkpoint");
         }
 
         let record = TrialRecord {
             trial_id,
             hypothesis_id: hypothesis_id.to_string(),
             candidate_id,
-            parent_candidate_id: Some(self.incumbent.id.clone()),
+            parent_candidate_id: Some(parent_id),
             task_family: split.family_name.clone(),
             seed,
             edit_plan: proposed_plan.clone(),
@@ -283,7 +323,11 @@ impl SearchManager {
             inner_steps_used: proposed_plan.inner_steps,
             gpu_seconds: elapsed_secs,
             status,
-            failure_reason: if should_promote { None } else { Some("failed_efficiency_or_accuracy_threshold".to_string()) },
+            failure_reason: if should_promote {
+                None
+            } else {
+                Some("failed_non_regression_or_efficiency_gate".to_string())
+            },
             timestamp: chrono::Utc::now(),
         };
 
@@ -302,7 +346,7 @@ mod tests {
         let valid_action = EditProposalAction::AdjustBaseLr { factor: 1.2 };
         assert!(SandboxTypechecker::validate_and_apply(&plan, &valid_action).is_ok());
 
-        let invalid_action = EditProposalAction::AdjustBaseLr { factor: 1000.0 }; // out of bounds
+        let invalid_action = EditProposalAction::AdjustBaseLr { factor: 1000.0 };
         assert!(SandboxTypechecker::validate_and_apply(&plan, &invalid_action).is_err());
     }
 }

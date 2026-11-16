@@ -81,6 +81,11 @@ def setup_code():
 
 def build_and_run(git_sha, stage="all"):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Run release tests first (finite difference gradient checks & mathematical correctness)
+    print(f"\n[TEST] Executing test suite & finite-difference gradient checks...", flush=True)
+    run_cmd(["cargo", "test", "--release", "--", "--nocapture"], cwd=REPO_DIR)
+
     print(f"\n[BUILD] Building moonshot release binary...", flush=True)
     run_cmd(["cargo", "build", "--release"], cwd=REPO_DIR)
 
@@ -91,21 +96,20 @@ def build_and_run(git_sha, stage="all"):
     print(f"\n[EXEC] Running stage: {stage}", flush=True)
 
     if stage in ("smoke", "all"):
-        print("\n--- PHASE 0: SMOKE TEST ---", flush=True)
+        print("\n--- PHASE 0: WAVE 0 SMOKE & GRADIENT INTEGRITY TEST ---", flush=True)
         run_cmd([str(bin_path), "smoke", "--output-dir", str(OUTPUT_DIR), "--git-commit", git_sha], cwd=REPO_DIR)
 
     if stage in ("baselines", "all"):
-        print("\n--- PHASE 1: MATCHED-BUDGET BASELINES ---", flush=True)
-        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.45"], cwd=REPO_DIR)
+        print("\n--- PHASE 1: EXACT MATCH MATCHED-BUDGET BASELINES & CAPABILITY GATE ---", flush=True)
+        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
     if stage in ("meta-train", "all"):
-        print("\n--- PHASE 2: SELF-EDITING META-TRAINING LOOP ---", flush=True)
-        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.45", "--hypothesis-id", "H1"], cwd=REPO_DIR)
+        print("\n--- PHASE 2: RESUMABLE SELF-EDITING META-TRAINING LOOP ---", flush=True)
+        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.80", "--hypothesis-id", "Wave0-Integrity"], cwd=REPO_DIR)
 
     if stage in ("evaluate", "all"):
-        print("\n--- PHASE 3: HELD-OUT META-TEST EVALUATION ---", flush=True)
-        ckpt_path = OUTPUT_DIR / "best_checkpoint.json"
-        run_cmd([str(bin_path), "evaluate", "--output-dir", str(OUTPUT_DIR), "--checkpoint-path", str(ckpt_path)], cwd=REPO_DIR)
+        print("\n--- PHASE 3: HELD-OUT META-TEST EVALUATION & RETENTION ---", flush=True)
+        run_cmd([str(bin_path), "evaluate", "--output-dir", str(OUTPUT_DIR), "--checkpoint-dir", str(OUTPUT_DIR), "--target-acc", "0.80"], cwd=REPO_DIR)
 
     print("\n" + "=" * 60, flush=True)
     print("EXPERIMENT STAGE COMPLETE. ARTIFACTS GENERATED:", flush=True)

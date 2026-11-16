@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 use moonshot_core::{
-    EditPlan, HardwareInfo, OptimizerType, RunLedger, SchedulePolicy,
+    EditPlan, HardwareInfo, OptimizerType, RunLedger, TaskExample,
 };
 use moonshot_editor::{EditorEngine, FeedbackSummary, SearchManager};
 use moonshot_model::{ModelConfig, TinyTransformer};
@@ -20,23 +20,28 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// Phase 0 hardware probe and reproducibility smoke test
+    /// Phase 0 hardware probe, gradient check, and reproducibility smoke test
     Smoke {
         #[arg(long, default_value = "results")]
         output_dir: PathBuf,
         #[arg(long, default_value = "unknown")]
         git_commit: String,
     },
-    /// Run matched-budget baselines (frozen, fixed-optimizer, random edit)
+    /// Numerical finite difference gradient verification check
+    CheckGradients {
+        #[arg(long, default_value = "results")]
+        output_dir: PathBuf,
+    },
+    /// Run matched-budget baselines (frozen, fixed-optimizer, random edit) under exact scoring
     Baselines {
         #[arg(long, default_value = "results")]
         output_dir: PathBuf,
         #[arg(long, default_value_t = 42)]
         seed: u64,
-        #[arg(long, default_value_t = 0.45)]
+        #[arg(long, default_value_t = 0.80)]
         target_acc: f32,
     },
-    /// Run self-editing meta-training experiment loop
+    /// Run self-editing meta-training experiment loop with real checkpointing & resumption
     MetaTrain {
         #[arg(long, default_value = "results")]
         output_dir: PathBuf,
@@ -44,17 +49,21 @@ enum Commands {
         seed: u64,
         #[arg(long, default_value_t = 15)]
         trials: usize,
-        #[arg(long, default_value_t = 0.45)]
+        #[arg(long, default_value_t = 0.80)]
         target_acc: f32,
         #[arg(long, default_value = "H1")]
         hypothesis_id: String,
+        #[arg(long, default_value = "")]
+        resume_from: String,
     },
-    /// Run frozen evaluation on unopened held-out meta-test families across seeds
+    /// Run frozen evaluation on unopened held-out meta-test families across seeds with empirical retention
     Evaluate {
         #[arg(long, default_value = "results")]
         output_dir: PathBuf,
         #[arg(long, default_value = "")]
-        checkpoint_path: String,
+        checkpoint_dir: String,
+        #[arg(long, default_value_t = 0.80)]
+        target_acc: f32,
     },
 }
 
@@ -63,10 +72,7 @@ fn detect_hardware() -> HardwareInfo {
         .map(|n| n.get())
         .unwrap_or(1);
 
-    // Read system info or fallback
-    let ram_bytes = 16 * 1024 * 1024 * 1024; // default 16GB
-
-    // Probe GPU via nvidia-smi if available
+    let ram_bytes = 16 * 1024 * 1024 * 1024; // fallback 16GB
     let mut gpu_name = None;
     let mut gpu_memory_bytes = None;
     let mut cuda_version = None;
@@ -75,7 +81,7 @@ fn detect_hardware() -> HardwareInfo {
         if output.status.success() {
             let stdout = String::from_utf8_lossy(&output.stdout);
             for line in stdout.lines() {
-                if line.contains("NVIDIA") || line.contains("Tesla") || line.contains("T4") || line.contains("P100") {
+                if line.contains("NVIDIA") || line.contains("Tesla") || line.contains("T4") || line.contains("P100") || line.contains("RTX") {
                     gpu_name = Some(line.trim().to_string());
                     break;
                 }
@@ -86,7 +92,7 @@ fn detect_hardware() -> HardwareInfo {
                     cuda_version = Some(sub[..end].trim().to_string());
                 }
             }
-            gpu_memory_bytes = Some(15 * 1024 * 1024 * 1024); // typical Kaggle T4 ~15GB
+            gpu_memory_bytes = Some(15 * 1024 * 1024 * 1024);
         }
     }
 
@@ -99,8 +105,85 @@ fn detect_hardware() -> HardwareInfo {
     }
 }
 
+fn run_check_gradients(output_dir: &Path) {
+    println!("[Moonshot] Running Finite-Difference Gradient Verification Suite...");
+    fs::create_dir_all(output_dir).expect("Failed to create output dir");
+
+    let config = ModelConfig {
+        vocab_size: 16,
+        max_seq_len: 12,
+        d_model: 16,
+        n_heads: 2,
+        n_layers: 1,
+        d_ff: 32,
+    };
+    let mut model = TinyTransformer::new(config, 42);
+
+    let examples = vec![
+        TaskExample {
+            input_tokens: vec![1, 4, 5, 3],
+            target_tokens: vec![6, 7, 2],
+        },
+    ];
+
+    let (_, ana_grads) = model.compute_loss_and_gradients(&examples);
+    let total = model.total_parameters();
+    let eps = 1e-3;
+
+    let step = (total / 20).max(1);
+    let test_indices: Vec<usize> = (0..total).step_by(step).collect();
+    let mut max_rel_err = 0.0f32;
+    let mut passed_checks = 0;
+
+    for &idx in &test_indices {
+        let mut params = model.extract_parameters();
+        let orig = params[idx];
+
+        params[idx] = orig + eps;
+        model.load_parameters(&params);
+        let (loss_pos, _) = model.compute_loss_and_gradients(&examples);
+
+        params[idx] = orig - eps;
+        model.load_parameters(&params);
+        let (loss_neg, _) = model.compute_loss_and_gradients(&examples);
+
+        params[idx] = orig;
+        model.load_parameters(&params);
+
+        let num_grad = (loss_pos - loss_neg) / (2.0 * eps);
+        let ana_grad = ana_grads[idx];
+        let diff = (num_grad - ana_grad).abs();
+        let denom = num_grad.abs().max(ana_grad.abs()).max(1e-4);
+        let rel_err = diff / denom;
+
+        if rel_err > max_rel_err {
+            max_rel_err = rel_err;
+        }
+
+        assert!(
+            rel_err < 0.05 || diff < 1e-3,
+            "Gradient verification failed at param {}: num={}, ana={}, rel_err={}",
+            idx, num_grad, ana_grad, rel_err
+        );
+        passed_checks += 1;
+    }
+
+    println!("  ✓ Verified {} sampled parameter gradients against finite differences.", passed_checks);
+    println!("  ✓ Max observed relative gradient error: {:.6} (tolerance: 0.05)", max_rel_err);
+
+    let grad_report_path = output_dir.join("gradient_check_passed.json");
+    let json = serde_json::json!({
+        "status": "PASSED",
+        "sampled_parameters_tested": passed_checks,
+        "max_relative_error": max_rel_err,
+        "tolerance": 0.05,
+        "timestamp": chrono::Utc::now(),
+    });
+    fs::write(&grad_report_path, serde_json::to_string_pretty(&json).unwrap()).expect("Failed to write report");
+}
+
 fn run_smoke(output_dir: &Path, git_commit: &str) {
-    println!("[Moonshot] Running Phase 0 Smoke Test...");
+    println!("[Moonshot] Running Wave 0 Integrity & Smoke Test...");
     let start_time = Instant::now();
     fs::create_dir_all(output_dir).expect("Failed to create output dir");
 
@@ -109,39 +192,44 @@ fn run_smoke(output_dir: &Path, git_commit: &str) {
         hw.cpu_count, hw.ram_bytes / (1024*1024*1024), hw.gpu_name, hw.cuda_version);
 
     // 1. Test Task Generator & Immutable Oracle
-    println!("[1/4] Verifying Deterministic Task Generators & Immutable Oracle...");
+    println!("[1/5] Verifying Deterministic Task Generators & Immutable Oracle...");
     let split = TaskGenerator::generate_split(TaskFamilyType::FsmPermutation, 42, 10, 5, 5);
     assert_eq!(split.train_examples.len(), 10);
     assert!(!split.train_examples[0].input_tokens.is_empty());
-    println!("  ✓ Oracle task generation verified (10 train, 5 val, 5 test examples).");
+    let oracle_test = ImmutableOracle::score_batch_exact(&[split.train_examples[0].target_tokens.clone()], &split.train_examples[0..1]);
+    assert_eq!(oracle_test, 1.0, "Exact match score on identical sequence must be 1.0");
+    println!("  ✓ Oracle deterministic generation & exact scoring verified.");
 
     // 2. Test Model Instantiation & Parameter Count
-    println!("[2/4] Initializing Tiny Neural Learner...");
+    println!("[2/5] Initializing Tiny Neural Learner (77k Parameter Target)...");
     let config = ModelConfig::default();
-    let model = TinyTransformer::new(config, 42);
+    let model = TinyTransformer::new(config.clone(), 42);
     let total_params = model.total_parameters();
     let checksum = model.checksum();
-    println!("  ✓ TinyTransformer: {} parameters (~{:.2}M), SHA256: {}",
-        total_params, total_params as f32 / 1_000_000.0, checksum);
-    assert!(total_params > 10_000, "Model parameter count should be > 10k");
+    println!("  ✓ TinyTransformer: {} parameters (d_model=64, L=2, H=4, d_ff=128), SHA256: {}",
+        total_params, checksum);
+    assert_eq!(total_params, 77376, "Model parameter count must exactly match 77,376");
 
-    // 3. Test Editor Typechecker & Sandbox
-    println!("[3/4] Verifying Bounded Self-Editing Typechecker & Sandbox...");
-    let plan = EditPlan::default();
-    let proposal = EditorEngine::propose_edit(&plan, &FeedbackSummary {
-        final_loss: 3.5,
-        validation_accuracy: 0.1,
-        samples_used: 20,
-        target_reached: false,
-        error_count: 5,
-    }, 42).expect("Proposal failed");
-    println!("  ✓ Proposed safe EditPlan: opt={:?}, lr={:.5}, inner_steps={}",
-        proposal.optimizer_type, proposal.base_lr, proposal.inner_steps);
+    // 3. Test Checkpoint Resumption Bitwise Determinism
+    println!("[3/5] Verifying Checkpoint Serialization & Bitwise Resumption...");
+    let ckpt = model.save_checkpoint();
+    let mut restored_model = TinyTransformer::new(config, 9999);
+    restored_model.load_checkpoint(&ckpt).expect("Failed to restore checkpoint");
+    let test_tokens = vec![1, 4, 5, 3];
+    let logits1 = model.forward(&test_tokens);
+    let logits2 = restored_model.forward(&test_tokens);
+    assert_eq!(logits1, logits2, "Model forward pass must be bitwise identical after load_checkpoint");
+    println!("  ✓ Bitwise identical forward pass confirmed across serialization roundtrip.");
 
-    // 4. Test Single-Step Training Step
-    println!("[4/4] Executing Single Adaptation Step...");
+    // 4. Test Multi-Head Causal Attention Gradient Correctness
+    println!("[4/5] Running Finite-Difference Gradient Verification Suite...");
+    run_check_gradients(output_dir);
+
+    // 5. Test Single Adaptation Step Under Bounded EditPlan
+    println!("[5/5] Executing Single Adaptation Step...");
     let mut trainable_model = model;
-    let loss = trainable_model.train_step(&split.train_examples, &proposal, 0, 1);
+    let plan = EditPlan::default();
+    let loss = trainable_model.train_step(&split.train_examples, &plan, 0, 1);
     println!("  ✓ Single step loss: {:.4}", loss);
 
     let duration = start_time.elapsed().as_secs_f64();
@@ -150,12 +238,12 @@ fn run_smoke(output_dir: &Path, git_commit: &str) {
         git_commit: git_commit.to_string(),
         hardware: hw,
         rust_version: env!("CARGO_PKG_VERSION").to_string(),
-        backend: "rust-native-autodiff".to_string(),
+        backend: "rust-native-autodiff-multihead".to_string(),
         start_time: chrono::Utc::now(),
         duration_seconds: duration,
         gpu_minutes: duration / 60.0,
-        artifacts: vec!["smoke_manifest.json".to_string()],
-        notes: "Phase 0 infrastructure and reproducibility smoke test passed.".to_string(),
+        artifacts: vec!["smoke_manifest.json".to_string(), "gradient_check_passed.json".to_string()],
+        notes: "Wave 0 integrity and model correctness smoke test passed.".to_string(),
     };
 
     let manifest_path = output_dir.join("smoke_manifest.json");
@@ -165,7 +253,7 @@ fn run_smoke(output_dir: &Path, git_commit: &str) {
 }
 
 fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
-    println!("[Moonshot] Running Matched-Budget Baselines (seed={}, target_acc={:.2})...", seed, target_acc);
+    println!("[Moonshot] Running Matched-Budget Baselines & Capability Gate (seed={}, target_acc={:.2})...", seed, target_acc);
     fs::create_dir_all(output_dir).expect("Failed to create output dir");
 
     let families = [
@@ -179,21 +267,22 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
     writeln!(csv_file, "condition,task_family,seed,samples_to_target,target_reached,final_acc,gpu_seconds").unwrap();
 
     for family in families {
-        let split = TaskGenerator::generate_split(family, seed, 50, 20, 20);
+        let split = TaskGenerator::generate_split(family, seed, 60, 20, 20);
 
-        // Condition 1: Frozen (no adaptation)
+        // Condition 1: Frozen (no adaptation control)
         let config = ModelConfig::default();
         let frozen_model = TinyTransformer::new(config.clone(), seed);
         let mut preds = Vec::new();
         for ex in &split.test_examples {
             preds.push(frozen_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
         }
-        let frozen_acc = ImmutableOracle::score_batch(&preds, &split.test_examples);
+        let frozen_acc = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
         writeln!(csv_file, "Frozen,{},{},NA,false,{:.4},0.01", family.name(), seed, frozen_acc).unwrap();
 
         // Condition 2: Fixed Learner (Standard AdamW default plan)
         let mut fixed_model = TinyTransformer::new(config.clone(), seed);
-        let fixed_plan = EditPlan::default();
+        let mut fixed_plan = EditPlan::default();
+        fixed_plan.inner_steps = 45;
         let start = Instant::now();
         let (samples_to_target, final_acc, _) = SearchManager::evaluate_adaptation(&mut fixed_model, &fixed_plan, &split, target_acc);
         let elapsed = start.elapsed().as_secs_f64();
@@ -201,12 +290,12 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
         writeln!(csv_file, "FixedLearner,{},{},{},{},{:.4},{:.2}",
             family.name(), seed, s_str, samples_to_target.is_some(), final_acc, elapsed).unwrap();
 
-        // Condition 3: Random Edit Policy
+        // Condition 3: Random Edit Policy (Matched inner steps)
         let mut random_model = TinyTransformer::new(config, seed);
         let mut random_plan = EditPlan::default();
         random_plan.optimizer_type = OptimizerType::Momentum;
-        random_plan.base_lr = 0.003;
-        random_plan.inner_steps = 15;
+        random_plan.base_lr = 0.005;
+        random_plan.inner_steps = 45;
         let start_rnd = Instant::now();
         let (rnd_samples, rnd_acc, _) = SearchManager::evaluate_adaptation(&mut random_model, &random_plan, &split, target_acc);
         let rnd_elapsed = start_rnd.elapsed().as_secs_f64();
@@ -214,27 +303,53 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
         writeln!(csv_file, "RandomEditPolicy,{},{},{},{},{:.4},{:.2}",
             family.name(), seed, rnd_s_str, rnd_samples.is_some(), rnd_acc, rnd_elapsed).unwrap();
 
-        println!("  ✓ {} -> Fixed acc: {:.2}, Random acc: {:.2}, Frozen acc: {:.2}",
-            family.name(), final_acc, rnd_acc, frozen_acc);
+        println!("  ✓ {} -> Fixed exact acc: {:.3} (target: {:.2}, reached: {}), Random acc: {:.3}, Frozen acc: {:.3}",
+            family.name(), final_acc, target_acc, samples_to_target.is_some(), rnd_acc, frozen_acc);
+
+        if final_acc < target_acc && samples_to_target.is_none() {
+            println!("    [Note] Family {} did not attain {:.2} exact match in 45 steps (final: {:.3})", family.name(), target_acc, final_acc);
+        }
     }
 
     println!("[Moonshot] Baselines completed. Wrote {}", csv_path.display());
 }
 
-fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32, hypothesis_id: &str) {
-    println!("[Moonshot] Starting Meta-Training Loop (trials={}, seed={}, target_acc={:.2})...", n_trials, seed, target_acc);
+fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32, hypothesis_id: &str, resume_from: &str) {
+    println!("[Moonshot] Starting Meta-Training Loop (trials={}, seed={}, target_acc={:.2}, resume='{}')...",
+        n_trials, seed, target_acc, resume_from);
     fs::create_dir_all(output_dir).expect("Failed to create output dir");
 
     let config = ModelConfig::default();
     let mut model = TinyTransformer::new(config, seed);
-    let mut search_manager = SearchManager::new(&model, EditPlan::default());
+
+    let mut search_manager = if !resume_from.is_empty() && Path::new(resume_from).exists() {
+        println!("  ✓ Resuming from existing checkpoint at {}", resume_from);
+        SearchManager::load_state_from_dir(Path::new(resume_from), &mut model)
+            .unwrap_or_else(|e| {
+                println!("  [Warning] Resumption failed: {}. Initializing fresh SearchManager.", e);
+                SearchManager::new(&model, EditPlan::default())
+            })
+    } else {
+        SearchManager::new(&model, EditPlan::default())
+    };
 
     let trials_path = output_dir.join("trials.jsonl");
-    let mut trials_file = File::create(&trials_path).expect("Failed to create trials.jsonl");
+    let mut trials_file = fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(&trials_path)
+        .expect("Failed to open trials.jsonl");
 
     let curves_path = output_dir.join("learning_curves.csv");
-    let mut curves_file = File::create(&curves_path).expect("Failed to create learning_curves.csv");
-    writeln!(curves_file, "trial_idx,task_family,candidate_id,status,samples_to_target,final_acc,gpu_secs").unwrap();
+    let mut curves_file = fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(&curves_path)
+        .expect("Failed to open learning_curves.csv");
+
+    if curves_file.metadata().map(|m| m.len() == 0).unwrap_or(true) {
+        writeln!(curves_file, "trial_idx,task_family,candidate_id,status,samples_to_target,final_acc,gpu_secs").unwrap();
+    }
 
     let families = [
         TaskFamilyType::FsmPermutation,
@@ -243,8 +358,8 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
     ];
 
     let mut current_feedback = FeedbackSummary {
-        final_loss: 2.5,
-        validation_accuracy: 0.2,
+        final_loss: 2.0,
+        validation_accuracy: 0.1,
         samples_used: 40,
         target_reached: false,
         error_count: 10,
@@ -253,9 +368,8 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
     for trial_idx in 0..n_trials {
         let family = families[trial_idx % families.len()];
         let trial_seed = seed.wrapping_add((trial_idx as u64) * 101);
-        let split = TaskGenerator::generate_split(family, trial_seed, 40, 20, 20);
+        let split = TaskGenerator::generate_split(family, trial_seed, 50, 20, 20);
 
-        // Propose bounded edit conditioned on feedback
         let proposed_plan = match EditorEngine::propose_edit(&search_manager.incumbent.learning_rule, &current_feedback, trial_seed) {
             Ok(p) => p,
             Err(e) => {
@@ -280,10 +394,9 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
         writeln!(curves_file, "{},{},{},{:?},{},{:.4},{:.2}",
             trial_idx + 1, family.name(), record.candidate_id, record.status, s_to_t, record.final_accuracy, record.gpu_seconds).unwrap();
 
-        println!("  Trial {:02}/{}: [{}] {} -> Acc: {:.2}, SamplesToTarget: {}, Status: {:?}",
+        println!("  Trial {:02}/{}: [{}] {} -> ExactAcc: {:.3}, SamplesToTarget: {}, Status: {:?}",
             trial_idx + 1, n_trials, family.name(), record.candidate_id, record.final_accuracy, s_to_t, record.status);
 
-        // Update feedback summary for next proposal
         current_feedback = FeedbackSummary {
             final_loss: 1.0 - record.final_accuracy,
             validation_accuracy: record.final_accuracy,
@@ -296,15 +409,13 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
     println!("[Moonshot] Meta-training finished: {} promotions, {} rollbacks.",
         search_manager.promotion_count, search_manager.rollback_count);
 
-    // Save final incumbent checkpoint
-    let ckpt_path = output_dir.join("best_checkpoint.json");
-    let ckpt_json = serde_json::to_string_pretty(&search_manager.incumbent).unwrap();
-    fs::write(&ckpt_path, ckpt_json).expect("Failed to write checkpoint");
-    println!("  ✓ Saved best incumbent checkpoint: {}", ckpt_path.display());
+    // Save full state (candidate info + full model weights & optimizer moments)
+    search_manager.save_state_to_dir(output_dir).expect("Failed to save full state");
+    println!("  ✓ Saved full state checkpoints (best_checkpoint.json & best_model_checkpoint.json) in {}", output_dir.display());
 }
 
-fn run_evaluate(output_dir: &Path, checkpoint_path: &str) {
-    println!("[Moonshot] Evaluating Frozen Candidate on Unopened Held-Out Meta-Test Families...");
+fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
+    println!("[Moonshot] Evaluating Candidate on Unopened Held-Out Meta-Test Families with Exact Scoring...");
     fs::create_dir_all(output_dir).expect("Failed to create output dir");
 
     let held_out_families = [
@@ -313,10 +424,17 @@ fn run_evaluate(output_dir: &Path, checkpoint_path: &str) {
         TaskFamilyType::ToolWorkflowChained,
     ];
 
-    let evolved_plan = if !checkpoint_path.is_empty() && Path::new(checkpoint_path).exists() {
-        if let Ok(content) = fs::read_to_string(checkpoint_path) {
+    let training_families = [
+        TaskFamilyType::FsmPermutation,
+        TaskFamilyType::SymbolicPrimitives,
+        TaskFamilyType::ToolWorkflowBasic,
+    ];
+
+    let evolved_plan = if !checkpoint_dir.is_empty() && Path::new(checkpoint_dir).join("best_checkpoint.json").exists() {
+        let ckpt_path = Path::new(checkpoint_dir).join("best_checkpoint.json");
+        if let Ok(content) = fs::read_to_string(&ckpt_path) {
             if let Ok(candidate) = serde_json::from_str::<moonshot_core::Candidate>(&content) {
-                println!("  ✓ Loaded evolved learning rule from checkpoint: {}", candidate.id);
+                println!("  ✓ Loaded evolved learning rule from: {}", candidate.id);
                 candidate.learning_rule
             } else {
                 EditPlan::default()
@@ -325,68 +443,74 @@ fn run_evaluate(output_dir: &Path, checkpoint_path: &str) {
             EditPlan::default()
         }
     } else {
-        let mut p = EditPlan::default();
-        p.optimizer_type = OptimizerType::AdamW;
-        p.base_lr = 0.02;
-        p.layer_lr_multipliers = vec![0.5, 0.8, 1.0, 1.2, 1.5, 2.0];
-        p.schedule_policy = SchedulePolicy::WarmupCosine;
-        p.inner_steps = 35;
-        p
+        println!("  [Info] No checkpoint provided; evaluating default baseline plan.");
+        EditPlan::default()
     };
 
-    let seeds = [101u64, 202u64, 303u64];
+    let dev_seeds = [101u64, 202u64, 303u64];
     let ablations_path = output_dir.join("ablations.csv");
     let mut abl_file = File::create(&ablations_path).expect("Failed to create ablations.csv");
-    writeln!(abl_file, "task_family,seed,condition,samples_to_target,final_acc,retention_score").unwrap();
+    writeln!(abl_file, "task_family,seed,condition,samples_to_target,final_exact_acc,retention_score").unwrap();
 
-    let target_acc = 0.45;
     let mut fixed_accs = Vec::new();
     let mut evolved_accs = Vec::new();
-    let mut fixed_samples = Vec::new();
-    let mut evolved_samples = Vec::new();
+    let mut retention_scores = Vec::new();
 
     for family in held_out_families {
         println!("  Evaluating Held-Out Family: {}", family.name());
-        for &seed in &seeds {
+        for &seed in &dev_seeds {
             let split = TaskGenerator::generate_split(family, seed, 50, 20, 20);
 
-            // Condition A: Fixed Baseline
+            // Condition A: Fixed Baseline (Default AdamW)
             let config = ModelConfig::default();
             let mut baseline_model = TinyTransformer::new(config.clone(), seed);
             let baseline_plan = EditPlan::default();
             let (b_samples, b_acc, _) = SearchManager::evaluate_adaptation(&mut baseline_model, &baseline_plan, &split, target_acc);
             let b_s_str = b_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-            writeln!(abl_file, "{},{},FixedBaseline,{},{:.4},1.0", family.name(), seed, b_s_str, b_acc).unwrap();
             fixed_accs.push(b_acc);
-            if let Some(s) = b_samples { fixed_samples.push(s); }
 
-            // Condition B: Self-Edited Incumbent Learning Rule
-            let mut model_evolved = TinyTransformer::new(config, seed);
-            let (e_samples, e_acc, _) = SearchManager::evaluate_adaptation(&mut model_evolved, &evolved_plan, &split, target_acc);
+            // Condition B: Evolved Candidate
+            let mut evolved_model = TinyTransformer::new(config.clone(), seed);
+            let (e_samples, e_acc, _) = SearchManager::evaluate_adaptation(&mut evolved_model, &evolved_plan, &split, target_acc);
             let e_s_str = e_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-            writeln!(abl_file, "{},{},EvolvedSelfEditor,{},{:.4},0.98", family.name(), seed, e_s_str, e_acc).unwrap();
             evolved_accs.push(e_acc);
-            if let Some(s) = e_samples { evolved_samples.push(s); }
 
-            println!("    Seed {}: Fixed (acc={:.2}, samples={}), Evolved (acc={:.2}, samples={})",
-                seed, b_acc, b_s_str, e_acc, e_s_str);
+            // Empirical retention measurement: evaluate evolved_model on training family anchor sets
+            let mut anchor_accs = Vec::new();
+            for train_fam in training_families {
+                let anchor_split = TaskGenerator::generate_split(train_fam, seed, 20, 10, 10);
+                let mut anchor_preds = Vec::new();
+                for ex in &anchor_split.test_examples {
+                    anchor_preds.push(evolved_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
+                }
+                let a_acc = ImmutableOracle::score_batch_exact(&anchor_preds, &anchor_split.test_examples);
+                anchor_accs.push(a_acc);
+            }
+            let empirical_retention = anchor_accs.iter().sum::<f32>() / anchor_accs.len().max(1) as f32;
+            retention_scores.push(empirical_retention);
+
+            writeln!(abl_file, "{},{},FixedBaseline,{},{:.4},1.0", family.name(), seed, b_s_str, b_acc).unwrap();
+            writeln!(abl_file, "{},{},EvolvedCandidate,{},{:.4},{:.4}", family.name(), seed, e_s_str, e_acc, empirical_retention).unwrap();
+
+            println!("    Seed {}: Fixed (exact_acc={:.3}, samples={}), Evolved (exact_acc={:.3}, samples={}, retention={:.3})",
+                seed, b_acc, b_s_str, e_acc, e_s_str, empirical_retention);
         }
     }
 
     let mean_fixed_acc = fixed_accs.iter().sum::<f32>() / fixed_accs.len().max(1) as f32;
     let mean_evolved_acc = evolved_accs.iter().sum::<f32>() / evolved_accs.len().max(1) as f32;
+    let mean_retention = retention_scores.iter().sum::<f32>() / retention_scores.len().max(1) as f32;
 
     let findings_path = output_dir.join("findings.md");
     let mut findings_file = File::create(&findings_path).expect("Failed to create findings.md");
-    writeln!(findings_file, "# Moonshot Experiment Findings: Phase 1 & 2 Evaluation").unwrap();
+    writeln!(findings_file, "# Moonshot Research Findings: Exact Scoring Evaluation").unwrap();
     writeln!(findings_file, "- **Date**: {}", chrono::Utc::now().to_rfc3339()).unwrap();
-    writeln!(findings_file, "- **Hypothesis Tested**: H1 (Evolvable update rule vs Fixed baseline)").unwrap();
-    writeln!(findings_file, "- **Mean Fixed Baseline Accuracy on Held-Out Families**: {:.4}", mean_fixed_acc).unwrap();
-    writeln!(findings_file, "- **Mean Evolved Self-Editor Accuracy on Held-Out Families**: {:.4}", mean_evolved_acc).unwrap();
-    writeln!(findings_file, "- **Accuracy Delta**: {:.4}", mean_evolved_acc - mean_fixed_acc).unwrap();
-    writeln!(findings_file, "\n## Next Hypotheses").unwrap();
-    writeln!(findings_file, "1. **H2-SparseMasking**: Test whether explicit gradient sparsity thresholds accelerate adaptation on compositional symbolic grammars.").unwrap();
-    writeln!(findings_file, "2. **H3-MetaCurriculum**: Test multi-generation memory preservation with EWC penalties.").unwrap();
+    writeln!(findings_file, "- **Evaluation Metric**: Exact Full Sequence Match (Primary)").unwrap();
+    writeln!(findings_file, "- **Development Seeds**: 101, 202, 303 (Permanently opened development data)").unwrap();
+    writeln!(findings_file, "- **Mean Fixed Baseline Exact Accuracy**: {:.4}", mean_fixed_acc).unwrap();
+    writeln!(findings_file, "- **Mean Evolved Candidate Exact Accuracy**: {:.4}", mean_evolved_acc).unwrap();
+    writeln!(findings_file, "- **Exact Accuracy Delta**: {:.4}", mean_evolved_acc - mean_fixed_acc).unwrap();
+    writeln!(findings_file, "- **Mean Empirical Retention on Training Tasks**: {:.4}", mean_retention).unwrap();
 
     println!("[Moonshot] Evaluation complete. Saved ablations to {} and findings to {}",
         ablations_path.display(), findings_path.display());
@@ -398,14 +522,17 @@ fn main() {
         Commands::Smoke { output_dir, git_commit } => {
             run_smoke(&output_dir, &git_commit);
         }
+        Commands::CheckGradients { output_dir } => {
+            run_check_gradients(&output_dir);
+        }
         Commands::Baselines { output_dir, seed, target_acc } => {
             run_baselines(&output_dir, seed, target_acc);
         }
-        Commands::MetaTrain { output_dir, seed, trials, target_acc, hypothesis_id } => {
-            run_meta_train(&output_dir, seed, trials, target_acc, &hypothesis_id);
+        Commands::MetaTrain { output_dir, seed, trials, target_acc, hypothesis_id, resume_from } => {
+            run_meta_train(&output_dir, seed, trials, target_acc, &hypothesis_id, &resume_from);
         }
-        Commands::Evaluate { output_dir, checkpoint_path } => {
-            run_evaluate(&output_dir, &checkpoint_path);
+        Commands::Evaluate { output_dir, checkpoint_dir, target_acc } => {
+            run_evaluate(&output_dir, &checkpoint_dir, target_acc);
         }
     }
 }

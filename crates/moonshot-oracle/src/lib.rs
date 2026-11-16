@@ -320,8 +320,9 @@ impl ImmutableOracle {
         matches as f32 / target.len() as f32
     }
 
+    /// Primary scoring interface: Exact full sequence match (non-negotiable primary evaluation metric)
     pub fn score_batch(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
-        Self::score_batch_composite(predictions, targets)
+        Self::score_batch_exact(predictions, targets)
     }
 
     pub fn score_batch_exact(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
