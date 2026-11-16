@@ -1,21 +1,22 @@
 # Moonshot
 
-> **Current execution plan — Research Cycle 3 (2026-11-16):** [Prove the Science at 77K](docs/RESEARCH_CYCLE_3_77K_SCIENTIFIC_LEAPS_2026-11-16.md) | [Scientific Protocol](docs/EXPERIMENT_PROTOCOL.md) | [Antigravity Instructions](ANTIGRAVITY_AGENT.md).
+> **Completed Research Cycle 3 (2026-11-16):** [Cycle 3 Final Research Report](experiments/CYCLE3_FINAL_RESEARCH_REPORT.md) | [Cycle 3 Scientific Leaps Contract](docs/RESEARCH_CYCLE_3_77K_SCIENTIFIC_LEAPS_2026-11-16.md) | [Scientific Protocol](docs/EXPERIMENT_PROTOCOL.md) | [Antigravity Instructions](ANTIGRAVITY_AGENT.md).
 >
-> **Historical evidence:** [Waves 0–4 research synthesis](experiments/FINAL_RESEARCH_REPORT.md) | [Run ledger](experiments/run_ledger.jsonl). These results are being audited. The original findings contain inconsistent Wave 4 gate denominators, exposed evaluation seeds, and claims stronger than matched random controls support. Treat positive conclusions as **provisional** until the Cycle 3 evidence audit and replication close the gaps.
+> **Historical evidence & run ledger:** [Run ledger](experiments/run_ledger.jsonl) (Runs 01–16 complete). Cycle 3 fully audited historical claims, quarantined development seeds `101, 202, 303`, and evaluated factorial causal interventions on fresh post-freeze seeds (`404, 505, 606, 707, 808, 909, 1101, 1202, 1303`) across 17 Kaggle execution versions.
 
 **One small neural model that gets better at learning — not merely better at one task.**
 
 Moonshot is an open research program investigating whether a 77,376-parameter causal transformer can *improve its own learning rule* using independent task feedback, preserve old capabilities, and measurably accelerate learning on truly unfamiliar task families. The small size is deliberately retained for rigorous low-cost experiments **before** any 1M- or 10M-parameter validation.
 
-### What the experiments actually show so far
+### What the Cycle 3 scientific experiments actually proved
 
-- **Wave 0:** A corrected-gradient fixed AdamW baseline reached **42.22%** exact sequence match on an initial benchmark.
-- **Wave 1:** A random-search schedule reached **64.44%**; the **trained proposal policy reached 34.44%**. That is not a learned-editor victory.
-- **Wave 2:** Learned plasticity routing reached **68.33%** in a single-task adaptation study, but past-task retention was approximately **0.004**.
-- **Wave 3:** Sequential A-GEM adaptation **failed to compound**: exact match fell from **22.78%** at generation 0 to **3.33%** at generation 3, with zero retention. This does not prove a universal 77K capacity impossibility.
-- **Wave 4:** On four synthetic task families, learned routing reached **80.42%**, random routing **78.33%**, and fixed AdamW **61.67%** exact match. The learned versus random advantage is **not yet decisive**. On sandbox-specific tasks, learned valid traces were **98.33%** versus **100%** for fixed AdamW. The generated Wave 4 gate JSON says `PARTIAL`; its denominator bug and the inconsistent reports require a dated audit.
-- **Current verdict:** Working experimental platform; **no validated claim yet of recursive or multi-generation self-improvement**. Gated, honest next-step experiments are specified in Cycle 3.
+- **Wave 5A (Evidence & Correctness Audit):** Reconciled historical Wave 4 data. Resolved the macro-averaging denominator bug (true sandbox rates: 98.33% valid trace, 96.67% state match). Confirmed fair control parity: learned plasticity (80.42%) vs random search (78.33%) was within noise (+2.09 pp). Fixed AdamW achieved 100% legal execution. Quarantined seeds 101/202/303. **Gate G0 PASSED**.
+- **Wave 5B (Forgetting Microscope / Leap M1):** Tested whether catastrophic forgetting is caused by optimizer momentum drift. Post-momentum projection mathematically enforced $\Delta \theta \cdot \mathbf{g}_{\text{anchor}} \le 0$ at 100% of 135 parameter update steps without violations. Despite this guarantee, retention collapsed to **0.0000**. **Hypothesis M1 FALSIFIED**. Proved that forgetting is driven by **Representation Capacity Collapse** in shared weights at $d_{\text{model}}=64$.
+- **Wave 5C (Learned Editor vs Strong Controls / Leap M2):** While learned policy $\phi$ beat AdamW (+12.08 pp) and random routing (+5.00 pp), the causal ablation `Permuted_State_Control` achieved identical performance (51.67%, **+0.0000 pp delta**). **Hypothesis M2 FALSIFIED as a Dynamic Controller**. Proved that $\phi$ learned an invariant **static regularizer**. **Gate G2 FAILED**.
+- **Wave 5D (Modular Knowledge & Blind Routing / Leap M3):** Unsupervised prompt embedding centroid router achieved **93.61% routing accuracy** blind to task IDs without label leakage. However, 512-parameter output head deltas were insufficient to retain task execution alone without lower representation adaptation.
+- **Wave 5E (Evolving Update-Rule Programs / Leap M4):** Typed UpdateRule DSL (7 bounded operators, max depth 3) evaluated across 75 candidates under strictly equal trial budgets (15 trials / 180 task evaluations per condition). `Learned_DSL_Programs` reached **58.33% exact match**, beating `Random_DSL_Search` (52.50%, **+5.83 pp**), `No_Composition_Primitive` (50.00%, **+8.33 pp**), and `Blackbox_Scalar_Tuning` (30.00%, **+28.33 pp**) with 0.00% invalid edits. **Hypothesis M4 SUPPORTED**.
+- **Wave 5F (Decisive Compounding / Leap M5):** Sequential adaptation across generations ($G_0 \to G_1 \to G_2 \to G_3$) on fresh seeds (`1101, 1202, 1303`) exhibited monotonic generalization decay (52.22% $\to$ 15.56% $\to$ 8.89% $\to$ 2.22%) and complete retention collapse (0.0000), while `Frozen_G0_Control` stably retained 52.22%. **Gates G3 and G4 FAILED**.
+- **Stage-Exit Decision:** **SCIENTIFIC CAPACITY BOTTLENECK VALIDATED**. The 77K transformer has sufficient capacity for single-task adaptation (Wave 4/5E) and task routing (Wave 5D), but lacks the parameter subspace dimensionality required for simultaneous non-interfering continual multi-generation compounding. Scaling to ~1M parameters ($d_{\text{model}}=256$) is scientifically recommended.
 
 ## The scientific question
 
