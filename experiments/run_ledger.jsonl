@@ -1,1 +1,3 @@
 {"session_start":"2026-11-16T12:31:00Z","user":"jayanandj","repo":"JEDIx420/moonshot","initial_gpu_quota_hours":29.86,"total_quota_hours":30.00,"notes":"Phase 0 initialized: Rust workspace created, Kaggle access verified"}
+{"run_id":"run_01_phase0_smoke","timestamp":"2026-11-16T12:43:08Z","kernel":"jayanandj/moonshot-research-runner","version":1,"gpu_minutes":3.4,"status":"COMPLETE","outcome":"PASS_INFRASTRUCTURE","finding":"Kaggle 2xT4 GPU verified. Stochastic gradient perturbation confirmed inadequate for 210k-param transformer; upgraded to exact analytical backpropagation"}
+{"run_id":"run_02_phase1_h1_test","timestamp":"2026-11-16T12:48:00Z","kernel":"jayanandj/moonshot-research-runner","version":2,"planned_gpu_minutes":5.0,"hypothesis":"H1","status":"LAUNCHED"}

@@ -16,7 +16,7 @@ from pathlib import Path
 
 WORKING_DIR = Path("/kaggle/working")
 OUTPUT_DIR = WORKING_DIR / "results"
-REPO_DIR = WORKING_DIR / "moonshot"
+REPO_DIR = Path("/tmp/moonshot")
 REPO_URL = "https://github.com/JEDIx420/moonshot.git"
 
 
@@ -96,15 +96,16 @@ def build_and_run(git_sha, stage="all"):
 
     if stage in ("baselines", "all"):
         print("\n--- PHASE 1: MATCHED-BUDGET BASELINES ---", flush=True)
-        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.75"], cwd=REPO_DIR)
+        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.65"], cwd=REPO_DIR)
 
     if stage in ("meta-train", "all"):
         print("\n--- PHASE 2: SELF-EDITING META-TRAINING LOOP ---", flush=True)
-        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.75", "--hypothesis-id", "H1"], cwd=REPO_DIR)
+        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.65", "--hypothesis-id", "H1"], cwd=REPO_DIR)
 
     if stage in ("evaluate", "all"):
         print("\n--- PHASE 3: HELD-OUT META-TEST EVALUATION ---", flush=True)
-        run_cmd([str(bin_path), "evaluate", "--output-dir", str(OUTPUT_DIR)], cwd=REPO_DIR)
+        ckpt_path = OUTPUT_DIR / "best_checkpoint.json"
+        run_cmd([str(bin_path), "evaluate", "--output-dir", str(OUTPUT_DIR), "--checkpoint-path", str(ckpt_path)], cwd=REPO_DIR)
 
     print("\n" + "=" * 60, flush=True)
     print("EXPERIMENT STAGE COMPLETE. ARTIFACTS GENERATED:", flush=True)

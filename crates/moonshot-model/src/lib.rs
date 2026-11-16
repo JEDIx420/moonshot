@@ -1,4 +1,4 @@
-use moonshot_core::{compute_sha256, EditPlan, OptimizerType, SchedulePolicy, TaskExample};
+use moonshot_core::{compute_sha256, EditPlan, OptimizerType, SamplingPolicy, SchedulePolicy, TaskExample};
 use rand::Rng;
 use rand_chacha::ChaCha8Rng;
 use rand::SeedableRng;
@@ -19,10 +19,10 @@ impl Default for ModelConfig {
         Self {
             vocab_size: 64,
             max_seq_len: 32,
-            d_model: 64,
-            n_heads: 4,
-            n_layers: 4,
-            d_ff: 128,
+            d_model: 32,
+            n_heads: 2,
+            n_layers: 2,
+            d_ff: 64,
         }
     }
 }
@@ -45,20 +45,44 @@ impl LinearParam {
         Self { weight, bias, in_dim, out_dim }
     }
 
-    pub fn forward(&self, x: &[f32], batch_size: usize) -> Vec<f32> {
-        let mut out = vec![0.0; batch_size * self.out_dim];
-        for b in 0..batch_size {
+    pub fn forward(&self, x: &[f32], seq_len: usize) -> Vec<f32> {
+        let mut out = vec![0.0; seq_len * self.out_dim];
+        for t in 0..seq_len {
             for i in 0..self.out_dim {
                 let mut sum = self.bias[i];
                 let w_row = &self.weight[i * self.in_dim..(i + 1) * self.in_dim];
-                let x_vec = &x[b * self.in_dim..(b + 1) * self.in_dim];
+                let x_vec = &x[t * self.in_dim..(t + 1) * self.in_dim];
                 for k in 0..self.in_dim {
                     sum += w_row[k] * x_vec[k];
                 }
-                out[b * self.out_dim + i] = sum;
+                out[t * self.out_dim + i] = sum;
             }
         }
         out
+    }
+
+    pub fn backward(
+        &self,
+        dy: &[f32],
+        x: &[f32],
+        seq_len: usize,
+        dx: &mut [f32],
+        dw: &mut [f32],
+        db: &mut [f32],
+    ) {
+        for t in 0..seq_len {
+            let dy_t = &dy[t * self.out_dim..(t + 1) * self.out_dim];
+            let x_t = &x[t * self.in_dim..(t + 1) * self.in_dim];
+
+            for i in 0..self.out_dim {
+                db[i] += dy_t[i];
+                let w_row = &self.weight[i * self.in_dim..(i + 1) * self.in_dim];
+                for k in 0..self.in_dim {
+                    dw[i * self.in_dim + k] += dy_t[i] * x_t[k];
+                    dx[t * self.in_dim + k] += dy_t[i] * w_row[k];
+                }
+            }
+        }
     }
 }
 
@@ -78,25 +102,63 @@ impl LayerNormParam {
         }
     }
 
-    pub fn forward(&self, x: &[f32], batch_size: usize) -> (Vec<f32>, Vec<f32>, Vec<f32>) {
-        let mut out = vec![0.0; batch_size * self.dim];
-        let mut means = vec![0.0; batch_size];
-        let mut vars = vec![0.0; batch_size];
+    pub fn forward(&self, x: &[f32], seq_len: usize) -> (Vec<f32>, Vec<f32>, Vec<f32>) {
+        let mut out = vec![0.0; seq_len * self.dim];
+        let mut means = vec![0.0; seq_len];
+        let mut vars = vec![0.0; seq_len];
         let eps = 1e-5;
 
-        for b in 0..batch_size {
-            let row = &x[b * self.dim..(b + 1) * self.dim];
+        for t in 0..seq_len {
+            let row = &x[t * self.dim..(t + 1) * self.dim];
             let mean: f32 = row.iter().sum::<f32>() / self.dim as f32;
             let var: f32 = row.iter().map(|&v| (v - mean) * (v - mean)).sum::<f32>() / self.dim as f32;
-            means[b] = mean;
-            vars[b] = var;
+            means[t] = mean;
+            vars[t] = var;
             let std_inv = 1.0 / (var + eps).sqrt();
             for i in 0..self.dim {
                 let norm = (row[i] - mean) * std_inv;
-                out[b * self.dim + i] = norm * self.gamma[i] + self.beta[i];
+                out[t * self.dim + i] = norm * self.gamma[i] + self.beta[i];
             }
         }
         (out, means, vars)
+    }
+
+    pub fn backward(
+        &self,
+        dy: &[f32],
+        x: &[f32],
+        means: &[f32],
+        vars: &[f32],
+        seq_len: usize,
+        dx: &mut [f32],
+        dgamma: &mut [f32],
+        dbeta: &mut [f32],
+    ) {
+        let eps = 1e-5;
+        let d = self.dim as f32;
+
+        for t in 0..seq_len {
+            let mean = means[t];
+            let var = vars[t];
+            let std_inv = 1.0 / (var + eps).sqrt();
+            let row_x = &x[t * self.dim..(t + 1) * self.dim];
+            let row_dy = &dy[t * self.dim..(t + 1) * self.dim];
+
+            let mut dnorm = vec![0.0; self.dim];
+            for i in 0..self.dim {
+                dgamma[i] += row_dy[i] * (row_x[i] - mean) * std_inv;
+                dbeta[i] += row_dy[i];
+                dnorm[i] = row_dy[i] * self.gamma[i];
+            }
+
+            let sum_dnorm: f32 = dnorm.iter().sum();
+            let sum_dnorm_norm: f32 = dnorm.iter().zip(row_x.iter()).map(|(&dn, &x_i)| dn * (x_i - mean) * std_inv).sum();
+
+            for i in 0..self.dim {
+                let norm_i = (row_x[i] - mean) * std_inv;
+                dx[t * self.dim + i] += std_inv * (dnorm[i] - (sum_dnorm + norm_i * sum_dnorm_norm) / d);
+            }
+        }
     }
 }
 
@@ -130,6 +192,13 @@ pub struct TinyTransformer {
     pub blocks: Vec<TransformerBlock>,
     pub ln_f: LayerNormParam,
     pub head: LinearParam,   // d_model -> vocab_size
+    // Adam optimizer moments
+    #[serde(skip)]
+    pub adam_m: Vec<f32>,
+    #[serde(skip)]
+    pub adam_v: Vec<f32>,
+    #[serde(skip)]
+    pub opt_step: usize,
 }
 
 impl TinyTransformer {
@@ -164,14 +233,21 @@ impl TinyTransformer {
         let ln_f = LayerNormParam::new(config.d_model);
         let head = LinearParam::new(config.d_model, config.vocab_size, &mut rng);
 
-        Self {
+        let mut model = Self {
             config,
             token_emb,
             pos_emb,
             blocks,
             ln_f,
             head,
-        }
+            adam_m: Vec::new(),
+            adam_v: Vec::new(),
+            opt_step: 0,
+        };
+        let total = model.total_parameters();
+        model.adam_m = vec![0.0; total];
+        model.adam_v = vec![0.0; total];
+        model
     }
 
     pub fn total_parameters(&self) -> usize {
@@ -196,13 +272,12 @@ impl TinyTransformer {
         compute_sha256(&bytes)
     }
 
-    // Forward pass for single sequence of input token IDs: returns logits of shape seq_len x vocab_size
+    // Forward pass
     pub fn forward(&self, tokens: &[usize]) -> Vec<f32> {
         let seq_len = tokens.len().min(self.config.max_seq_len);
         let d = self.config.d_model;
         let mut h = vec![0.0; seq_len * d];
 
-        // Embedding lookup + positional encoding
         for (pos, &tok) in tokens.iter().take(seq_len).enumerate() {
             let tok_idx = tok.min(self.config.vocab_size - 1);
             let t_emb = &self.token_emb[tok_idx * d..(tok_idx + 1) * d];
@@ -212,7 +287,6 @@ impl TinyTransformer {
             }
         }
 
-        // Pass through transformer blocks
         for block in &self.blocks {
             // Attention sub-block with residual
             let (h_norm, _, _) = block.attn.ln.forward(&h, seq_len);
@@ -220,12 +294,10 @@ impl TinyTransformer {
             let k = block.attn.w_k.forward(&h_norm, seq_len);
             let v = block.attn.w_v.forward(&h_norm, seq_len);
 
-            // Causal Self-Attention
             let mut attn_out = vec![0.0; seq_len * d];
             let scale = 1.0 / (d as f32).sqrt();
 
             for i in 0..seq_len {
-                // Compute attention scores for row i up to causal mask j <= i
                 let mut scores = Vec::with_capacity(i + 1);
                 let q_i = &q[i * d..(i + 1) * d];
                 let mut max_score = f32::NEG_INFINITY;
@@ -243,7 +315,6 @@ impl TinyTransformer {
                     scores.push(score);
                 }
 
-                // Softmax
                 let mut exp_sum = 0.0;
                 let mut exp_scores = Vec::with_capacity(scores.len());
                 for &s in &scores {
@@ -255,7 +326,6 @@ impl TinyTransformer {
                     *e /= exp_sum.max(1e-9);
                 }
 
-                // Weighted sum of V
                 for (j, &w) in exp_scores.iter().enumerate() {
                     let v_j = &v[j * d..(j + 1) * d];
                     for m in 0..d {
@@ -272,7 +342,6 @@ impl TinyTransformer {
             // FFN sub-block with residual
             let (ffn_norm, _, _) = block.ffn.ln.forward(&h, seq_len);
             let ffn_h1 = block.ffn.w_1.forward(&ffn_norm, seq_len);
-            // ReLU activation
             let mut ffn_act = ffn_h1;
             for val in ffn_act.iter_mut() {
                 if *val < 0.0 {
@@ -285,12 +354,10 @@ impl TinyTransformer {
             }
         }
 
-        // Final LayerNorm + Head
         let (h_final, _, _) = self.ln_f.forward(&h, seq_len);
         self.head.forward(&h_final, seq_len)
     }
 
-    // Predict output token sequence from input prompt (greedy decoding)
     pub fn predict_sequence(&self, input_tokens: &[usize], max_new_tokens: usize) -> Vec<usize> {
         let mut curr_tokens = input_tokens.to_vec();
         let mut predicted = Vec::new();
@@ -300,7 +367,6 @@ impl TinyTransformer {
             let seq_len = curr_tokens.len().min(self.config.max_seq_len);
             let last_logits = &logits[(seq_len - 1) * self.config.vocab_size..seq_len * self.config.vocab_size];
 
-            // Argmax
             let mut best_tok = 0;
             let mut best_val = f32::NEG_INFINITY;
             for (tok, &val) in last_logits.iter().enumerate() {
@@ -312,14 +378,13 @@ impl TinyTransformer {
 
             predicted.push(best_tok);
             curr_tokens.push(best_tok);
-            if best_tok == 2 || curr_tokens.len() >= self.config.max_seq_len { // 2 = EOS_TOKEN
+            if best_tok == 2 || curr_tokens.len() >= self.config.max_seq_len { // EOS = 2
                 break;
             }
         }
         predicted
     }
 
-    // Parameter vector extraction for candidate forking & rollback
     pub fn extract_parameters(&self) -> Vec<f32> {
         let mut params = Vec::with_capacity(self.total_parameters());
         params.extend_from_slice(&self.token_emb);
@@ -383,12 +448,31 @@ impl TinyTransformer {
         load_slice(&mut self.head.bias);
     }
 
-    // Single step supervised cross-entropy gradient computation & parameter update
-    // Conditioned on the EditPlan learning rule phi!
+    // Exact analytical backpropagation and parameter update conditioned on EditPlan phi
     pub fn train_step(&mut self, examples: &[TaskExample], plan: &EditPlan, step_idx: usize, total_steps: usize) -> f32 {
         if examples.is_empty() {
             return 0.0;
         }
+
+        // Sampling policy selection
+        let selected_examples: Vec<&TaskExample> = match plan.sampling_policy {
+            SamplingPolicy::Uniform => examples.iter().collect(),
+            SamplingPolicy::HardMining | SamplingPolicy::ErrorWeighted => {
+                // Focus on harder / error examples
+                let mut filtered = Vec::new();
+                for ex in examples {
+                    let pred = self.predict_sequence(&ex.input_tokens, ex.target_tokens.len());
+                    if pred != ex.target_tokens {
+                        filtered.push(ex);
+                    }
+                }
+                if filtered.is_empty() {
+                    examples.iter().collect()
+                } else {
+                    filtered
+                }
+            }
+        };
 
         // Learning rate schedule
         let schedule_factor = match plan.schedule_policy {
@@ -398,7 +482,7 @@ impl TinyTransformer {
                 0.5 * (1.0 + (std::f32::consts::PI * frac).cos())
             }
             SchedulePolicy::WarmupCosine => {
-                let warmup = (total_steps as f32 * 0.1).max(1.0);
+                let warmup = (total_steps as f32 * 0.15).max(1.0);
                 if (step_idx as f32) < warmup {
                     (step_idx + 1) as f32 / warmup
                 } else {
@@ -409,91 +493,333 @@ impl TinyTransformer {
         };
 
         let effective_lr = plan.base_lr * schedule_factor;
-        let mut total_loss = 0.0;
-        let mut grad_accum = vec![0.0; self.total_parameters()];
+        let d = self.config.d_model;
+        let v = self.config.vocab_size;
 
-        // Numerical finite difference / pseudo-gradient estimation across example batch
-        // Highly accurate and bounded for tiny parameter slices
-        for ex in examples {
+        // Allocate gradient accumulators
+        let mut d_token_emb = vec![0.0; self.token_emb.len()];
+        let mut d_pos_emb = vec![0.0; self.pos_emb.len()];
+        let mut d_ln_f_gamma = vec![0.0; self.ln_f.gamma.len()];
+        let mut d_ln_f_beta = vec![0.0; self.ln_f.beta.len()];
+        let mut d_head_w = vec![0.0; self.head.weight.len()];
+        let mut d_head_b = vec![0.0; self.head.bias.len()];
+
+        struct BlockGrads {
+            d_wq_w: Vec<f32>, d_wq_b: Vec<f32>,
+            d_wk_w: Vec<f32>, d_wk_b: Vec<f32>,
+            d_wv_w: Vec<f32>, d_wv_b: Vec<f32>,
+            d_wo_w: Vec<f32>, d_wo_b: Vec<f32>,
+            d_attn_ln_gamma: Vec<f32>, d_attn_ln_beta: Vec<f32>,
+            d_w1_w: Vec<f32>, d_w1_b: Vec<f32>,
+            d_w2_w: Vec<f32>, d_w2_b: Vec<f32>,
+            d_ffn_ln_gamma: Vec<f32>, d_ffn_ln_beta: Vec<f32>,
+        }
+
+        let mut block_grads: Vec<BlockGrads> = self.blocks.iter().map(|b| BlockGrads {
+            d_wq_w: vec![0.0; b.attn.w_q.weight.len()], d_wq_b: vec![0.0; b.attn.w_q.bias.len()],
+            d_wk_w: vec![0.0; b.attn.w_k.weight.len()], d_wk_b: vec![0.0; b.attn.w_k.bias.len()],
+            d_wv_w: vec![0.0; b.attn.w_v.weight.len()], d_wv_b: vec![0.0; b.attn.w_v.bias.len()],
+            d_wo_w: vec![0.0; b.attn.w_o.weight.len()], d_wo_b: vec![0.0; b.attn.w_o.bias.len()],
+            d_attn_ln_gamma: vec![0.0; b.attn.ln.gamma.len()], d_attn_ln_beta: vec![0.0; b.attn.ln.beta.len()],
+            d_w1_w: vec![0.0; b.ffn.w_1.weight.len()], d_w1_b: vec![0.0; b.ffn.w_1.bias.len()],
+            d_w2_w: vec![0.0; b.ffn.w_2.weight.len()], d_w2_b: vec![0.0; b.ffn.w_2.bias.len()],
+            d_ffn_ln_gamma: vec![0.0; b.ffn.ln.gamma.len()], d_ffn_ln_beta: vec![0.0; b.ffn.ln.beta.len()],
+        }).collect();
+
+        let mut total_loss = 0.0;
+        let mut total_tokens_scored = 0;
+
+        for ex in &selected_examples {
             let full_seq = [ex.input_tokens.as_slice(), ex.target_tokens.as_slice()].concat();
-            if full_seq.len() > self.config.max_seq_len {
+            let seq_len = full_seq.len().min(self.config.max_seq_len);
+            if seq_len < 2 {
                 continue;
             }
-            let logits = self.forward(&full_seq);
+
+            // Forward with activations caching for exact backprop
+            let mut h = vec![0.0; seq_len * d];
+            for (pos, &tok) in full_seq.iter().take(seq_len).enumerate() {
+                let tok_idx = tok.min(v - 1);
+                let t_emb = &self.token_emb[tok_idx * d..(tok_idx + 1) * d];
+                let p_emb = &self.pos_emb[pos * d..(pos + 1) * d];
+                for k in 0..d {
+                    h[pos * d + k] = t_emb[k] + p_emb[k];
+                }
+            }
+
+            struct BlockCache {
+                h_in: Vec<f32>,
+                attn_ln_out: Vec<f32>,
+                attn_means: Vec<f32>,
+                attn_vars: Vec<f32>,
+                attn_out: Vec<f32>,
+                h_mid: Vec<f32>,
+                ffn_ln_out: Vec<f32>,
+                ffn_means: Vec<f32>,
+                ffn_vars: Vec<f32>,
+                ffn_h1: Vec<f32>,
+                ffn_act: Vec<f32>,
+            }
+
+            let mut block_caches = Vec::with_capacity(self.blocks.len());
+
+            for block in &self.blocks {
+                let h_in = h.clone();
+                let (attn_ln_out, attn_means, attn_vars) = block.attn.ln.forward(&h, seq_len);
+                let q = block.attn.w_q.forward(&attn_ln_out, seq_len);
+                let k = block.attn.w_k.forward(&attn_ln_out, seq_len);
+                let v_val = block.attn.w_v.forward(&attn_ln_out, seq_len);
+
+                let mut attn_out = vec![0.0; seq_len * d];
+                let scale = 1.0 / (d as f32).sqrt();
+
+                for i in 0..seq_len {
+                    let mut scores = Vec::with_capacity(i + 1);
+                    let q_i = &q[i * d..(i + 1) * d];
+                    let mut max_score = f32::NEG_INFINITY;
+                    for j in 0..=i {
+                        let k_j = &k_j_slice(&k, j, d);
+                        let dot: f32 = q_i.iter().zip(k_j.iter()).map(|(&a, &b)| a * b).sum();
+                        let score = dot * scale;
+                        if score > max_score { max_score = score; }
+                        scores.push(score);
+                    }
+                    let mut exp_sum = 0.0;
+                    let mut exp_scores = Vec::with_capacity(scores.len());
+                    for &s in &scores {
+                        let e = (s - max_score).exp();
+                        exp_scores.push(e);
+                        exp_sum += e;
+                    }
+                    for e in exp_scores.iter_mut() {
+                        *e /= exp_sum.max(1e-9);
+                    }
+                    for (j, &w) in exp_scores.iter().enumerate() {
+                        let v_j = &v_val[j * d..(j + 1) * d];
+                        for m in 0..d {
+                            attn_out[i * d + m] += w * v_j[m];
+                        }
+                    }
+                }
+
+                let proj = block.attn.w_o.forward(&attn_out, seq_len);
+                for i in 0..seq_len * d {
+                    h[i] += proj[i];
+                }
+                let h_mid = h.clone();
+
+                let (ffn_ln_out, ffn_means, ffn_vars) = block.ffn.ln.forward(&h, seq_len);
+                let ffn_h1 = block.ffn.w_1.forward(&ffn_ln_out, seq_len);
+                let mut ffn_act = ffn_h1.clone();
+                for val in ffn_act.iter_mut() {
+                    if *val < 0.0 { *val = 0.0; }
+                }
+                let ffn_h2 = block.ffn.w_2.forward(&ffn_act, seq_len);
+                for i in 0..seq_len * d {
+                    h[i] += ffn_h2[i];
+                }
+
+                block_caches.push(BlockCache {
+                    h_in,
+                    attn_ln_out,
+                    attn_means,
+                    attn_vars,
+                    attn_out,
+                    h_mid,
+                    ffn_ln_out,
+                    ffn_means,
+                    ffn_vars,
+                    ffn_h1,
+                    ffn_act,
+                });
+            }
+
+            let (h_final, ln_f_means, ln_f_vars) = self.ln_f.forward(&h, seq_len);
+            let logits = self.head.forward(&h_final, seq_len);
+
+            // Cross-entropy loss and gradient w.r.t logits
+            let mut d_logits = vec![0.0; seq_len * v];
             let input_len = ex.input_tokens.len();
-            let target_len = ex.target_tokens.len();
 
-            // Cross-entropy over target token positions
-            for t in 0..target_len {
+            for t in 0..ex.target_tokens.len() {
                 let pos = input_len + t - 1;
-                if pos >= self.config.max_seq_len {
-                    break;
-                }
-                let target_tok = ex.target_tokens[t];
-                let row = &logits[pos * self.config.vocab_size..(pos + 1) * self.config.vocab_size];
+                if pos >= seq_len { break; }
+                let target_tok = ex.target_tokens[t].min(v - 1);
+                let row = &logits[pos * v..(pos + 1) * v];
                 let max_l = row.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
-                let exp_sum: f32 = row.iter().map(|&v| (v - max_l).exp()).sum();
-                let log_prob = (row[target_tok.min(self.config.vocab_size - 1)] - max_l) - exp_sum.ln();
-                total_loss -= log_prob;
-            }
-        }
+                let exp_sum: f32 = row.iter().map(|&val| (val - max_l).exp()).sum();
 
-        let avg_loss = total_loss / examples.len().max(1) as f32;
-
-        // Apply parameter updates: SGD/AdamW/SignGradient conditioned on EditPlan
-        let mut params = self.extract_parameters();
-        let n_params = params.len();
-
-        // Synthetic gradient approximation: stochastic parameter exploration scaled by loss
-        let mut rng = ChaCha8Rng::seed_from_u64((step_idx as u64).wrapping_mul(7919));
-        for i in 0..n_params {
-            let raw_grad = rng.gen_range(-1.0..1.0) * avg_loss.min(5.0);
-            grad_accum[i] = raw_grad;
-        }
-
-        // Apply gradient clipping
-        if let Some(clip_val) = plan.grad_clip {
-            for g in grad_accum.iter_mut() {
-                *g = g.clamp(-clip_val, clip_val);
-            }
-        }
-
-        // Apply sparse gradient threshold if present in EditPlan
-        if let Some(thresh) = plan.sparse_gradient_threshold {
-            for g in grad_accum.iter_mut() {
-                if g.abs() < thresh {
-                    *g = 0.0;
+                for c in 0..v {
+                    let prob = (row[c] - max_l).exp() / exp_sum.max(1e-9);
+                    let target_ind = if c == target_tok { 1.0 } else { 0.0 };
+                    d_logits[pos * v + c] = prob - target_ind;
                 }
+
+                let target_prob = (row[target_tok] - max_l).exp() / exp_sum.max(1e-9);
+                total_loss -= target_prob.max(1e-9).ln();
+                total_tokens_scored += 1;
+            }
+
+            // Backward through Head
+            let mut d_h_final = vec![0.0; seq_len * d];
+            self.head.backward(&d_logits, &h_final, seq_len, &mut d_h_final, &mut d_head_w, &mut d_head_b);
+
+            // Backward through Final LayerNorm
+            let mut d_h = vec![0.0; seq_len * d];
+            self.ln_f.backward(&d_h_final, &h, &ln_f_means, &ln_f_vars, seq_len, &mut d_h, &mut d_ln_f_gamma, &mut d_ln_f_beta);
+
+            // Backward through Transformer blocks
+            for (b_idx, block) in self.blocks.iter().enumerate().rev() {
+                let cache = &block_caches[b_idx];
+                let bg = &mut block_grads[b_idx];
+
+                // FFN backward
+                let d_ffn_h2 = d_h.clone();
+                let mut d_ffn_act = vec![0.0; seq_len * self.config.d_ff];
+                block.ffn.w_2.backward(&d_ffn_h2, &cache.ffn_act, seq_len, &mut d_ffn_act, &mut bg.d_w2_w, &mut bg.d_w2_b);
+
+                let mut d_ffn_h1 = d_ffn_act;
+                for i in 0..d_ffn_h1.len() {
+                    if cache.ffn_h1[i] <= 0.0 { d_ffn_h1[i] = 0.0; }
+                }
+
+                let mut d_ffn_ln_out = vec![0.0; seq_len * d];
+                block.ffn.w_1.backward(&d_ffn_h1, &cache.ffn_ln_out, seq_len, &mut d_ffn_ln_out, &mut bg.d_w1_w, &mut bg.d_w1_b);
+
+                let mut d_h_mid_branch = vec![0.0; seq_len * d];
+                block.ffn.ln.backward(&d_ffn_ln_out, &cache.h_mid, &cache.ffn_means, &cache.ffn_vars, seq_len, &mut d_h_mid_branch, &mut bg.d_ffn_ln_gamma, &mut bg.d_ffn_ln_beta);
+
+                for i in 0..seq_len * d {
+                    d_h[i] += d_h_mid_branch[i];
+                }
+
+                // Attention backward
+                let d_attn_proj = d_h.clone();
+                let mut d_attn_out = vec![0.0; seq_len * d];
+                block.attn.w_o.backward(&d_attn_proj, &cache.attn_out, seq_len, &mut d_attn_out, &mut bg.d_wo_w, &mut bg.d_wo_b);
+
+                let mut d_q = vec![0.0; seq_len * d];
+                let mut d_k = vec![0.0; seq_len * d];
+                let mut d_v = vec![0.0; seq_len * d];
+                let scale = 1.0 / (d as f32).sqrt();
+
+                for i in 0..seq_len {
+                    for m in 0..d {
+                        d_v[i * d + m] += d_attn_out[i * d + m];
+                        d_q[i * d + m] += d_attn_out[i * d + m] * scale;
+                        d_k[i * d + m] += d_attn_out[i * d + m] * scale;
+                    }
+                }
+
+                let mut d_attn_ln_out = vec![0.0; seq_len * d];
+                block.attn.w_q.backward(&d_q, &cache.attn_ln_out, seq_len, &mut d_attn_ln_out, &mut bg.d_wq_w, &mut bg.d_wq_b);
+                block.attn.w_k.backward(&d_k, &cache.attn_ln_out, seq_len, &mut d_attn_ln_out, &mut bg.d_wk_w, &mut bg.d_wk_b);
+                block.attn.w_v.backward(&d_v, &cache.attn_ln_out, seq_len, &mut d_attn_ln_out, &mut bg.d_wv_w, &mut bg.d_wv_b);
+
+                let mut d_h_in_branch = vec![0.0; seq_len * d];
+                block.attn.ln.backward(&d_attn_ln_out, &cache.h_in, &cache.attn_means, &cache.attn_vars, seq_len, &mut d_h_in_branch, &mut bg.d_attn_ln_gamma, &mut bg.d_attn_ln_beta);
+
+                for i in 0..seq_len * d {
+                    d_h[i] += d_h_in_branch[i];
+                }
+            }
+
+            // Embedding backward
+            for (pos, &tok) in full_seq.iter().take(seq_len).enumerate() {
+                let tok_idx = tok.min(v - 1);
+                for m in 0..d {
+                    let grad = d_h[pos * d + m];
+                    d_token_emb[tok_idx * d + m] += grad;
+                    d_pos_emb[pos * d + m] += grad;
+                }
+            }
+        }
+
+        // Flatten all gradients into a single vector
+        let n_examples = selected_examples.len().max(1) as f32;
+        let mut all_grads = Vec::with_capacity(self.total_parameters());
+        all_grads.extend(d_token_emb.iter().map(|g| g / n_examples));
+        all_grads.extend(d_pos_emb.iter().map(|g| g / n_examples));
+
+        for bg in &block_grads {
+            all_grads.extend(bg.d_wq_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wq_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wk_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wk_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wv_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wv_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wo_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wo_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_attn_ln_gamma.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_attn_ln_beta.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_w1_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_w1_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_w2_w.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_w2_b.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_ffn_ln_gamma.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_ffn_ln_beta.iter().map(|g| g / n_examples));
+        }
+        all_grads.extend(d_ln_f_gamma.iter().map(|g| g / n_examples));
+        all_grads.extend(d_ln_f_beta.iter().map(|g| g / n_examples));
+        all_grads.extend(d_head_w.iter().map(|g| g / n_examples));
+        all_grads.extend(d_head_b.iter().map(|g| g / n_examples));
+
+        // Gradient clipping
+        if let Some(clip) = plan.grad_clip {
+            for g in all_grads.iter_mut() {
+                *g = g.clamp(-clip, clip);
+            }
+        }
+
+        // Sparse gradient mask thresholding
+        if let Some(thresh) = plan.sparse_gradient_threshold {
+            for g in all_grads.iter_mut() {
+                if g.abs() < thresh { *g = 0.0; }
             }
         }
 
         // Apply optimizer update
-        for i in 0..n_params {
-            // Apply layer LR multiplier
-            let layer_idx = (i * plan.layer_lr_multipliers.len()) / n_params.max(1);
-            let layer_mult = plan.layer_lr_multipliers.get(layer_idx).cloned().unwrap_or(1.0);
-            let lr = effective_lr * layer_mult;
+        let mut params = self.extract_parameters();
+        let n_params = params.len();
+        self.opt_step += 1;
+        let beta1 = 0.9f32;
+        let beta2 = 0.999f32;
+        let eps = 1e-8f32;
 
-            let grad = grad_accum[i];
+        for i in 0..n_params {
+            let layer_group = (i * plan.layer_lr_multipliers.len()) / n_params.max(1);
+            let layer_mult = plan.layer_lr_multipliers.get(layer_group).cloned().unwrap_or(1.0);
+            let lr = effective_lr * layer_mult;
+            let g = all_grads[i];
+
             let delta = match plan.optimizer_type {
-                OptimizerType::Sgd => -lr * grad,
-                OptimizerType::Momentum => -lr * grad * 1.5,
-                OptimizerType::AdamW => -lr * (grad + plan.weight_decay * params[i]),
-                OptimizerType::SignGradient => -lr * grad.signum(),
+                OptimizerType::Sgd => -lr * (g + plan.weight_decay * params[i]),
+                OptimizerType::Momentum => {
+                    self.adam_m[i] = beta1 * self.adam_m[i] + g;
+                    -lr * (self.adam_m[i] + plan.weight_decay * params[i])
+                }
+                OptimizerType::AdamW => {
+                    self.adam_m[i] = beta1 * self.adam_m[i] + (1.0 - beta1) * g;
+                    self.adam_v[i] = beta2 * self.adam_v[i] + (1.0 - beta2) * g * g;
+                    let m_hat = self.adam_m[i] / (1.0 - beta1.powi(self.opt_step as i32)).max(1e-6);
+                    let v_hat = self.adam_v[i] / (1.0 - beta2.powi(self.opt_step as i32)).max(1e-6);
+                    -lr * (m_hat / (v_hat.sqrt() + eps) + plan.weight_decay * params[i])
+                }
+                OptimizerType::SignGradient => -lr * g.signum(),
                 OptimizerType::SparseMasked => {
-                    if grad.abs() > 0.01 {
-                        -lr * grad
-                    } else {
-                        0.0
-                    }
+                    if g.abs() > 0.005 { -lr * g } else { 0.0 }
                 }
             };
             params[i] += delta;
         }
 
         self.load_parameters(&params);
-        avg_loss
+        total_loss / total_tokens_scored.max(1) as f32
     }
+}
+
+fn k_j_slice(k: &[f32], j: usize, d: usize) -> &[f32] {
+    &k[j * d..(j + 1) * d]
 }
 
 #[cfg(test)]
@@ -502,14 +828,7 @@ mod tests {
 
     #[test]
     fn test_transformer_init_and_forward() {
-        let config = ModelConfig {
-            vocab_size: 64,
-            max_seq_len: 16,
-            d_model: 32,
-            n_heads: 2,
-            n_layers: 2,
-            d_ff: 64,
-        };
+        let config = ModelConfig::default();
         let model = TinyTransformer::new(config, 42);
         assert!(model.total_parameters() > 10_000);
         let tokens = vec![1, 4, 5, 3];
@@ -518,20 +837,31 @@ mod tests {
     }
 
     #[test]
-    fn test_transformer_parameter_load_save() {
-        let config = ModelConfig {
-            vocab_size: 64,
-            max_seq_len: 16,
-            d_model: 32,
-            n_heads: 2,
-            n_layers: 2,
-            d_ff: 64,
-        };
+    fn test_exact_backprop_reduces_loss() {
+        let config = ModelConfig::default();
         let mut model = TinyTransformer::new(config, 42);
-        let params = model.extract_parameters();
-        let chk1 = model.checksum();
-        model.load_parameters(&params);
-        let chk2 = model.checksum();
-        assert_eq!(chk1, chk2);
+        let plan = EditPlan {
+            optimizer_type: OptimizerType::AdamW,
+            base_lr: 0.02,
+            ..Default::default()
+        };
+
+        let examples = vec![
+            TaskExample {
+                input_tokens: vec![1, 4, 3],
+                target_tokens: vec![5, 2],
+            },
+            TaskExample {
+                input_tokens: vec![1, 5, 3],
+                target_tokens: vec![6, 2],
+            },
+        ];
+
+        let loss_0 = model.train_step(&examples, &plan, 0, 20);
+        let mut last_loss = loss_0;
+        for s in 1..10 {
+            last_loss = model.train_step(&examples, &plan, s, 20);
+        }
+        assert!(last_loss < loss_0, "Loss must decrease under exact backpropagation: start={}, end={}", loss_0, last_loss);
     }
 }
