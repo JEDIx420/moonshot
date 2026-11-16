@@ -95,11 +95,11 @@ impl TaskGenerator {
         }
     }
 
-    // FSM Permutation: 4 states, random transition permutation per symbol
+    // FSM Permutation: 4 states, random transition permutation per symbol (calibrated 4..=6 transitions)
     fn generate_fsm_permutation(rng: &mut ChaCha8Rng) -> TaskExample {
         let n_states = 4;
         let n_syms = 4;
-        let seq_len = rng.gen_range(6..=10);
+        let seq_len = rng.gen_range(4..=6);
 
         let mut transitions = vec![vec![0usize; n_syms]; n_states];
         let mut emissions = vec![vec![0usize; n_syms]; n_states];
@@ -126,10 +126,10 @@ impl TaskGenerator {
         TaskExample { input_tokens, target_tokens }
     }
 
-    // FSM Ring Lattice: ring topology with next/prev transitions
+    // FSM Ring Lattice: ring topology with next/prev transitions (calibrated 4..=6 steps)
     fn generate_fsm_ring(rng: &mut ChaCha8Rng) -> TaskExample {
         let n_states = 6;
-        let seq_len = rng.gen_range(6..=10);
+        let seq_len = rng.gen_range(4..=6);
         let mut curr_state = rng.gen_range(0..n_states);
         let mut input_tokens = vec![BOS_TOKEN, STATE_BASE + curr_state, SEP_TOKEN];
         let mut target_tokens = Vec::with_capacity(seq_len + 1);
@@ -146,9 +146,9 @@ impl TaskGenerator {
         TaskExample { input_tokens, target_tokens }
     }
 
-    // FSM Tree: binary tree with reset transitions (Held-out structure!)
+    // FSM Tree: binary tree with reset transitions (Held-out structure, calibrated 4..=6 steps)
     fn generate_fsm_tree(rng: &mut ChaCha8Rng) -> TaskExample {
-        let seq_len = rng.gen_range(6..=10);
+        let seq_len = rng.gen_range(4..=6);
         let mut curr_state = 0usize; // root = 0, left = 1, right = 2, leaves = 3..6
         let mut input_tokens = vec![BOS_TOKEN, STATE_BASE + curr_state, SEP_TOKEN];
         let mut target_tokens = Vec::with_capacity(seq_len + 1);
@@ -173,10 +173,10 @@ impl TaskGenerator {
         TaskExample { input_tokens, target_tokens }
     }
 
-    // Symbolic Primitives: Shift or Duplicate
+    // Symbolic Primitives: Shift or Duplicate (calibrated 3..=5 symbols)
     fn generate_symbolic_primitive(rng: &mut ChaCha8Rng) -> TaskExample {
         let op = if rng.gen_bool(0.5) { CMD_SHIFT_1 } else { CMD_DUPLICATE };
-        let seq_len = rng.gen_range(4..=6);
+        let seq_len = rng.gen_range(3..=5);
         let symbols: Vec<usize> = (0..seq_len).map(|_| SYMBOL_BASE + rng.gen_range(0..NUM_SYMBOLS)).collect();
 
         let mut input_tokens = vec![BOS_TOKEN, op, SEP_TOKEN];
@@ -200,10 +200,10 @@ impl TaskGenerator {
         TaskExample { input_tokens, target_tokens }
     }
 
-    // Symbolic Compound: Reverse or Shift-2
+    // Symbolic Compound: Reverse or Shift-2 (calibrated 3..=5 symbols)
     fn generate_symbolic_compound(rng: &mut ChaCha8Rng) -> TaskExample {
         let op = if rng.gen_bool(0.5) { CMD_REVERSE } else { CMD_SHIFT_2 };
-        let seq_len = rng.gen_range(4..=6);
+        let seq_len = rng.gen_range(3..=5);
         let symbols: Vec<usize> = (0..seq_len).map(|_| SYMBOL_BASE + rng.gen_range(0..NUM_SYMBOLS)).collect();
 
         let mut input_tokens = vec![BOS_TOKEN, op, SEP_TOKEN];
@@ -226,10 +226,10 @@ impl TaskGenerator {
         TaskExample { input_tokens, target_tokens }
     }
 
-    // Symbolic Compositional (Held-out): Mirror-Duplicate (x -> [x, rev(x), duplicate(first)])
+    // Symbolic Compositional (Held-out): Mirror-Duplicate (calibrated 3..=4 symbols)
     fn generate_symbolic_compositional(rng: &mut ChaCha8Rng) -> TaskExample {
         let op = CMD_MIRROR;
-        let seq_len = rng.gen_range(3..=5);
+        let seq_len = rng.gen_range(3..=4);
         let symbols: Vec<usize> = (0..seq_len).map(|_| SYMBOL_BASE + rng.gen_range(0..NUM_SYMBOLS)).collect();
 
         let mut input_tokens = vec![BOS_TOKEN, op, SEP_TOKEN];

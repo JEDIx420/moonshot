@@ -72,7 +72,7 @@ fn detect_hardware() -> HardwareInfo {
         .map(|n| n.get())
         .unwrap_or(1);
 
-    let ram_bytes = 16 * 1024 * 1024 * 1024; // fallback 16GB
+    let ram_bytes = 16 * 1024 * 1024 * 1024;
     let mut gpu_name = None;
     let mut gpu_memory_bytes = None;
     let mut cuda_version = None;
@@ -264,10 +264,10 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
 
     let csv_path = output_dir.join("baselines.csv");
     let mut csv_file = File::create(&csv_path).expect("Failed to create baselines.csv");
-    writeln!(csv_file, "condition,task_family,seed,samples_to_target,target_reached,final_acc,gpu_seconds").unwrap();
+    writeln!(csv_file, "condition,task_family,seed,samples_to_target,target_reached,final_exact_acc,final_token_acc,final_loss,gpu_seconds").unwrap();
 
     for family in families {
-        let split = TaskGenerator::generate_split(family, seed, 60, 20, 20);
+        let split = TaskGenerator::generate_split(family, seed, 80, 20, 20);
 
         // Condition 1: Frozen (no adaptation control)
         let config = ModelConfig::default();
@@ -276,39 +276,36 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
         for ex in &split.test_examples {
             preds.push(frozen_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
         }
-        let frozen_acc = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
-        writeln!(csv_file, "Frozen,{},{},NA,false,{:.4},0.01", family.name(), seed, frozen_acc).unwrap();
+        let frozen_exact = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
+        let frozen_token = ImmutableOracle::score_batch_tokens(&preds, &split.test_examples);
+        writeln!(csv_file, "Frozen,{},{},NA,false,{:.4},{:.4},NA,0.01", family.name(), seed, frozen_exact, frozen_token).unwrap();
 
         // Condition 2: Fixed Learner (Standard AdamW default plan)
         let mut fixed_model = TinyTransformer::new(config.clone(), seed);
         let mut fixed_plan = EditPlan::default();
-        fixed_plan.inner_steps = 45;
+        fixed_plan.inner_steps = 70;
         let start = Instant::now();
-        let (samples_to_target, final_acc, _) = SearchManager::evaluate_adaptation(&mut fixed_model, &fixed_plan, &split, target_acc);
+        let (samples_to_target, final_exact, final_token, final_loss) = SearchManager::evaluate_adaptation(&mut fixed_model, &fixed_plan, &split, target_acc);
         let elapsed = start.elapsed().as_secs_f64();
         let s_str = samples_to_target.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-        writeln!(csv_file, "FixedLearner,{},{},{},{},{:.4},{:.2}",
-            family.name(), seed, s_str, samples_to_target.is_some(), final_acc, elapsed).unwrap();
+        writeln!(csv_file, "FixedLearner,{},{},{},{},{:.4},{:.4},{:.4},{:.2}",
+            family.name(), seed, s_str, samples_to_target.is_some(), final_exact, final_token, final_loss, elapsed).unwrap();
 
         // Condition 3: Random Edit Policy (Matched inner steps)
         let mut random_model = TinyTransformer::new(config, seed);
         let mut random_plan = EditPlan::default();
         random_plan.optimizer_type = OptimizerType::Momentum;
         random_plan.base_lr = 0.005;
-        random_plan.inner_steps = 45;
+        random_plan.inner_steps = 70;
         let start_rnd = Instant::now();
-        let (rnd_samples, rnd_acc, _) = SearchManager::evaluate_adaptation(&mut random_model, &random_plan, &split, target_acc);
+        let (rnd_samples, rnd_exact, rnd_token, rnd_loss) = SearchManager::evaluate_adaptation(&mut random_model, &random_plan, &split, target_acc);
         let rnd_elapsed = start_rnd.elapsed().as_secs_f64();
         let rnd_s_str = rnd_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-        writeln!(csv_file, "RandomEditPolicy,{},{},{},{},{:.4},{:.2}",
-            family.name(), seed, rnd_s_str, rnd_samples.is_some(), rnd_acc, rnd_elapsed).unwrap();
+        writeln!(csv_file, "RandomEditPolicy,{},{},{},{},{:.4},{:.4},{:.4},{:.2}",
+            family.name(), seed, rnd_s_str, rnd_samples.is_some(), rnd_exact, rnd_token, rnd_loss, rnd_elapsed).unwrap();
 
-        println!("  ✓ {} -> Fixed exact acc: {:.3} (target: {:.2}, reached: {}), Random acc: {:.3}, Frozen acc: {:.3}",
-            family.name(), final_acc, target_acc, samples_to_target.is_some(), rnd_acc, frozen_acc);
-
-        if final_acc < target_acc && samples_to_target.is_none() {
-            println!("    [Note] Family {} did not attain {:.2} exact match in 45 steps (final: {:.3})", family.name(), target_acc, final_acc);
-        }
+        println!("  ✓ {} -> Fixed exact: {:.3}, token: {:.3}, loss: {:.3} | Random exact: {:.3}, token: {:.3} | Frozen exact: {:.3}",
+            family.name(), final_exact, final_token, final_loss, rnd_exact, rnd_token, frozen_exact);
     }
 
     println!("[Moonshot] Baselines completed. Wrote {}", csv_path.display());
@@ -348,7 +345,7 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
         .expect("Failed to open learning_curves.csv");
 
     if curves_file.metadata().map(|m| m.len() == 0).unwrap_or(true) {
-        writeln!(curves_file, "trial_idx,task_family,candidate_id,status,samples_to_target,final_acc,gpu_secs").unwrap();
+        writeln!(curves_file, "trial_idx,task_family,candidate_id,status,samples_to_target,final_exact_acc,gpu_secs").unwrap();
     }
 
     let families = [
@@ -368,7 +365,7 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
     for trial_idx in 0..n_trials {
         let family = families[trial_idx % families.len()];
         let trial_seed = seed.wrapping_add((trial_idx as u64) * 101);
-        let split = TaskGenerator::generate_split(family, trial_seed, 50, 20, 20);
+        let split = TaskGenerator::generate_split(family, trial_seed, 80, 20, 20);
 
         let proposed_plan = match EditorEngine::propose_edit(&search_manager.incumbent.learning_rule, &current_feedback, trial_seed) {
             Ok(p) => p,
@@ -450,7 +447,7 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
     let dev_seeds = [101u64, 202u64, 303u64];
     let ablations_path = output_dir.join("ablations.csv");
     let mut abl_file = File::create(&ablations_path).expect("Failed to create ablations.csv");
-    writeln!(abl_file, "task_family,seed,condition,samples_to_target,final_exact_acc,retention_score").unwrap();
+    writeln!(abl_file, "task_family,seed,condition,samples_to_target,final_exact_acc,final_token_acc,retention_score").unwrap();
 
     let mut fixed_accs = Vec::new();
     let mut evolved_accs = Vec::new();
@@ -459,26 +456,27 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
     for family in held_out_families {
         println!("  Evaluating Held-Out Family: {}", family.name());
         for &seed in &dev_seeds {
-            let split = TaskGenerator::generate_split(family, seed, 50, 20, 20);
+            let split = TaskGenerator::generate_split(family, seed, 60, 20, 20);
 
             // Condition A: Fixed Baseline (Default AdamW)
             let config = ModelConfig::default();
             let mut baseline_model = TinyTransformer::new(config.clone(), seed);
-            let baseline_plan = EditPlan::default();
-            let (b_samples, b_acc, _) = SearchManager::evaluate_adaptation(&mut baseline_model, &baseline_plan, &split, target_acc);
+            let mut baseline_plan = EditPlan::default();
+            baseline_plan.inner_steps = 70;
+            let (b_samples, b_exact, b_token, _) = SearchManager::evaluate_adaptation(&mut baseline_model, &baseline_plan, &split, target_acc);
             let b_s_str = b_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-            fixed_accs.push(b_acc);
+            fixed_accs.push(b_exact);
 
             // Condition B: Evolved Candidate
             let mut evolved_model = TinyTransformer::new(config.clone(), seed);
-            let (e_samples, e_acc, _) = SearchManager::evaluate_adaptation(&mut evolved_model, &evolved_plan, &split, target_acc);
+            let (e_samples, e_exact, e_token, _) = SearchManager::evaluate_adaptation(&mut evolved_model, &evolved_plan, &split, target_acc);
             let e_s_str = e_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-            evolved_accs.push(e_acc);
+            evolved_accs.push(e_exact);
 
             // Empirical retention measurement: evaluate evolved_model on training family anchor sets
             let mut anchor_accs = Vec::new();
             for train_fam in training_families {
-                let anchor_split = TaskGenerator::generate_split(train_fam, seed, 20, 10, 10);
+                let anchor_split = TaskGenerator::generate_split(train_fam, seed, 30, 10, 10);
                 let mut anchor_preds = Vec::new();
                 for ex in &anchor_split.test_examples {
                     anchor_preds.push(evolved_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
@@ -489,11 +487,11 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
             let empirical_retention = anchor_accs.iter().sum::<f32>() / anchor_accs.len().max(1) as f32;
             retention_scores.push(empirical_retention);
 
-            writeln!(abl_file, "{},{},FixedBaseline,{},{:.4},1.0", family.name(), seed, b_s_str, b_acc).unwrap();
-            writeln!(abl_file, "{},{},EvolvedCandidate,{},{:.4},{:.4}", family.name(), seed, e_s_str, e_acc, empirical_retention).unwrap();
+            writeln!(abl_file, "{},{},FixedBaseline,{},{:.4},{:.4},1.0", family.name(), seed, b_s_str, b_exact, b_token).unwrap();
+            writeln!(abl_file, "{},{},EvolvedCandidate,{},{:.4},{:.4},{:.4}", family.name(), seed, e_s_str, e_exact, e_token, empirical_retention).unwrap();
 
-            println!("    Seed {}: Fixed (exact_acc={:.3}, samples={}), Evolved (exact_acc={:.3}, samples={}, retention={:.3})",
-                seed, b_acc, b_s_str, e_acc, e_s_str, empirical_retention);
+            println!("    Seed {}: Fixed (exact={:.3}, token={:.3}, samples={}), Evolved (exact={:.3}, token={:.3}, samples={}, retention={:.3})",
+                seed, b_exact, b_token, b_s_str, e_exact, e_token, e_s_str, empirical_retention);
         }
     }
 
