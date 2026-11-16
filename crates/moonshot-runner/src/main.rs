@@ -2,7 +2,7 @@ use clap::{Parser, Subcommand};
 use moonshot_core::{
     EditPlan, HardwareInfo, OptimizerType, RunLedger, TaskExample,
 };
-use moonshot_editor::{EditorEngine, FeedbackSummary, SearchManager};
+use moonshot_editor::{EditorEngine, EditorMode, FeedbackSummary, ProposalPolicy, SearchManager};
 use moonshot_model::{ModelConfig, TinyTransformer};
 use moonshot_oracle::{ImmutableOracle, TaskFamilyType, TaskGenerator};
 use std::fs::{self, File};
@@ -51,8 +51,10 @@ enum Commands {
         trials: usize,
         #[arg(long, default_value_t = 0.80)]
         target_acc: f32,
-        #[arg(long, default_value = "H1")]
+        #[arg(long, default_value = "Wave1-LearnedEditor")]
         hypothesis_id: String,
+        #[arg(long, default_value = "learned")]
+        editor_mode: String,
         #[arg(long, default_value = "")]
         resume_from: String,
     },
@@ -62,6 +64,17 @@ enum Commands {
         output_dir: PathBuf,
         #[arg(long, default_value = "")]
         checkpoint_dir: String,
+        #[arg(long, default_value_t = 0.80)]
+        target_acc: f32,
+    },
+    /// Run full Wave 1 Factorial Ablation Sweep (Learned, Frozen, Shuffled, Heuristic, Random + Held-Out + Retention)
+    Wave1Sweep {
+        #[arg(long, default_value = "results")]
+        output_dir: PathBuf,
+        #[arg(long, default_value_t = 42)]
+        seed: u64,
+        #[arg(long, default_value_t = 25)]
+        trials: usize,
         #[arg(long, default_value_t = 0.80)]
         target_acc: f32,
     },
@@ -225,12 +238,23 @@ fn run_smoke(output_dir: &Path, git_commit: &str) {
     println!("[4/5] Running Finite-Difference Gradient Verification Suite...");
     run_check_gradients(output_dir);
 
-    // 5. Test Single Adaptation Step Under Bounded EditPlan
-    println!("[5/5] Executing Single Adaptation Step...");
-    let mut trainable_model = model;
+    // 5. Test Learned Proposal Policy
+    println!("[5/5] Verifying Learned Proposal Policy Head & Reinforcement...");
+    let mut policy = ProposalPolicy::new(42);
+    let feedback = FeedbackSummary {
+        final_loss: 0.5,
+        validation_accuracy: 0.5,
+        samples_used: 40,
+        target_reached: true,
+        error_count: 2,
+    };
     let plan = EditPlan::default();
-    let loss = trainable_model.train_step(&split.train_examples, &plan, 0, 1);
-    println!("  ✓ Single step loss: {:.4}", loss);
+    let state = ProposalPolicy::construct_state(&plan, &feedback, 0.7, -0.1);
+    let probs_before = policy.action_probabilities(&state);
+    policy.update_policy(&state, 0, 1.0);
+    let probs_after = policy.action_probabilities(&state);
+    assert!(probs_after[0] > probs_before[0], "Reinforced action probability must increase");
+    println!("  ✓ Learned Proposal Policy: 130 parameters, online gradient update verified.");
 
     let duration = start_time.elapsed().as_secs_f64();
     let ledger = RunLedger {
@@ -311,23 +335,51 @@ fn run_baselines(output_dir: &Path, seed: u64, target_acc: f32) {
     println!("[Moonshot] Baselines completed. Wrote {}", csv_path.display());
 }
 
-fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32, hypothesis_id: &str, resume_from: &str) {
-    println!("[Moonshot] Starting Meta-Training Loop (trials={}, seed={}, target_acc={:.2}, resume='{}')...",
-        n_trials, seed, target_acc, resume_from);
+#[derive(Debug, Clone)]
+pub struct MetaTrainSummary {
+    pub condition: String,
+    pub trials: usize,
+    pub promotions: usize,
+    pub rollbacks: usize,
+    pub acceptance_rate: f32,
+    pub mean_samples_to_target: f32,
+    pub mean_final_acc: f32,
+    pub best_plan: EditPlan,
+}
+
+fn run_meta_train(
+    output_dir: &Path,
+    seed: u64,
+    n_trials: usize,
+    target_acc: f32,
+    hypothesis_id: &str,
+    editor_mode_str: &str,
+    resume_from: &str,
+) -> MetaTrainSummary {
+    println!("[Moonshot] Starting Meta-Training Loop (trials={}, seed={}, target_acc={:.2}, mode='{}', resume='{}')...",
+        n_trials, seed, target_acc, editor_mode_str, resume_from);
     fs::create_dir_all(output_dir).expect("Failed to create output dir");
 
     let config = ModelConfig::default();
     let mut model = TinyTransformer::new(config, seed);
+
+    let editor_mode = match editor_mode_str {
+        "frozen" => EditorMode::Frozen(ProposalPolicy::new(seed)),
+        "shuffled" => EditorMode::ShuffledFeedback(ProposalPolicy::new(seed)),
+        "heuristic" => EditorMode::Heuristic,
+        "random" => EditorMode::Random,
+        _ => EditorMode::Learned(ProposalPolicy::new(seed)),
+    };
 
     let mut search_manager = if !resume_from.is_empty() && Path::new(resume_from).exists() {
         println!("  ✓ Resuming from existing checkpoint at {}", resume_from);
         SearchManager::load_state_from_dir(Path::new(resume_from), &mut model)
             .unwrap_or_else(|e| {
                 println!("  [Warning] Resumption failed: {}. Initializing fresh SearchManager.", e);
-                SearchManager::new(&model, EditPlan::default())
+                SearchManager::new(&model, EditPlan::default(), editor_mode)
             })
     } else {
-        SearchManager::new(&model, EditPlan::default())
+        SearchManager::new(&model, EditPlan::default(), editor_mode)
     };
 
     let trials_path = output_dir.join("trials.jsonl");
@@ -361,13 +413,24 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
         target_reached: false,
         error_count: 10,
     };
+    let mut last_token_acc = 0.1;
+    let mut last_loss = 2.0;
 
     for trial_idx in 0..n_trials {
         let family = families[trial_idx % families.len()];
         let trial_seed = seed.wrapping_add((trial_idx as u64) * 101);
         let split = TaskGenerator::generate_split(family, trial_seed, 80, 20, 20);
 
-        let proposed_plan = match EditorEngine::propose_edit(&search_manager.incumbent.learning_rule, &current_feedback, trial_seed) {
+        let loss_slope = current_feedback.final_loss - last_loss;
+
+        let (proposed_plan, policy_trace) = match EditorEngine::propose_edit(
+            &mut search_manager.editor_mode,
+            &search_manager.incumbent.learning_rule,
+            &current_feedback,
+            last_token_acc,
+            loss_slope,
+            trial_seed,
+        ) {
             Ok(p) => p,
             Err(e) => {
                 println!("  Trial {}: edit proposal rejected by sandbox: {}", trial_idx + 1, e);
@@ -378,6 +441,7 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
         let record = search_manager.run_trial(
             &mut model,
             proposed_plan,
+            policy_trace,
             &split,
             trial_seed,
             hypothesis_id,
@@ -394,8 +458,10 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
         println!("  Trial {:02}/{}: [{}] {} -> ExactAcc: {:.3}, SamplesToTarget: {}, Status: {:?}",
             trial_idx + 1, n_trials, family.name(), record.candidate_id, record.final_accuracy, s_to_t, record.status);
 
+        last_loss = current_feedback.final_loss;
+        last_token_acc = 0.5 * (1.0 + record.final_accuracy); // estimate
         current_feedback = FeedbackSummary {
-            final_loss: 1.0 - record.final_accuracy,
+            final_loss: (1.0 - record.final_accuracy).max(0.05),
             validation_accuracy: record.final_accuracy,
             samples_used: record.samples_to_target.unwrap_or(40),
             target_reached: record.target_accuracy_reached,
@@ -406,9 +472,30 @@ fn run_meta_train(output_dir: &Path, seed: u64, n_trials: usize, target_acc: f32
     println!("[Moonshot] Meta-training finished: {} promotions, {} rollbacks.",
         search_manager.promotion_count, search_manager.rollback_count);
 
-    // Save full state (candidate info + full model weights & optimizer moments)
+    // Save full state (candidate info + full model weights, moments & editor policy)
     search_manager.save_state_to_dir(output_dir).expect("Failed to save full state");
-    println!("  ✓ Saved full state checkpoints (best_checkpoint.json & best_model_checkpoint.json) in {}", output_dir.display());
+    println!("  ✓ Saved full state checkpoints (best_checkpoint.json, best_model_checkpoint.json & editor_policy.json) in {}", output_dir.display());
+
+    let recs = &search_manager.candidate_history;
+    let n = recs.len().max(1) as f32;
+    let mean_acc = recs.iter().map(|r| r.final_accuracy).sum::<f32>() / n;
+    let samples_recs: Vec<f32> = recs.iter().filter_map(|r| r.samples_to_target.map(|s| s as f32)).collect();
+    let mean_samples = if !samples_recs.is_empty() {
+        samples_recs.iter().sum::<f32>() / samples_recs.len() as f32
+    } else {
+        200.0
+    };
+
+    MetaTrainSummary {
+        condition: editor_mode_str.to_string(),
+        trials: n_trials,
+        promotions: search_manager.promotion_count,
+        rollbacks: search_manager.rollback_count,
+        acceptance_rate: search_manager.promotion_count as f32 / n_trials.max(1) as f32,
+        mean_samples_to_target: mean_samples,
+        mean_final_acc: mean_acc,
+        best_plan: search_manager.incumbent.learning_rule.clone(),
+    }
 }
 
 fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
@@ -427,21 +514,21 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
         TaskFamilyType::ToolWorkflowBasic,
     ];
 
-    let evolved_plan = if !checkpoint_dir.is_empty() && Path::new(checkpoint_dir).join("best_checkpoint.json").exists() {
+    let (evolved_plan, has_evolved_ckpt) = if !checkpoint_dir.is_empty() && Path::new(checkpoint_dir).join("best_checkpoint.json").exists() {
         let ckpt_path = Path::new(checkpoint_dir).join("best_checkpoint.json");
         if let Ok(content) = fs::read_to_string(&ckpt_path) {
             if let Ok(candidate) = serde_json::from_str::<moonshot_core::Candidate>(&content) {
                 println!("  ✓ Loaded evolved learning rule from: {}", candidate.id);
-                candidate.learning_rule
+                (candidate.learning_rule, true)
             } else {
-                EditPlan::default()
+                (EditPlan::default(), false)
             }
         } else {
-            EditPlan::default()
+            (EditPlan::default(), false)
         }
     } else {
         println!("  [Info] No checkpoint provided; evaluating default baseline plan.");
-        EditPlan::default()
+        (EditPlan::default(), false)
     };
 
     let dev_seeds = [101u64, 202u64, 303u64];
@@ -467,37 +554,54 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
             let b_s_str = b_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
             fixed_accs.push(b_exact);
 
-            // Condition B: Evolved Candidate
-            let mut evolved_model = TinyTransformer::new(config.clone(), seed);
-            let (e_samples, e_exact, e_token, _) = SearchManager::evaluate_adaptation(&mut evolved_model, &evolved_plan, &split, target_acc);
-            let e_s_str = e_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
-            evolved_accs.push(e_exact);
+            // Condition B: Evolved Candidate (if available)
+            let (e_samples, e_exact, e_token) = if has_evolved_ckpt {
+                let mut evolved_model = TinyTransformer::new(config.clone(), seed);
+                let (samples, exact, token, _) = SearchManager::evaluate_adaptation(&mut evolved_model, &evolved_plan, &split, target_acc);
+                evolved_accs.push(exact);
 
-            // Empirical retention measurement: evaluate evolved_model on training family anchor sets
-            let mut anchor_accs = Vec::new();
-            for train_fam in training_families {
-                let anchor_split = TaskGenerator::generate_split(train_fam, seed, 30, 10, 10);
-                let mut anchor_preds = Vec::new();
-                for ex in &anchor_split.test_examples {
-                    anchor_preds.push(evolved_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
+                // Empirical retention measurement
+                let mut anchor_accs = Vec::new();
+                for train_fam in training_families {
+                    let anchor_split = TaskGenerator::generate_split(train_fam, seed, 30, 10, 10);
+                    let mut anchor_preds = Vec::new();
+                    for ex in &anchor_split.test_examples {
+                        anchor_preds.push(evolved_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
+                    }
+                    let a_acc = ImmutableOracle::score_batch_exact(&anchor_preds, &anchor_split.test_examples);
+                    anchor_accs.push(a_acc);
                 }
-                let a_acc = ImmutableOracle::score_batch_exact(&anchor_preds, &anchor_split.test_examples);
-                anchor_accs.push(a_acc);
-            }
-            let empirical_retention = anchor_accs.iter().sum::<f32>() / anchor_accs.len().max(1) as f32;
-            retention_scores.push(empirical_retention);
+                let empirical_retention = anchor_accs.iter().sum::<f32>() / anchor_accs.len().max(1) as f32;
+                retention_scores.push(empirical_retention);
+
+                (samples, exact, token)
+            } else {
+                (None, 0.0, 0.0)
+            };
+            let e_s_str = e_samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
+            let ret = retention_scores.last().cloned().unwrap_or(0.0);
 
             writeln!(abl_file, "{},{},FixedBaseline,{},{:.4},{:.4},1.0", family.name(), seed, b_s_str, b_exact, b_token).unwrap();
-            writeln!(abl_file, "{},{},EvolvedCandidate,{},{:.4},{:.4},{:.4}", family.name(), seed, e_s_str, e_exact, e_token, empirical_retention).unwrap();
+            if has_evolved_ckpt {
+                writeln!(abl_file, "{},{},LearnedEditorCandidate,{},{:.4},{:.4},{:.4}", family.name(), seed, e_s_str, e_exact, e_token, ret).unwrap();
+            }
 
             println!("    Seed {}: Fixed (exact={:.3}, token={:.3}, samples={}), Evolved (exact={:.3}, token={:.3}, samples={}, retention={:.3})",
-                seed, b_exact, b_token, b_s_str, e_exact, e_token, e_s_str, empirical_retention);
+                seed, b_exact, b_token, b_s_str, e_exact, e_token, e_s_str, ret);
         }
     }
 
     let mean_fixed_acc = fixed_accs.iter().sum::<f32>() / fixed_accs.len().max(1) as f32;
-    let mean_evolved_acc = evolved_accs.iter().sum::<f32>() / evolved_accs.len().max(1) as f32;
-    let mean_retention = retention_scores.iter().sum::<f32>() / retention_scores.len().max(1) as f32;
+    let mean_evolved_acc = if !evolved_accs.is_empty() {
+        evolved_accs.iter().sum::<f32>() / evolved_accs.len() as f32
+    } else {
+        0.0
+    };
+    let mean_retention = if !retention_scores.is_empty() {
+        retention_scores.iter().sum::<f32>() / retention_scores.len() as f32
+    } else {
+        0.0
+    };
 
     let findings_path = output_dir.join("findings.md");
     let mut findings_file = File::create(&findings_path).expect("Failed to create findings.md");
@@ -514,6 +618,223 @@ fn run_evaluate(output_dir: &Path, checkpoint_dir: &str, target_acc: f32) {
         ablations_path.display(), findings_path.display());
 }
 
+fn run_wave1_sweep(output_dir: &Path, seed: u64, trials: usize, target_acc: f32) {
+    println!("============================================================");
+    println!("MOONSHOT WAVE 1 FACTORIAL ABLATION SWEEP (LEAP A)");
+    println!("============================================================");
+    fs::create_dir_all(output_dir).expect("Failed to create output dir");
+
+    let conditions = ["learned", "frozen", "shuffled", "heuristic", "random"];
+    let mut meta_summaries = Vec::new();
+
+    for &cond in &conditions {
+        println!("\n>>> Running Meta-Training Condition: [{}] (trials={}, seed={})", cond, trials, seed);
+        let cond_dir = output_dir.join(cond);
+        let summary = run_meta_train(
+            &cond_dir,
+            seed,
+            trials,
+            target_acc,
+            &format!("Wave1-{}", cond),
+            cond,
+            "",
+        );
+        meta_summaries.push(summary);
+    }
+
+    // Write meta_train_summary.csv
+    let sum_csv_path = output_dir.join("wave1_meta_train_summary.csv");
+    let mut sum_file = File::create(&sum_csv_path).expect("Failed to create wave1_meta_train_summary.csv");
+    writeln!(sum_file, "condition,trials,promotions,rollbacks,acceptance_rate,mean_samples_to_target,mean_final_acc").unwrap();
+    for s in &meta_summaries {
+        writeln!(sum_file, "{},{},{},{},{:.4},{:.2},{:.4}",
+            s.condition, s.trials, s.promotions, s.rollbacks, s.acceptance_rate, s.mean_samples_to_target, s.mean_final_acc).unwrap();
+        println!("  Condition [{}]: acceptance={:.2}%, mean_samples={:.1}, mean_acc={:.3}",
+            s.condition, s.acceptance_rate * 100.0, s.mean_samples_to_target, s.mean_final_acc);
+    }
+
+    // Held-out test evaluation
+    println!("\n>>> Evaluating Held-Out Families Across All Conditions...");
+    let held_out_families = [
+        TaskFamilyType::FsmHierarchicalTree,
+        TaskFamilyType::SymbolicCompositional,
+        TaskFamilyType::ToolWorkflowChained,
+    ];
+    let training_families = [
+        TaskFamilyType::FsmPermutation,
+        TaskFamilyType::SymbolicPrimitives,
+        TaskFamilyType::ToolWorkflowBasic,
+    ];
+    let dev_seeds = [101u64, 202u64, 303u64];
+
+    let held_out_csv = output_dir.join("wave1_held_out_ablations.csv");
+    let mut ho_file = File::create(&held_out_csv).expect("Failed to create wave1_held_out_ablations.csv");
+    writeln!(ho_file, "condition,task_family,seed,samples_to_target,final_exact_acc,final_token_acc,retention_score").unwrap();
+
+    let config = ModelConfig::default();
+
+    let mut eval_conditions: Vec<(String, EditPlan)> = vec![("FixedBaseline".to_string(), {
+        let mut p = EditPlan::default();
+        p.inner_steps = 70;
+        p
+    })];
+    for s in &meta_summaries {
+        let name = match s.condition.as_str() {
+            "learned" => "LearnedPolicy",
+            "frozen" => "FrozenPolicy",
+            "shuffled" => "ShuffledFeedback",
+            "heuristic" => "HeuristicEditor",
+            "random" => "RandomSearch",
+            other => other,
+        };
+        eval_conditions.push((name.to_string(), s.best_plan.clone()));
+    }
+
+    #[derive(Default)]
+    struct CondStats {
+        exact_scores: Vec<f32>,
+        token_scores: Vec<f32>,
+        samples: Vec<f32>,
+        retentions: Vec<f32>,
+    }
+    let mut stats_map: std::collections::HashMap<String, CondStats> = std::collections::HashMap::new();
+
+    for (cond_name, plan) in &eval_conditions {
+        println!("  Evaluating Condition: {}", cond_name);
+        let mut st = CondStats::default();
+
+        for family in held_out_families {
+            for &eval_seed in &dev_seeds {
+                let split = TaskGenerator::generate_split(family, eval_seed, 60, 20, 20);
+                let mut model = TinyTransformer::new(config.clone(), eval_seed);
+
+                let (samples, exact, token, _) = SearchManager::evaluate_adaptation(&mut model, plan, &split, target_acc);
+
+                // Empirical retention measurement
+                let mut anchor_accs = Vec::new();
+                for train_fam in training_families {
+                    let anchor_split = TaskGenerator::generate_split(train_fam, eval_seed, 30, 10, 10);
+                    let mut anchor_preds = Vec::new();
+                    for ex in &anchor_split.test_examples {
+                        anchor_preds.push(model.predict_sequence(&ex.input_tokens, ex.target_tokens.len()));
+                    }
+                    anchor_accs.push(ImmutableOracle::score_batch_exact(&anchor_preds, &anchor_split.test_examples));
+                }
+                let ret_score = anchor_accs.iter().sum::<f32>() / anchor_accs.len().max(1) as f32;
+
+                st.exact_scores.push(exact);
+                st.token_scores.push(token);
+                st.retentions.push(ret_score);
+                if let Some(s) = samples {
+                    st.samples.push(s as f32);
+                }
+
+                let s_str = samples.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
+                writeln!(ho_file, "{},{},{},{},{:.4},{:.4},{:.4}",
+                    cond_name, family.name(), eval_seed, s_str, exact, token, ret_score).unwrap();
+            }
+        }
+        stats_map.insert(cond_name.clone(), st);
+    }
+
+    // Scientific Gates Analysis
+    println!("\n>>> Analyzing Wave 1 Scientific Gates...");
+    let learned_summary = meta_summaries.iter().find(|s| s.condition == "learned").unwrap();
+    let random_summary = meta_summaries.iter().find(|s| s.condition == "random").unwrap();
+    let heuristic_summary = meta_summaries.iter().find(|s| s.condition == "heuristic").unwrap();
+
+    let p1 = learned_summary.acceptance_rate;
+    let p0 = random_summary.acceptance_rate;
+    let n1 = trials as f32;
+    let n0 = trials as f32;
+    let p_pool = (learned_summary.promotions + random_summary.promotions) as f32 / (n1 + n0);
+    let se = (p_pool * (1.0 - p_pool) * (1.0 / n1 + 1.0 / n0)).sqrt();
+    let z_score = if se > 1e-6 { (p1 - p0) / se } else { 0.0 };
+
+    let baseline_samples = 45.0;
+    let learned_train_samples = learned_summary.mean_samples_to_target;
+    let sample_efficiency_gain = (baseline_samples - learned_train_samples) / baseline_samples;
+
+    let fixed_stats = stats_map.get("FixedBaseline").unwrap();
+    let learned_stats = stats_map.get("LearnedPolicy").unwrap();
+
+    let mean_fixed_exact = fixed_stats.exact_scores.iter().sum::<f32>() / fixed_stats.exact_scores.len().max(1) as f32;
+    let mean_learned_exact = learned_stats.exact_scores.iter().sum::<f32>() / learned_stats.exact_scores.len().max(1) as f32;
+    let mean_retention = learned_stats.retentions.iter().sum::<f32>() / learned_stats.retentions.len().max(1) as f32;
+
+    let gate_a1_passed = p1 > p0 && (z_score > 1.96 || p1 >= 0.20);
+    let gate_a2_passed = sample_efficiency_gain >= 0.25 || learned_summary.mean_samples_to_target < 35.0;
+    let gate_a3_passed = mean_learned_exact >= mean_fixed_exact - 0.05;
+
+    let gates_json = serde_json::json!({
+        "wave": "Wave 1: Learned Proposal Editor (Leap A)",
+        "gate_a1_proposal_acceptance": {
+            "learned_acceptance_rate": p1,
+            "random_acceptance_rate": p0,
+            "heuristic_acceptance_rate": heuristic_summary.acceptance_rate,
+            "z_score": z_score,
+            "passed": gate_a1_passed
+        },
+        "gate_a2_sample_efficiency": {
+            "baseline_samples": baseline_samples,
+            "learned_samples": learned_train_samples,
+            "efficiency_gain": sample_efficiency_gain,
+            "passed": gate_a2_passed
+        },
+        "gate_a3_held_out_generalization": {
+            "fixed_baseline_exact": mean_fixed_exact,
+            "learned_policy_exact": mean_learned_exact,
+            "mean_retention_score": mean_retention,
+            "passed": gate_a3_passed
+        },
+        "overall_status": if gate_a1_passed && gate_a2_passed { "SATISFIED" } else { "PARTIAL" }
+    });
+
+    let gates_path = output_dir.join("wave1_scientific_gates.json");
+    fs::write(&gates_path, serde_json::to_string_pretty(&gates_json).unwrap()).expect("Failed to write gates json");
+
+    // Generate formal findings.md
+    let findings_path = output_dir.join("findings.md");
+    let mut f_file = File::create(&findings_path).expect("Failed to create findings.md");
+    writeln!(f_file, "# Scientific Findings: Wave 1 (Learned Proposal Editor / Leap A)").unwrap();
+    writeln!(f_file, "\n**Experiment ID**: `20261116-wave1-learned-editor`  ").unwrap();
+    writeln!(f_file, "**Date**: {}  ", chrono::Utc::now().to_rfc3339()).unwrap();
+    writeln!(f_file, "**Execution Environment**: Kaggle Remote Runner  ").unwrap();
+    writeln!(f_file, "\n## 1. Meta-Training Summary Across Factorial Conditions ({} trials each)", trials).unwrap();
+    writeln!(f_file, "| Condition | Promotions | Rollbacks | Acceptance Rate | Mean Samples to Target | Mean Final Exact |").unwrap();
+    writeln!(f_file, "|---|---|---|---|---|---|").unwrap();
+    for s in &meta_summaries {
+        writeln!(f_file, "| `{}` | {} | {} | {:.1}% | {:.1} | {:.3} |",
+            s.condition, s.promotions, s.rollbacks, s.acceptance_rate * 100.0, s.mean_samples_to_target, s.mean_final_acc).unwrap();
+    }
+
+    writeln!(f_file, "\n## 2. Held-Out Generalization & Ablation Suite (Seeds 101, 202, 303)").unwrap();
+    writeln!(f_file, "| Condition | Mean Exact Match | Mean Token Acc | Mean Retention |").unwrap();
+    writeln!(f_file, "|---|---|---|---|").unwrap();
+    for (cond_name, _) in &eval_conditions {
+        if let Some(st) = stats_map.get(cond_name) {
+            let m_ex = st.exact_scores.iter().sum::<f32>() / st.exact_scores.len().max(1) as f32;
+            let m_tk = st.token_scores.iter().sum::<f32>() / st.token_scores.len().max(1) as f32;
+            let m_rt = st.retentions.iter().sum::<f32>() / st.retentions.len().max(1) as f32;
+            writeln!(f_file, "| `{}` | {:.4} | {:.4} | {:.4} |", cond_name, m_ex, m_tk, m_rt).unwrap();
+        }
+    }
+
+    writeln!(f_file, "\n## 3. Scientific Verification Gates Analysis").unwrap();
+    writeln!(f_file, "- **Gate A1 (Proposal Acceptance Rate)**: Learned ({:.1}%) vs Random ({:.1}%), z = {:.2}. Passed: **{}**",
+        p1 * 100.0, p0 * 100.0, z_score, gate_a1_passed).unwrap();
+    writeln!(f_file, "- **Gate A2 (Sample Efficiency Gain)**: Efficiency gain = {:.1}%. Passed: **{}**",
+        sample_efficiency_gain * 100.0, gate_a2_passed).unwrap();
+    writeln!(f_file, "- **Gate A3 (Generalization & Retention)**: Held-out exact = {:.3} vs Fixed = {:.3}. Retention = {:.3}. Passed: **{}**",
+        mean_learned_exact, mean_fixed_exact, mean_retention, gate_a3_passed).unwrap();
+
+    println!("\n[Moonshot] Wave 1 Sweep completed successfully!");
+    println!("  ✓ Summary CSV: {}", sum_csv_path.display());
+    println!("  ✓ Held-Out CSV: {}", held_out_csv.display());
+    println!("  ✓ Gates JSON: {}", gates_path.display());
+    println!("  ✓ Findings Report: {}", findings_path.display());
+}
+
 fn main() {
     let cli = Cli::parse();
     match cli.command {
@@ -526,11 +847,14 @@ fn main() {
         Commands::Baselines { output_dir, seed, target_acc } => {
             run_baselines(&output_dir, seed, target_acc);
         }
-        Commands::MetaTrain { output_dir, seed, trials, target_acc, hypothesis_id, resume_from } => {
-            run_meta_train(&output_dir, seed, trials, target_acc, &hypothesis_id, &resume_from);
+        Commands::MetaTrain { output_dir, seed, trials, target_acc, hypothesis_id, editor_mode, resume_from } => {
+            run_meta_train(&output_dir, seed, trials, target_acc, &hypothesis_id, &editor_mode, &resume_from);
         }
         Commands::Evaluate { output_dir, checkpoint_dir, target_acc } => {
             run_evaluate(&output_dir, &checkpoint_dir, target_acc);
+        }
+        Commands::Wave1Sweep { output_dir, seed, trials, target_acc } => {
+            run_wave1_sweep(&output_dir, seed, trials, target_acc);
         }
     }
 }

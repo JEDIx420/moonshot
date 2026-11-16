@@ -99,15 +99,19 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 0: WAVE 0 SMOKE & GRADIENT INTEGRITY TEST ---", flush=True)
         run_cmd([str(bin_path), "smoke", "--output-dir", str(OUTPUT_DIR), "--git-commit", git_sha], cwd=REPO_DIR)
 
-    if stage in ("baselines", "all"):
+    if stage in ("wave1", "all"):
+        print("\n--- PHASE 1: WAVE 1 FACTORIAL ABLATION SWEEP (LEAP A) ---", flush=True)
+        run_cmd([str(bin_path), "wave1-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "25", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("baselines",):
         print("\n--- PHASE 1: EXACT MATCH MATCHED-BUDGET BASELINES & CAPABILITY GATE ---", flush=True)
         run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
-    if stage in ("meta-train", "all"):
+    if stage in ("meta-train",):
         print("\n--- PHASE 2: RESUMABLE SELF-EDITING META-TRAINING LOOP ---", flush=True)
-        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.80", "--hypothesis-id", "Wave0-Integrity"], cwd=REPO_DIR)
+        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.80", "--hypothesis-id", "Wave1-LearnedEditor"], cwd=REPO_DIR)
 
-    if stage in ("evaluate", "all"):
+    if stage in ("evaluate",):
         print("\n--- PHASE 3: HELD-OUT META-TEST EVALUATION & RETENTION ---", flush=True)
         run_cmd([str(bin_path), "evaluate", "--output-dir", str(OUTPUT_DIR), "--checkpoint-dir", str(OUTPUT_DIR), "--target-acc", "0.80"], cwd=REPO_DIR)
 
