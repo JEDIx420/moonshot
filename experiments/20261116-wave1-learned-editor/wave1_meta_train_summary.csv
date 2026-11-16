@@ -1,0 +1,6 @@
+condition,trials,promotions,rollbacks,acceptance_rate,mean_samples_to_target,mean_final_acc
+learned,25,3,22,0.1200,200.00,0.0500
+frozen,25,1,24,0.0400,200.00,0.0400
+shuffled,25,6,19,0.2400,140.00,0.0960
+heuristic,25,3,22,0.1200,200.00,0.0300
+random,25,3,22,0.1200,128.00,0.0580

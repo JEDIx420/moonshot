@@ -1,0 +1,21 @@
+{
+  "run_id": "smoke_20261116_130506",
+  "git_commit": "a480f63dc8a832299010b5fd06ab29f13a0c0f84",
+  "hardware": {
+    "cpu_count": 4,
+    "ram_bytes": 17179869184,
+    "gpu_name": null,
+    "gpu_memory_bytes": null,
+    "cuda_version": null
+  },
+  "rust_version": "0.1.0",
+  "backend": "rust-native-autodiff-multihead",
+  "start_time": "2026-11-16T13:05:06.239973935Z",
+  "duration_seconds": 0.025319018,
+  "gpu_minutes": 0.00042198363333333333,
+  "artifacts": [
+    "smoke_manifest.json",
+    "gradient_check_passed.json"
+  ],
+  "notes": "Wave 0 integrity and model correctness smoke test passed."
+}

@@ -1,0 +1,23 @@
+{
+  "gate_a1_proposal_acceptance": {
+    "heuristic_acceptance_rate": 0.11999999731779099,
+    "learned_acceptance_rate": 0.11999999731779099,
+    "passed": false,
+    "random_acceptance_rate": 0.11999999731779099,
+    "z_score": 0.0
+  },
+  "gate_a2_sample_efficiency": {
+    "baseline_samples": 45.0,
+    "efficiency_gain": -3.444444417953491,
+    "learned_samples": 200.0,
+    "passed": false
+  },
+  "gate_a3_held_out_generalization": {
+    "fixed_baseline_exact": 0.42222222685813904,
+    "learned_policy_exact": 0.3444444239139557,
+    "mean_retention_score": 0.0,
+    "passed": false
+  },
+  "overall_status": "PARTIAL",
+  "wave": "Wave 1: Learned Proposal Editor (Leap A)"
+}
