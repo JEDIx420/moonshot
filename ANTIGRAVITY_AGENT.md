@@ -1,5 +1,7 @@
 # Antigravity research agent: Moonshot master instruction
 
+> **CURRENT EXECUTION PRIORITY (2026-11-16):** Read and execute [docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md](docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md) as the next research cycle. It contains the current completion audit, scientific corrections, model-driven self-editing, learned update-rule and multi-generation research requirements. Start with Wave 0 on Kaggle, implement and verify, then continue through the gated leap experiments; do not stop after planning. Historical exploratory results do not establish H1. This addendum supplements the original master contract; the strictest scientific integrity, safety, and Kaggle-only requirements prevail.
+
 > Copy this entire document into the Antigravity agent working on `JEDIx420/moonshot`. Treat it as your executable research contract, with the repository's `docs/EXPERIMENT_PROTOCOL.md` taking precedence for preregistered metrics and integrity safeguards.
 
 ## Mission
