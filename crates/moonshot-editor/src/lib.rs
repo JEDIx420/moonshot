@@ -1,5 +1,5 @@
 use moonshot_core::{
-    Candidate, EditPlan, OptimizerType, SamplingPolicy, SchedulePolicy, TaskSplit,
+    Candidate, EditPlan, OptimizerType, SamplingPolicy, SchedulePolicy, TaskExample, TaskSplit,
     TrialRecord, TrialStatus,
 };
 use moonshot_model::{ModelCheckpoint, TinyTransformer};
@@ -30,6 +30,7 @@ pub enum EditProposalAction {
     SetSparseGradientThreshold { threshold: Option<f32> },
     AdjustWeightDecay { decay: f32 },
     SetInnerSteps { steps: usize },
+    SetAnchorRehearsal { ratio: f32 },
 }
 
 pub struct SandboxTypechecker;
@@ -89,6 +90,12 @@ impl SandboxTypechecker {
                     return Err(format!("inner_steps {} out of bounds [{}, {}]", steps, Self::MIN_INNER_STEPS, Self::MAX_INNER_STEPS));
                 }
                 updated.inner_steps = *steps;
+            }
+            EditProposalAction::SetAnchorRehearsal { ratio } => {
+                if *ratio < 0.0 || *ratio > 0.5 {
+                    return Err(format!("anchor_rehearsal_ratio {} out of bounds [0.0, 0.5]", ratio));
+                }
+                updated.anchor_rehearsal_ratio = *ratio;
             }
         }
         Ok(updated)
@@ -216,6 +223,63 @@ impl ProposalPolicy {
             let offset = a * Self::STATE_DIM;
             for i in 0..Self::STATE_DIM {
                 self.weights[offset + i] += self.meta_lr * d_logit * state[i];
+            }
+        }
+    }
+}
+
+/// Wave 2: Learned Credit Routing & Plasticity Gating Head (Leap B1)
+/// Maps state s in R^12 -> per-group plasticity gates gamma in [0, 1]^6
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PlasticityRouter {
+    pub weights: Vec<f32>, // 6 x 12 = 72
+    pub bias: Vec<f32>,    // 6
+    pub meta_lr: f32,
+    pub step_count: usize,
+}
+
+impl PlasticityRouter {
+    pub const N_GROUPS: usize = 6;
+    pub const STATE_DIM: usize = 12;
+
+    pub fn new(seed: u64) -> Self {
+        let mut rng = ChaCha8Rng::seed_from_u64(seed);
+        let scale = 0.05;
+        let weights = (0..Self::N_GROUPS * Self::STATE_DIM)
+            .map(|_| rng.gen_range(-scale..scale))
+            .collect();
+        let bias = vec![0.5; Self::N_GROUPS]; // initialize slightly positive (sigmoid ~0.62)
+        Self {
+            weights,
+            bias,
+            meta_lr: 0.05,
+            step_count: 0,
+        }
+    }
+
+    pub fn compute_gates(&self, state: &[f32]) -> Vec<f32> {
+        let mut gates = Vec::with_capacity(Self::N_GROUPS);
+        for g in 0..Self::N_GROUPS {
+            let mut z = self.bias[g];
+            let row = &self.weights[g * Self::STATE_DIM..(g + 1) * Self::STATE_DIM];
+            for i in 0..Self::STATE_DIM {
+                z += row[i] * state[i];
+            }
+            let sigmoid = 1.0 / (1.0 + (-z).exp());
+            gates.push(sigmoid);
+        }
+        gates
+    }
+
+    pub fn update(&mut self, state: &[f32], gates: &[f32], advantage: f32) {
+        self.step_count += 1;
+        for g in 0..Self::N_GROUPS {
+            let gamma = gates[g];
+            let d_z = advantage * gamma * (1.0 - gamma);
+            self.bias[g] += self.meta_lr * d_z;
+            let offset = g * Self::STATE_DIM;
+            for i in 0..Self::STATE_DIM {
+                self.weights[offset + i] += self.meta_lr * d_z * state[i];
             }
         }
     }
@@ -398,11 +462,12 @@ impl SearchManager {
         })
     }
 
-    pub fn evaluate_adaptation(
+    pub fn evaluate_adaptation_with_anchors(
         model: &mut TinyTransformer,
         plan: &EditPlan,
         split: &TaskSplit,
         target_acc: f32,
+        anchor_examples: Option<&[TaskExample]>,
     ) -> (Option<usize>, f32, f32, f32) {
         let mut samples_to_target = None;
         let batch_size = 8;
@@ -411,6 +476,18 @@ impl SearchManager {
         let mut final_loss = 0.0;
 
         for step in 0..total_steps {
+            // Interleaved anchor rehearsal step to maintain retention
+            if plan.anchor_rehearsal_ratio > 0.0 && step > 0 && (step % 5 == 0) {
+                if let Some(anchors) = anchor_examples {
+                    if !anchors.is_empty() {
+                        let a_start = (step * batch_size) % anchors.len();
+                        let a_end = (a_start + batch_size).min(anchors.len());
+                        let a_batch = &anchors[a_start..a_end];
+                        model.train_step(a_batch, plan, step, total_steps);
+                    }
+                }
+            }
+
             let start_idx = (step * batch_size) % split.train_examples.len().max(1);
             let end_idx = (start_idx + batch_size).min(split.train_examples.len());
             let batch = &split.train_examples[start_idx..end_idx];
@@ -438,6 +515,15 @@ impl SearchManager {
         let final_token = ImmutableOracle::score_batch_tokens(&test_preds, &split.test_examples);
 
         (samples_to_target, final_exact, final_token, final_loss)
+    }
+
+    pub fn evaluate_adaptation(
+        model: &mut TinyTransformer,
+        plan: &EditPlan,
+        split: &TaskSplit,
+        target_acc: f32,
+    ) -> (Option<usize>, f32, f32, f32) {
+        Self::evaluate_adaptation_with_anchors(model, plan, split, target_acc, None)
     }
 
     pub fn run_trial(

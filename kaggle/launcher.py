@@ -99,7 +99,11 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 0: WAVE 0 SMOKE & GRADIENT INTEGRITY TEST ---", flush=True)
         run_cmd([str(bin_path), "smoke", "--output-dir", str(OUTPUT_DIR), "--git-commit", git_sha], cwd=REPO_DIR)
 
-    if stage in ("wave1", "all"):
+    if stage in ("wave2", "all"):
+        print("\n--- PHASE 2: WAVE 2 CREDIT ROUTING & PLASTICITY GATING (LEAP B1) ---", flush=True)
+        run_cmd([str(bin_path), "wave2-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave1",):
         print("\n--- PHASE 1: WAVE 1 FACTORIAL ABLATION SWEEP (LEAP A) ---", flush=True)
         run_cmd([str(bin_path), "wave1-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "25", "--target-acc", "0.80"], cwd=REPO_DIR)
 

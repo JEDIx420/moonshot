@@ -67,6 +67,8 @@ pub struct EditPlan {
     pub grad_clip: Option<f32>,
     pub inner_steps: usize,
     pub sparse_gradient_threshold: Option<f32>,
+    #[serde(default)]
+    pub anchor_rehearsal_ratio: f32,
 }
 
 impl Default for EditPlan {
@@ -81,6 +83,7 @@ impl Default for EditPlan {
             grad_clip: Some(1.0),
             inner_steps: 35,
             sparse_gradient_threshold: None,
+            anchor_rehearsal_ratio: 0.0,
         }
     }
 }
