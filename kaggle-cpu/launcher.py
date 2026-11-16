@@ -115,6 +115,10 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 5D: WAVE 5D STABLE MODULAR KNOWLEDGE (LEAP M3) ---", flush=True)
         run_cmd([str(bin_path), "wave5d-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
+    if stage in ("wave5e", "all"):
+        print("\n--- PHASE 5E: WAVE 5E EVOLVING UPDATE-RULE PROGRAMS (LEAP M4) ---", flush=True)
+        run_cmd([str(bin_path), "wave5e-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
     if stage in ("wave4",):
         print("\n--- PHASE 4: WAVE 4 APPLIED MULTI-STEP TOOL AGENT SANDBOX (LEAP D) ---", flush=True)
         run_cmd([str(bin_path), "wave4-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
