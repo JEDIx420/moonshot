@@ -103,6 +103,10 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 5A: WAVE 5A EVIDENCE, MODEL, EVALUATOR & CONTAINMENT AUDIT ---", flush=True)
         run_cmd([str(bin_path), "audit-wave5a", "--output-dir", str(OUTPUT_DIR)], cwd=REPO_DIR)
 
+    if stage in ("wave5b", "all"):
+        print("\n--- PHASE 5B: WAVE 5B CAUSAL MICROSCOPE FOR CATASTROPHIC FORGETTING (LEAP M1) ---", flush=True)
+        run_cmd([str(bin_path), "wave5b-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
     if stage in ("wave4",):
         print("\n--- PHASE 4: WAVE 4 APPLIED MULTI-STEP TOOL AGENT SANDBOX (LEAP D) ---", flush=True)
         run_cmd([str(bin_path), "wave4-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)

@@ -325,6 +325,24 @@ pub fn backward_multihead_attention(
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum ProjectionMode {
+    None,
+    PreGradient,
+    PostOptimizerDelta,
+}
+
+#[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct StepInstrumentation {
+    pub step: usize,
+    pub raw_grad_dot: f32,
+    pub raw_grad_cosine: f32,
+    pub step_alignment_dot: f32,
+    pub step_alignment_cosine: f32,
+    pub delta_norm: f32,
+    pub anchor_norm: f32,
+}
+
 impl TinyTransformer {
     pub fn new(config: ModelConfig, seed: u64) -> Self {
         let mut rng = ChaCha8Rng::seed_from_u64(seed);
@@ -861,17 +879,18 @@ impl TinyTransformer {
         self.train_step_projected(examples, None, plan, step_idx, total_steps)
     }
 
-    /// Wave 3: Parameter update with Orthogonal Gradient Projection (A-GEM) to prevent catastrophic forgetting
-    pub fn train_step_projected(
+    /// Parameter update with optional pre/post projection and full alignment instrumentation (Wave 5B)
+    pub fn train_step_instrumented(
         &mut self,
         examples: &[TaskExample],
         anchor_examples: Option<&[TaskExample]>,
         plan: &EditPlan,
         step_idx: usize,
         total_steps: usize,
-    ) -> f32 {
+        projection_mode: ProjectionMode,
+    ) -> (f32, Option<StepInstrumentation>) {
         if examples.is_empty() {
-            return 0.0;
+            return (0.0, None);
         }
 
         // Sampling policy selection
@@ -914,20 +933,29 @@ impl TinyTransformer {
         let effective_lr = plan.base_lr * schedule_factor;
         let (avg_loss, mut all_grads) = self.compute_loss_and_gradients(&selected_examples);
 
-        // Orthogonal gradient projection against anchor set (A-GEM)
+        let mut opt_anchor_grads: Option<Vec<f32>> = None;
+        let mut raw_grad_dot = 0.0f32;
+        let mut raw_grad_cosine = 0.0f32;
+        let mut anchor_norm = 0.0f32;
+
         if let Some(anchors) = anchor_examples {
             if !anchors.is_empty() {
-                let (_, anchor_grads) = self.compute_loss_and_gradients(anchors);
-                let dot: f32 = all_grads.iter().zip(anchor_grads.iter()).map(|(&g1, &g2)| g1 * g2).sum();
-                if dot < 0.0 {
-                    let anchor_norm_sq: f32 = anchor_grads.iter().map(|&g| g * g).sum();
-                    if anchor_norm_sq > 1e-8 {
-                        let proj_coeff = dot / anchor_norm_sq;
-                        for i in 0..all_grads.len() {
-                            all_grads[i] -= proj_coeff * anchor_grads[i];
-                        }
+                let (_, a_grads) = self.compute_loss_and_gradients(anchors);
+                let dot: f32 = all_grads.iter().zip(a_grads.iter()).map(|(&g1, &g2)| g1 * g2).sum();
+                let g_norm_sq: f32 = all_grads.iter().map(|&g| g * g).sum();
+                let a_norm_sq: f32 = a_grads.iter().map(|&g| g * g).sum();
+                raw_grad_dot = dot;
+                anchor_norm = a_norm_sq.sqrt();
+                let denom = (g_norm_sq.sqrt() * anchor_norm).max(1e-8);
+                raw_grad_cosine = dot / denom;
+
+                if projection_mode == ProjectionMode::PreGradient && dot < 0.0 && a_norm_sq > 1e-8 {
+                    let proj_coeff = dot / a_norm_sq;
+                    for i in 0..all_grads.len() {
+                        all_grads[i] -= proj_coeff * a_grads[i];
                     }
                 }
+                opt_anchor_grads = Some(a_grads);
             }
         }
 
@@ -950,7 +978,7 @@ impl TinyTransformer {
             }
         }
 
-        // Apply optimizer update
+        // Apply optimizer update to get deltas
         let mut params = self.extract_parameters();
         let n_params = params.len();
         let param_groups = self.parameter_groups();
@@ -959,6 +987,7 @@ impl TinyTransformer {
         let beta2 = 0.999f32;
         let eps = 1e-8f32;
 
+        let mut deltas = vec![0.0f32; n_params];
         for i in 0..n_params {
             let group = param_groups[i];
             let layer_mult = plan.layer_lr_multipliers.get(group).cloned().unwrap_or(1.0);
@@ -983,11 +1012,64 @@ impl TinyTransformer {
                     if g.abs() > 0.005 { -lr * g } else { 0.0 }
                 }
             };
-            params[i] += delta;
+            deltas[i] = delta;
         }
 
+        // Post-optimizer delta projection (Wave 5B)
+        let mut step_alignment_dot = 0.0f32;
+        let mut step_alignment_cosine = 0.0f32;
+        let mut delta_norm = 0.0f32;
+
+        if let Some(ref a_grads) = opt_anchor_grads {
+            let dot: f32 = deltas.iter().zip(a_grads.iter()).map(|(&d, &g)| d * g).sum();
+            let d_norm_sq: f32 = deltas.iter().map(|&d| d * d).sum();
+            delta_norm = d_norm_sq.sqrt();
+            step_alignment_dot = dot;
+            let denom = (delta_norm * anchor_norm).max(1e-8);
+            step_alignment_cosine = dot / denom;
+
+            if projection_mode == ProjectionMode::PostOptimizerDelta && dot > 0.0 && anchor_norm > 1e-4 {
+                let a_norm_sq = anchor_norm * anchor_norm;
+                let proj_coeff = dot / a_norm_sq;
+                for i in 0..deltas.len() {
+                    deltas[i] -= proj_coeff * a_grads[i];
+                }
+                let new_dot: f32 = deltas.iter().zip(a_grads.iter()).map(|(&d, &g)| d * g).sum();
+                step_alignment_dot = new_dot;
+                let new_d_norm_sq: f32 = deltas.iter().map(|&d| d * d).sum();
+                delta_norm = new_d_norm_sq.sqrt();
+                step_alignment_cosine = new_dot / (delta_norm * anchor_norm).max(1e-8);
+            }
+        }
+
+        for i in 0..n_params {
+            params[i] += deltas[i];
+        }
         self.load_parameters(&params);
-        avg_loss
+
+        let instrumentation = opt_anchor_grads.map(|_| StepInstrumentation {
+            step: step_idx,
+            raw_grad_dot,
+            raw_grad_cosine,
+            step_alignment_dot,
+            step_alignment_cosine,
+            delta_norm,
+            anchor_norm,
+        });
+
+        (avg_loss, instrumentation)
+    }
+
+    /// Wave 3 legacy wrapper: Parameter update with Orthogonal Gradient Projection (A-GEM)
+    pub fn train_step_projected(
+        &mut self,
+        examples: &[TaskExample],
+        anchor_examples: Option<&[TaskExample]>,
+        plan: &EditPlan,
+        step_idx: usize,
+        total_steps: usize,
+    ) -> f32 {
+        self.train_step_instrumented(examples, anchor_examples, plan, step_idx, total_steps, ProjectionMode::PreGradient).0
     }
 }
 
