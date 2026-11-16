@@ -1,21 +1,21 @@
 # Moonshot
 
-> **Final Research Synthesis (2026-11-16):** [Master Research Report & Empirical Synthesis](experiments/FINAL_RESEARCH_REPORT.md) | [Reproduction Guide](experiments/reproduction.md) | [Execution Ledger](experiments/run_ledger.jsonl).
-> All five research waves (Wave 0 through Wave 4) have been fully executed on remote Kaggle instances with zero local Mac compute and 100% exact match scoring. See [Next-Stage Research Plan](docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md) for the original execution contract.
+> **Current execution plan — Research Cycle 3 (2026-11-16):** [Prove the Science at 77K](docs/RESEARCH_CYCLE_3_77K_SCIENTIFIC_LEAPS_2026-11-16.md) | [Scientific Protocol](docs/EXPERIMENT_PROTOCOL.md) | [Antigravity Instructions](ANTIGRAVITY_AGENT.md).
+>
+> **Historical evidence:** [Waves 0–4 research synthesis](experiments/FINAL_RESEARCH_REPORT.md) | [Run ledger](experiments/run_ledger.jsonl). These results are being audited. The original findings contain inconsistent Wave 4 gate denominators, exposed evaluation seeds, and claims stronger than matched random controls support. Treat positive conclusions as **provisional** until the Cycle 3 evidence audit and replication close the gaps.
 
 **One small neural model that gets better at learning — not merely better at one task.**
 
-Moonshot is an open research program asking whether a very small model (~77k parameters) can change **how it learns**, test those changes against unfamiliar problems, and improve its own future learning efficiency without a larger teacher model.
+Moonshot is an open research program investigating whether a 77,376-parameter causal transformer can *improve its own learning rule* using independent task feedback, preserve old capabilities, and measurably accelerate learning on truly unfamiliar task families. The small size is deliberately retained for rigorous low-cost experiments **before** any 1M- or 10M-parameter validation.
 
-### Key Verified Results
-- **Strict Scoring Grounding**: Locked exclusively to full sequence exact match ($1.0$ vs $0.0$).
-- **Wave 0 (Integrity Reset)**: Verified causal attention analytical gradients against finite differences ($< 0.023$ relative error). Established true Fixed AdamW baseline at **42.22%** exact match.
-- **Wave 1 (Learned Proposal Policy)**: Discovered global schedule attractor (`cand_gen03_0024`), achieving **64.44%** exact match (+22.22 pp gain). Observed 100% catastrophic forgetting (0.0000 retention).
-- **Wave 2 (Credit Routing & Plasticity Gating)**: Reached **68.33%** exact match (+26.11 pp over Fixed AdamW) via a 78-parameter router freezing 34% of updates.
-- **Wave 3 (Compounding Compaction Limits)**: Rigorously proved that sequential in-place weight mutation under A-GEM suffers catastrophic representation collapse in sub-100k transformers (Gen 0: 22.78% $\to$ Gen 3: 3.33%).
-- **Wave 4 (Applied Multi-Step Tool Sandbox)**: Achieved **80.42%** overall exact match (+18.75 pp over Fixed AdamW) with **98.33%** legal trace execution and **96.67%** final world state accuracy in a safe register machine sandbox with conditional error recovery.
+### What the experiments actually show so far
 
-> **Status: Completed Autonomous Multi-Wave Research Program.** Full results, ablation curves, checkpoints, and mathematical derivations are fully documented in `experiments/`.
+- **Wave 0:** A corrected-gradient fixed AdamW baseline reached **42.22%** exact sequence match on an initial benchmark.
+- **Wave 1:** A random-search schedule reached **64.44%**; the **trained proposal policy reached 34.44%**. That is not a learned-editor victory.
+- **Wave 2:** Learned plasticity routing reached **68.33%** in a single-task adaptation study, but past-task retention was approximately **0.004**.
+- **Wave 3:** Sequential A-GEM adaptation **failed to compound**: exact match fell from **22.78%** at generation 0 to **3.33%** at generation 3, with zero retention. This does not prove a universal 77K capacity impossibility.
+- **Wave 4:** On four synthetic task families, learned routing reached **80.42%**, random routing **78.33%**, and fixed AdamW **61.67%** exact match. The learned versus random advantage is **not yet decisive**. On sandbox-specific tasks, learned valid traces were **98.33%** versus **100%** for fixed AdamW. The generated Wave 4 gate JSON says `PARTIAL`; its denominator bug and the inconsistent reports require a dated audit.
+- **Current verdict:** Working experimental platform; **no validated claim yet of recursive or multi-generation self-improvement**. Gated, honest next-step experiments are specified in Cycle 3.
 
 ## The scientific question
 
@@ -54,7 +54,7 @@ This is a **hypothesis about recursive learning dynamics**, not a claim that sim
 
 ## Smallest-model-first policy
 
-Start with a **tiny 1–10M parameter transformer or similarly compact learner built in Rust** to validate whether the learning mechanism is real at all. Synthetic verifiable tasks are an advantage here: their ground truth comes from the test generator, not another AI.
+For the current **Cycle 3**, stay at **77,376 parameters** to establish whether the learning-rule mechanism is scientifically real under decisive controls. Only after a clean evidence and retention study should a separately approved **~1M** parameter replication be attempted, followed conditionally by **~10M**. Synthetic verifiable tasks are useful instrumentation, but cannot by themselves establish broad real-world agent reasoning.
 
 If the experiment needs natural-language edit proposals or tool-use instructions, test the smallest practical open-weight instruction model next, initially [SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct). If that genuinely cannot propose parseable changes after a fair trial, record the failure and consider a 360M-class model, then [Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B). **A model size increase is a documented fallback, not the default.** Only one learner model runs in each controlled experiment.
 
