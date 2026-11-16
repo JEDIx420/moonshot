@@ -373,6 +373,7 @@ dependencies = [
  "moonshot-model",
  "moonshot-oracle",
  "rand",
+ "rand_chacha",
  "serde",
  "serde_json",
 ]
