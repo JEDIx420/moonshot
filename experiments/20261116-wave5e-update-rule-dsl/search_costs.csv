@@ -1,0 +1,6 @@
+condition,candidate_trials,total_evaluations,gpu_minutes,cost_per_improvement
+Learned_DSL_Programs,15,180,0.00,0.00
+Random_DSL_Search,15,180,0.00,0.00
+Greedy_Human_Program,15,180,0.00,0.00
+Blackbox_Scalar_Tuning,15,180,0.00,0.00
+No_Composition_Primitive,15,180,0.00,0.00
