@@ -1,0 +1,47 @@
+{
+  "audit_timestamp": "2026-11-16T15:15:29.592646602Z",
+  "critical_reconciliation_points": [
+    "LearnedPlasticity (80.42%) vs RandomPlasticity (78.33%) delta is +2.09 pp, with Random slightly faster (315.3 vs 318.7 samples).",
+    "FixedAdamW achieved 100.0% legal trace rate on the sandbox, higher than LearnedPlasticity (98.33%).",
+    "wave4_scientific_gates.json correctly reported PARTIAL based on all-family macro dilution (24.6% vs 70.0% target).",
+    "Seeds 101, 202, 303 are permanently designated as development_exposed."
+  ],
+  "recomputed_metrics": {
+    "FixedAdamW": {
+      "all_families_exact": 0.6167,
+      "mean_sample_exposures": 386.0,
+      "sandbox_legal_trace": 1.0,
+      "sandbox_only_exact": 0.9333,
+      "sandbox_state_match": 0.95
+    },
+    "FrozenBaseline": {
+      "all_families_exact": 0.0,
+      "mean_sample_exposures": 440.0,
+      "sandbox_legal_trace": 0.0,
+      "sandbox_only_exact": 0.0,
+      "sandbox_state_match": 0.0
+    },
+    "LearnedPlasticity": {
+      "all_families_exact": 0.8042,
+      "mean_sample_exposures": 318.7,
+      "sandbox_legal_trace": 0.9833,
+      "sandbox_only_exact": 0.9667,
+      "sandbox_state_match": 0.9667
+    },
+    "RandomPlasticity": {
+      "all_families_exact": 0.7833,
+      "mean_sample_exposures": 315.3,
+      "sandbox_legal_trace": 0.9833,
+      "sandbox_only_exact": 0.9667,
+      "sandbox_state_match": 0.9667
+    },
+    "StaticHeadOnly": {
+      "all_families_exact": 0.1167,
+      "mean_sample_exposures": 440.0,
+      "sandbox_legal_trace": 0.9,
+      "sandbox_only_exact": 0.1667,
+      "sandbox_state_match": 0.1667
+    }
+  },
+  "source_csv": "experiments/20261116-wave4-applied-sandbox/wave4_sandbox_ablations.csv"
+}

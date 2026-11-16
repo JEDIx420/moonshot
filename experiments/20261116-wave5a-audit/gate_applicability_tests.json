@@ -1,0 +1,32 @@
+{
+  "all_family_macro_dilution": {
+    "applicable_families": [
+      "tool_workflow_sandbox_test"
+    ],
+    "denominator_episodes": 12,
+    "diluted_final_state_match_rate": 0.241667,
+    "diluted_legal_trace_rate": 0.245833,
+    "gate_d1_status": "FAILED",
+    "gate_d2_status": "FAILED",
+    "inapplicable_families_diluting_denominator": [
+      "fsm_hierarchical_tree_test",
+      "symbolic_compositional_test",
+      "tool_workflow_chained_test"
+    ],
+    "machine_gate_json_verdict": "PARTIAL"
+  },
+  "audit_name": "Wave 4 Metric Applicability and Denominator Audit",
+  "description": "Comparison of all-family diluted macro-average vs domain-applicable denominator",
+  "domain_applicable_corrected": {
+    "applicable_families": [
+      "tool_workflow_sandbox_test"
+    ],
+    "corrected_final_state_match_rate": 0.966667,
+    "corrected_legal_trace_rate": 0.983333,
+    "denominator_episodes": 3,
+    "gate_d1_status": "PASSED_ON_APPLICABLE_DOMAIN",
+    "gate_d2_status": "PASSED_ON_APPLICABLE_DOMAIN",
+    "inapplicable_families_excluded_from_denominator": 3
+  },
+  "recommendation": "Metric schemas must mark non-applicable domain fields as NA/null rather than 0.0 to prevent denominator dilution"
+}

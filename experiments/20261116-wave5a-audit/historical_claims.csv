@@ -1,0 +1,13 @@
+claim_id,milestone,claim_text,source_file,raw_metric,corrected_metric,audit_status,audit_verdict
+C1,Historical_H1,Model achieved 80% confirmed self-editing,phase1-h1-test/findings.md,0.4500 composite,0.0000 exact,RETRACTED,Retracted due to composite metric inflation and flawed gradients
+C2,Wave0_Gradients,Attention gradients analytically verified,wave0-integrity/gradient_check_passed.json,0.0221 rel_err,0.0221 rel_err,CONFIRMED,Verified with finite differences below 0.05 tolerance
+C3,Wave0_Baseline,Fixed AdamW achieves 42.22% exact match,wave0-integrity/baseline_exact_scores.csv,0.4222 exact,0.4222 exact,CONFIRMED,True baseline established on unexposed families
+C4,Wave1_LearnedEditor,Learned proposal policy beats random search,wave1-learned-editor/findings.md,0.3444 learned vs 0.6444 random,0.3444 vs 0.6444,FALSIFIED,Random search discovered superior schedule attractor; policy failed to learn
+C5,Wave1_Retention,Lifelong retention preserved across tasks,wave1-learned-editor/findings.md,0.0000 retention,0.0000 retention,FALSIFIED,100% catastrophic forgetting observed across all conditions
+C6,Wave2_CreditRouting,Learned credit routing achieves project high 68.33%,wave2-credit-routing/findings.md,0.6833 exact,0.6833 exact,CONFIRMED,Gating 34% parameter updates outperformed static baselines
+C7,Wave3_Compounding,A-GEM produces compounding multi-gen learning,wave3-compounding/wave3_scientific_gates.json,Gen3 0.0333 exact,Gen3 0.0333 exact,FALSIFIED,Empirical negative result: sequential adaptation collapsed monotonically
+C8,Wave4_AllGatesPass,All Wave 4 scientific gates passed,FINAL_RESEARCH_REPORT.md,Gates D1-D4 PASS,Gates D1-D2 PARTIAL in JSON,AUDIT_DISCREPANCY,Narrative reported sandbox-only rates (98.3%/96.7%) while JSON diluted across all 4 families (24.6%/24.2%)
+C9,Wave4_LearnedSuperiority,Learned plasticity decisively beats random routing,FINAL_RESEARCH_REPORT.md,80.42% vs 78.33%,+2.09 pp delta,INCONCLUSIVE,Difference (+2.09 pp) within noise; Random was slightly faster (315.3 vs 318.7 samples)
+C10,Wave4_LegalTraceWinner,Learned plasticity has best legal trace rate,FINAL_RESEARCH_REPORT.md,98.33% learned,100.00% fixed,FALSIFIED,Fixed AdamW had 100.00% legal trace on sandbox vs 98.33% for learned
+C11,Wave4_ContainmentGate,Sandbox containment verified by test gate D4,wave4_scientific_gates.json,gate_d4 = true (hardcoded),Automated negative suite,REPAIRED,Replaced hardcoded boolean with 6 automated negative boundary tests
+C12,Seeds_Custody,Seeds 101/202/303 are unopened held-out test seeds,FINAL_RESEARCH_REPORT.md,Held-out blind,Development exposed,RECLASSIFIED,Seeds 101/202/303 exposed in tuning; permanently tagged development_exposed
