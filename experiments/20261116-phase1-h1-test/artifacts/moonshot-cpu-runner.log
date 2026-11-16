@@ -1,258 +1,258 @@
-[{"stream_name":"stdout","time":1.148040327,"data":"============================================================\n"}
-,{"stream_name":"stdout","time":1.148101427,"data":"MOONSHOT KAGGLE ENVIRONMENT PROBE\n"}
-,{"stream_name":"stdout","time":1.148107663,"data":"============================================================\n"}
-,{"stream_name":"stdout","time":1.156418625,"data":"Platform: Linux-6.18.55+-x86_64-with-glibc2.39\n"}
-,{"stream_name":"stdout","time":1.1566290559999999,"data":"Python: 3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]\n"}
-,{"stream_name":"stdout","time":1.156647589,"data":"\n"}
-,{"stream_name":"stdout","time":1.156652039,"data":"[RUN] nvidia-smi\n"}
-,{"stream_name":"stderr","time":1.164529226,"data":"/bin/sh: 1: nvidia-smi: not found\n"}
-,{"stream_name":"stdout","time":1.165192355,"data":"\n"}
-,{"stream_name":"stdout","time":1.165214778,"data":"[SETUP] Installing Rust toolchain via rustup...\n"}
-,{"stream_name":"stdout","time":1.165219476,"data":"\n"}
-,{"stream_name":"stdout","time":1.1652236440000001,"data":"[RUN] curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable\n"}
-,{"stream_name":"stderr","time":1.564463703,"data":"info: downloading installer\n"}
-,{"stream_name":"stderr","time":2.002352265,"data":"info: profile set to default\n"}
-,{"stream_name":"stderr","time":2.002384198,"data":"info: default host tuple is x86_64-unknown-linux-gnu\n"}
-,{"stream_name":"stderr","time":2.004279182,"data":"info: syncing channel updates for stable-x86_64-unknown-linux-gnu\n"}
-,{"stream_name":"stderr","time":2.444518463,"data":"info: latest update on 2026-11-12 for version 1.100.0 (0ef1bc386 2026-11-09)\n"}
-,{"stream_name":"stderr","time":2.444728858,"data":"info: downloading 6 components\n"}
-,{"stream_name":"stdout","time":27.142284895,"data":"\n"}
-,{"stream_name":"stderr","time":27.142284891,"data":"info: default toolchain set to stable-x86_64-unknown-linux-gnu\n"}
-,{"stream_name":"stdout","time":27.153648426,"data":"  stable-x86_64-unknown-linux-gnu installed - rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
-,{"stream_name":"stdout","time":27.153683495,"data":"\n"}
-,{"stream_name":"stdout","time":27.153704002,"data":"\n"}
-,{"stream_name":"stdout","time":27.15370941,"data":"Rust is installed now. Great!\n"}
-,{"stream_name":"stdout","time":27.153713755,"data":"\n"}
-,{"stream_name":"stdout","time":27.153717635,"data":"To get started you may need to restart your current shell.\n"}
-,{"stream_name":"stdout","time":27.153732332,"data":"This would reload your PATH environment variable to include\n"}
-,{"stream_name":"stdout","time":27.153736827,"data":"Cargo's bin directory ($HOME/.cargo/bin).\n"}
-,{"stream_name":"stdout","time":27.153740531,"data":"\n"}
-,{"stream_name":"stdout","time":27.153744148,"data":"To configure your current shell, you need to source the\n"}
-,{"stream_name":"stdout","time":27.153748184,"data":"corresponding env file under $HOME/.cargo.\n"}
-,{"stream_name":"stdout","time":27.153752275,"data":"\n"}
-,{"stream_name":"stdout","time":27.153755867,"data":"Consider running the right command for your shell (note the leading DOT):\n"}
-,{"stream_name":"stdout","time":27.153759909,"data":". \"$HOME/.cargo/env\" # For sh/ash/dash/pdksh/bash\n"}
-,{"stream_name":"stdout","time":27.153915599,"data":"cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu\n"}
-,{"stream_name":"stdout","time":27.153929422,"data":"CC_x86_64-unknown-linux-gnu = None\n"}
-,{"stream_name":"stdout","time":27.15393409,"data":"cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu\n"}
-,{"stream_name":"stdout","time":27.153938066,"data":"CC_x86_64_unknown_linux_gnu = None\n"}
-,{"stream_name":"stdout","time":27.153960457,"data":"cargo:rerun-if-env-changed=HOST_CC\n"}
-,{"stream_name":"stdout","time":27.153964254999998,"data":"HOST_CC = None\n"}
-,{"stream_name":"stdout","time":27.153967805,"data":"cargo:rerun-if-env-changed=CC\n"}
-,{"stream_name":"stdout","time":27.153971231,"data":"CC = None\n"}
-,{"stream_name":"stdout","time":27.165217044,"data":"cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT\n"}
-,{"stream_name":"stdout","time":27.271993258,"data":"cargo:rerun-if-env-changed=CPATH\n"}
-,{"stream_name":"stdout","time":27.272026871,"data":"cargo:rerun-if-env-changed=C_INCLUDE_PATH\n"}
-,{"stream_name":"stdout","time":27.272032223,"data":"cargo:rerun-if-env-changed=CPLUS_INCLUDE_PATH\n"}
-,{"stream_name":"stdout","time":27.272035713,"data":"cargo:rerun-if-env-changed=OBJC_INCLUDE_PATH\n"}
-,{"stream_name":"stdout","time":27.272039388,"data":"cargo:rerun-if-env-changed=OBJCPLUS_INCLUDE_PATH\n"}
-,{"stream_name":"stdout","time":27.272042818,"data":"cargo:rerun-if-env-changed=COMPILER_PATH\n"}
-,{"stream_name":"stdout","time":27.272046311,"data":"cargo:rerun-if-env-changed=SOURCE_DATE_EPOCH\n"}
-,{"stream_name":"stdout","time":27.272049982,"data":"cargo:rerun-if-env-changed=GCC_EXEC_PREFIX\n"}
-,{"stream_name":"stdout","time":27.272053769,"data":"cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS\n"}
-,{"stream_name":"stdout","time":27.272057877,"data":"CRATE_CC_NO_DEFAULTS = None\n"}
-,{"stream_name":"stdout","time":27.272061901,"data":"cargo:rerun-if-env-changed=CFLAGS\n"}
-,{"stream_name":"stdout","time":27.272065811,"data":"CFLAGS = None\n"}
-,{"stream_name":"stdout","time":27.272069549,"data":"cargo:rerun-if-env-changed=HOST_CFLAGS\n"}
-,{"stream_name":"stdout","time":27.272073723,"data":"HOST_CFLAGS = None\n"}
-,{"stream_name":"stdout","time":27.272077763,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu\n"}
-,{"stream_name":"stdout","time":27.272081067,"data":"CFLAGS_x86_64_unknown_linux_gnu = None\n"}
-,{"stream_name":"stdout","time":27.272083494,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu\n"}
-,{"stream_name":"stdout","time":27.272085984,"data":"CFLAGS_x86_64-unknown-linux-gnu = None\n"}
-,{"stream_name":"stdout","time":27.297778643,"data":"\n"}
-,{"stream_name":"stdout","time":27.297837605,"data":"[RUN] rustc --version\n"}
-,{"stream_name":"stdout","time":27.314695075,"data":"rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
-,{"stream_name":"stdout","time":27.316162853,"data":"\n"}
-,{"stream_name":"stdout","time":27.316194916,"data":"[RUN] cargo --version\n"}
-,{"stream_name":"stdout","time":27.329342188,"data":"cargo 1.100.0 (3acc79c0c 2026-11-05)\n"}
-,{"stream_name":"stdout","time":27.330352193,"data":"\n"}
-,{"stream_name":"stdout","time":27.330378133,"data":"[GIT] Cloning https://github.com/JEDIx420/moonshot.git into /tmp/moonshot...\n"}
-,{"stream_name":"stdout","time":27.33047669,"data":"\n"}
-,{"stream_name":"stdout","time":27.330481883,"data":"[RUN] git clone https://github.com/JEDIx420/moonshot.git /tmp/moonshot\n"}
-,{"stream_name":"stderr","time":27.34962771,"data":"Cloning into '/tmp/moonshot'...\n"}
-,{"stream_name":"stdout","time":28.151616616,"data":"[GIT] Active commit: a647a87df435ae455cb210721e485c2d545e3c57\n"}
-,{"stream_name":"stdout","time":28.151646939,"data":"\n"}
-,{"stream_name":"stdout","time":28.151651579,"data":"[BUILD] Building moonshot release binary...\n"}
-,{"stream_name":"stdout","time":28.151655237,"data":"\n"}
-,{"stream_name":"stdout","time":28.15165865,"data":"[RUN] cargo build --release\n"}
-,{"stream_name":"stderr","time":28.211397263,"data":"    Updating crates.io index\n"}
-,{"stream_name":"stderr","time":28.492712842,"data":" Downloading crates ...\n"}
-,{"stream_name":"stderr","time":28.545214267,"data":"  Downloaded anstyle-query v1.1.5\n"}
-,{"stream_name":"stderr","time":28.551839306,"data":"  Downloaded anstyle v1.0.14\n"}
-,{"stream_name":"stderr","time":28.554522761,"data":"  Downloaded anstyle-parse v1.0.0\n"}
-,{"stream_name":"stderr","time":28.557286311,"data":"  Downloaded autocfg v1.5.1\n"}
-,{"stream_name":"stderr","time":28.561093024,"data":"  Downloaded anstream v1.0.0\n"}
-,{"stream_name":"stderr","time":28.564702389,"data":"  Downloaded clap_builder v4.6.7\n"}
-,{"stream_name":"stderr","time":28.580262964,"data":"  Downloaded cfg-if v1.0.5\n"}
-,{"stream_name":"stderr","time":28.582202564,"data":"  Downloaded clap_lex v1.1.1\n"}
-,{"stream_name":"stderr","time":28.583740459,"data":"  Downloaded colorchoice v1.0.5\n"}
-,{"stream_name":"stderr","time":28.585166126,"data":"  Downloaded heck v0.5.0\n"}
-,{"stream_name":"stderr","time":28.586924753,"data":"  Downloaded rand_chacha v0.3.1\n"}
-,{"stream_name":"stderr","time":28.58835458,"data":"  Downloaded utf8parse v0.2.2\n"}
-,{"stream_name":"stderr","time":28.589783792,"data":"  Downloaded cpufeatures v0.2.17\n"}
-,{"stream_name":"stderr","time":28.591744791,"data":"  Downloaded crypto-common v0.1.7\n"}
-,{"stream_name":"stderr","time":28.593529052,"data":"  Downloaded version_check v0.9.5\n"}
-,{"stream_name":"stderr","time":28.595315038,"data":"  Downloaded is_terminal_polyfill v1.70.2\n"}
-,{"stream_name":"stderr","time":28.596665567,"data":"  Downloaded itoa v1.0.19\n"}
-,{"stream_name":"stderr","time":28.598652592,"data":"  Downloaded rand_core v0.6.4\n"}
-,{"stream_name":"stderr","time":28.600602562,"data":"  Downloaded sha2 v0.10.9\n"}
-,{"stream_name":"stderr","time":28.604079737,"data":"  Downloaded strsim v0.11.1\n"}
-,{"stream_name":"stderr","time":28.606278541000002,"data":"  Downloaded zmij v1.0.23\n"}
-,{"stream_name":"stderr","time":28.60899811,"data":"  Downloaded block-buffer v0.10.4\n"}
-,{"stream_name":"stderr","time":28.610535321,"data":"  Downloaded digest v0.10.7\n"}
-,{"stream_name":"stderr","time":28.612905767,"data":"  Downloaded generic-array v0.14.7\n"}
-,{"stream_name":"stderr","time":28.61486906,"data":"  Downloaded getrandom v0.2.17\n"}
-,{"stream_name":"stderr","time":28.619201987,"data":"  Downloaded iana-time-zone v0.1.65\n"}
-,{"stream_name":"stderr","time":28.623149927,"data":"  Downloaded quote v1.0.47\n"}
-,{"stream_name":"stderr","time":28.626875767,"data":"  Downloaded unicode-ident v1.0.27\n"}
-,{"stream_name":"stderr","time":28.630703618,"data":"  Downloaded clap_derive v4.6.7\n"}
-,{"stream_name":"stderr","time":28.633858274,"data":"  Downloaded ppv-lite86 v0.2.21\n"}
-,{"stream_name":"stderr","time":28.635748943,"data":"  Downloaded serde_core v1.0.229\n"}
-,{"stream_name":"stderr","time":28.639643511,"data":"  Downloaded serde_derive v1.0.229\n"}
-,{"stream_name":"stderr","time":28.644041986,"data":"  Downloaded num-traits v0.2.19\n"}
-,{"stream_name":"stderr","time":28.647744638,"data":"  Downloaded proc-macro2 v1.0.107\n"}
-,{"stream_name":"stderr","time":28.652349395,"data":"  Downloaded clap v4.6.7\n"}
-,{"stream_name":"stderr","time":28.670049666,"data":"  Downloaded rand v0.8.8\n"}
-,{"stream_name":"stderr","time":28.676016969,"data":"  Downloaded serde v1.0.229\n"}
-,{"stream_name":"stderr","time":28.681215825,"data":"  Downloaded typenum v1.20.1\n"}
-,{"stream_name":"stderr","time":28.68635312,"data":"  Downloaded memchr v2.8.3\n"}
-,{"stream_name":"stderr","time":28.69436173,"data":"  Downloaded serde_json v1.0.154\n"}
-,{"stream_name":"stderr","time":28.705786744,"data":"  Downloaded chrono v0.4.45\n"}
-,{"stream_name":"stderr","time":28.715922683,"data":"  Downloaded syn v3.0.10\n"}
-,{"stream_name":"stderr","time":28.731420137,"data":"  Downloaded zerocopy v0.8.63\n"}
-,{"stream_name":"stderr","time":28.76701342,"data":"  Downloaded libc v0.2.191\n"}
-,{"stream_name":"stderr","time":28.934276608,"data":"   Compiling proc-macro2 v1.0.107\n"}
-,{"stream_name":"stderr","time":28.934401834,"data":"   Compiling unicode-ident v1.0.27\n"}
-,{"stream_name":"stderr","time":28.934413388,"data":"   Compiling quote v1.0.47\n"}
-,{"stream_name":"stderr","time":28.934419798,"data":"   Compiling version_check v0.9.5\n"}
-,{"stream_name":"stderr","time":29.037889524,"data":"   Compiling cfg-if v1.0.5\n"}
-,{"stream_name":"stderr","time":29.081706969,"data":"   Compiling serde_core v1.0.229\n"}
-,{"stream_name":"stderr","time":29.185681761,"data":"   Compiling typenum v1.20.1\n"}
-,{"stream_name":"stderr","time":29.26391518,"data":"   Compiling generic-array v0.14.7\n"}
-,{"stream_name":"stderr","time":29.31785317,"data":"   Compiling libc v0.2.191\n"}
-,{"stream_name":"stderr","time":29.409942737,"data":"   Compiling autocfg v1.5.1\n"}
-,{"stream_name":"stderr","time":29.767209254,"data":"   Compiling zerocopy v0.8.63\n"}
-,{"stream_name":"stderr","time":29.919081052,"data":"   Compiling num-traits v0.2.19\n"}
-,{"stream_name":"stderr","time":30.303902096,"data":"   Compiling syn v3.0.10\n"}
-,{"stream_name":"stderr","time":31.586557784,"data":"   Compiling zmij v1.0.23\n"}
-,{"stream_name":"stderr","time":31.788469969,"data":"   Compiling serde v1.0.229\n"}
-,{"stream_name":"stderr","time":32.193931527,"data":"   Compiling crypto-common v0.1.7\n"}
-,{"stream_name":"stderr","time":32.299824893,"data":"   Compiling block-buffer v0.10.4\n"}
-,{"stream_name":"stderr","time":32.416466855,"data":"   Compiling getrandom v0.2.17\n"}
-,{"stream_name":"stderr","time":32.82809962,"data":"   Compiling serde_json v1.0.154\n"}
-,{"stream_name":"stderr","time":34.518326575,"data":"   Compiling rand_core v0.6.4\n"}
-,{"stream_name":"stderr","time":34.825458244000004,"data":"   Compiling digest v0.10.7\n"}
-,{"stream_name":"stderr","time":35.125886136,"data":"   Compiling iana-time-zone v0.1.65\n"}
-,{"stream_name":"stderr","time":35.556619913,"data":"   Compiling memchr v2.8.3\n"}
-,{"stream_name":"stderr","time":35.83937604,"data":"   Compiling cpufeatures v0.2.17\n"}
-,{"stream_name":"stderr","time":35.886061341,"data":"   Compiling itoa v1.0.19\n"}
-,{"stream_name":"stderr","time":36.177863312,"data":"   Compiling sha2 v0.10.9\n"}
-,{"stream_name":"stderr","time":37.173375424,"data":"   Compiling serde_derive v1.0.229\n"}
-,{"stream_name":"stderr","time":39.542286363,"data":"   Compiling utf8parse v0.2.2\n"}
-,{"stream_name":"stderr","time":39.609487675,"data":"   Compiling anstyle-parse v1.0.0\n"}
-,{"stream_name":"stderr","time":39.820745438,"data":"   Compiling ppv-lite86 v0.2.21\n"}
-,{"stream_name":"stderr","time":39.830219284,"data":"   Compiling anstyle v1.0.14\n"}
-,{"stream_name":"stderr","time":40.180703478,"data":"   Compiling anstyle-query v1.1.5\n"}
-,{"stream_name":"stderr","time":40.249966887,"data":"   Compiling colorchoice v1.0.5\n"}
-,{"stream_name":"stderr","time":40.31877939,"data":"   Compiling is_terminal_polyfill v1.70.2\n"}
-,{"stream_name":"stderr","time":40.373439549,"data":"   Compiling anstream v1.0.0\n"}
-,{"stream_name":"stderr","time":40.397060335,"data":"   Compiling rand_chacha v0.3.1\n"}
-,{"stream_name":"stderr","time":41.165175234,"data":"   Compiling rand v0.8.8\n"}
-,{"stream_name":"stderr","time":41.323999269,"data":"   Compiling clap_lex v1.1.1\n"}
-,{"stream_name":"stderr","time":41.789144104,"data":"   Compiling heck v0.5.0\n"}
-,{"stream_name":"stderr","time":42.018180433,"data":"   Compiling strsim v0.11.1\n"}
-,{"stream_name":"stderr","time":42.491989051,"data":"   Compiling clap_builder v4.6.7\n"}
-,{"stream_name":"stderr","time":42.82475329,"data":"   Compiling clap_derive v4.6.7\n"}
-,{"stream_name":"stderr","time":43.807965949,"data":"   Compiling chrono v0.4.45\n"}
-,{"stream_name":"stderr","time":46.27398347,"data":"   Compiling moonshot-core v0.1.0 (/tmp/moonshot/crates/moonshot-core)\n"}
-,{"stream_name":"stderr","time":47.030510058,"data":"   Compiling clap v4.6.7\n"}
-,{"stream_name":"stderr","time":47.079762864,"data":"   Compiling moonshot-oracle v0.1.0 (/tmp/moonshot/crates/moonshot-oracle)\n"}
-,{"stream_name":"stderr","time":47.506757266,"data":"   Compiling moonshot-model v0.1.0 (/tmp/moonshot/crates/moonshot-model)\n"}
-,{"stream_name":"stderr","time":50.298381473,"data":"   Compiling moonshot-editor v0.1.0 (/tmp/moonshot/crates/moonshot-editor)\n"}
-,{"stream_name":"stderr","time":54.665262135,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot/crates/moonshot-runner)\n"}
-,{"stream_name":"stderr","time":57.528044077,"data":"    Finished `release` profile [optimized] target(s) in 29.36s\n"}
-,{"stream_name":"stdout","time":57.576681975,"data":"\n"}
-,{"stream_name":"stdout","time":57.576718448,"data":"[EXEC] Running stage: all\n"}
-,{"stream_name":"stdout","time":57.576724315,"data":"\n"}
-,{"stream_name":"stdout","time":57.576728514,"data":"--- PHASE 0: SMOKE TEST ---\n"}
-,{"stream_name":"stdout","time":57.576732625,"data":"\n"}
-,{"stream_name":"stdout","time":57.576736367,"data":"[RUN] /tmp/moonshot/target/release/moonshot smoke --output-dir /kaggle/working/results --git-commit a647a87df435ae455cb210721e485c2d545e3c57\n"}
-,{"stream_name":"stdout","time":57.578988951,"data":"[Moonshot] Running Phase 0 Smoke Test...\n"}
-,{"stream_name":"stdout","time":57.579581151,"data":"[Hardware] CPUs: 4, RAM: 16 GB, GPU: None, CUDA: None\n"}
-,{"stream_name":"stdout","time":57.579615671,"data":"[1/4] Verifying Deterministic Task Generators \u0026 Immutable Oracle...\n"}
-,{"stream_name":"stdout","time":57.579622669,"data":"  ✓ Oracle task generation verified (10 train, 5 val, 5 test examples).\n"}
-,{"stream_name":"stdout","time":57.579780235,"data":"[2/4] Initializing Tiny Neural Learner...\n"}
-,{"stream_name":"stdout","time":57.592239325,"data":"  ✓ TinyTransformer: 77376 parameters (~0.08M), SHA256: c53256e952eb173ca3d490af201a911d351ad766c8349ffe0aa2efebd56e15f1\n"}
-,{"stream_name":"stdout","time":57.592280622,"data":"[3/4] Verifying Bounded Self-Editing Typechecker \u0026 Sandbox...\n"}
-,{"stream_name":"stdout","time":57.5922859,"data":"  ✓ Proposed safe EditPlan: opt=AdamW, lr=0.01500, inner_steps=35\n"}
-,{"stream_name":"stdout","time":57.592289053,"data":"[4/4] Executing Single Adaptation Step...\n"}
-,{"stream_name":"stdout","time":57.623197296,"data":"  ✓ Single step loss: 4.5759\n"}
-,{"stream_name":"stdout","time":57.62323218,"data":"[Moonshot] Smoke test successfully completed in 0.04s. Artifact: /kaggle/working/results/smoke_manifest.json\n"}
-,{"stream_name":"stdout","time":57.623886268,"data":"\n"}
-,{"stream_name":"stdout","time":57.623910952,"data":"--- PHASE 1: MATCHED-BUDGET BASELINES ---\n"}
-,{"stream_name":"stdout","time":57.623915818,"data":"\n"}
-,{"stream_name":"stdout","time":57.62391972,"data":"[RUN] /tmp/moonshot/target/release/moonshot baselines --output-dir /kaggle/working/results --seed 42 --target-acc 0.65\n"}
-,{"stream_name":"stdout","time":57.625947985,"data":"[Moonshot] Running Matched-Budget Baselines (seed=42, target_acc=0.65)...\n"}
-,{"stream_name":"stdout","time":70.8670034,"data":"  ✓ fsm_permutation_train -\u003e Fixed acc: 0.07, Random acc: 0.08, Frozen acc: 0.00\n"}
-,{"stream_name":"stdout","time":81.115276208,"data":"  ✓ symbolic_primitives_train -\u003e Fixed acc: 0.13, Random acc: 0.10, Frozen acc: 0.01\n"}
-,{"stream_name":"stdout","time":84.34319572,"data":"  ✓ tool_workflow_basic_train -\u003e Fixed acc: 0.46, Random acc: 0.46, Frozen acc: 0.01\n"}
-,{"stream_name":"stdout","time":84.34357376,"data":"[Moonshot] Baselines completed. Wrote /kaggle/working/results/baselines.csv\n"}
-,{"stream_name":"stdout","time":84.344130586,"data":"\n"}
-,{"stream_name":"stdout","time":84.34415348,"data":"--- PHASE 2: SELF-EDITING META-TRAINING LOOP ---\n"}
-,{"stream_name":"stdout","time":84.344159253,"data":"\n"}
-,{"stream_name":"stdout","time":84.344163979,"data":"[RUN] /tmp/moonshot/target/release/moonshot meta-train --output-dir /kaggle/working/results --seed 42 --trials 15 --target-acc 0.65 --hypothesis-id H1\n"}
-,{"stream_name":"stdout","time":84.346133105,"data":"[Moonshot] Starting Meta-Training Loop (trials=15, seed=42, target_acc=0.65)...\n"}
-,{"stream_name":"stdout","time":91.554283347,"data":"  Trial 01/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.08, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":97.921398076,"data":"  Trial 02/15: [symbolic_primitives_train] cand_gen01_trial_00 -\u003e Acc: 0.08, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":100.190765947,"data":"  Trial 03/15: [tool_workflow_basic_train] cand_gen01_trial_00 -\u003e Acc: 0.51, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":106.918594627,"data":"  Trial 04/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.06, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":113.864135259,"data":"  Trial 05/15: [symbolic_primitives_train] cand_gen01_trial_00 -\u003e Acc: 0.15, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":115.366394913,"data":"  Trial 06/15: [tool_workflow_basic_train] cand_gen01_trial_00 -\u003e Acc: 0.51, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":119.742326568,"data":"  Trial 07/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.06, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":124.744725967,"data":"  Trial 08/15: [symbolic_primitives_train] cand_gen01_trial_00 -\u003e Acc: 0.07, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":126.367523619,"data":"  Trial 09/15: [tool_workflow_basic_train] cand_gen01_trial_00 -\u003e Acc: 0.43, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":131.101337592,"data":"  Trial 10/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.08, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":136.129329154,"data":"  Trial 11/15: [symbolic_primitives_train] cand_gen01_trial_00 -\u003e Acc: 0.10, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":138.331714307,"data":"  Trial 12/15: [tool_workflow_basic_train] cand_gen01_trial_00 -\u003e Acc: 0.46, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":145.678398237,"data":"  Trial 13/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.09, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":148.948176179,"data":"  Trial 14/15: [symbolic_primitives_train] cand_gen01_trial_00 -\u003e Acc: 0.12, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":151.187325607,"data":"  Trial 15/15: [tool_workflow_basic_train] cand_gen01_trial_00 -\u003e Acc: 0.49, SamplesToTarget: NA, Status: Rejected\n"}
-,{"stream_name":"stdout","time":151.18736008,"data":"[Moonshot] Meta-training finished: 0 promotions, 15 rollbacks.\n"}
-,{"stream_name":"stdout","time":151.187557594,"data":"  ✓ Saved best incumbent checkpoint: /kaggle/working/results/best_checkpoint.json\n"}
-,{"stream_name":"stdout","time":151.188558067,"data":"\n"}
-,{"stream_name":"stdout","time":151.188585721,"data":"--- PHASE 3: HELD-OUT META-TEST EVALUATION ---\n"}
-,{"stream_name":"stdout","time":151.18906619,"data":"\n"}
-,{"stream_name":"stdout","time":151.189088488,"data":"[RUN] /tmp/moonshot/target/release/moonshot evaluate --output-dir /kaggle/working/results --checkpoint-path /kaggle/working/results/best_checkpoint.json\n"}
-,{"stream_name":"stdout","time":151.190794831,"data":"[Moonshot] Evaluating Frozen Candidate on Unopened Held-Out Meta-Test Families...\n"}
-,{"stream_name":"stdout","time":151.190834021,"data":"  ✓ Loaded evolved learning rule from checkpoint: cand_init\n"}
-,{"stream_name":"stdout","time":151.190840744,"data":"  Evaluating Held-Out Family: fsm_hierarchical_tree_test\n"}
-,{"stream_name":"stdout","time":168.730683539,"data":"    Seed 101: Fixed (acc=0.32, samples=NA), Evolved (acc=0.32, samples=NA)\n"}
-,{"stream_name":"stdout","time":184.745033245,"data":"    Seed 202: Fixed (acc=0.40, samples=NA), Evolved (acc=0.40, samples=NA)\n"}
-,{"stream_name":"stdout","time":202.396844581,"data":"    Seed 303: Fixed (acc=0.35, samples=NA), Evolved (acc=0.35, samples=NA)\n"}
-,{"stream_name":"stdout","time":202.396881775,"data":"  Evaluating Held-Out Family: symbolic_compositional_test\n"}
-,{"stream_name":"stdout","time":211.344586977,"data":"    Seed 101: Fixed (acc=0.07, samples=NA), Evolved (acc=0.07, samples=NA)\n"}
-,{"stream_name":"stdout","time":222.804030735,"data":"    Seed 202: Fixed (acc=0.10, samples=NA), Evolved (acc=0.10, samples=NA)\n"}
-,{"stream_name":"stdout","time":231.888030652,"data":"    Seed 303: Fixed (acc=0.02, samples=NA), Evolved (acc=0.02, samples=NA)\n"}
-,{"stream_name":"stdout","time":231.888075681,"data":"  Evaluating Held-Out Family: tool_workflow_chained_test\n"}
-,{"stream_name":"stdout","time":245.031251698,"data":"    Seed 101: Fixed (acc=0.54, samples=58), Evolved (acc=0.54, samples=58)\n"}
-,{"stream_name":"stdout","time":258.086001152,"data":"    Seed 202: Fixed (acc=0.55, samples=50), Evolved (acc=0.55, samples=50)\n"}
-,{"stream_name":"stdout","time":271.227885423,"data":"    Seed 303: Fixed (acc=0.54, samples=40), Evolved (acc=0.54, samples=40)\n"}
-,{"stream_name":"stdout","time":271.22792536,"data":"[Moonshot] Evaluation complete. Saved ablations to /kaggle/working/results/ablations.csv and findings to /kaggle/working/results/findings.md\n"}
-,{"stream_name":"stdout","time":271.228853743,"data":"\n"}
-,{"stream_name":"stdout","time":271.228878456,"data":"============================================================\n"}
-,{"stream_name":"stdout","time":271.228884292,"data":"EXPERIMENT STAGE COMPLETE. ARTIFACTS GENERATED:\n"}
-,{"stream_name":"stdout","time":271.228889487,"data":"============================================================\n"}
-,{"stream_name":"stdout","time":271.229141506,"data":"  - baselines.csv (631 bytes)\n"}
-,{"stream_name":"stdout","time":271.229155595,"data":"  - best_checkpoint.json (583 bytes)\n"}
-,{"stream_name":"stdout","time":271.229161292,"data":"  - findings.md (577 bytes)\n"}
-,{"stream_name":"stdout","time":271.229967798,"data":"  - trials.jsonl (11525 bytes)\n"}
-,{"stream_name":"stdout","time":271.229992743,"data":"  - learning_curves.csv (1145 bytes)\n"}
-,{"stream_name":"stdout","time":271.230027001,"data":"  - ablations.csv (1184 bytes)\n"}
-,{"stream_name":"stdout","time":271.23003247,"data":"  - smoke_manifest.json (560 bytes)\n"}
-,{"stream_name":"stderr","time":274.287708966,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":274.287752342,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":274.725169924,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":274.725208622,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":276.658853577,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
-,{"stream_name":"stderr","time":278.035693778,"data":"[NbConvertApp] Writing 297443 bytes to __results__.html\n"}
+[{"stream_name":"stdout","time":1.276116914,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1.276178853,"data":"MOONSHOT KAGGLE ENVIRONMENT PROBE\n"}
+,{"stream_name":"stdout","time":1.27618404,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1.285000976,"data":"Platform: Linux-6.18.55+-x86_64-with-glibc2.39\n"}
+,{"stream_name":"stdout","time":1.285043203,"data":"Python: 3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]\n"}
+,{"stream_name":"stdout","time":1.285048139,"data":"\n"}
+,{"stream_name":"stdout","time":1.285050976,"data":"[RUN] nvidia-smi\n"}
+,{"stream_name":"stderr","time":1.298963138,"data":"/bin/sh: 1: nvidia-smi: not found\n"}
+,{"stream_name":"stdout","time":1.299783301,"data":"\n"}
+,{"stream_name":"stdout","time":1.299812373,"data":"[SETUP] Installing Rust toolchain via rustup...\n"}
+,{"stream_name":"stdout","time":1.299835053,"data":"\n"}
+,{"stream_name":"stdout","time":1.299840173,"data":"[RUN] curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable\n"}
+,{"stream_name":"stderr","time":1.786881596,"data":"info: downloading installer\n"}
+,{"stream_name":"stderr","time":2.221475412,"data":"info: profile set to default\n"}
+,{"stream_name":"stderr","time":2.221504199,"data":"info: default host tuple is x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":2.222454416,"data":"info: syncing channel updates for stable-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":2.729888146,"data":"info: latest update on 2026-11-12 for version 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stderr","time":2.729930233,"data":"info: downloading 6 components\n"}
+,{"stream_name":"stderr","time":27.441012438,"data":"info: default toolchain set to stable-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":27.441016335,"data":"\n"}
+,{"stream_name":"stdout","time":27.460139353,"data":"  stable-x86_64-unknown-linux-gnu installed - rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stdout","time":27.460179002,"data":"\n"}
+,{"stream_name":"stdout","time":27.460184551,"data":"\n"}
+,{"stream_name":"stdout","time":27.460188802,"data":"Rust is installed now. Great!\n"}
+,{"stream_name":"stdout","time":27.460192973,"data":"\n"}
+,{"stream_name":"stdout","time":27.460197439,"data":"To get started you may need to restart your current shell.\n"}
+,{"stream_name":"stdout","time":27.460201876,"data":"This would reload your PATH environment variable to include\n"}
+,{"stream_name":"stdout","time":27.460206133,"data":"Cargo's bin directory ($HOME/.cargo/bin).\n"}
+,{"stream_name":"stdout","time":27.460210516,"data":"\n"}
+,{"stream_name":"stdout","time":27.460215959,"data":"To configure your current shell, you need to source the\n"}
+,{"stream_name":"stdout","time":27.460220676,"data":"corresponding env file under $HOME/.cargo.\n"}
+,{"stream_name":"stdout","time":27.460225493,"data":"\n"}
+,{"stream_name":"stdout","time":27.460279479,"data":"Consider running the right command for your shell (note the leading DOT):\n"}
+,{"stream_name":"stdout","time":27.46028471,"data":". \"$HOME/.cargo/env\" # For sh/ash/dash/pdksh/bash\n"}
+,{"stream_name":"stdout","time":27.460288911,"data":"cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":27.460292954,"data":"CC_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":27.460297222,"data":"cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":27.460301092999998,"data":"CC_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":27.460318776,"data":"cargo:rerun-if-env-changed=HOST_CC\n"}
+,{"stream_name":"stdout","time":27.460323267,"data":"HOST_CC = None\n"}
+,{"stream_name":"stdout","time":27.460327273,"data":"cargo:rerun-if-env-changed=CC\n"}
+,{"stream_name":"stdout","time":27.460331466,"data":"CC = None\n"}
+,{"stream_name":"stdout","time":27.490950934,"data":"cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT\n"}
+,{"stream_name":"stdout","time":27.795540213,"data":"cargo:rerun-if-env-changed=CPATH\n"}
+,{"stream_name":"stdout","time":27.795600747,"data":"cargo:rerun-if-env-changed=C_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.795608604999998,"data":"cargo:rerun-if-env-changed=CPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.795613881,"data":"cargo:rerun-if-env-changed=OBJC_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.795618502,"data":"cargo:rerun-if-env-changed=OBJCPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.795623186,"data":"cargo:rerun-if-env-changed=COMPILER_PATH\n"}
+,{"stream_name":"stdout","time":27.795627497,"data":"cargo:rerun-if-env-changed=SOURCE_DATE_EPOCH\n"}
+,{"stream_name":"stdout","time":27.795631959,"data":"cargo:rerun-if-env-changed=GCC_EXEC_PREFIX\n"}
+,{"stream_name":"stdout","time":27.795636191,"data":"cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS\n"}
+,{"stream_name":"stdout","time":27.795640527,"data":"CRATE_CC_NO_DEFAULTS = None\n"}
+,{"stream_name":"stdout","time":27.795644757,"data":"cargo:rerun-if-env-changed=CFLAGS\n"}
+,{"stream_name":"stdout","time":27.795649052,"data":"CFLAGS = None\n"}
+,{"stream_name":"stdout","time":27.795653398,"data":"cargo:rerun-if-env-changed=HOST_CFLAGS\n"}
+,{"stream_name":"stdout","time":27.79566056,"data":"HOST_CFLAGS = None\n"}
+,{"stream_name":"stdout","time":27.7956697,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":27.795690063,"data":"CFLAGS_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":27.795695728,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":27.795701184,"data":"CFLAGS_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":27.841410869,"data":"\n"}
+,{"stream_name":"stdout","time":27.841475693,"data":"[RUN] rustc --version\n"}
+,{"stream_name":"stdout","time":27.86996213,"data":"rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stdout","time":27.872965083,"data":"\n"}
+,{"stream_name":"stdout","time":27.873024289,"data":"[RUN] cargo --version\n"}
+,{"stream_name":"stdout","time":27.904669333,"data":"cargo 1.100.0 (3acc79c0c 2026-11-05)\n"}
+,{"stream_name":"stdout","time":27.907153098,"data":"\n"}
+,{"stream_name":"stdout","time":27.907389339,"data":"[GIT] Cloning https://github.com/JEDIx420/moonshot.git into /tmp/moonshot...\n"}
+,{"stream_name":"stdout","time":27.907398996,"data":"\n"}
+,{"stream_name":"stdout","time":27.907408178,"data":"[RUN] git clone https://github.com/JEDIx420/moonshot.git /tmp/moonshot\n"}
+,{"stream_name":"stderr","time":27.981104704,"data":"Cloning into '/tmp/moonshot'...\n"}
+,{"stream_name":"stdout","time":28.888878879,"data":"[GIT] Active commit: 712e897ae094e52f039f6f0ac7cde022595ae578\n"}
+,{"stream_name":"stdout","time":28.888950241,"data":"\n"}
+,{"stream_name":"stdout","time":28.888958238,"data":"[BUILD] Building moonshot release binary...\n"}
+,{"stream_name":"stdout","time":28.888963201,"data":"\n"}
+,{"stream_name":"stdout","time":28.888968114,"data":"[RUN] cargo build --release\n"}
+,{"stream_name":"stderr","time":29.015843835,"data":"    Updating crates.io index\n"}
+,{"stream_name":"stderr","time":29.592414652,"data":" Downloading crates ...\n"}
+,{"stream_name":"stderr","time":29.677701213,"data":"  Downloaded anstyle-query v1.1.5\n"}
+,{"stream_name":"stderr","time":29.68850361,"data":"  Downloaded anstyle v1.0.14\n"}
+,{"stream_name":"stderr","time":29.693134593,"data":"  Downloaded anstyle-parse v1.0.0\n"}
+,{"stream_name":"stderr","time":29.696878109,"data":"  Downloaded autocfg v1.5.1\n"}
+,{"stream_name":"stderr","time":29.700773538,"data":"  Downloaded anstream v1.0.0\n"}
+,{"stream_name":"stderr","time":29.705550475,"data":"  Downloaded strsim v0.11.1\n"}
+,{"stream_name":"stderr","time":29.708761863,"data":"  Downloaded num-traits v0.2.19\n"}
+,{"stream_name":"stderr","time":29.714212765,"data":"  Downloaded rand_chacha v0.3.1\n"}
+,{"stream_name":"stderr","time":29.717605887,"data":"  Downloaded digest v0.10.7\n"}
+,{"stream_name":"stderr","time":29.723332597,"data":"  Downloaded quote v1.0.47\n"}
+,{"stream_name":"stderr","time":29.730124493,"data":"  Downloaded clap_lex v1.1.1\n"}
+,{"stream_name":"stderr","time":29.732339809,"data":"  Downloaded unicode-ident v1.0.27\n"}
+,{"stream_name":"stderr","time":29.738500067,"data":"  Downloaded version_check v0.9.5\n"}
+,{"stream_name":"stderr","time":29.741164753,"data":"  Downloaded is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stderr","time":29.744302642,"data":"  Downloaded itoa v1.0.19\n"}
+,{"stream_name":"stderr","time":29.747465143,"data":"  Downloaded clap_derive v4.6.7\n"}
+,{"stream_name":"stderr","time":29.752406717,"data":"  Downloaded ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stderr","time":29.755299813,"data":"  Downloaded utf8parse v0.2.2\n"}
+,{"stream_name":"stderr","time":29.757663308,"data":"  Downloaded colorchoice v1.0.5\n"}
+,{"stream_name":"stderr","time":29.759724651,"data":"  Downloaded generic-array v0.14.7\n"}
+,{"stream_name":"stderr","time":29.763702551,"data":"  Downloaded block-buffer v0.10.4\n"}
+,{"stream_name":"stderr","time":29.766764159,"data":"  Downloaded cfg-if v1.0.5\n"}
+,{"stream_name":"stderr","time":29.769151662,"data":"  Downloaded heck v0.5.0\n"}
+,{"stream_name":"stderr","time":29.771728382,"data":"  Downloaded cpufeatures v0.2.17\n"}
+,{"stream_name":"stderr","time":29.774337441,"data":"  Downloaded crypto-common v0.1.7\n"}
+,{"stream_name":"stderr","time":29.775986917,"data":"  Downloaded getrandom v0.2.17\n"}
+,{"stream_name":"stderr","time":29.780728889,"data":"  Downloaded proc-macro2 v1.0.107\n"}
+,{"stream_name":"stderr","time":29.786596718,"data":"  Downloaded zmij v1.0.23\n"}
+,{"stream_name":"stderr","time":29.789406727,"data":"  Downloaded iana-time-zone v0.1.65\n"}
+,{"stream_name":"stderr","time":29.794971916,"data":"  Downloaded rand v0.8.8\n"}
+,{"stream_name":"stderr","time":29.801853796,"data":"  Downloaded rand_core v0.6.4\n"}
+,{"stream_name":"stderr","time":29.804574363,"data":"  Downloaded serde v1.0.229\n"}
+,{"stream_name":"stderr","time":29.810644673,"data":"  Downloaded serde_core v1.0.229\n"}
+,{"stream_name":"stderr","time":29.817197579,"data":"  Downloaded sha2 v0.10.9\n"}
+,{"stream_name":"stderr","time":29.821750663,"data":"  Downloaded memchr v2.8.3\n"}
+,{"stream_name":"stderr","time":29.832036609,"data":"  Downloaded serde_derive v1.0.229\n"}
+,{"stream_name":"stderr","time":29.852543746,"data":"  Downloaded typenum v1.20.1\n"}
+,{"stream_name":"stderr","time":29.858894517,"data":"  Downloaded clap v4.6.7\n"}
+,{"stream_name":"stderr","time":29.876963984,"data":"  Downloaded serde_json v1.0.154\n"}
+,{"stream_name":"stderr","time":29.891181488,"data":"  Downloaded clap_builder v4.6.7\n"}
+,{"stream_name":"stderr","time":29.904540981,"data":"  Downloaded chrono v0.4.45\n"}
+,{"stream_name":"stderr","time":29.919720572,"data":"  Downloaded syn v3.0.10\n"}
+,{"stream_name":"stderr","time":29.942319051,"data":"  Downloaded zerocopy v0.8.63\n"}
+,{"stream_name":"stderr","time":29.994593802,"data":"  Downloaded libc v0.2.191\n"}
+,{"stream_name":"stderr","time":30.246748972,"data":"   Compiling proc-macro2 v1.0.107\n"}
+,{"stream_name":"stderr","time":30.246842129,"data":"   Compiling quote v1.0.47\n"}
+,{"stream_name":"stderr","time":30.246847803,"data":"   Compiling unicode-ident v1.0.27\n"}
+,{"stream_name":"stderr","time":30.246890607,"data":"   Compiling version_check v0.9.5\n"}
+,{"stream_name":"stderr","time":30.371735412,"data":"   Compiling libc v0.2.191\n"}
+,{"stream_name":"stderr","time":30.608933323,"data":"   Compiling serde_core v1.0.229\n"}
+,{"stream_name":"stderr","time":30.718509774,"data":"   Compiling generic-array v0.14.7\n"}
+,{"stream_name":"stderr","time":30.899336435,"data":"   Compiling cfg-if v1.0.5\n"}
+,{"stream_name":"stderr","time":30.950889621,"data":"   Compiling typenum v1.20.1\n"}
+,{"stream_name":"stderr","time":30.990421242,"data":"   Compiling autocfg v1.5.1\n"}
+,{"stream_name":"stderr","time":31.066820079,"data":"   Compiling zerocopy v0.8.63\n"}
+,{"stream_name":"stderr","time":31.840105974,"data":"   Compiling num-traits v0.2.19\n"}
+,{"stream_name":"stderr","time":32.300090579,"data":"   Compiling syn v3.0.10\n"}
+,{"stream_name":"stderr","time":33.961881364999996,"data":"   Compiling zmij v1.0.23\n"}
+,{"stream_name":"stderr","time":34.031537317,"data":"   Compiling serde v1.0.229\n"}
+,{"stream_name":"stderr","time":34.207570071,"data":"   Compiling getrandom v0.2.17\n"}
+,{"stream_name":"stderr","time":34.294830606,"data":"   Compiling crypto-common v0.1.7\n"}
+,{"stream_name":"stderr","time":34.39757934,"data":"   Compiling block-buffer v0.10.4\n"}
+,{"stream_name":"stderr","time":34.618695394,"data":"   Compiling serde_json v1.0.154\n"}
+,{"stream_name":"stderr","time":36.345917183,"data":"   Compiling digest v0.10.7\n"}
+,{"stream_name":"stderr","time":36.621639409,"data":"   Compiling rand_core v0.6.4\n"}
+,{"stream_name":"stderr","time":37.398491871,"data":"   Compiling iana-time-zone v0.1.65\n"}
+,{"stream_name":"stderr","time":37.537082894,"data":"   Compiling memchr v2.8.3\n"}
+,{"stream_name":"stderr","time":38.147907682,"data":"   Compiling cpufeatures v0.2.17\n"}
+,{"stream_name":"stderr","time":38.193718684,"data":"   Compiling itoa v1.0.19\n"}
+,{"stream_name":"stderr","time":39.608444956,"data":"   Compiling serde_derive v1.0.229\n"}
+,{"stream_name":"stderr","time":39.938611951,"data":"   Compiling sha2 v0.10.9\n"}
+,{"stream_name":"stderr","time":42.929089465,"data":"   Compiling ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stderr","time":43.718907566,"data":"   Compiling rand_chacha v0.3.1\n"}
+,{"stream_name":"stderr","time":44.04516726,"data":"   Compiling utf8parse v0.2.2\n"}
+,{"stream_name":"stderr","time":44.124520911,"data":"   Compiling anstyle-parse v1.0.0\n"}
+,{"stream_name":"stderr","time":44.277835591,"data":"   Compiling rand v0.8.8\n"}
+,{"stream_name":"stderr","time":44.404079308,"data":"   Compiling anstyle-query v1.1.5\n"}
+,{"stream_name":"stderr","time":44.479143485,"data":"   Compiling colorchoice v1.0.5\n"}
+,{"stream_name":"stderr","time":44.570703684,"data":"   Compiling is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stderr","time":44.626486579,"data":"   Compiling anstyle v1.0.14\n"}
+,{"stream_name":"stderr","time":44.798394342,"data":"   Compiling clap_lex v1.1.1\n"}
+,{"stream_name":"stderr","time":44.98366692,"data":"   Compiling anstream v1.0.0\n"}
+,{"stream_name":"stderr","time":45.276766816,"data":"   Compiling heck v0.5.0\n"}
+,{"stream_name":"stderr","time":45.519088765,"data":"   Compiling strsim v0.11.1\n"}
+,{"stream_name":"stderr","time":45.79831763,"data":"   Compiling clap_derive v4.6.7\n"}
+,{"stream_name":"stderr","time":45.862113369,"data":"   Compiling clap_builder v4.6.7\n"}
+,{"stream_name":"stderr","time":46.814744277,"data":"   Compiling chrono v0.4.45\n"}
+,{"stream_name":"stderr","time":49.170751269,"data":"   Compiling moonshot-core v0.1.0 (/tmp/moonshot/crates/moonshot-core)\n"}
+,{"stream_name":"stderr","time":49.988888741,"data":"   Compiling moonshot-model v0.1.0 (/tmp/moonshot/crates/moonshot-model)\n"}
+,{"stream_name":"stderr","time":50.455581585,"data":"   Compiling moonshot-oracle v0.1.0 (/tmp/moonshot/crates/moonshot-oracle)\n"}
+,{"stream_name":"stderr","time":51.617917174,"data":"   Compiling moonshot-editor v0.1.0 (/tmp/moonshot/crates/moonshot-editor)\n"}
+,{"stream_name":"stderr","time":52.405462389,"data":"   Compiling clap v4.6.7\n"}
+,{"stream_name":"stderr","time":56.991369994,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot/crates/moonshot-runner)\n"}
+,{"stream_name":"stderr","time":59.372033662,"data":"    Finished `release` profile [optimized] target(s) in 30.46s\n"}
+,{"stream_name":"stdout","time":59.419197336,"data":"\n"}
+,{"stream_name":"stdout","time":59.419250337,"data":"[EXEC] Running stage: all\n"}
+,{"stream_name":"stdout","time":59.419258794,"data":"\n"}
+,{"stream_name":"stdout","time":59.419263374,"data":"--- PHASE 0: SMOKE TEST ---\n"}
+,{"stream_name":"stdout","time":59.419267394,"data":"\n"}
+,{"stream_name":"stdout","time":59.419271274,"data":"[RUN] /tmp/moonshot/target/release/moonshot smoke --output-dir /kaggle/working/results --git-commit 712e897ae094e52f039f6f0ac7cde022595ae578\n"}
+,{"stream_name":"stdout","time":59.42180765,"data":"[Moonshot] Running Phase 0 Smoke Test...\n"}
+,{"stream_name":"stdout","time":59.422277405,"data":"[Hardware] CPUs: 4, RAM: 16 GB, GPU: None, CUDA: None\n"}
+,{"stream_name":"stdout","time":59.422302937,"data":"[1/4] Verifying Deterministic Task Generators \u0026 Immutable Oracle...\n"}
+,{"stream_name":"stdout","time":59.422309373,"data":"  ✓ Oracle task generation verified (10 train, 5 val, 5 test examples).\n"}
+,{"stream_name":"stdout","time":59.422315433,"data":"[2/4] Initializing Tiny Neural Learner...\n"}
+,{"stream_name":"stdout","time":59.433071689,"data":"  ✓ TinyTransformer: 77376 parameters (~0.08M), SHA256: c53256e952eb173ca3d490af201a911d351ad766c8349ffe0aa2efebd56e15f1\n"}
+,{"stream_name":"stdout","time":59.433105388,"data":"[3/4] Verifying Bounded Self-Editing Typechecker \u0026 Sandbox...\n"}
+,{"stream_name":"stdout","time":59.43311212,"data":"  ✓ Proposed safe EditPlan: opt=AdamW, lr=0.01500, inner_steps=35\n"}
+,{"stream_name":"stdout","time":59.433117477,"data":"[4/4] Executing Single Adaptation Step...\n"}
+,{"stream_name":"stdout","time":59.591645883,"data":"  ✓ Single step loss: 4.5759\n"}
+,{"stream_name":"stdout","time":59.591673327,"data":"[Moonshot] Smoke test successfully completed in 0.17s. Artifact: /kaggle/working/results/smoke_manifest.json\n"}
+,{"stream_name":"stdout","time":59.592301177,"data":"\n"}
+,{"stream_name":"stdout","time":59.592321568,"data":"--- PHASE 1: MATCHED-BUDGET BASELINES ---\n"}
+,{"stream_name":"stdout","time":59.592326713,"data":"\n"}
+,{"stream_name":"stdout","time":59.5923394,"data":"[RUN] /tmp/moonshot/target/release/moonshot baselines --output-dir /kaggle/working/results --seed 42 --target-acc 0.45\n"}
+,{"stream_name":"stdout","time":59.594533132,"data":"[Moonshot] Running Matched-Budget Baselines (seed=42, target_acc=0.45)...\n"}
+,{"stream_name":"stdout","time":71.601614759,"data":"  ✓ fsm_permutation_train -\u003e Fixed acc: 0.07, Random acc: 0.08, Frozen acc: 0.00\n"}
+,{"stream_name":"stdout","time":81.104365084,"data":"  ✓ symbolic_primitives_train -\u003e Fixed acc: 0.13, Random acc: 0.10, Frozen acc: 0.01\n"}
+,{"stream_name":"stdout","time":84.22359139,"data":"  ✓ tool_workflow_basic_train -\u003e Fixed acc: 0.46, Random acc: 0.46, Frozen acc: 0.01\n"}
+,{"stream_name":"stdout","time":84.22363076,"data":"[Moonshot] Baselines completed. Wrote /kaggle/working/results/baselines.csv\n"}
+,{"stream_name":"stdout","time":84.22433344,"data":"\n"}
+,{"stream_name":"stdout","time":84.224360699,"data":"--- PHASE 2: SELF-EDITING META-TRAINING LOOP ---\n"}
+,{"stream_name":"stdout","time":84.224367822,"data":"\n"}
+,{"stream_name":"stdout","time":84.224373685,"data":"[RUN] /tmp/moonshot/target/release/moonshot meta-train --output-dir /kaggle/working/results --seed 42 --trials 15 --target-acc 0.45 --hypothesis-id H1\n"}
+,{"stream_name":"stdout","time":84.226431513,"data":"[Moonshot] Starting Meta-Training Loop (trials=15, seed=42, target_acc=0.45)...\n"}
+,{"stream_name":"stdout","time":94.161554131,"data":"  Trial 01/15: [fsm_permutation_train] cand_gen01_trial_00 -\u003e Acc: 0.08, SamplesToTarget: NA, Status: Promoted\n"}
+,{"stream_name":"stdout","time":102.560877092,"data":"  Trial 02/15: [symbolic_primitives_train] cand_gen02_trial_00 -\u003e Acc: 0.09, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":105.489628629,"data":"  Trial 03/15: [tool_workflow_basic_train] cand_gen02_trial_00 -\u003e Acc: 0.51, SamplesToTarget: 64, Status: Promoted\n"}
+,{"stream_name":"stdout","time":115.819666473,"data":"  Trial 04/15: [fsm_permutation_train] cand_gen03_trial_00 -\u003e Acc: 0.10, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":123.383414187,"data":"  Trial 05/15: [symbolic_primitives_train] cand_gen03_trial_00 -\u003e Acc: 0.03, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":126.668089932,"data":"  Trial 06/15: [tool_workflow_basic_train] cand_gen03_trial_00 -\u003e Acc: 0.52, SamplesToTarget: 8, Status: Promoted\n"}
+,{"stream_name":"stdout","time":134.211457667,"data":"  Trial 07/15: [fsm_permutation_train] cand_gen04_trial_00 -\u003e Acc: 0.02, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":140.375123194,"data":"  Trial 08/15: [symbolic_primitives_train] cand_gen04_trial_00 -\u003e Acc: 0.05, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":144.284004649,"data":"  Trial 09/15: [tool_workflow_basic_train] cand_gen04_trial_00 -\u003e Acc: 0.45, SamplesToTarget: 8, Status: Promoted\n"}
+,{"stream_name":"stdout","time":154.560314986,"data":"  Trial 10/15: [fsm_permutation_train] cand_gen05_trial_00 -\u003e Acc: 0.07, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":161.90568028,"data":"  Trial 11/15: [symbolic_primitives_train] cand_gen05_trial_00 -\u003e Acc: 0.07, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":165.480188505,"data":"  Trial 12/15: [tool_workflow_basic_train] cand_gen05_trial_00 -\u003e Acc: 0.45, SamplesToTarget: 8, Status: Promoted\n"}
+,{"stream_name":"stdout","time":175.195890178,"data":"  Trial 13/15: [fsm_permutation_train] cand_gen06_trial_00 -\u003e Acc: 0.04, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":182.640816391,"data":"  Trial 14/15: [symbolic_primitives_train] cand_gen06_trial_00 -\u003e Acc: 0.08, SamplesToTarget: NA, Status: Rejected\n"}
+,{"stream_name":"stdout","time":186.176052983,"data":"  Trial 15/15: [tool_workflow_basic_train] cand_gen06_trial_00 -\u003e Acc: 0.49, SamplesToTarget: 8, Status: Promoted\n"}
+,{"stream_name":"stdout","time":186.176097465,"data":"[Moonshot] Meta-training finished: 6 promotions, 9 rollbacks.\n"}
+,{"stream_name":"stdout","time":186.176120708,"data":"  ✓ Saved best incumbent checkpoint: /kaggle/working/results/best_checkpoint.json\n"}
+,{"stream_name":"stdout","time":186.1771796,"data":"\n"}
+,{"stream_name":"stdout","time":186.177209789,"data":"--- PHASE 3: HELD-OUT META-TEST EVALUATION ---\n"}
+,{"stream_name":"stdout","time":186.177394083,"data":"\n"}
+,{"stream_name":"stdout","time":186.177409063,"data":"[RUN] /tmp/moonshot/target/release/moonshot evaluate --output-dir /kaggle/working/results --checkpoint-path /kaggle/working/results/best_checkpoint.json\n"}
+,{"stream_name":"stdout","time":186.179759627,"data":"[Moonshot] Evaluating Frozen Candidate on Unopened Held-Out Meta-Test Families...\n"}
+,{"stream_name":"stdout","time":186.17979127,"data":"  ✓ Loaded evolved learning rule from checkpoint: cand_gen06_trial_00\n"}
+,{"stream_name":"stdout","time":186.179852466,"data":"  Evaluating Held-Out Family: fsm_hierarchical_tree_test\n"}
+,{"stream_name":"stdout","time":208.351556926,"data":"    Seed 101: Fixed (acc=0.32, samples=NA), Evolved (acc=0.34, samples=NA)\n"}
+,{"stream_name":"stdout","time":228.182644607,"data":"    Seed 202: Fixed (acc=0.40, samples=NA), Evolved (acc=0.41, samples=NA)\n"}
+,{"stream_name":"stdout","time":251.046604506,"data":"    Seed 303: Fixed (acc=0.35, samples=NA), Evolved (acc=0.38, samples=NA)\n"}
+,{"stream_name":"stdout","time":251.047520499,"data":"  Evaluating Held-Out Family: symbolic_compositional_test\n"}
+,{"stream_name":"stdout","time":262.67730869,"data":"    Seed 101: Fixed (acc=0.07, samples=NA), Evolved (acc=0.08, samples=NA)\n"}
+,{"stream_name":"stdout","time":277.728880784,"data":"    Seed 202: Fixed (acc=0.10, samples=NA), Evolved (acc=0.12, samples=NA)\n"}
+,{"stream_name":"stdout","time":289.447959744,"data":"    Seed 303: Fixed (acc=0.02, samples=NA), Evolved (acc=0.10, samples=NA)\n"}
+,{"stream_name":"stdout","time":289.448013054,"data":"  Evaluating Held-Out Family: tool_workflow_chained_test\n"}
+,{"stream_name":"stdout","time":306.321051375,"data":"    Seed 101: Fixed (acc=0.54, samples=32), Evolved (acc=0.56, samples=32)\n"}
+,{"stream_name":"stdout","time":323.169579316,"data":"    Seed 202: Fixed (acc=0.55, samples=48), Evolved (acc=0.55, samples=40)\n"}
+,{"stream_name":"stdout","time":340.089697599,"data":"    Seed 303: Fixed (acc=0.54, samples=24), Evolved (acc=0.55, samples=24)\n"}
+,{"stream_name":"stdout","time":340.089978566,"data":"[Moonshot] Evaluation complete. Saved ablations to /kaggle/working/results/ablations.csv and findings to /kaggle/working/results/findings.md\n"}
+,{"stream_name":"stdout","time":340.09085023,"data":"\n"}
+,{"stream_name":"stdout","time":340.090871206,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":340.090877254,"data":"EXPERIMENT STAGE COMPLETE. ARTIFACTS GENERATED:\n"}
+,{"stream_name":"stdout","time":340.090882257,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":340.091313671,"data":"  - learning_curves.csv (1143 bytes)\n"}
+,{"stream_name":"stdout","time":340.091328509,"data":"  - findings.md (577 bytes)\n"}
+,{"stream_name":"stdout","time":340.091333943,"data":"  - baselines.csv (629 bytes)\n"}
+,{"stream_name":"stdout","time":340.09133888,"data":"  - best_checkpoint.json (859 bytes)\n"}
+,{"stream_name":"stdout","time":340.091343706,"data":"  - trials.jsonl (11521 bytes)\n"}
+,{"stream_name":"stdout","time":340.091362546,"data":"  - ablations.csv (1184 bytes)\n"}
+,{"stream_name":"stdout","time":340.091376611,"data":"  - smoke_manifest.json (559 bytes)\n"}
+,{"stream_name":"stderr","time":343.657367502,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":343.65740374,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":344.307285626,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":344.307319844,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":347.228081346,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":348.833205774,"data":"[NbConvertApp] Writing 297443 bytes to __results__.html\n"}
 ]

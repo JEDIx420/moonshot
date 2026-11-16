@@ -1,0 +1,20 @@
+{
+  "run_id": "smoke_20261116_075032",
+  "git_commit": "712e897ae094e52f039f6f0ac7cde022595ae578",
+  "hardware": {
+    "cpu_count": 4,
+    "ram_bytes": 17179869184,
+    "gpu_name": null,
+    "gpu_memory_bytes": null,
+    "cuda_version": null
+  },
+  "rust_version": "0.1.0",
+  "backend": "rust-native-autodiff",
+  "start_time": "2026-11-16T07:50:32.423990837Z",
+  "duration_seconds": 0.169821508,
+  "gpu_minutes": 0.002830358466666667,
+  "artifacts": [
+    "smoke_manifest.json"
+  ],
+  "notes": "Phase 0 infrastructure and reproducibility smoke test passed."
+}

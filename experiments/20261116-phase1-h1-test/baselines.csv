@@ -1,0 +1,10 @@
+condition,task_family,seed,samples_to_target,target_reached,final_acc,gpu_seconds
+Frozen,fsm_permutation_train,42,NA,false,0.0000,0.01
+FixedLearner,fsm_permutation_train,42,NA,false,0.0720,7.77
+RandomEditPolicy,fsm_permutation_train,42,NA,false,0.0844,4.01
+Frozen,symbolic_primitives_train,42,NA,false,0.0071,0.01
+FixedLearner,symbolic_primitives_train,42,NA,false,0.1292,6.29
+RandomEditPolicy,symbolic_primitives_train,42,NA,false,0.0989,3.04
+Frozen,tool_workflow_basic_train,42,NA,false,0.0140,0.01
+FixedLearner,tool_workflow_basic_train,42,24,true,0.4550,2.21
+RandomEditPolicy,tool_workflow_basic_train,42,90,true,0.4550,0.85

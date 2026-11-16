@@ -1,0 +1,33 @@
+{
+  "id": "cand_gen06_trial_00",
+  "weights_checksum": "be9dabc6aee30fbe28e75e2196f87da5f68f8277e8b6398479e258f15cceb8de",
+  "learning_rule": {
+    "optimizer_type": "AdamW",
+    "base_lr": 0.0165,
+    "layer_lr_multipliers": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "sampling_policy": "ErrorWeighted",
+    "schedule_policy": "CosineDecay",
+    "weight_decay": 0.001,
+    "grad_clip": 1.0,
+    "inner_steps": 41,
+    "sparse_gradient_threshold": null
+  },
+  "meta_generation": 6,
+  "validated_accuracy": 0.49100012,
+  "adaptation_history": [
+    "initial_baseline",
+    "promoted in trial_0001 (acc: 0.08)",
+    "promoted in trial_0003 (acc: 0.51)",
+    "promoted in trial_0006 (acc: 0.52)",
+    "promoted in trial_0009 (acc: 0.45)",
+    "promoted in trial_0012 (acc: 0.45)",
+    "promoted in trial_0015 (acc: 0.49)"
+  ]
+}

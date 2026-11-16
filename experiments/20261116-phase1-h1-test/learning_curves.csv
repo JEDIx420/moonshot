@@ -1,0 +1,16 @@
+trial_idx,task_family,candidate_id,status,samples_to_target,final_acc,gpu_secs
+1,fsm_permutation_train,cand_gen01_trial_00,Promoted,NA,0.0801,9.91
+2,symbolic_primitives_train,cand_gen02_trial_00,Rejected,NA,0.0890,8.40
+3,tool_workflow_basic_train,cand_gen02_trial_00,Promoted,64,0.5120,2.92
+4,fsm_permutation_train,cand_gen03_trial_00,Rejected,NA,0.1004,10.33
+5,symbolic_primitives_train,cand_gen03_trial_00,Rejected,NA,0.0300,7.56
+6,tool_workflow_basic_train,cand_gen03_trial_00,Promoted,8,0.5190,3.28
+7,fsm_permutation_train,cand_gen04_trial_00,Rejected,NA,0.0164,7.54
+8,symbolic_primitives_train,cand_gen04_trial_00,Rejected,NA,0.0475,6.16
+9,tool_workflow_basic_train,cand_gen04_trial_00,Promoted,8,0.4480,3.90
+10,fsm_permutation_train,cand_gen05_trial_00,Rejected,NA,0.0663,10.28
+11,symbolic_primitives_train,cand_gen05_trial_00,Rejected,NA,0.0659,7.34
+12,tool_workflow_basic_train,cand_gen05_trial_00,Promoted,8,0.4480,3.57
+13,fsm_permutation_train,cand_gen06_trial_00,Rejected,NA,0.0442,9.72
+14,symbolic_primitives_train,cand_gen06_trial_00,Rejected,NA,0.0812,7.44
+15,tool_workflow_basic_train,cand_gen06_trial_00,Promoted,8,0.4910,3.53
