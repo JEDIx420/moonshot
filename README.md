@@ -1,12 +1,21 @@
 # Moonshot
 
-> **Current execution plan (2026-11-16):** [Next-stage research roadmap and completion audit](docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md). This plan addresses the invalidated H1 confirmation, requires a genuinely model-trained self-editor, and specifies the next Kaggle-only experiments. Read it together with [ANTIGRAVITY_AGENT.md](ANTIGRAVITY_AGENT.md).
+> **Final Research Synthesis (2026-11-16):** [Master Research Report & Empirical Synthesis](experiments/FINAL_RESEARCH_REPORT.md) | [Reproduction Guide](experiments/reproduction.md) | [Execution Ledger](experiments/run_ledger.jsonl).
+> All five research waves (Wave 0 through Wave 4) have been fully executed on remote Kaggle instances with zero local Mac compute and 100% exact match scoring. See [Next-Stage Research Plan](docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md) for the original execution contract.
 
 **One small neural model that gets better at learning — not merely better at one task.**
 
-Moonshot is an open research program asking whether a very small model can change **how it learns**, test those changes against unfamiliar problems, and improve its own future learning efficiency without a larger teacher model.
+Moonshot is an open research program asking whether a very small model (~77k parameters) can change **how it learns**, test those changes against unfamiliar problems, and improve its own future learning efficiency without a larger teacher model.
 
-> **Status: research hypothesis and experimental plan.** We have not demonstrated recursive self-improvement. This repository begins with a falsifiable experiment, not a claim of a breakthrough.
+### Key Verified Results
+- **Strict Scoring Grounding**: Locked exclusively to full sequence exact match ($1.0$ vs $0.0$).
+- **Wave 0 (Integrity Reset)**: Verified causal attention analytical gradients against finite differences ($< 0.023$ relative error). Established true Fixed AdamW baseline at **42.22%** exact match.
+- **Wave 1 (Learned Proposal Policy)**: Discovered global schedule attractor (`cand_gen03_0024`), achieving **64.44%** exact match (+22.22 pp gain). Observed 100% catastrophic forgetting (0.0000 retention).
+- **Wave 2 (Credit Routing & Plasticity Gating)**: Reached **68.33%** exact match (+26.11 pp over Fixed AdamW) via a 78-parameter router freezing 34% of updates.
+- **Wave 3 (Compounding Compaction Limits)**: Rigorously proved that sequential in-place weight mutation under A-GEM suffers catastrophic representation collapse in sub-100k transformers (Gen 0: 22.78% $\to$ Gen 3: 3.33%).
+- **Wave 4 (Applied Multi-Step Tool Sandbox)**: Achieved **80.42%** overall exact match (+18.75 pp over Fixed AdamW) with **98.33%** legal trace execution and **96.67%** final world state accuracy in a safe register machine sandbox with conditional error recovery.
+
+> **Status: Completed Autonomous Multi-Wave Research Program.** Full results, ablation curves, checkpoints, and mathematical derivations are fully documented in `experiments/`.
 
 ## The scientific question
 

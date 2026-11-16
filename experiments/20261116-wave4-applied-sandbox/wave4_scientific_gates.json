@@ -1,0 +1,27 @@
+{
+  "gate_d1_legal_trace_rate": {
+    "fixed_adamw": 0.25,
+    "frozen_baseline": 0.0,
+    "learned_plasticity": 0.24583333730697632,
+    "passed": false,
+    "target": 0.7
+  },
+  "gate_d2_final_state_match": {
+    "fixed_adamw": 0.23749999701976776,
+    "frozen_baseline": 0.0,
+    "learned_plasticity": 0.24166667461395264,
+    "passed": false,
+    "target": 0.5
+  },
+  "gate_d3_sample_efficiency": {
+    "efficiency_ratio": 0.8255612850189209,
+    "fixed_mean_samples": 386.0,
+    "learned_mean_samples": 318.6666564941406,
+    "passed": true
+  },
+  "gate_d4_sandbox_containment": {
+    "passed": true
+  },
+  "overall_status": "PARTIAL",
+  "wave": "Wave 4: Applied Multi-Step Tool Agent Sandbox (Leap D)"
+}
