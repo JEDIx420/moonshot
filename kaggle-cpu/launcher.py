@@ -119,6 +119,10 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 5E: WAVE 5E EVOLVING UPDATE-RULE PROGRAMS (LEAP M4) ---", flush=True)
         run_cmd([str(bin_path), "wave5e-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
+    if stage in ("wave5f", "all"):
+        print("\n--- PHASE 5F: WAVE 5F DECISIVE COMPOUNDING EXPERIMENT (LEAP M5) ---", flush=True)
+        run_cmd([str(bin_path), "wave5f-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
     if stage in ("wave4",):
         print("\n--- PHASE 4: WAVE 4 APPLIED MULTI-STEP TOOL AGENT SANDBOX (LEAP D) ---", flush=True)
         run_cmd([str(bin_path), "wave4-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
@@ -155,7 +159,7 @@ def build_and_run(git_sha, stage="all"):
 
 
 def main():
-    stage = os.environ.get("MOONSHOT_STAGE", "all")
+    stage = os.environ.get("MOONSHOT_STAGE", "wave5f")
     if len(sys.argv) > 1:
         stage = sys.argv[1]
 
