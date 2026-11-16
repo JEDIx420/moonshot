@@ -1,5 +1,7 @@
 # Moonshot
 
+> **Current execution plan (2026-11-16):** [Next-stage research roadmap and completion audit](docs/NEXT_STAGE_RESEARCH_PLAN_2026-11-16.md). This plan addresses the invalidated H1 confirmation, requires a genuinely model-trained self-editor, and specifies the next Kaggle-only experiments. Read it together with [ANTIGRAVITY_AGENT.md](ANTIGRAVITY_AGENT.md).
+
 **One small neural model that gets better at learning — not merely better at one task.**
 
 Moonshot is an open research program asking whether a very small model can change **how it learns**, test those changes against unfamiliar problems, and improve its own future learning efficiency without a larger teacher model.
