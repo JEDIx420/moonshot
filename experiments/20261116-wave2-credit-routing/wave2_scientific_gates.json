@@ -1,0 +1,19 @@
+{
+  "gate_b1_1_retention_preservation": {
+    "full_plasticity_no_rehearsal_retention": 0.0,
+    "full_plasticity_rehearsal_retention": 0.0,
+    "learned_plasticity_rehearsal_retention": 0.003703703870996833,
+    "passed": false
+  },
+  "gate_b1_2_held_out_accuracy": {
+    "ffn_head_plasticity_exact": 0.18888889253139496,
+    "full_plasticity_exact": 0.6444444060325623,
+    "learned_plasticity_exact": 0.644444465637207,
+    "passed": true
+  },
+  "gate_b1_3_plasticity_efficiency": {
+    "passed": true
+  },
+  "overall_status": "PARTIAL",
+  "wave": "Wave 2: Credit Routing & Plasticity Gating (Leap B1)"
+}
