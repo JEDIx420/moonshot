@@ -1,0 +1,11 @@
+[package]
+name = "moonshot-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core types, run ledger, edit plans, and trial records for Moonshot"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+chrono.workspace = true

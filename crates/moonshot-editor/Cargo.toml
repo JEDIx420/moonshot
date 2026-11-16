@@ -1,0 +1,15 @@
+[package]
+name = "moonshot-editor"
+version = "0.1.0"
+edition = "2021"
+description = "Bounded self-editing proposal engine, sandbox typechecker, and candidate search manager"
+
+[dependencies]
+moonshot-core = { path = "../moonshot-core" }
+moonshot-model = { path = "../moonshot-model" }
+moonshot-oracle = { path = "../moonshot-oracle" }
+rand.workspace = true
+rand_chacha.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true

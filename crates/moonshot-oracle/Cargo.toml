@@ -1,0 +1,12 @@
+[package]
+name = "moonshot-oracle"
+version = "0.1.0"
+edition = "2021"
+description = "Immutable task generators and independent evaluators for Moonshot"
+
+[dependencies]
+moonshot-core = { path = "../moonshot-core" }
+rand.workspace = true
+rand_chacha.workspace = true
+serde.workspace = true
+serde_json.workspace = true

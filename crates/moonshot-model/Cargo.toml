@@ -1,0 +1,13 @@
+[package]
+name = "moonshot-model"
+version = "0.1.0"
+edition = "2021"
+description = "Tiny neural learner model and autodiff update engine in Rust"
+
+[dependencies]
+moonshot-core = { path = "../moonshot-core" }
+rand.workspace = true
+rand_chacha.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
