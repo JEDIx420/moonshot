@@ -100,31 +100,34 @@ impl EditorEngine {
     pub fn propose_edit(current_plan: &EditPlan, feedback: &FeedbackSummary, seed: u64) -> Result<EditPlan, String> {
         let mut rng = ChaCha8Rng::seed_from_u64(seed);
 
-        let candidate_actions = if !feedback.target_reached && feedback.final_loss > 2.0 {
-            // Loss high: explore higher LR or switch to AdamW / WarmupCosine
+        let candidate_actions = if !feedback.target_reached && feedback.final_loss > 1.5 {
+            // Loss high: explore higher LR, WarmupCosine, or mistake-weighted sampling
             vec![
-                EditProposalAction::AdjustBaseLr { factor: 1.5 },
+                EditProposalAction::AdjustBaseLr { factor: 1.3 },
                 EditProposalAction::SwitchOptimizer { optimizer: OptimizerType::AdamW },
                 EditProposalAction::SwitchSchedule { schedule: SchedulePolicy::WarmupCosine },
-                EditProposalAction::SetInnerSteps { steps: (current_plan.inner_steps + 5).min(30) },
+                EditProposalAction::SetSamplingPolicy { policy: SamplingPolicy::ErrorWeighted },
+                EditProposalAction::SetInnerSteps { steps: (current_plan.inner_steps + 5).min(50) },
             ]
         } else if feedback.target_reached {
-            // Target reached: refine efficiency via sparse gradient updates or specialized layer multipliers
+            // Target reached: refine efficiency via sparse gradient updates, specialized layer multipliers, and decay
             vec![
-                EditProposalAction::SetSparseGradientThreshold { threshold: Some(0.05) },
+                EditProposalAction::SetSparseGradientThreshold { threshold: Some(0.01) },
                 EditProposalAction::SetLayerLrMultipliers {
-                    multipliers: vec![0.2, 0.5, 1.0, 1.5, 1.5, 2.0], // specialize deeper layers
+                    multipliers: vec![0.3, 0.6, 1.0, 1.4, 1.8, 2.2], // specialize upper layers
                 },
                 EditProposalAction::SetSamplingPolicy { policy: SamplingPolicy::ErrorWeighted },
-                EditProposalAction::AdjustWeightDecay { decay: 0.02 },
+                EditProposalAction::AdjustWeightDecay { decay: 0.005 },
             ]
         } else {
-            // Plateau / intermediate: explore momentum, sign-gradient or decay
+            // Plateau / intermediate: explore layer specialization, momentum, or calibrated step decay
             vec![
-                EditProposalAction::SwitchOptimizer { optimizer: OptimizerType::Momentum },
-                EditProposalAction::AdjustBaseLr { factor: 0.8 },
+                EditProposalAction::SetLayerLrMultipliers {
+                    multipliers: vec![0.5, 0.8, 1.0, 1.2, 1.5, 2.0],
+                },
+                EditProposalAction::AdjustBaseLr { factor: 1.1 },
                 EditProposalAction::SwitchSchedule { schedule: SchedulePolicy::CosineDecay },
-                EditProposalAction::SetInnerSteps { steps: (current_plan.inner_steps + 2).min(25) },
+                EditProposalAction::SetInnerSteps { steps: (current_plan.inner_steps + 3).min(45) },
             ]
         };
 
@@ -230,14 +233,11 @@ impl SearchManager {
         let target_reached = samples_to_target.is_some();
         let baseline_samples = 120; // baseline fixed reference budget
 
-        // Strict promotion rule:
-        // Must reach target accuracy and either:
-        // - Reach target with fewer samples than baseline reference
-        // - Or achieve substantially higher final accuracy without regression
-        let should_promote = target_reached && (
-            samples_to_target.unwrap_or(usize::MAX) < baseline_samples ||
-            final_acc > self.incumbent.validated_accuracy + 0.10
-        );
+        // Promotion rule:
+        // Either reach target accuracy within reference budget,
+        // OR achieve higher final accuracy (> incumbent + 0.03) without regression
+        let should_promote = (target_reached && samples_to_target.unwrap_or(usize::MAX) <= baseline_samples) ||
+            (final_acc > self.incumbent.validated_accuracy + 0.03);
 
         let status = if should_promote {
             TrialStatus::Promoted

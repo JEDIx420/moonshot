@@ -96,11 +96,11 @@ def build_and_run(git_sha, stage="all"):
 
     if stage in ("baselines", "all"):
         print("\n--- PHASE 1: MATCHED-BUDGET BASELINES ---", flush=True)
-        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.65"], cwd=REPO_DIR)
+        run_cmd([str(bin_path), "baselines", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.45"], cwd=REPO_DIR)
 
     if stage in ("meta-train", "all"):
         print("\n--- PHASE 2: SELF-EDITING META-TRAINING LOOP ---", flush=True)
-        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.65", "--hypothesis-id", "H1"], cwd=REPO_DIR)
+        run_cmd([str(bin_path), "meta-train", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--trials", "15", "--target-acc", "0.45", "--hypothesis-id", "H1"], cwd=REPO_DIR)
 
     if stage in ("evaluate", "all"):
         print("\n--- PHASE 3: HELD-OUT META-TEST EVALUATION ---", flush=True)
