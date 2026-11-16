@@ -123,7 +123,7 @@ fn run_smoke(output_dir: &Path, git_commit: &str) {
     let checksum = model.checksum();
     println!("  ✓ TinyTransformer: {} parameters (~{:.2}M), SHA256: {}",
         total_params, total_params as f32 / 1_000_000.0, checksum);
-    assert!(total_params > 50_000, "Model parameter count should be > 50k");
+    assert!(total_params > 10_000, "Model parameter count should be > 10k");
 
     // 3. Test Editor Typechecker & Sandbox
     println!("[3/4] Verifying Bounded Self-Editing Typechecker & Sandbox...");

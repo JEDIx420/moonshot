@@ -19,10 +19,10 @@ impl Default for ModelConfig {
         Self {
             vocab_size: 64,
             max_seq_len: 32,
-            d_model: 32,
-            n_heads: 2,
+            d_model: 64,
+            n_heads: 4,
             n_layers: 2,
-            d_ff: 64,
+            d_ff: 128,
         }
     }
 }
