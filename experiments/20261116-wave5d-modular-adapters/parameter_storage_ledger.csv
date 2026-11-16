@@ -1,0 +1,5 @@
+component,parameter_count,storage_bytes,overhead_percent
+Base_Shared_Model,77376,309504,0.00%
+Modular_Adapters_3x512,1536,6144,1.99%
+Task_Blind_Centroid_Router,192,768,0.25%
+Total_Modular_System,79104,316416,2.23%

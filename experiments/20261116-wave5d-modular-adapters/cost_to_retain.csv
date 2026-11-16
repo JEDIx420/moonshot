@@ -1,0 +1,7 @@
+condition,parameter_overhead_pct,rehearsal_samples_per_step,mean_final_retention,retains_50pct_floor
+Full_Shared_Continual,0.00%,0,0.0000,false
+EWC_Shared_Regularized,0.00%,0,0.0000,false
+AGEM_Shared_Projection,0.00%,20,0.6667,true
+Frozen_Base_Oracle_Adapter,1.98%,0,0.0000,false
+Task_ID_Blind_Learned_Router,2.23%,0,0.0000,false
+Random_Module_Router_Control,1.98%,0,0.0000,false
