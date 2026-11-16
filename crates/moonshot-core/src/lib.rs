@@ -73,13 +73,13 @@ impl Default for EditPlan {
     fn default() -> Self {
         Self {
             optimizer_type: OptimizerType::AdamW,
-            base_lr: 0.01,
+            base_lr: 0.015,
             layer_lr_multipliers: vec![1.0; 6],
             sampling_policy: SamplingPolicy::Uniform,
             schedule_policy: SchedulePolicy::CosineDecay,
             weight_decay: 0.001,
             grad_clip: Some(1.0),
-            inner_steps: 25,
+            inner_steps: 35,
             sparse_gradient_threshold: None,
         }
     }

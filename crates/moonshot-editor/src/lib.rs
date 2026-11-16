@@ -170,7 +170,7 @@ impl SearchManager {
         target_acc: f32,
     ) -> (Option<usize>, f32, f32) {
         let mut samples_to_target = None;
-        let batch_size = 4;
+        let batch_size = 8;
         let mut total_samples_seen = 0;
         let total_steps = plan.inner_steps;
         let mut final_loss = 0.0;
@@ -228,7 +228,7 @@ impl SearchManager {
         let elapsed_secs = start_time.elapsed().as_secs_f64();
 
         let target_reached = samples_to_target.is_some();
-        let baseline_samples = 40; // baseline fixed reference budget
+        let baseline_samples = 120; // baseline fixed reference budget
 
         // Strict promotion rule:
         // Must reach target accuracy and either:

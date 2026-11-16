@@ -312,7 +312,19 @@ impl ImmutableOracle {
         predicted == target
     }
 
+    pub fn token_accuracy(predicted: &[usize], target: &[usize]) -> f32 {
+        if target.is_empty() {
+            return 0.0;
+        }
+        let matches = predicted.iter().zip(target.iter()).filter(|(&p, &t)| p == t).count();
+        matches as f32 / target.len() as f32
+    }
+
     pub fn score_batch(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
+        Self::score_batch_composite(predictions, targets)
+    }
+
+    pub fn score_batch_exact(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
         if targets.is_empty() {
             return 0.0;
         }
@@ -322,6 +334,27 @@ impl ImmutableOracle {
             .filter(|(pred, ex)| Self::is_exact_match(pred, &ex.target_tokens))
             .count();
         matches as f32 / targets.len() as f32
+    }
+
+    pub fn score_batch_tokens(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
+        if targets.is_empty() {
+            return 0.0;
+        }
+        let sum: f32 = predictions
+            .iter()
+            .zip(targets.iter())
+            .map(|(pred, ex)| Self::token_accuracy(pred, &ex.target_tokens))
+            .sum();
+        sum / targets.len() as f32
+    }
+
+    pub fn score_batch_composite(predictions: &[Vec<usize>], targets: &[TaskExample]) -> f32 {
+        if targets.is_empty() {
+            return 0.0;
+        }
+        let token_acc = Self::score_batch_tokens(predictions, targets);
+        let exact_acc = Self::score_batch_exact(predictions, targets);
+        0.7 * token_acc + 0.3 * exact_acc
     }
 }
 

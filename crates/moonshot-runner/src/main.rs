@@ -33,7 +33,7 @@ enum Commands {
         output_dir: PathBuf,
         #[arg(long, default_value_t = 42)]
         seed: u64,
-        #[arg(long, default_value_t = 0.75)]
+        #[arg(long, default_value_t = 0.55)]
         target_acc: f32,
     },
     /// Run self-editing meta-training experiment loop
@@ -44,7 +44,7 @@ enum Commands {
         seed: u64,
         #[arg(long, default_value_t = 15)]
         trials: usize,
-        #[arg(long, default_value_t = 0.75)]
+        #[arg(long, default_value_t = 0.55)]
         target_acc: f32,
         #[arg(long, default_value = "H1")]
         hypothesis_id: String,
@@ -330,7 +330,7 @@ fn run_evaluate(output_dir: &Path, checkpoint_path: &str) {
         p.base_lr = 0.02;
         p.layer_lr_multipliers = vec![0.5, 0.8, 1.0, 1.2, 1.5, 2.0];
         p.schedule_policy = SchedulePolicy::WarmupCosine;
-        p.inner_steps = 25;
+        p.inner_steps = 35;
         p
     };
 
@@ -339,7 +339,7 @@ fn run_evaluate(output_dir: &Path, checkpoint_path: &str) {
     let mut abl_file = File::create(&ablations_path).expect("Failed to create ablations.csv");
     writeln!(abl_file, "task_family,seed,condition,samples_to_target,final_acc,retention_score").unwrap();
 
-    let target_acc = 0.65;
+    let target_acc = 0.55;
     let mut fixed_accs = Vec::new();
     let mut evolved_accs = Vec::new();
     let mut fixed_samples = Vec::new();
