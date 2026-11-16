@@ -819,33 +819,33 @@ impl TinyTransformer {
             }
         }
 
-        let n_examples = examples.len().max(1) as f32;
+        let norm_factor = total_tokens_scored.max(1) as f32;
         let mut all_grads = Vec::with_capacity(self.total_parameters());
-        all_grads.extend(d_token_emb.iter().map(|g| g / n_examples));
-        all_grads.extend(d_pos_emb.iter().map(|g| g / n_examples));
+        all_grads.extend(d_token_emb.iter().map(|g| g / norm_factor));
+        all_grads.extend(d_pos_emb.iter().map(|g| g / norm_factor));
 
         for bg in &block_grads {
-            all_grads.extend(bg.d_wq_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wq_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wk_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wk_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wv_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wv_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wo_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_wo_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_attn_ln_gamma.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_attn_ln_beta.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_w1_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_w1_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_w2_w.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_w2_b.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_ffn_ln_gamma.iter().map(|g| g / n_examples));
-            all_grads.extend(bg.d_ffn_ln_beta.iter().map(|g| g / n_examples));
+            all_grads.extend(bg.d_wq_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wq_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wk_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wk_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wv_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wv_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wo_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_wo_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_attn_ln_gamma.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_attn_ln_beta.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_w1_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_w1_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_w2_w.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_w2_b.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_ffn_ln_gamma.iter().map(|g| g / norm_factor));
+            all_grads.extend(bg.d_ffn_ln_beta.iter().map(|g| g / norm_factor));
         }
-        all_grads.extend(d_ln_f_gamma.iter().map(|g| g / n_examples));
-        all_grads.extend(d_ln_f_beta.iter().map(|g| g / n_examples));
-        all_grads.extend(d_head_w.iter().map(|g| g / n_examples));
-        all_grads.extend(d_head_b.iter().map(|g| g / n_examples));
+        all_grads.extend(d_ln_f_gamma.iter().map(|g| g / norm_factor));
+        all_grads.extend(d_ln_f_beta.iter().map(|g| g / norm_factor));
+        all_grads.extend(d_head_w.iter().map(|g| g / norm_factor));
+        all_grads.extend(d_head_b.iter().map(|g| g / norm_factor));
 
         let avg_loss = if total_tokens_scored > 0 {
             total_loss / total_tokens_scored as f32
