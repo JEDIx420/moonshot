@@ -1,0 +1,312 @@
+[{"stream_name":"stdout","time":1.213187917,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1.213247792,"data":"MOONSHOT KAGGLE ENVIRONMENT PROBE\n"}
+,{"stream_name":"stdout","time":1.213253174,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1.223375215,"data":"Platform: Linux-6.18.55+-x86_64-with-glibc2.39\n"}
+,{"stream_name":"stdout","time":1.223409835,"data":"Python: 3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]\n"}
+,{"stream_name":"stdout","time":1.223415242,"data":"\n"}
+,{"stream_name":"stdout","time":1.223419327,"data":"[RUN] nvidia-smi\n"}
+,{"stream_name":"stderr","time":1.231677573,"data":"/bin/sh: 1: nvidia-smi: not found\n"}
+,{"stream_name":"stdout","time":1.232279242,"data":"\n"}
+,{"stream_name":"stdout","time":1.232307719,"data":"[SETUP] Installing Rust toolchain via rustup...\n"}
+,{"stream_name":"stdout","time":1.232314411,"data":"\n"}
+,{"stream_name":"stdout","time":1.232319226,"data":"[RUN] curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable\n"}
+,{"stream_name":"stderr","time":1.642364449,"data":"info: downloading installer\n"}
+,{"stream_name":"stderr","time":2.144225005,"data":"info: profile set to default\n"}
+,{"stream_name":"stderr","time":2.144257149,"data":"info: default host tuple is x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":2.145278505,"data":"info: syncing channel updates for stable-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":2.666214548,"data":"info: latest update on 2026-11-12 for version 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stderr","time":2.666317382,"data":"info: downloading 6 components\n"}
+,{"stream_name":"stderr","time":26.879119304,"data":"info: default toolchain set to stable-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":26.879128486,"data":"\n"}
+,{"stream_name":"stdout","time":26.889392408,"data":"  stable-x86_64-unknown-linux-gnu installed - rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stdout","time":26.88942674,"data":"\n"}
+,{"stream_name":"stdout","time":26.889535974,"data":"\n"}
+,{"stream_name":"stdout","time":26.889542757,"data":"Rust is installed now. Great!\n"}
+,{"stream_name":"stdout","time":26.889546643,"data":"\n"}
+,{"stream_name":"stdout","time":26.889550278,"data":"To get started you may need to restart your current shell.\n"}
+,{"stream_name":"stdout","time":26.889566393,"data":"This would reload your PATH environment variable to include\n"}
+,{"stream_name":"stdout","time":26.889570378,"data":"Cargo's bin directory ($HOME/.cargo/bin).\n"}
+,{"stream_name":"stdout","time":26.889574545,"data":"\n"}
+,{"stream_name":"stdout","time":26.889578125,"data":"To configure your current shell, you need to source the\n"}
+,{"stream_name":"stdout","time":26.889581872,"data":"corresponding env file under $HOME/.cargo.\n"}
+,{"stream_name":"stdout","time":26.889585592,"data":"\n"}
+,{"stream_name":"stdout","time":26.889588736,"data":"Consider running the right command for your shell (note the leading DOT):\n"}
+,{"stream_name":"stdout","time":26.889592648,"data":". \"$HOME/.cargo/env\" # For sh/ash/dash/pdksh/bash\n"}
+,{"stream_name":"stdout","time":26.889946308,"data":"cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":26.889958516,"data":"CC_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":26.889962341,"data":"cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":26.889966151,"data":"CC_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":26.889982058,"data":"cargo:rerun-if-env-changed=HOST_CC\n"}
+,{"stream_name":"stdout","time":26.889985996,"data":"HOST_CC = None\n"}
+,{"stream_name":"stdout","time":26.889989855,"data":"cargo:rerun-if-env-changed=CC\n"}
+,{"stream_name":"stdout","time":26.889993477,"data":"CC = None\n"}
+,{"stream_name":"stdout","time":26.895023909,"data":"cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT\n"}
+,{"stream_name":"stdout","time":27.060070221,"data":"cargo:rerun-if-env-changed=CPATH\n"}
+,{"stream_name":"stdout","time":27.060099031,"data":"cargo:rerun-if-env-changed=C_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.060102388,"data":"cargo:rerun-if-env-changed=CPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.060105033,"data":"cargo:rerun-if-env-changed=OBJC_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.060107714,"data":"cargo:rerun-if-env-changed=OBJCPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":27.060110276,"data":"cargo:rerun-if-env-changed=COMPILER_PATH\n"}
+,{"stream_name":"stdout","time":27.060112842,"data":"cargo:rerun-if-env-changed=SOURCE_DATE_EPOCH\n"}
+,{"stream_name":"stdout","time":27.060115214,"data":"cargo:rerun-if-env-changed=GCC_EXEC_PREFIX\n"}
+,{"stream_name":"stdout","time":27.060117637,"data":"cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS\n"}
+,{"stream_name":"stdout","time":27.060120035,"data":"CRATE_CC_NO_DEFAULTS = None\n"}
+,{"stream_name":"stdout","time":27.060123049,"data":"cargo:rerun-if-env-changed=CFLAGS\n"}
+,{"stream_name":"stdout","time":27.060126872,"data":"CFLAGS = None\n"}
+,{"stream_name":"stdout","time":27.060130552,"data":"cargo:rerun-if-env-changed=HOST_CFLAGS\n"}
+,{"stream_name":"stdout","time":27.060134132,"data":"HOST_CFLAGS = None\n"}
+,{"stream_name":"stdout","time":27.060137893,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":27.06014154,"data":"CFLAGS_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":27.060145317,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":27.060149162,"data":"CFLAGS_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":27.086370999,"data":"\n"}
+,{"stream_name":"stdout","time":27.086398711,"data":"[RUN] rustc --version\n"}
+,{"stream_name":"stdout","time":27.10383541,"data":"rustc 1.100.0 (0ef1bc386 2026-11-09)\n"}
+,{"stream_name":"stdout","time":27.105327293,"data":"\n"}
+,{"stream_name":"stdout","time":27.105361825,"data":"[RUN] cargo --version\n"}
+,{"stream_name":"stdout","time":27.119283655,"data":"cargo 1.100.0 (3acc79c0c 2026-11-05)\n"}
+,{"stream_name":"stdout","time":27.120440356,"data":"\n"}
+,{"stream_name":"stdout","time":27.120467852,"data":"[GIT] Cloning https://github.com/JEDIx420/moonshot.git into /tmp/moonshot...\n"}
+,{"stream_name":"stdout","time":27.120472986,"data":"\n"}
+,{"stream_name":"stdout","time":27.120476603,"data":"[RUN] git clone https://github.com/JEDIx420/moonshot.git /tmp/moonshot\n"}
+,{"stream_name":"stderr","time":27.165683567,"data":"Cloning into '/tmp/moonshot'...\n"}
+,{"stream_name":"stdout","time":28.064702192,"data":"[GIT] Active commit: bdd4006d754ba8bedb5bc2202a3f7c8b360c3f2e\n"}
+,{"stream_name":"stdout","time":28.06474696,"data":"\n"}
+,{"stream_name":"stdout","time":28.064751053,"data":"[TEST] Executing test suite \u0026 finite-difference gradient checks...\n"}
+,{"stream_name":"stdout","time":28.064761485,"data":"\n"}
+,{"stream_name":"stdout","time":28.064765419,"data":"[RUN] cargo test --release -- --nocapture\n"}
+,{"stream_name":"stderr","time":28.126893061,"data":"    Updating crates.io index\n"}
+,{"stream_name":"stderr","time":28.51841333,"data":" Downloading crates ...\n"}
+,{"stream_name":"stderr","time":28.625781111,"data":"  Downloaded autocfg v1.5.1\n"}
+,{"stream_name":"stderr","time":28.635667806,"data":"  Downloaded anstream v1.0.0\n"}
+,{"stream_name":"stderr","time":28.639073521,"data":"  Downloaded anstyle v1.0.14\n"}
+,{"stream_name":"stderr","time":28.641439145,"data":"  Downloaded anstyle-query v1.1.5\n"}
+,{"stream_name":"stderr","time":28.643041138,"data":"  Downloaded anstyle-parse v1.0.0\n"}
+,{"stream_name":"stderr","time":28.647859601,"data":"  Downloaded clap_derive v4.6.7\n"}
+,{"stream_name":"stderr","time":28.651839345,"data":"  Downloaded clap_lex v1.1.1\n"}
+,{"stream_name":"stderr","time":28.653496291,"data":"  Downloaded block-buffer v0.10.4\n"}
+,{"stream_name":"stderr","time":28.654944666,"data":"  Downloaded generic-array v0.14.7\n"}
+,{"stream_name":"stderr","time":28.656872651,"data":"  Downloaded heck v0.5.0\n"}
+,{"stream_name":"stderr","time":28.658782277,"data":"  Downloaded strsim v0.11.1\n"}
+,{"stream_name":"stderr","time":28.660750294,"data":"  Downloaded cfg-if v1.0.5\n"}
+,{"stream_name":"stderr","time":28.662862347,"data":"  Downloaded itoa v1.0.19\n"}
+,{"stream_name":"stderr","time":28.665049768,"data":"  Downloaded colorchoice v1.0.5\n"}
+,{"stream_name":"stderr","time":28.666490454,"data":"  Downloaded rand_core v0.6.4\n"}
+,{"stream_name":"stderr","time":28.66849137,"data":"  Downloaded utf8parse v0.2.2\n"}
+,{"stream_name":"stderr","time":28.669916507,"data":"  Downloaded rand_chacha v0.3.1\n"}
+,{"stream_name":"stderr","time":28.671401958,"data":"  Downloaded version_check v0.9.5\n"}
+,{"stream_name":"stderr","time":28.673131108,"data":"  Downloaded cpufeatures v0.2.17\n"}
+,{"stream_name":"stderr","time":28.675111703,"data":"  Downloaded digest v0.10.7\n"}
+,{"stream_name":"stderr","time":28.677972852,"data":"  Downloaded is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stderr","time":28.679331404,"data":"  Downloaded quote v1.0.47\n"}
+,{"stream_name":"stderr","time":28.683587838,"data":"  Downloaded unicode-ident v1.0.27\n"}
+,{"stream_name":"stderr","time":28.687887744,"data":"  Downloaded sha2 v0.10.9\n"}
+,{"stream_name":"stderr","time":28.691947587,"data":"  Downloaded zmij v1.0.23\n"}
+,{"stream_name":"stderr","time":28.694646944,"data":"  Downloaded crypto-common v0.1.7\n"}
+,{"stream_name":"stderr","time":28.69610129,"data":"  Downloaded getrandom v0.2.17\n"}
+,{"stream_name":"stderr","time":28.700584205,"data":"  Downloaded ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stderr","time":28.702569646,"data":"  Downloaded iana-time-zone v0.1.65\n"}
+,{"stream_name":"stderr","time":28.706343523,"data":"  Downloaded num-traits v0.2.19\n"}
+,{"stream_name":"stderr","time":28.710125339,"data":"  Downloaded serde_derive v1.0.229\n"}
+,{"stream_name":"stderr","time":28.714333569,"data":"  Downloaded proc-macro2 v1.0.107\n"}
+,{"stream_name":"stderr","time":28.718404417,"data":"  Downloaded serde_core v1.0.229\n"}
+,{"stream_name":"stderr","time":28.722188042,"data":"  Downloaded clap v4.6.7\n"}
+,{"stream_name":"stderr","time":28.74199134,"data":"  Downloaded serde v1.0.229\n"}
+,{"stream_name":"stderr","time":28.746830872,"data":"  Downloaded rand v0.8.8\n"}
+,{"stream_name":"stderr","time":28.751519651,"data":"  Downloaded memchr v2.8.3\n"}
+,{"stream_name":"stderr","time":28.758763427,"data":"  Downloaded typenum v1.20.1\n"}
+,{"stream_name":"stderr","time":28.763867722,"data":"  Downloaded serde_json v1.0.154\n"}
+,{"stream_name":"stderr","time":28.773737268,"data":"  Downloaded clap_builder v4.6.7\n"}
+,{"stream_name":"stderr","time":28.78262612,"data":"  Downloaded chrono v0.4.45\n"}
+,{"stream_name":"stderr","time":28.792193213,"data":"  Downloaded syn v3.0.10\n"}
+,{"stream_name":"stderr","time":28.807943489,"data":"  Downloaded zerocopy v0.8.63\n"}
+,{"stream_name":"stderr","time":28.84258789,"data":"  Downloaded libc v0.2.191\n"}
+,{"stream_name":"stderr","time":28.995883626,"data":"   Compiling proc-macro2 v1.0.107\n"}
+,{"stream_name":"stderr","time":28.996055014,"data":"   Compiling unicode-ident v1.0.27\n"}
+,{"stream_name":"stderr","time":28.996066864,"data":"   Compiling quote v1.0.47\n"}
+,{"stream_name":"stderr","time":28.996270297,"data":"   Compiling version_check v0.9.5\n"}
+,{"stream_name":"stderr","time":29.094709411,"data":"   Compiling typenum v1.20.1\n"}
+,{"stream_name":"stderr","time":29.256841111,"data":"   Compiling serde_core v1.0.229\n"}
+,{"stream_name":"stderr","time":29.307028799,"data":"   Compiling generic-array v0.14.7\n"}
+,{"stream_name":"stderr","time":29.432684578,"data":"   Compiling cfg-if v1.0.5\n"}
+,{"stream_name":"stderr","time":29.468946572,"data":"   Compiling autocfg v1.5.1\n"}
+,{"stream_name":"stderr","time":30.165391508,"data":"   Compiling syn v3.0.10\n"}
+,{"stream_name":"stderr","time":30.230320948,"data":"   Compiling num-traits v0.2.19\n"}
+,{"stream_name":"stderr","time":30.334396276,"data":"   Compiling zmij v1.0.23\n"}
+,{"stream_name":"stderr","time":30.504887874,"data":"   Compiling libc v0.2.191\n"}
+,{"stream_name":"stderr","time":30.909838123,"data":"   Compiling serde v1.0.229\n"}
+,{"stream_name":"stderr","time":31.324576373,"data":"   Compiling serde_json v1.0.154\n"}
+,{"stream_name":"stderr","time":31.463990183,"data":"   Compiling block-buffer v0.10.4\n"}
+,{"stream_name":"stderr","time":31.4667266,"data":"   Compiling crypto-common v0.1.7\n"}
+,{"stream_name":"stderr","time":31.550872253,"data":"   Compiling zerocopy v0.8.63\n"}
+,{"stream_name":"stderr","time":31.602078978,"data":"   Compiling digest v0.10.7\n"}
+,{"stream_name":"stderr","time":33.167838667,"data":"   Compiling memchr v2.8.3\n"}
+,{"stream_name":"stderr","time":33.773800123,"data":"   Compiling iana-time-zone v0.1.65\n"}
+,{"stream_name":"stderr","time":34.193958146,"data":"   Compiling cpufeatures v0.2.17\n"}
+,{"stream_name":"stderr","time":34.23407993,"data":"   Compiling itoa v1.0.19\n"}
+,{"stream_name":"stderr","time":34.522829396,"data":"   Compiling sha2 v0.10.9\n"}
+,{"stream_name":"stderr","time":35.132582822,"data":"   Compiling getrandom v0.2.17\n"}
+,{"stream_name":"stderr","time":36.340640893,"data":"   Compiling serde_derive v1.0.229\n"}
+,{"stream_name":"stderr","time":37.720119307,"data":"   Compiling rand_core v0.6.4\n"}
+,{"stream_name":"stderr","time":37.976696531,"data":"   Compiling utf8parse v0.2.2\n"}
+,{"stream_name":"stderr","time":38.035810304,"data":"   Compiling anstyle-parse v1.0.0\n"}
+,{"stream_name":"stderr","time":38.256893155,"data":"   Compiling anstyle v1.0.14\n"}
+,{"stream_name":"stderr","time":38.563533613,"data":"   Compiling colorchoice v1.0.5\n"}
+,{"stream_name":"stderr","time":38.635736864,"data":"   Compiling is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stderr","time":38.684592673,"data":"   Compiling anstyle-query v1.1.5\n"}
+,{"stream_name":"stderr","time":38.742527704,"data":"   Compiling anstream v1.0.0\n"}
+,{"stream_name":"stderr","time":38.778385634,"data":"   Compiling clap_lex v1.1.1\n"}
+,{"stream_name":"stderr","time":39.180068198,"data":"   Compiling strsim v0.11.1\n"}
+,{"stream_name":"stderr","time":39.4143363,"data":"   Compiling heck v0.5.0\n"}
+,{"stream_name":"stderr","time":39.612843602,"data":"   Compiling clap_derive v4.6.7\n"}
+,{"stream_name":"stderr","time":40.489713513,"data":"   Compiling clap_builder v4.6.7\n"}
+,{"stream_name":"stderr","time":42.072911158,"data":"   Compiling chrono v0.4.45\n"}
+,{"stream_name":"stderr","time":42.100306207,"data":"   Compiling ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stderr","time":42.605438519,"data":"   Compiling rand_chacha v0.3.1\n"}
+,{"stream_name":"stderr","time":42.892329009,"data":"   Compiling rand v0.8.8\n"}
+,{"stream_name":"stderr","time":44.02843618,"data":"   Compiling moonshot-core v0.1.0 (/tmp/moonshot/crates/moonshot-core)\n"}
+,{"stream_name":"stderr","time":44.108294521,"data":"   Compiling clap v4.6.7\n"}
+,{"stream_name":"stderr","time":45.124215044,"data":"   Compiling moonshot-model v0.1.0 (/tmp/moonshot/crates/moonshot-model)\n"}
+,{"stream_name":"stderr","time":47.417143355,"data":"   Compiling moonshot-oracle v0.1.0 (/tmp/moonshot/crates/moonshot-oracle)\n"}
+,{"stream_name":"stderr","time":47.901414,"data":"   Compiling moonshot-editor v0.1.0 (/tmp/moonshot/crates/moonshot-editor)\n"}
+,{"stream_name":"stderr","time":53.581438738,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot/crates/moonshot-runner)\n"}
+,{"stream_name":"stderr","time":54.115670077,"data":"    Finished `release` profile [optimized] target(s) in 26.03s\n"}
+,{"stream_name":"stderr","time":54.139287434,"data":"     Running unittests src/lib.rs (target/release/build/moonshot-core/62eff44f4a95801f/out/moonshot_core-62eff44f4a95801f)\n"}
+,{"stream_name":"stdout","time":54.152462009,"data":"\n"}
+,{"stream_name":"stdout","time":54.15249998,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.152504797,"data":"\n"}
+,{"stream_name":"stdout","time":54.152508402,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.152512329,"data":"\n"}
+,{"stream_name":"stderr","time":54.152671448,"data":"     Running unittests src/lib.rs (target/release/build/moonshot-editor/cb2b85d17f504086/out/moonshot_editor-cb2b85d17f504086)\n"}
+,{"stream_name":"stdout","time":54.154892271,"data":"\n"}
+,{"stream_name":"stdout","time":54.154931166,"data":"running 2 tests\n"}
+,{"stream_name":"stdout","time":54.155257292,"data":"test tests::test_learned_proposal_policy_update ... ok\n"}
+,{"stream_name":"stdout","time":54.155343534,"data":"test tests::test_sandbox_typechecker_bounds ... ok\n"}
+,{"stream_name":"stdout","time":54.155357237,"data":"\n"}
+,{"stream_name":"stdout","time":54.155360657,"data":"test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.155363495,"data":"\n"}
+,{"stream_name":"stderr","time":54.155760627,"data":"     Running unittests src/lib.rs (target/release/build/moonshot-model/f7c76230ddf1dbd4/out/moonshot_model-f7c76230ddf1dbd4)\n"}
+,{"stream_name":"stdout","time":54.157529447,"data":"\n"}
+,{"stream_name":"stdout","time":54.157556081,"data":"running 4 tests\n"}
+,{"stream_name":"stdout","time":54.159355299,"data":"test tests::test_finite_difference_gradients ... ok\n"}
+,{"stream_name":"stdout","time":54.160042702,"data":"test tests::test_transformer_init_and_forward ... ok\n"}
+,{"stream_name":"stdout","time":54.184532298,"data":"test tests::test_exact_backprop_reduces_loss ... ok\n"}
+,{"stream_name":"stdout","time":54.192330028,"data":"test tests::test_checkpoint_roundtrip_bitwise ... ok\n"}
+,{"stream_name":"stdout","time":54.192498829,"data":"\n"}
+,{"stream_name":"stdout","time":54.192516409,"data":"test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s\n"}
+,{"stream_name":"stdout","time":54.192521378,"data":"\n"}
+,{"stream_name":"stderr","time":54.193943297,"data":"     Running unittests src/lib.rs (target/release/build/moonshot-oracle/eaefb3d933490cf7/out/moonshot_oracle-eaefb3d933490cf7)\n"}
+,{"stream_name":"stdout","time":54.196758492,"data":"\n"}
+,{"stream_name":"stdout","time":54.196876477,"data":"running 3 tests\n"}
+,{"stream_name":"stdout","time":54.197254759,"data":"test tests::test_held_out_flags ... ok\n"}
+,{"stream_name":"stdout","time":54.197594911,"data":"test tests::test_oracle_exact_scoring ... ok\n"}
+,{"stream_name":"stdout","time":54.197610657,"data":"test tests::test_task_generation_deterministic ... ok\n"}
+,{"stream_name":"stdout","time":54.197615576,"data":"\n"}
+,{"stream_name":"stdout","time":54.197619019,"data":"test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.197622989,"data":"\n"}
+,{"stream_name":"stderr","time":54.19836632,"data":"     Running unittests src/main.rs (target/release/build/moonshot-runner/4a9b5bdb54cd9c63/out/moonshot-4a9b5bdb54cd9c63)\n"}
+,{"stream_name":"stdout","time":54.200768117,"data":"\n"}
+,{"stream_name":"stdout","time":54.200796388,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.20080127,"data":"\n"}
+,{"stream_name":"stdout","time":54.200804927,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.200808524,"data":"\n"}
+,{"stream_name":"stderr","time":54.200993128,"data":"   Doc-tests moonshot_core\n"}
+,{"stream_name":"stdout","time":54.294937618,"data":"\n"}
+,{"stream_name":"stdout","time":54.294967377,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.294972869,"data":"\n"}
+,{"stream_name":"stdout","time":54.294977738,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.294982498,"data":"\n"}
+,{"stream_name":"stderr","time":54.297195214,"data":"   Doc-tests moonshot_editor\n"}
+,{"stream_name":"stdout","time":54.38358024,"data":"\n"}
+,{"stream_name":"stdout","time":54.383612849,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.383618009,"data":"\n"}
+,{"stream_name":"stdout","time":54.383622159,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.383626334,"data":"\n"}
+,{"stream_name":"stderr","time":54.385262954,"data":"   Doc-tests moonshot_model\n"}
+,{"stream_name":"stdout","time":54.467652299,"data":"\n"}
+,{"stream_name":"stdout","time":54.467687459,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.467692587,"data":"\n"}
+,{"stream_name":"stdout","time":54.467696232,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.467700016,"data":"\n"}
+,{"stream_name":"stderr","time":54.469263376,"data":"   Doc-tests moonshot_oracle\n"}
+,{"stream_name":"stdout","time":54.500144944,"data":"\n"}
+,{"stream_name":"stdout","time":54.500191411,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":54.500199765,"data":"\n"}
+,{"stream_name":"stdout","time":54.500203685,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":54.500219447,"data":"\n"}
+,{"stream_name":"stdout","time":54.510848331,"data":"\n"}
+,{"stream_name":"stdout","time":54.510887412,"data":"[BUILD] Building moonshot release binary...\n"}
+,{"stream_name":"stdout","time":54.510891655,"data":"\n"}
+,{"stream_name":"stdout","time":54.51089433,"data":"[RUN] cargo build --release\n"}
+,{"stream_name":"stderr","time":54.578769755,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot/crates/moonshot-runner)\n"}
+,{"stream_name":"stderr","time":59.175641762,"data":"    Finished `release` profile [optimized] target(s) in 4.65s\n"}
+,{"stream_name":"stdout","time":59.184777024,"data":"\n"}
+,{"stream_name":"stdout","time":59.184810575,"data":"[EXEC] Running stage: all\n"}
+,{"stream_name":"stdout","time":59.184815608,"data":"\n"}
+,{"stream_name":"stdout","time":59.184819662,"data":"--- PHASE 0: WAVE 0 SMOKE \u0026 GRADIENT INTEGRITY TEST ---\n"}
+,{"stream_name":"stdout","time":59.184824454,"data":"\n"}
+,{"stream_name":"stdout","time":59.184828351,"data":"[RUN] /tmp/moonshot/target/release/moonshot smoke --output-dir /kaggle/working/results --git-commit bdd4006d754ba8bedb5bc2202a3f7c8b360c3f2e\n"}
+,{"stream_name":"stdout","time":59.186968696,"data":"[Moonshot] Running Wave 0 Integrity \u0026 Smoke Test...\n"}
+,{"stream_name":"stdout","time":59.187381023,"data":"[Hardware] CPUs: 4, RAM: 16 GB, GPU: None, CUDA: None\n"}
+,{"stream_name":"stdout","time":59.187403004,"data":"[1/5] Verifying Deterministic Task Generators \u0026 Immutable Oracle...\n"}
+,{"stream_name":"stdout","time":59.187417427,"data":"  ✓ Oracle deterministic generation \u0026 exact scoring verified.\n"}
+,{"stream_name":"stdout","time":59.187422584,"data":"[2/5] Initializing Tiny Neural Learner (77k Parameter Target)...\n"}
+,{"stream_name":"stdout","time":59.198930697,"data":"  ✓ TinyTransformer: 77376 parameters (d_model=64, L=2, H=4, d_ff=128), SHA256: c53256e952eb173ca3d490af201a911d351ad766c8349ffe0aa2efebd56e15f1\n"}
+,{"stream_name":"stdout","time":59.198972068,"data":"[3/5] Verifying Checkpoint Serialization \u0026 Bitwise Resumption...\n"}
+,{"stream_name":"stdout","time":59.21100193,"data":"  ✓ Bitwise identical forward pass confirmed across serialization roundtrip.\n"}
+,{"stream_name":"stdout","time":59.211029982,"data":"[4/5] Running Finite-Difference Gradient Verification Suite...\n"}
+,{"stream_name":"stdout","time":59.211034753,"data":"[Moonshot] Running Finite-Difference Gradient Verification Suite...\n"}
+,{"stream_name":"stdout","time":59.213290711,"data":"  ✓ Verified 21 sampled parameter gradients against finite differences.\n"}
+,{"stream_name":"stdout","time":59.213312946,"data":"  ✓ Max observed relative gradient error: 0.022119 (tolerance: 0.05)\n"}
+,{"stream_name":"stdout","time":59.213414221,"data":"[5/5] Verifying Learned Proposal Policy Head \u0026 Reinforcement...\n"}
+,{"stream_name":"stdout","time":59.213432442,"data":"  ✓ Learned Proposal Policy: 130 parameters, online gradient update verified.\n"}
+,{"stream_name":"stdout","time":59.213505916,"data":"[Moonshot] Smoke test successfully completed in 0.03s. Artifact: /kaggle/working/results/smoke_manifest.json\n"}
+,{"stream_name":"stdout","time":59.214304546,"data":"\n"}
+,{"stream_name":"stdout","time":59.214323624,"data":"--- PHASE 3: WAVE 3 COMPOUNDING MULTI-GENERATION LEARNING (LEAP C) ---\n"}
+,{"stream_name":"stdout","time":59.214328531,"data":"\n"}
+,{"stream_name":"stdout","time":59.21433201,"data":"[RUN] /tmp/moonshot/target/release/moonshot wave3-sweep --output-dir /kaggle/working/results --seed 42 --target-acc 0.80\n"}
+,{"stream_name":"stdout","time":59.216290733,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":59.216324874,"data":"MOONSHOT WAVE 3: COMPOUNDING MULTI-GENERATION LEARNING (LEAP C)\n"}
+,{"stream_name":"stdout","time":59.216331159,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":59.217445137,"data":"\n"}
+,{"stream_name":"stdout","time":59.217464121,"data":"\u003e\u003e\u003e Evaluating Generation 0 (Base Model / Zero Transfer)...\n"}
+,{"stream_name":"stdout","time":104.627781026,"data":"  ✓ Gen 0 Mean Held-Out Exact Match: 0.2278\n"}
+,{"stream_name":"stdout","time":104.627816153,"data":"\n"}
+,{"stream_name":"stdout","time":104.627821024,"data":"\u003e\u003e\u003e Executing Generation 1 Meta-Adaptation (Families: FsmPermutation, ToolWorkflowBasic)...\n"}
+,{"stream_name":"stdout","time":112.509302797,"data":"  ✓ Saved Generation 1 Checkpoint: /kaggle/working/results/checkpoint_gen01.json\n"}
+,{"stream_name":"stdout","time":195.272008841,"data":"  ✓ Gen 1 Held-Out Exact Match: 0.0722, Retention: 0.0000\n"}
+,{"stream_name":"stdout","time":195.272046836,"data":"\n"}
+,{"stream_name":"stdout","time":195.272051653,"data":"\u003e\u003e\u003e Executing Generation 2 Adaptation (Novel Families: SymbolicPrimitives, FsmRingLattice)...\n"}
+,{"stream_name":"stdout","time":213.931101945,"data":"  ✓ Saved Generation 2 Checkpoint: /kaggle/working/results/checkpoint_gen02.json\n"}
+,{"stream_name":"stdout","time":341.687930461,"data":"  ✓ Gen 2 Held-Out Exact Match: 0.0833, Retention: 0.0000\n"}
+,{"stream_name":"stdout","time":341.687992508,"data":"\n"}
+,{"stream_name":"stdout","time":341.688001911,"data":"\u003e\u003e\u003e Executing Generation 3 Adaptation (Novel Families: SymbolicCompound, ToolWorkflowChained)...\n"}
+,{"stream_name":"stdout","time":368.880958317,"data":"  ✓ Saved Generation 3 Checkpoint: /kaggle/working/results/checkpoint_gen03.json\n"}
+,{"stream_name":"stdout","time":494.459712122,"data":"  ✓ Gen 3 Held-Out Exact Match: 0.0333, Retention: 0.0000\n"}
+,{"stream_name":"stdout","time":494.459784018,"data":"\n"}
+,{"stream_name":"stdout","time":494.459791101,"data":"\u003e\u003e\u003e Verifying Resumption State Machine Determinism...\n"}
+,{"stream_name":"stdout","time":501.494992726,"data":"  ✓ Resumption verified: reloaded generation checkpoint executed idempotently.\n"}
+,{"stream_name":"stdout","time":501.495316392,"data":"\n"}
+,{"stream_name":"stdout","time":501.495350252,"data":"[Moonshot] Wave 3 Sweep completed successfully!\n"}
+,{"stream_name":"stdout","time":501.495356865,"data":"  ✓ Multi-Gen Curves CSV: /kaggle/working/results/wave3_multi_gen_curves.csv\n"}
+,{"stream_name":"stdout","time":501.495362986,"data":"  ✓ Gates JSON: /kaggle/working/results/wave3_scientific_gates.json\n"}
+,{"stream_name":"stdout","time":501.495367929,"data":"  ✓ Findings Report: /kaggle/working/results/findings.md\n"}
+,{"stream_name":"stdout","time":501.498146252,"data":"\n"}
+,{"stream_name":"stdout","time":501.498198939,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":501.498207097,"data":"EXPERIMENT STAGE COMPLETE. ARTIFACTS GENERATED:\n"}
+,{"stream_name":"stdout","time":501.498212186,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":501.499435621,"data":"  - checkpoint_gen02.json (4163618 bytes)\n"}
+,{"stream_name":"stdout","time":501.499468397,"data":"  - smoke_manifest.json (600 bytes)\n"}
+,{"stream_name":"stdout","time":501.500297088,"data":"  - findings.md (1188 bytes)\n"}
+,{"stream_name":"stdout","time":501.500328662,"data":"  - wave3_multi_gen_curves.csv (2138 bytes)\n"}
+,{"stream_name":"stdout","time":501.500363025,"data":"  - checkpoint_gen03.json (4202551 bytes)\n"}
+,{"stream_name":"stdout","time":501.50036904,"data":"  - gradient_check_passed.json (174 bytes)\n"}
+,{"stream_name":"stdout","time":501.50037285,"data":"  - checkpoint_gen01.json (4168934 bytes)\n"}
+,{"stream_name":"stdout","time":501.50037669,"data":"  - wave3_scientific_gates.json (637 bytes)\n"}
+,{"stream_name":"stderr","time":504.776357075,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":504.776404489,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":505.355128836,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":505.355197268,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":507.971518056,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":509.587885168,"data":"[NbConvertApp] Writing 302167 bytes to __results__.html\n"}
+]

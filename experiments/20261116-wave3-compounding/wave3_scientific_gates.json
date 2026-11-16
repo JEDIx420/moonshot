@@ -1,0 +1,25 @@
+{
+  "gate_c1_monotonic_held_out": {
+    "gen0_exact": 0.22777777910232544,
+    "gen1_exact": 0.07222221791744232,
+    "gen2_exact": 0.0833333358168602,
+    "gen3_exact": 0.03333333507180214,
+    "passed": false
+  },
+  "gate_c2_compounding_accuracy": {
+    "gen3_exact": 0.03333333507180214,
+    "passed": false,
+    "target": 0.65
+  },
+  "gate_c3_backward_retention": {
+    "gen1_retention": 0.0,
+    "gen2_retention": 0.0,
+    "gen3_retention": 0.0,
+    "passed": false
+  },
+  "gate_c4_resumption_determinism": {
+    "passed": true
+  },
+  "overall_status": "PARTIAL",
+  "wave": "Wave 3: Compounding Multi-Generation Learning (Leap C)"
+}
