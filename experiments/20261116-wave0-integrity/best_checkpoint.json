@@ -1,9 +1,9 @@
 {
-  "id": "cand_gen05_0015",
-  "weights_checksum": "1efed925e8a8e81b69c9fe0e669fbebece161ab40e4361455d775ec262ec24e1",
+  "id": "cand_gen02_0006",
+  "weights_checksum": "68f8f5356a74f7d1d273ff330277bfd882429b31c8d656d04fb2afefe6c8533c",
   "learning_rule": {
     "optimizer_type": "AdamW",
-    "base_lr": 0.0165,
+    "base_lr": 0.015,
     "layer_lr_multipliers": [
       1.0,
       1.0,
@@ -16,17 +16,14 @@
     "schedule_policy": "CosineDecay",
     "weight_decay": 0.001,
     "grad_clip": 1.0,
-    "inner_steps": 41,
+    "inner_steps": 40,
     "sparse_gradient_threshold": null
   },
-  "meta_generation": 5,
-  "validated_accuracy": 1.0,
+  "meta_generation": 2,
+  "validated_accuracy": 0.25,
   "adaptation_history": [
     "initial_baseline",
-    "promoted in trial_0003 (parent: cand_init, exact_acc: 0.150)",
-    "promoted in trial_0006 (parent: cand_gen01_0003, exact_acc: 1.000)",
-    "promoted in trial_0009 (parent: cand_gen02_0006, exact_acc: 1.000)",
-    "promoted in trial_0012 (parent: cand_gen03_0009, exact_acc: 1.000)",
-    "promoted in trial_0015 (parent: cand_gen04_0012, exact_acc: 1.000)"
+    "promoted in trial_0003 (parent: cand_init, exact: 0.050, token: 0.760)",
+    "promoted in trial_0006 (parent: cand_gen01_0003, exact: 0.250, token: 0.810)"
   ]
 }

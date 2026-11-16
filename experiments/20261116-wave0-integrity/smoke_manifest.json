@@ -1,6 +1,6 @@
 {
-  "run_id": "smoke_20261116_123621",
-  "git_commit": "7898885b9d7b7b40c7c34aa29d78666348c0382e",
+  "run_id": "smoke_20261116_124727",
+  "git_commit": "56db1dae03df0c226b0b3df51c964ab170723f79",
   "hardware": {
     "cpu_count": 4,
     "ram_bytes": 17179869184,
@@ -10,9 +10,9 @@
   },
   "rust_version": "0.1.0",
   "backend": "rust-native-autodiff-multihead",
-  "start_time": "2026-11-16T12:36:21.524665716Z",
-  "duration_seconds": 0.054437172,
-  "gpu_minutes": 0.0009072862,
+  "start_time": "2026-11-16T12:47:27.688969625Z",
+  "duration_seconds": 0.05816729,
+  "gpu_minutes": 0.0009694548333333333,
   "artifacts": [
     "smoke_manifest.json",
     "gradient_check_passed.json"
