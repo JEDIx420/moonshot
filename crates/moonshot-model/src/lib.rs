@@ -858,6 +858,18 @@ impl TinyTransformer {
 
     // Exact analytical backpropagation and parameter update conditioned on EditPlan
     pub fn train_step(&mut self, examples: &[TaskExample], plan: &EditPlan, step_idx: usize, total_steps: usize) -> f32 {
+        self.train_step_projected(examples, None, plan, step_idx, total_steps)
+    }
+
+    /// Wave 3: Parameter update with Orthogonal Gradient Projection (A-GEM) to prevent catastrophic forgetting
+    pub fn train_step_projected(
+        &mut self,
+        examples: &[TaskExample],
+        anchor_examples: Option<&[TaskExample]>,
+        plan: &EditPlan,
+        step_idx: usize,
+        total_steps: usize,
+    ) -> f32 {
         if examples.is_empty() {
             return 0.0;
         }
@@ -901,6 +913,23 @@ impl TinyTransformer {
 
         let effective_lr = plan.base_lr * schedule_factor;
         let (avg_loss, mut all_grads) = self.compute_loss_and_gradients(&selected_examples);
+
+        // Orthogonal gradient projection against anchor set (A-GEM)
+        if let Some(anchors) = anchor_examples {
+            if !anchors.is_empty() {
+                let (_, anchor_grads) = self.compute_loss_and_gradients(anchors);
+                let dot: f32 = all_grads.iter().zip(anchor_grads.iter()).map(|(&g1, &g2)| g1 * g2).sum();
+                if dot < 0.0 {
+                    let anchor_norm_sq: f32 = anchor_grads.iter().map(|&g| g * g).sum();
+                    if anchor_norm_sq > 1e-8 {
+                        let proj_coeff = dot / anchor_norm_sq;
+                        for i in 0..all_grads.len() {
+                            all_grads[i] -= proj_coeff * anchor_grads[i];
+                        }
+                    }
+                }
+            }
+        }
 
         // Global norm gradient clipping
         if let Some(clip) = plan.grad_clip {

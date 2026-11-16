@@ -492,7 +492,7 @@ impl SearchManager {
             let end_idx = (start_idx + batch_size).min(split.train_examples.len());
             let batch = &split.train_examples[start_idx..end_idx];
 
-            final_loss = model.train_step(batch, plan, step, total_steps);
+            final_loss = model.train_step_projected(batch, anchor_examples, plan, step, total_steps);
             total_samples_seen += batch.len();
 
             let mut preds = Vec::with_capacity(split.val_examples.len());
