@@ -1,0 +1,6 @@
+contrast,control_mean,learned_mean,delta_exact,causal_interpretation
+Learned_vs_Random,0.4667,0.5167,0.0500,LEARNED_ADVANTAGE
+Learned_vs_Fixed,0.3958,0.5167,0.1208,OPTIMIZER_SUPERIORITY
+Learned_vs_Frozen,0.4667,0.5167,0.0500,META_LEARNING_GAIN
+Learned_vs_Shuffled,0.4667,0.5167,0.0500,FEEDBACK_SENSITIVE
+Learned_vs_Permuted,0.5167,0.5167,0.0000,STATE_INVARIANT
