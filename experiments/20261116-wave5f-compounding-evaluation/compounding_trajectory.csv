@@ -1,0 +1,17 @@
+condition,generation,held_out_exact,held_out_token,samples_to_target,mean_retention
+Persistent_DSL_Compounding,G0,0.5222,0.8343,86.4,0.0000
+Persistent_DSL_Compounding,G1,0.1556,0.7373,52.4,0.0000
+Persistent_DSL_Compounding,G2,0.0889,0.5171,30.0,0.0000
+Persistent_DSL_Compounding,G3,0.0222,0.4787,30.0,0.0000
+Frozen_G0_Control,G0,0.5222,0.8343,86.4,0.0000
+Frozen_G0_Control,G1,0.5222,0.8343,86.4,0.0000
+Frozen_G0_Control,G2,0.5222,0.8343,86.4,0.0000
+Frozen_G0_Control,G3,0.5222,0.8343,86.4,0.0000
+No_Policy_Persistence,G0,0.5222,0.8343,86.4,0.0000
+No_Policy_Persistence,G1,0.0889,0.7143,30.0,0.0000
+No_Policy_Persistence,G2,0.0111,0.5126,30.0,0.0000
+No_Policy_Persistence,G3,0.0111,0.4695,30.0,0.0000
+Replay_Only_Shared,G0,0.5222,0.8343,86.4,0.0000
+Replay_Only_Shared,G1,0.1111,0.7307,30.0,0.0000
+Replay_Only_Shared,G2,0.0667,0.5187,30.0,0.0000
+Replay_Only_Shared,G3,0.0444,0.5177,30.0,0.0000

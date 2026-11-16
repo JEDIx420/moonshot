@@ -1,0 +1,38 @@
+{
+  "gate_g3_decisive_transfer": {
+    "dsl_samples_g3": 30.0,
+    "frozen_samples_g3": 86.44444274902344,
+    "passed": false,
+    "relative_sample_gain": 0.6529563069343567,
+    "target": 0.3
+  },
+  "gate_g4_compounding_and_retention": {
+    "g0_exact": 0.5222222208976746,
+    "g0_retention": 0.0,
+    "g1_exact": 0.15555556118488312,
+    "g1_retention": 0.0,
+    "g2_exact": 0.08888889849185944,
+    "g2_retention": 0.0,
+    "g3_exact": 0.02222222276031971,
+    "g3_retention": 0.0,
+    "min_retention": 0.0,
+    "monotonic_improvement": false,
+    "passed": false,
+    "retention_floor_target": 0.5
+  },
+  "gate_g5_robustness_and_replication": {
+    "controls_present": [
+      "Persistent_DSL_Compounding",
+      "Frozen_G0_Control",
+      "No_Policy_Persistence",
+      "Replay_Only_Shared"
+    ],
+    "fresh_evaluation_seeds": [
+      1101,
+      1202,
+      1303
+    ],
+    "passed": true
+  },
+  "wave": "Wave 5F: Decisive Compounding Across Generations (Leap M5)"
+}
