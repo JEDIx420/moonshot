@@ -1254,8 +1254,8 @@ impl TinyTransformer {
         }
     }
 
-    // Train ONLY adapter parameters using AdamW, keeping 100% of base model weights strictly frozen
-    pub fn train_adapter_step(&mut self, examples: &[TaskExample], lr: f32, step: usize, total_steps: usize) -> f32 {
+    // Train ONLY adapter parameters using an EditPlan (supporting update-rule DSL operators)
+    pub fn train_adapter_step_with_plan(&mut self, examples: &[TaskExample], plan: &EditPlan, step: usize, total_steps: usize) -> f32 {
         let d = self.config.d_model;
         let v = self.config.vocab_size;
         let n_blocks = self.blocks.len();
@@ -1517,7 +1517,7 @@ impl TinyTransformer {
             }
         }
 
-        // Apply AdamW to adapter parameters
+        // Apply EditPlan updates to adapter parameters
         let norm_factor = total_tokens_scored.max(1) as f32;
         let mut all_adapter_grads = Vec::new();
         for b_idx in 0..n_blocks {
@@ -1525,6 +1525,18 @@ impl TinyTransformer {
             all_adapter_grads.extend(d_bq[b_idx].iter().map(|&g| g / norm_factor));
             all_adapter_grads.extend(d_av[b_idx].iter().map(|&g| g / norm_factor));
             all_adapter_grads.extend(d_bv[b_idx].iter().map(|&g| g / norm_factor));
+        }
+
+        // Clip gradient norm if specified
+        if let Some(clip) = plan.grad_clip {
+            let norm_sq: f32 = all_adapter_grads.iter().map(|&g| g * g).sum();
+            let norm = norm_sq.sqrt();
+            if norm > clip && norm > 1e-7 {
+                let scale = clip / norm;
+                for g in all_adapter_grads.iter_mut() {
+                    *g *= scale;
+                }
+            }
         }
 
         let mut adapter_params = self.extract_adapter_parameters();
@@ -1540,21 +1552,46 @@ impl TinyTransformer {
         let beta2 = 0.999f32;
         let eps = 1e-8f32;
 
-        let schedule_factor = if total_steps > 0 {
-            0.5 * (1.0 + (std::f32::consts::PI * step as f32 / total_steps as f32).cos())
-        } else {
-            1.0
+        let schedule_factor = match plan.schedule_policy {
+            moonshot_core::SchedulePolicy::Constant => 1.0,
+            moonshot_core::SchedulePolicy::CosineDecay => {
+                if total_steps > 0 {
+                    0.5 * (1.0 + (std::f32::consts::PI * step as f32 / total_steps as f32).cos())
+                } else {
+                    1.0
+                }
+            }
+            moonshot_core::SchedulePolicy::WarmupCosine => {
+                let warmup_steps = (total_steps as f32 * 0.1).ceil() as usize;
+                if step < warmup_steps && warmup_steps > 0 {
+                    (step + 1) as f32 / warmup_steps as f32
+                } else if total_steps > warmup_steps {
+                    let progress = (step - warmup_steps) as f32 / (total_steps - warmup_steps) as f32;
+                    0.5 * (1.0 + (std::f32::consts::PI * progress).cos())
+                } else {
+                    1.0
+                }
+            }
         };
-        let effective_lr = lr * schedule_factor;
+
+        let effective_lr = plan.base_lr * schedule_factor;
 
         for i in 0..total_adap {
             let g = all_adapter_grads[i];
-            self.adapter_adam_m[i] = beta1 * self.adapter_adam_m[i] + (1.0 - beta1) * g;
-            self.adapter_adam_v[i] = beta2 * self.adapter_adam_v[i] + (1.0 - beta2) * g * g;
-            let m_hat = self.adapter_adam_m[i] / (1.0 - beta1.powi(self.adapter_opt_step as i32)).max(1e-6);
-            let v_hat = self.adapter_adam_v[i] / (1.0 - beta2.powi(self.adapter_opt_step as i32)).max(1e-6);
-            let delta = -effective_lr * (m_hat / (v_hat.sqrt() + eps) + 0.001 * adapter_params[i]);
-            adapter_params[i] += delta;
+            match plan.optimizer_type {
+                moonshot_core::OptimizerType::Sgd => {
+                    let delta = -effective_lr * (g + plan.weight_decay * adapter_params[i]);
+                    adapter_params[i] += delta;
+                }
+                _ => {
+                    self.adapter_adam_m[i] = beta1 * self.adapter_adam_m[i] + (1.0 - beta1) * g;
+                    self.adapter_adam_v[i] = beta2 * self.adapter_adam_v[i] + (1.0 - beta2) * g * g;
+                    let m_hat = self.adapter_adam_m[i] / (1.0 - beta1.powi(self.adapter_opt_step as i32)).max(1e-6);
+                    let v_hat = self.adapter_adam_v[i] / (1.0 - beta2.powi(self.adapter_opt_step as i32)).max(1e-6);
+                    let delta = -effective_lr * (m_hat / (v_hat.sqrt() + eps) + plan.weight_decay * adapter_params[i]);
+                    adapter_params[i] += delta;
+                }
+            }
         }
 
         self.load_adapter_parameters(&adapter_params);
@@ -1564,6 +1601,17 @@ impl TinyTransformer {
         } else {
             0.0
         }
+    }
+
+    // Convenience wrapper for training adapter step with default AdamW plan
+    pub fn train_adapter_step(&mut self, examples: &[TaskExample], lr: f32, step: usize, total_steps: usize) -> f32 {
+        let plan = EditPlan {
+            base_lr: lr,
+            schedule_policy: moonshot_core::SchedulePolicy::WarmupCosine,
+            inner_steps: total_steps,
+            ..Default::default()
+        };
+        self.train_adapter_step_with_plan(examples, &plan, step, total_steps)
     }
 }
 

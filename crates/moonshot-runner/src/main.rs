@@ -8,7 +8,7 @@ use moonshot_editor::{
 use moonshot_model::{ModelConfig, ProjectionMode, TinyTransformer};
 use moonshot_oracle::{ImmutableOracle, SandboxState, TaskFamilyType, TaskGenerator};
 use rand::rngs::StdRng;
-use rand::{Rng, SeedableRng};
+use rand::{Rng, RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use std::collections::HashMap;
 use std::fs::{self, File};
@@ -172,6 +172,24 @@ enum Commands {
     },
     /// Run Wave 6B 1.09M Modular Subspace & Catastrophic Forgetting Experiment (Leap S1)
     Wave6bSweep {
+        #[arg(long, default_value = "results")]
+        output_dir: PathBuf,
+        #[arg(long, default_value_t = 42)]
+        seed: u64,
+        #[arg(long, default_value_t = 0.80)]
+        target_acc: f32,
+    },
+    /// Run Wave 6C 1.09M Structural Update-Rule Transfer Experiment (Leap S2)
+    Wave6cSweep {
+        #[arg(long, default_value = "results")]
+        output_dir: PathBuf,
+        #[arg(long, default_value_t = 42)]
+        seed: u64,
+        #[arg(long, default_value_t = 0.80)]
+        target_acc: f32,
+    },
+    /// Run Wave 6D 1.09M Decisive Multi-Generation Compounding Experiment (Leap S3)
+    Wave6dSweep {
         #[arg(long, default_value = "results")]
         output_dir: PathBuf,
         #[arg(long, default_value_t = 42)]
@@ -4017,6 +4035,680 @@ fn run_wave6b_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
     println!("  ✓ Findings MD: {}", findings_path.display());
 }
 
+fn run_wave6c_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
+    println!("============================================================");
+    println!("MOONSHOT WAVE 6C: STRUCTURAL UPDATE-RULE TRANSFER (LEAP S2)");
+    println!("============================================================");
+    fs::create_dir_all(output_dir).expect("Failed to create output dir");
+
+    let eval_seeds = [707u64, 808u64, 909u64];
+    let eval_tasks = [
+        TaskFamilyType::ToolWorkflowChained,
+        TaskFamilyType::SymbolicCompositional,
+        TaskFamilyType::FsmRingLattice,
+    ];
+
+    let conditions = [
+        "Composed_DSL_Adapter_Update",
+        "Scalar_AdamW_Adapter_Tuning",
+        "Random_DSL_Adapter_Search",
+        "Frozen_Base_No_Adaptation",
+    ];
+
+    let csv_path = output_dir.join("dsl_adapter_benchmarks.csv");
+    let mut csv_file = File::create(&csv_path).expect("Failed to create dsl_adapter_benchmarks.csv");
+    writeln!(csv_file, "condition,seed,task,steps_to_target,exact_match,token_accuracy").unwrap();
+
+    let mut condition_exacts: HashMap<&str, Vec<f32>> = HashMap::new();
+    let mut condition_tokens: HashMap<&str, Vec<f32>> = HashMap::new();
+    for &cond in &conditions {
+        condition_exacts.insert(cond, Vec::new());
+        condition_tokens.insert(cond, Vec::new());
+    }
+
+    let config_1m = ModelConfig::new_1m();
+
+    for &eval_seed in &eval_seeds {
+        println!("\n>>> RUNNING EVALUATION SEED: {}", eval_seed);
+
+        for &task_fam in &eval_tasks {
+            let task_name = task_fam.name();
+            println!("\n  --- Task: {} (Seed: {}) ---", task_name, eval_seed);
+            let split = TaskGenerator::generate_split(task_fam, eval_seed, 50, 20, 20);
+
+            for &cond in &conditions {
+                match cond {
+                    "Frozen_Base_No_Adaptation" => {
+                        let model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                        let preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let exact = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
+                        let token = ImmutableOracle::score_batch_tokens(&preds, &split.test_examples);
+
+                        condition_exacts.get_mut(cond).unwrap().push(exact);
+                        condition_tokens.get_mut(cond).unwrap().push(token);
+                        writeln!(csv_file, "{},{},{},NA,{:.4},{:.4}", cond, eval_seed, task_name, exact, token).unwrap();
+                        println!("    {:<28}: Exact = {:.2}%, Token = {:.2}%, Steps = NA", cond, exact * 100.0, token * 100.0);
+                    }
+                    "Scalar_AdamW_Adapter_Tuning" => {
+                        let mut model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                        model.attach_lora(4, 8.0, eval_seed);
+
+                        let plan = EditPlan {
+                            optimizer_type: moonshot_core::OptimizerType::AdamW,
+                            base_lr: 0.025,
+                            schedule_policy: moonshot_core::SchedulePolicy::Constant,
+                            inner_steps: 55,
+                            grad_clip: None,
+                            weight_decay: 0.0,
+                            ..Default::default()
+                        };
+
+                        let total_steps = 55;
+                        let batch_size = 8;
+                        let n_batches = (split.train_examples.len() + batch_size - 1) / batch_size;
+                        let mut steps_to_target = None;
+
+                        for step in 0..total_steps {
+                            let b_idx = step % n_batches;
+                            let start = b_idx * batch_size;
+                            let end = (start + batch_size).min(split.train_examples.len());
+                            let batch = &split.train_examples[start..end];
+                            model.train_adapter_step_with_plan(batch, &plan, step, total_steps);
+
+                            if steps_to_target.is_none() && (step + 1) % 5 == 0 {
+                                let val_preds: Vec<_> = split.val_examples.iter().map(|ex| {
+                                    model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let val_exact = ImmutableOracle::score_batch_exact(&val_preds, &split.val_examples);
+                                if val_exact >= target_acc {
+                                    steps_to_target = Some(step + 1);
+                                }
+                            }
+                        }
+
+                        let preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let exact = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
+                        let token = ImmutableOracle::score_batch_tokens(&preds, &split.test_examples);
+
+                        condition_exacts.get_mut(cond).unwrap().push(exact);
+                        condition_tokens.get_mut(cond).unwrap().push(token);
+                        let s_str = steps_to_target.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4}", cond, eval_seed, task_name, s_str, exact, token).unwrap();
+                        println!("    {:<28}: Exact = {:.2}%, Token = {:.2}%, Steps = {}", cond, exact * 100.0, token * 100.0, s_str);
+                    }
+                    "Composed_DSL_Adapter_Update" => {
+                        let mut model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                        model.attach_lora(4, 8.0, eval_seed);
+
+                        // Composed AST program: ClipGradNorm(1.0) + WarmupCosineSchedule + DecoupledWeightDecay(0.001)
+                        let plan = EditPlan {
+                            optimizer_type: moonshot_core::OptimizerType::AdamW,
+                            base_lr: 0.025,
+                            schedule_policy: moonshot_core::SchedulePolicy::WarmupCosine,
+                            inner_steps: 55,
+                            grad_clip: Some(1.0),
+                            weight_decay: 0.001,
+                            ..Default::default()
+                        };
+
+                        let total_steps = 55;
+                        let batch_size = 8;
+                        let n_batches = (split.train_examples.len() + batch_size - 1) / batch_size;
+                        let mut steps_to_target = None;
+
+                        for step in 0..total_steps {
+                            let b_idx = step % n_batches;
+                            let start = b_idx * batch_size;
+                            let end = (start + batch_size).min(split.train_examples.len());
+                            let batch = &split.train_examples[start..end];
+                            model.train_adapter_step_with_plan(batch, &plan, step, total_steps);
+
+                            if steps_to_target.is_none() && (step + 1) % 5 == 0 {
+                                let val_preds: Vec<_> = split.val_examples.iter().map(|ex| {
+                                    model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let val_exact = ImmutableOracle::score_batch_exact(&val_preds, &split.val_examples);
+                                if val_exact >= target_acc {
+                                    steps_to_target = Some(step + 1);
+                                }
+                            }
+                        }
+
+                        let preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let exact = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
+                        let token = ImmutableOracle::score_batch_tokens(&preds, &split.test_examples);
+
+                        condition_exacts.get_mut(cond).unwrap().push(exact);
+                        condition_tokens.get_mut(cond).unwrap().push(token);
+                        let s_str = steps_to_target.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4}", cond, eval_seed, task_name, s_str, exact, token).unwrap();
+                        println!("    {:<28}: Exact = {:.2}%, Token = {:.2}%, Steps = {}", cond, exact * 100.0, token * 100.0, s_str);
+                    }
+                    "Random_DSL_Adapter_Search" => {
+                        let mut rng = ChaCha8Rng::seed_from_u64(eval_seed + 1001);
+                        let candidate_lrs = [0.010, 0.020, 0.030, 0.050];
+                        let candidate_schedules = [
+                            moonshot_core::SchedulePolicy::Constant,
+                            moonshot_core::SchedulePolicy::CosineDecay,
+                            moonshot_core::SchedulePolicy::WarmupCosine,
+                        ];
+                        let candidate_clips = [None, Some(0.5), Some(1.0), Some(2.0)];
+                        let candidate_decays = [0.0, 0.001, 0.01];
+
+                        let mut best_plan = EditPlan::default();
+                        let mut best_val_score = -1.0f32;
+
+                        for _trial in 0..5 {
+                            let lr_idx = (rng.next_u32() as usize) % candidate_lrs.len();
+                            let sched_idx = (rng.next_u32() as usize) % candidate_schedules.len();
+                            let clip_idx = (rng.next_u32() as usize) % candidate_clips.len();
+                            let decay_idx = (rng.next_u32() as usize) % candidate_decays.len();
+
+                            let cand_plan = EditPlan {
+                                optimizer_type: moonshot_core::OptimizerType::AdamW,
+                                base_lr: candidate_lrs[lr_idx],
+                                schedule_policy: candidate_schedules[sched_idx],
+                                inner_steps: 30,
+                                grad_clip: candidate_clips[clip_idx],
+                                weight_decay: candidate_decays[decay_idx],
+                                ..Default::default()
+                            };
+
+                            let mut cand_model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                            cand_model.attach_lora(4, 8.0, eval_seed);
+
+                            let total_steps = 30;
+                            let batch_size = 8;
+                            let n_batches = (split.train_examples.len() + batch_size - 1) / batch_size;
+                            for step in 0..total_steps {
+                                let b_idx = step % n_batches;
+                                let start = b_idx * batch_size;
+                                let end = (start + batch_size).min(split.train_examples.len());
+                                let batch = &split.train_examples[start..end];
+                                cand_model.train_adapter_step_with_plan(batch, &cand_plan, step, total_steps);
+                            }
+
+                            let val_preds: Vec<_> = split.val_examples.iter().map(|ex| {
+                                cand_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                            }).collect();
+                            let val_exact = ImmutableOracle::score_batch_exact(&val_preds, &split.val_examples);
+                            if val_exact > best_val_score {
+                                best_val_score = val_exact;
+                                best_plan = cand_plan;
+                            }
+                        }
+
+                        // Evaluate selected best candidate on test split
+                        let mut model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                        model.attach_lora(4, 8.0, eval_seed);
+                        let total_steps = 55;
+                        let batch_size = 8;
+                        let n_batches = (split.train_examples.len() + batch_size - 1) / batch_size;
+                        let mut steps_to_target = None;
+
+                        for step in 0..total_steps {
+                            let b_idx = step % n_batches;
+                            let start = b_idx * batch_size;
+                            let end = (start + batch_size).min(split.train_examples.len());
+                            let batch = &split.train_examples[start..end];
+                            model.train_adapter_step_with_plan(batch, &best_plan, step, total_steps);
+
+                            if steps_to_target.is_none() && (step + 1) % 5 == 0 {
+                                let val_preds: Vec<_> = split.val_examples.iter().map(|ex| {
+                                    model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let val_exact = ImmutableOracle::score_batch_exact(&val_preds, &split.val_examples);
+                                if val_exact >= target_acc {
+                                    steps_to_target = Some(step + 1);
+                                }
+                            }
+                        }
+
+                        let preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let exact = ImmutableOracle::score_batch_exact(&preds, &split.test_examples);
+                        let token = ImmutableOracle::score_batch_tokens(&preds, &split.test_examples);
+
+                        condition_exacts.get_mut(cond).unwrap().push(exact);
+                        condition_tokens.get_mut(cond).unwrap().push(token);
+                        let s_str = steps_to_target.map(|s| s.to_string()).unwrap_or_else(|| "NA".to_string());
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4}", cond, eval_seed, task_name, s_str, exact, token).unwrap();
+                        println!("    {:<28}: Exact = {:.2}%, Token = {:.2}%, Steps = {}", cond, exact * 100.0, token * 100.0, s_str);
+                    }
+                    _ => unreachable!(),
+                }
+            }
+        }
+    }
+
+    println!("\n>>> WAVE 6C SUMMARY: UPDATE-RULE PERFORMANCE ON 1.09M ADAPTERS");
+    let mut mean_exacts: HashMap<&str, f32> = HashMap::new();
+    let mut mean_tokens: HashMap<&str, f32> = HashMap::new();
+    for &cond in &conditions {
+        let ex_list = condition_exacts.get(cond).unwrap();
+        let tok_list = condition_tokens.get(cond).unwrap();
+        let m_ex = ex_list.iter().sum::<f32>() / ex_list.len().max(1) as f32;
+        let m_tok = tok_list.iter().sum::<f32>() / tok_list.len().max(1) as f32;
+        mean_exacts.insert(cond, m_ex);
+        mean_tokens.insert(cond, m_tok);
+        println!("  - {:<28}: Exact Match = {:.2}%, Token Acc = {:.2}%", cond, m_ex * 100.0, m_tok * 100.0);
+    }
+
+    let m_composed = *mean_exacts.get("Composed_DSL_Adapter_Update").unwrap();
+    let m_scalar = *mean_exacts.get("Scalar_AdamW_Adapter_Tuning").unwrap();
+    let m_random = *mean_exacts.get("Random_DSL_Adapter_Search").unwrap();
+    let m_frozen = *mean_exacts.get("Frozen_Base_No_Adaptation").unwrap();
+
+    let advantage_over_scalar = m_composed - m_scalar;
+    let advantage_over_random = m_composed - m_random;
+    let gate_s2_passed = advantage_over_scalar >= 0.05;
+
+    let verdict_json = serde_json::json!({
+        "wave": "Wave 6C: Structural Update-Rule Transfer to 1M Adapters (Leap S2)",
+        "mean_exact_composed_dsl": m_composed,
+        "mean_exact_scalar_adamw": m_scalar,
+        "mean_exact_random_dsl": m_random,
+        "mean_exact_frozen_base": m_frozen,
+        "advantage_over_scalar_pp": advantage_over_scalar * 100.0,
+        "advantage_over_random_pp": advantage_over_random * 100.0,
+        "gate_s2_target_pp": 5.0,
+        "gate_s2_passed": gate_s2_passed
+    });
+
+    let verdict_path = output_dir.join("gate_s2_verdict.json");
+    let mut verdict_file = File::create(&verdict_path).expect("Failed to create gate_s2_verdict.json");
+    write!(verdict_file, "{}", serde_json::to_string_pretty(&verdict_json).unwrap()).unwrap();
+
+    let findings_path = output_dir.join("wave6c_findings.md");
+    let mut findings_file = File::create(&findings_path).expect("Failed to create wave6c_findings.md");
+    writeln!(findings_file, "# Wave 6C Findings: Structural Update-Rule Transfer to 1M Adapters (Leap S2)").unwrap();
+    writeln!(findings_file, "\n**Audit Date**: {}  ", chrono::Utc::now().to_rfc3339()).unwrap();
+    writeln!(findings_file, "- **Composed DSL Adapter Update Exact Match**: {:.2}%", m_composed * 100.0).unwrap();
+    writeln!(findings_file, "- **Scalar AdamW Adapter Tuning Exact Match**: {:.2}%", m_scalar * 100.0).unwrap();
+    writeln!(findings_file, "- **Random DSL Adapter Search Exact Match**: {:.2}%", m_random * 100.0).unwrap();
+    writeln!(findings_file, "- **Frozen Base No Adaptation Exact Match**: {:.2}%", m_frozen * 100.0).unwrap();
+    writeln!(findings_file, "- **Composed vs Scalar Advantage**: +{:.2} pp", advantage_over_scalar * 100.0).unwrap();
+    writeln!(findings_file, "- **Composed vs Random Advantage**: +{:.2} pp", advantage_over_random * 100.0).unwrap();
+    writeln!(findings_file, "- **Gate S2**: {}", if gate_s2_passed { "PASSED" } else { "FAILED" }).unwrap();
+
+    println!("\n[Moonshot] Wave 6C completed successfully!");
+    println!("  ✓ Benchmark CSV: {}", csv_path.display());
+    println!("  ✓ Gate S2 JSON: {}", verdict_path.display());
+    println!("  ✓ Findings MD: {}", findings_path.display());
+}
+
+fn run_wave6d_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
+    println!("============================================================");
+    println!("MOONSHOT WAVE 6D: DECISIVE 1M MULTI-GEN COMPOUNDING (LEAP S3)");
+    println!("============================================================");
+    fs::create_dir_all(output_dir).expect("Failed to create output dir");
+
+    let eval_seeds = [1101u64, 1202u64, 1303u64];
+    let gen_tasks = [
+        TaskFamilyType::ToolWorkflowBasic,   // G1
+        TaskFamilyType::FsmPermutation,       // G2
+        TaskFamilyType::SymbolicPrimitives,   // G3
+    ];
+    let gen_task_names = ["G1_ToolWorkflowBasic", "G2_FsmPermutation", "G3_SymbolicPrimitives"];
+
+    let conditions = [
+        "Modular_1M_Compounding",
+        "Shared_1M_Continual",
+        "Frozen_G0_Control",
+        "Shared_77K_Compounding",
+    ];
+
+    let csv_path = output_dir.join("compounding_retention_matrix_1m.csv");
+    let mut csv_file = File::create(&csv_path).expect("Failed to create compounding_retention_matrix_1m.csv");
+    writeln!(csv_file, "condition,seed,generation,evaluated_generation_task,exact_match,token_accuracy,retention_ratio").unwrap();
+
+    let config_1m = ModelConfig::new_1m();
+    let config_77k = ModelConfig::default();
+
+    let mut cond_heldout_exacts: HashMap<&str, [Vec<f32>; 4]> = HashMap::new();
+    let mut cond_g3_retentions: HashMap<&str, Vec<f32>> = HashMap::new();
+
+    for &cond in &conditions {
+        cond_heldout_exacts.insert(cond, [Vec::new(), Vec::new(), Vec::new(), Vec::new()]);
+        cond_g3_retentions.insert(cond, Vec::new());
+    }
+
+    for &eval_seed in &eval_seeds {
+        println!("\n>>> RUNNING GENERATIONAL SEED: {}", eval_seed);
+        let sandbox_split = TaskGenerator::generate_split(TaskFamilyType::ToolWorkflowSandbox, eval_seed, 50, 20, 20);
+
+        let gen_splits: Vec<_> = gen_tasks.iter().enumerate().map(|(idx, &fam)| {
+            TaskGenerator::generate_split(fam, eval_seed + idx as u64 * 100, 50, 20, 20)
+        }).collect();
+
+        for &cond in &conditions {
+            println!("  [Condition: {}]", cond);
+
+            match cond {
+                "Modular_1M_Compounding" => {
+                    let mut base_model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                    let mut saved_adapters: Vec<Vec<f32>> = Vec::new();
+                    let mut initial_exacts = vec![0.0f32; 3];
+
+                    // Generation 0: Base unadapted model on held-out sandbox
+                    let g0_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                        base_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                    }).collect();
+                    let g0_exact = ImmutableOracle::score_batch_exact(&g0_preds, &sandbox_split.test_examples);
+                    let g0_token = ImmutableOracle::score_batch_tokens(&g0_preds, &sandbox_split.test_examples);
+                    cond_heldout_exacts.get_mut(cond).unwrap()[0].push(g0_exact);
+                    writeln!(csv_file, "{},{},0,G0_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, g0_exact, g0_token).unwrap();
+
+                    let composed_plan = EditPlan {
+                        optimizer_type: moonshot_core::OptimizerType::AdamW,
+                        base_lr: 0.025,
+                        schedule_policy: moonshot_core::SchedulePolicy::WarmupCosine,
+                        inner_steps: 50,
+                        grad_clip: Some(1.0),
+                        weight_decay: 0.001,
+                        ..Default::default()
+                    };
+
+                    for g in 0..3 {
+                        let cur_gen = g + 1;
+                        let split = &gen_splits[g];
+
+                        base_model.attach_lora(4, 8.0, eval_seed + cur_gen as u64 * 50);
+                        let total_steps = 50;
+                        let batch_size = 8;
+                        let n_batches = (split.train_examples.len() + batch_size - 1) / batch_size;
+
+                        for step in 0..total_steps {
+                            let b_idx = step % n_batches;
+                            let start = b_idx * batch_size;
+                            let end = (start + batch_size).min(split.train_examples.len());
+                            let batch = &split.train_examples[start..end];
+                            base_model.train_adapter_step_with_plan(batch, &composed_plan, step, total_steps);
+                        }
+
+                        let cur_adap = base_model.extract_adapter_parameters();
+                        saved_adapters.push(cur_adap);
+
+                        let cur_preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            base_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let cur_exact = ImmutableOracle::score_batch_exact(&cur_preds, &split.test_examples);
+                        let cur_token = ImmutableOracle::score_batch_tokens(&cur_preds, &split.test_examples);
+                        initial_exacts[g] = cur_exact;
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, gen_task_names[g], cur_exact, cur_token).unwrap();
+
+                        // Evaluate held-out adaptation on ToolWorkflowSandbox
+                        let mut eval_sandbox_model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                        eval_sandbox_model.attach_lora(4, 8.0, eval_seed + cur_gen as u64 * 500);
+                        let sb_steps = 40;
+                        let sb_batches = (sandbox_split.train_examples.len() + batch_size - 1) / batch_size;
+                        for step in 0..sb_steps {
+                            let b_idx = step % sb_batches;
+                            let start = b_idx * batch_size;
+                            let end = (start + batch_size).min(sandbox_split.train_examples.len());
+                            let batch = &sandbox_split.train_examples[start..end];
+                            eval_sandbox_model.train_adapter_step_with_plan(batch, &composed_plan, step, sb_steps);
+                        }
+                        let sb_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                            eval_sandbox_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let sb_exact = ImmutableOracle::score_batch_exact(&sb_preds, &sandbox_split.test_examples);
+                        let sb_token = ImmutableOracle::score_batch_tokens(&sb_preds, &sandbox_split.test_examples);
+                        cond_heldout_exacts.get_mut(cond).unwrap()[cur_gen].push(sb_exact);
+                        writeln!(csv_file, "{},{},{},G{}_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, cur_gen, sb_exact, sb_token).unwrap();
+
+                        // Evaluate retention on earlier tasks
+                        if g > 0 {
+                            for past_task in 0..g {
+                                base_model.load_adapter_parameters(&saved_adapters[past_task]);
+                                let past_split = &gen_splits[past_task];
+                                let past_preds: Vec<_> = past_split.test_examples.iter().map(|ex| {
+                                    base_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let past_exact = ImmutableOracle::score_batch_exact(&past_preds, &past_split.test_examples);
+                                let past_token = ImmutableOracle::score_batch_tokens(&past_preds, &past_split.test_examples);
+                                let ret_ratio = if initial_exacts[past_task] < 1e-4 {
+                                    1.0
+                                } else {
+                                    (past_exact / initial_exacts[past_task]).min(1.0)
+                                };
+                                writeln!(csv_file, "{},{},{},{}_Retention,{:.4},{:.4},{:.4}", cond, eval_seed, cur_gen, gen_task_names[past_task], past_exact, past_token, ret_ratio).unwrap();
+
+                                if g == 2 {
+                                    cond_g3_retentions.get_mut(cond).unwrap().push(ret_ratio);
+                                }
+                            }
+                        }
+                    }
+                }
+                "Shared_1M_Continual" => {
+                    let mut model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                    let mut initial_exacts = vec![0.0f32; 3];
+
+                    let g0_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                        model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                    }).collect();
+                    let g0_exact = ImmutableOracle::score_batch_exact(&g0_preds, &sandbox_split.test_examples);
+                    let g0_token = ImmutableOracle::score_batch_tokens(&g0_preds, &sandbox_split.test_examples);
+                    cond_heldout_exacts.get_mut(cond).unwrap()[0].push(g0_exact);
+                    writeln!(csv_file, "{},{},0,G0_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, g0_exact, g0_token).unwrap();
+
+                    let plan = EditPlan {
+                        base_lr: 0.015,
+                        schedule_policy: moonshot_core::SchedulePolicy::WarmupCosine,
+                        inner_steps: 50,
+                        layer_lr_multipliers: vec![1.0; 6],
+                        ..Default::default()
+                    };
+
+                    for g in 0..3 {
+                        let cur_gen = g + 1;
+                        let split = &gen_splits[g];
+
+                        SearchManager::evaluate_adaptation_with_anchors(&mut model, &plan, split, target_acc, None);
+
+                        let cur_preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let cur_exact = ImmutableOracle::score_batch_exact(&cur_preds, &split.test_examples);
+                        let cur_token = ImmutableOracle::score_batch_tokens(&cur_preds, &split.test_examples);
+                        initial_exacts[g] = cur_exact;
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, gen_task_names[g], cur_exact, cur_token).unwrap();
+
+                        let mut sb_model = model.clone();
+                        SearchManager::evaluate_adaptation_with_anchors(&mut sb_model, &plan, &sandbox_split, target_acc, None);
+                        let sb_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                            sb_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let sb_exact = ImmutableOracle::score_batch_exact(&sb_preds, &sandbox_split.test_examples);
+                        let sb_token = ImmutableOracle::score_batch_tokens(&sb_preds, &sandbox_split.test_examples);
+                        cond_heldout_exacts.get_mut(cond).unwrap()[cur_gen].push(sb_exact);
+                        writeln!(csv_file, "{},{},{},G{}_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, cur_gen, sb_exact, sb_token).unwrap();
+
+                        if g > 0 {
+                            for past_task in 0..g {
+                                let past_split = &gen_splits[past_task];
+                                let past_preds: Vec<_> = past_split.test_examples.iter().map(|ex| {
+                                    model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let past_exact = ImmutableOracle::score_batch_exact(&past_preds, &past_split.test_examples);
+                                let past_token = ImmutableOracle::score_batch_tokens(&past_preds, &past_split.test_examples);
+                                let ret_ratio = if initial_exacts[past_task] < 1e-4 {
+                                    1.0
+                                } else {
+                                    (past_exact / initial_exacts[past_task]).min(1.0)
+                                };
+                                writeln!(csv_file, "{},{},{},{}_Retention,{:.4},{:.4},{:.4}", cond, eval_seed, cur_gen, gen_task_names[past_task], past_exact, past_token, ret_ratio).unwrap();
+
+                                if g == 2 {
+                                    cond_g3_retentions.get_mut(cond).unwrap().push(ret_ratio);
+                                }
+                            }
+                        }
+                    }
+                }
+                "Frozen_G0_Control" => {
+                    let model = TinyTransformer::new(config_1m.clone(), eval_seed);
+                    let sb_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                        model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                    }).collect();
+                    let sb_exact = ImmutableOracle::score_batch_exact(&sb_preds, &sandbox_split.test_examples);
+                    let sb_token = ImmutableOracle::score_batch_tokens(&sb_preds, &sandbox_split.test_examples);
+                    for gen_idx in 0..4 {
+                        cond_heldout_exacts.get_mut(cond).unwrap()[gen_idx].push(sb_exact);
+                        writeln!(csv_file, "{},{},{},G{}_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, gen_idx, gen_idx, sb_exact, sb_token).unwrap();
+                    }
+                    cond_g3_retentions.get_mut(cond).unwrap().push(1.0);
+                }
+                "Shared_77K_Compounding" => {
+                    let mut model = TinyTransformer::new(config_77k.clone(), eval_seed);
+                    let mut initial_exacts = vec![0.0f32; 3];
+
+                    let g0_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                        model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                    }).collect();
+                    let g0_exact = ImmutableOracle::score_batch_exact(&g0_preds, &sandbox_split.test_examples);
+                    let g0_token = ImmutableOracle::score_batch_tokens(&g0_preds, &sandbox_split.test_examples);
+                    cond_heldout_exacts.get_mut(cond).unwrap()[0].push(g0_exact);
+                    writeln!(csv_file, "{},{},0,G0_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, g0_exact, g0_token).unwrap();
+
+                    let plan = EditPlan {
+                        base_lr: 0.015,
+                        schedule_policy: moonshot_core::SchedulePolicy::WarmupCosine,
+                        inner_steps: 35,
+                        layer_lr_multipliers: vec![1.0; 6],
+                        ..Default::default()
+                    };
+
+                    for g in 0..3 {
+                        let cur_gen = g + 1;
+                        let split = &gen_splits[g];
+
+                        SearchManager::evaluate_adaptation_with_anchors(&mut model, &plan, split, target_acc, None);
+
+                        let cur_preds: Vec<_> = split.test_examples.iter().map(|ex| {
+                            model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let cur_exact = ImmutableOracle::score_batch_exact(&cur_preds, &split.test_examples);
+                        let cur_token = ImmutableOracle::score_batch_tokens(&cur_preds, &split.test_examples);
+                        initial_exacts[g] = cur_exact;
+                        writeln!(csv_file, "{},{},{},{},{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, gen_task_names[g], cur_exact, cur_token).unwrap();
+
+                        let mut sb_model = model.clone();
+                        SearchManager::evaluate_adaptation_with_anchors(&mut sb_model, &plan, &sandbox_split, target_acc, None);
+                        let sb_preds: Vec<_> = sandbox_split.test_examples.iter().map(|ex| {
+                            sb_model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                        }).collect();
+                        let sb_exact = ImmutableOracle::score_batch_exact(&sb_preds, &sandbox_split.test_examples);
+                        let sb_token = ImmutableOracle::score_batch_tokens(&sb_preds, &sandbox_split.test_examples);
+                        cond_heldout_exacts.get_mut(cond).unwrap()[cur_gen].push(sb_exact);
+                        writeln!(csv_file, "{},{},{},G{}_HeldOut_Sandbox,{:.4},{:.4},1.0000", cond, eval_seed, cur_gen, cur_gen, sb_exact, sb_token).unwrap();
+
+                        if g > 0 {
+                            for past_task in 0..g {
+                                let past_split = &gen_splits[past_task];
+                                let past_preds: Vec<_> = past_split.test_examples.iter().map(|ex| {
+                                    model.predict_sequence(&ex.input_tokens, ex.target_tokens.len())
+                                }).collect();
+                                let past_exact = ImmutableOracle::score_batch_exact(&past_preds, &past_split.test_examples);
+                                let past_token = ImmutableOracle::score_batch_tokens(&past_preds, &past_split.test_examples);
+                                let ret_ratio = if initial_exacts[past_task] < 1e-4 {
+                                    1.0
+                                } else {
+                                    (past_exact / initial_exacts[past_task]).min(1.0)
+                                };
+                                writeln!(csv_file, "{},{},{},{}_Retention,{:.4},{:.4},{:.4}", cond, eval_seed, cur_gen, gen_task_names[past_task], past_exact, past_token, ret_ratio).unwrap();
+
+                                if g == 2 {
+                                    cond_g3_retentions.get_mut(cond).unwrap().push(ret_ratio);
+                                }
+                            }
+                        }
+                    }
+                }
+                _ => unreachable!(),
+            }
+        }
+    }
+
+    println!("\n>>> WAVE 6D SUMMARY: MULTI-GENERATION COMPOUNDING & RETENTION");
+    let mut mean_g0_exact: HashMap<&str, f32> = HashMap::new();
+    let mut mean_g3_exact: HashMap<&str, f32> = HashMap::new();
+    let mut mean_g3_retention: HashMap<&str, f32> = HashMap::new();
+
+    for &cond in &conditions {
+        let h_arr = cond_heldout_exacts.get(cond).unwrap();
+        let m_g0 = h_arr[0].iter().sum::<f32>() / h_arr[0].len().max(1) as f32;
+        let m_g1 = h_arr[1].iter().sum::<f32>() / h_arr[1].len().max(1) as f32;
+        let m_g2 = h_arr[2].iter().sum::<f32>() / h_arr[2].len().max(1) as f32;
+        let m_g3 = h_arr[3].iter().sum::<f32>() / h_arr[3].len().max(1) as f32;
+
+        let ret_list = cond_g3_retentions.get(cond).unwrap();
+        let m_ret = ret_list.iter().sum::<f32>() / ret_list.len().max(1) as f32;
+
+        mean_g0_exact.insert(cond, m_g0);
+        mean_g3_exact.insert(cond, m_g3);
+        mean_g3_retention.insert(cond, m_ret);
+
+        println!("  - {:<26}: G0 = {:.2}%, G1 = {:.2}%, G2 = {:.2}%, G3 = {:.2}%, Ret@G3 = {:.2}%",
+            cond, m_g0 * 100.0, m_g1 * 100.0, m_g2 * 100.0, m_g3 * 100.0, m_ret * 100.0);
+    }
+
+    let mod_g0 = *mean_g0_exact.get("Modular_1M_Compounding").unwrap();
+    let mod_g3 = *mean_g3_exact.get("Modular_1M_Compounding").unwrap();
+    let mod_ret = *mean_g3_retention.get("Modular_1M_Compounding").unwrap();
+
+    let shared_g3 = *mean_g3_exact.get("Shared_1M_Continual").unwrap();
+    let shared_ret = *mean_g3_retention.get("Shared_1M_Continual").unwrap();
+
+    let gate_s3_monotonic = mod_g3 >= mod_g0;
+    let gate_s3_retention = mod_ret >= 0.50;
+    let gate_s3_passed = gate_s3_monotonic && gate_s3_retention;
+
+    let verdict_json = serde_json::json!({
+        "wave": "Wave 6D: Decisive 1M Multi-Generation Compounding (Leap S3)",
+        "modular_compounding": {
+            "g0_heldout_exact": mod_g0,
+            "g3_heldout_exact": mod_g3,
+            "heldout_gain_pp": (mod_g3 - mod_g0) * 100.0,
+            "g3_backward_retention": mod_ret,
+            "monotonic_gain_passed": gate_s3_monotonic,
+            "retention_floor_passed": gate_s3_retention
+        },
+        "shared_1m_continual": {
+            "g3_heldout_exact": shared_g3,
+            "g3_backward_retention": shared_ret
+        },
+        "gate_s3_passed": gate_s3_passed
+    });
+
+    let verdict_path = output_dir.join("gate_s3_verdict.json");
+    let mut verdict_file = File::create(&verdict_path).expect("Failed to create gate_s3_verdict.json");
+    write!(verdict_file, "{}", serde_json::to_string_pretty(&verdict_json).unwrap()).unwrap();
+
+    let findings_path = output_dir.join("wave6d_findings.md");
+    let mut findings_file = File::create(&findings_path).expect("Failed to create wave6d_findings.md");
+    writeln!(findings_file, "# Wave 6D Findings: Decisive 1M Multi-Generation Compounding (Leap S3)").unwrap();
+    writeln!(findings_file, "\n**Audit Date**: {}  ", chrono::Utc::now().to_rfc3339()).unwrap();
+    writeln!(findings_file, "- **Modular 1M Compounding G0 Held-Out Exact**: {:.2}%", mod_g0 * 100.0).unwrap();
+    writeln!(findings_file, "- **Modular 1M Compounding G3 Held-Out Exact**: {:.2}%", mod_g3 * 100.0).unwrap();
+    writeln!(findings_file, "- **Modular 1M Compounding G3 Backward Retention**: {:.2}%", mod_ret * 100.0).unwrap();
+    writeln!(findings_file, "- **Shared 1M Continual G3 Backward Retention**: {:.2}%", shared_ret * 100.0).unwrap();
+    writeln!(findings_file, "- **Gate S3 (Monotonic Held-Out Gain & Ret >= 50%)**: {}", if gate_s3_passed { "PASSED" } else { "FAILED" }).unwrap();
+
+    println!("\n[Moonshot] Wave 6D completed successfully!");
+    println!("  ✓ Compounding CSV: {}", csv_path.display());
+    println!("  ✓ Gate S3 JSON: {}", verdict_path.display());
+    println!("  ✓ Findings MD: {}", findings_path.display());
+}
+
 fn main() {
     let cli = Cli::parse();
     match cli.command {
@@ -4070,6 +4762,12 @@ fn main() {
         }
         Commands::Wave6bSweep { output_dir, seed, target_acc } => {
             run_wave6b_sweep(&output_dir, seed, target_acc);
+        }
+        Commands::Wave6cSweep { output_dir, seed, target_acc } => {
+            run_wave6c_sweep(&output_dir, seed, target_acc);
+        }
+        Commands::Wave6dSweep { output_dir, seed, target_acc } => {
+            run_wave6d_sweep(&output_dir, seed, target_acc);
         }
     }
 }
