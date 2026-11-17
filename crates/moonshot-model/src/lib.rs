@@ -27,6 +27,23 @@ impl Default for ModelConfig {
     }
 }
 
+impl ModelConfig {
+    pub fn new_77k() -> Self {
+        Self::default()
+    }
+
+    pub fn new_1m() -> Self {
+        Self {
+            vocab_size: 64,
+            max_seq_len: 32,
+            d_model: 256,
+            n_heads: 8,
+            n_layers: 2,
+            d_ff: 512,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LinearParam {
     pub weight: Vec<f32>, // out_dim x in_dim
@@ -1188,5 +1205,36 @@ mod tests {
             last_loss = model.train_step(&examples, &plan, s, 20);
         }
         assert!(last_loss < loss_0, "Loss must decrease under exact backpropagation: start={}, end={}", loss_0, last_loss);
+    }
+
+    #[test]
+    fn test_1m_model_parameter_count_and_gradients() {
+        let config = ModelConfig::new_1m();
+        let mut model = TinyTransformer::new(config, 42);
+        assert_eq!(model.total_parameters(), 1_095_744, "1M Model parameter count must be exactly 1,095,744");
+
+        let plan = EditPlan {
+            optimizer_type: OptimizerType::AdamW,
+            base_lr: 0.01,
+            ..Default::default()
+        };
+
+        let examples = vec![
+            TaskExample {
+                input_tokens: vec![1, 10, 20],
+                target_tokens: vec![30, 2],
+            },
+            TaskExample {
+                input_tokens: vec![1, 15, 25],
+                target_tokens: vec![35, 2],
+            },
+        ];
+
+        let loss_0 = model.train_step(&examples, &plan, 0, 10);
+        let mut last_loss = loss_0;
+        for s in 1..5 {
+            last_loss = model.train_step(&examples, &plan, s, 10);
+        }
+        assert!(last_loss < loss_0, "1M Model exact backprop must decrease loss: start={}, end={}", loss_0, last_loss);
     }
 }
