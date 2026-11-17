@@ -5,6 +5,7 @@ members = [
     "crates/moonshot-model",
     "crates/moonshot-editor",
     "crates/moonshot-runner",
+    "crates/moonshot-autodiff",
 ]
 resolver = "2"
 

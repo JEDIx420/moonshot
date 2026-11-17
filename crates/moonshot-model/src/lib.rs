@@ -4,6 +4,8 @@ use rand_chacha::ChaCha8Rng;
 use rand::SeedableRng;
 use serde::{Deserialize, Serialize};
 
+pub mod safetensors;
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct ModelConfig {
     pub vocab_size: usize,
@@ -645,6 +647,82 @@ impl TinyTransformer {
 
         let (h_final, _, _) = self.ln_f.forward(&h, seq_len);
         self.head.forward(&h_final, seq_len)
+    }
+
+    /// Export model weights and architecture metadata into HuggingFace Safetensors format.
+    pub fn to_safetensors(&self) -> Result<Vec<u8>, safetensors::SafetensorsError> {
+        safetensors::export_model(self)
+    }
+
+    /// Import and reconstruct a model directly from Safetensors bytes.
+    pub fn from_safetensors(bytes: &[u8]) -> Result<Self, safetensors::SafetensorsError> {
+        safetensors::import_model(bytes)
+    }
+
+    /// Load Safetensors parameters directly into this model instance.
+    pub fn load_safetensors(&mut self, bytes: &[u8]) -> Result<(), safetensors::SafetensorsError> {
+        safetensors::load_into_model(self, bytes)
+    }
+
+    /// Forward pass exposing layer-by-layer attention weights along with output logits.
+    ///
+    /// Returns `(logits, layer_attention_weights)` where `layer_attention_weights` has shape
+    /// `[n_layers]` with each element containing `[n_heads * seq_len * seq_len]` attention scores.
+    pub fn forward_with_attention(&self, tokens: &[usize]) -> (Vec<f32>, Vec<Vec<f32>>) {
+        let seq_len = tokens.len().min(self.config.max_seq_len);
+        let d = self.config.d_model;
+        let mut h = vec![0.0; seq_len * d];
+
+        for (pos, &tok) in tokens.iter().take(seq_len).enumerate() {
+            let tok_idx = tok.min(self.config.vocab_size - 1);
+            let t_emb = &self.token_emb[tok_idx * d..(tok_idx + 1) * d];
+            let p_emb = &self.pos_emb[pos * d..(pos + 1) * d];
+            for k in 0..d {
+                h[pos * d + k] = t_emb[k] + p_emb[k];
+            }
+        }
+
+        let mut all_attn_weights = Vec::with_capacity(self.blocks.len());
+
+        for block in &self.blocks {
+            // Multi-head causal attention sub-block with residual
+            let (h_norm, _, _) = block.attn.ln.forward(&h, seq_len);
+            let mut q = block.attn.w_q.forward(&h_norm, seq_len);
+            let k = block.attn.w_k.forward(&h_norm, seq_len);
+            let mut v = block.attn.w_v.forward(&h_norm, seq_len);
+
+            if let Some(ref lora) = block.attn.adapter {
+                lora.apply_to_qv(&h_norm, seq_len, &mut q, &mut v);
+            }
+
+            let (attn_out, attn_weights) = forward_multihead_attention(
+                &q, &k, &v, seq_len, d, self.config.n_heads,
+            );
+            all_attn_weights.push(attn_weights);
+
+            let proj = block.attn.w_o.forward(&attn_out, seq_len);
+            for i in 0..seq_len * d {
+                h[i] += proj[i];
+            }
+
+            // FFN sub-block with residual
+            let (ffn_norm, _, _) = block.ffn.ln.forward(&h, seq_len);
+            let ffn_h1 = block.ffn.w_1.forward(&ffn_norm, seq_len);
+            let mut ffn_act = ffn_h1;
+            for val in ffn_act.iter_mut() {
+                if *val < 0.0 {
+                    *val = 0.0;
+                }
+            }
+            let ffn_h2 = block.ffn.w_2.forward(&ffn_act, seq_len);
+            for i in 0..seq_len * d {
+                h[i] += ffn_h2[i];
+            }
+        }
+
+        let (h_final, _, _) = self.ln_f.forward(&h, seq_len);
+        let logits = self.head.forward(&h_final, seq_len);
+        (logits, all_attn_weights)
     }
 
     pub fn predict_sequence(&self, input_tokens: &[usize], max_new_tokens: usize) -> Vec<usize> {
@@ -1797,5 +1875,55 @@ mod tests {
         // Crucial parameter isolation: Base model parameters must NOT have changed by even 1 bit!
         let base_params_after = model.extract_parameters();
         assert_eq!(base_params_before, base_params_after, "Base model parameters must remain strictly frozen during adapter training");
+    }
+
+    #[test]
+    fn test_tiny_transformer_to_and_from_safetensors_methods() {
+        let model = TinyTransformer::new(ModelConfig::new_77k(), 555);
+        let bytes = model.to_safetensors().expect("to_safetensors failed");
+        let restored = TinyTransformer::from_safetensors(&bytes).expect("from_safetensors failed");
+        assert_eq!(model.extract_parameters(), restored.extract_parameters());
+
+        let tokens = vec![2, 10, 20, 3];
+        assert_eq!(model.forward(&tokens), restored.forward(&tokens));
+    }
+
+    #[test]
+    fn test_forward_with_attention_consistency() {
+        let model = TinyTransformer::new(ModelConfig::new_77k(), 777);
+        let tokens = vec![5, 12, 19, 23];
+
+        let forward_logits = model.forward(&tokens);
+        let (attn_logits, layer_weights) = model.forward_with_attention(&tokens);
+
+        // Logits must match forward() bit-for-bit
+        assert_eq!(forward_logits, attn_logits);
+
+        // Check attention weights structure
+        assert_eq!(layer_weights.len(), model.config.n_layers);
+        let seq_len = tokens.len();
+        let expected_per_layer = model.config.n_heads * seq_len * seq_len;
+        for weights in &layer_weights {
+            assert_eq!(weights.len(), expected_per_layer);
+            // Verify causal probabilities sum to 1.0 per query position
+            for h in 0..model.config.n_heads {
+                for i in 0..seq_len {
+                    let mut row_sum = 0.0f32;
+                    for j in 0..seq_len {
+                        let w = weights[h * seq_len * seq_len + i * seq_len + j];
+                        if j > i {
+                            assert_eq!(w, 0.0, "Causal attention upper triangle must be 0.0");
+                        } else {
+                            row_sum += w;
+                        }
+                    }
+                    assert!(
+                        (row_sum - 1.0).abs() < 1e-4,
+                        "Attention row sum must equal 1.0, got {}",
+                        row_sum
+                    );
+                }
+            }
+        }
     }
 }

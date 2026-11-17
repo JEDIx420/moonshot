@@ -8,6 +8,11 @@ description = "Moonshot CLI: smoke tests, baseline comparisons, meta-training lo
 name = "moonshot"
 path = "src/main.rs"
 
+[[bin]]
+name = "lab"
+path = "src/bin/lab.rs"
+
+
 [dependencies]
 moonshot-core = { path = "../moonshot-core" }
 moonshot-model = { path = "../moonshot-model" }

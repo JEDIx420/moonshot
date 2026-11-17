@@ -1,0 +1,7 @@
+[package]
+name = "moonshot-autodiff"
+version = "0.1.0"
+edition = "2021"
+description = "Zero-dependency reverse-mode micro-autodiff engine in pure Rust"
+
+[dependencies]

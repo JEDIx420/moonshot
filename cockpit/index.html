@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonshot Cockpit — Telemetry & Research Dashboard</title>
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #a855f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #0b0f19;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #f9fafb, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .telemetry-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--success);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .telemetry-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--success);
+      box-shadow: 0 0 8px var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    button.btn {
+      background: #1f2937;
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    button.btn:hover {
+      background: #374151;
+      border-color: #4b5563;
+    }
+
+    button.btn-primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    button.btn-primary:hover {
+      background: #0369a1;
+    }
+
+    .auto-refresh-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .kpi-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .kpi-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .panel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    input.input-text, select.select-input {
+      background: #1f2937;
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    input.input-text:focus, select.select-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: #1a2234;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+      color: var(--text-main);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(31, 41, 55, 0.4);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-info {
+      background: rgba(56, 189, 248, 0.15);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    /* Heatmap Grid */
+    .heatmap-grid-wrapper {
+      overflow-x: auto;
+      padding: 12px 0;
+    }
+
+    .heatmap-table {
+      border-collapse: separate;
+      border-spacing: 4px;
+      width: 100%;
+    }
+
+    .heatmap-table th {
+      background: none;
+      border: none;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+
+    .heatmap-cell {
+      padding: 16px 12px;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .heatmap-cell:hover {
+      transform: scale(1.04);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .cell-subtext {
+      font-size: 0.7rem;
+      font-weight: 500;
+      opacity: 0.85;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Charts */
+    .chart-box {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: #0f1523;
+      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Lineage Tree / DAG */
+    .lineage-canvas-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lineage-tree {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-start;
+      padding: 12px 0;
+    }
+
+    .lineage-node-card {
+      background: #1a2234;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .lineage-node-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .lineage-node-card.highlight {
+      border-color: #10b981;
+      background: #132729;
+    }
+
+    .node-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .node-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #93c5fd;
+    }
+
+    .node-ops {
+      background: #0d131f;
+      padding: 8px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      word-break: break-all;
+    }
+
+    .op-tag {
+      display: inline-block;
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin: 2px 0;
+      color: #38bdf8;
+    }
+
+    .finding-drawer {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-window {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 650px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 24px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+
+    pre.code-block {
+      background: #0b0f19;
+      border: 1px solid var(--card-border);
+      padding: 12px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      overflow-x: auto;
+      color: #7dd3fc;
+      margin-top: 12px;
+    }
+  </style>
+  <!-- Chart.js CDN with graceful fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">▲</div>
+      <div>
+        <h1>Moonshot Cockpit</h1>
+        <div style="font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em;">AUTONOMOUS RESEARCH TELEMETRY</div>
+      </div>
+    </div>
+
+    <div class="telemetry-status">
+      <div class="telemetry-dot"></div>
+      <span id="telemetry-status-text">CONNECTED</span>
+    </div>
+
+    <div class="header-actions">
+      <div class="auto-refresh-toggle">
+        <input type="checkbox" id="auto-refresh-check" checked>
+        <label for="auto-refresh-check">Live Polling (5s)</label>
+      </div>
+      <button class="btn btn-primary" id="btn-refresh-now" onclick="refreshAllData()">
+        <span id="refresh-spinner">⟳</span> Refresh
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- KPI Summary Grid -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Kaggle Runs</div>
+        <div class="kpi-value" id="kpi-total-runs">—</div>
+        <div class="kpi-sub" id="kpi-completed-runs">— completed</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Compute Consumed</div>
+        <div class="kpi-value" id="kpi-total-compute">—</div>
+        <div class="kpi-sub" id="kpi-compute-breakdown">CPU: — | GPU: —</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Modular Retention (1M)</div>
+        <div class="kpi-value" style="color: #34d399;" id="kpi-retention-rate">83.3%</div>
+        <div class="kpi-sub" id="kpi-retention-delta">vs 0.0% Full Fine-Tuning</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Latest Scientific Gate</div>
+        <div class="kpi-value" style="font-size: 1.15rem; color: #38bdf8;" id="kpi-latest-gate">—</div>
+        <div class="kpi-sub" id="kpi-latest-time">—</div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('tab-ledger')">
+        <span>📋</span> Kaggle Run Tracking
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-retention')">
+        <span>🔥</span> Live Retention Heatmaps
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-curves')">
+        <span>📈</span> Learning Curves
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-lineage')">
+        <span>🧬</span> AST Program Lineage
+      </button>
+    </nav>
+
+    <!-- TAB 1: Kaggle Run Tracking -->
+    <div id="tab-ledger" class="tab-content active">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Runs Ledger Telemetry</span>
+            <span class="badge badge-info" id="ledger-count-badge">0 Runs</span>
+          </div>
+          <div class="panel-controls">
+            <input type="text" id="ledger-search" class="input-text" placeholder="Filter by ID or finding..." oninput="filterLedgerTable()">
+            <select id="ledger-status-filter" class="select-input" onchange="filterLedgerTable()">
+              <option value="ALL">All Statuses</option>
+              <option value="COMPLETE">COMPLETE</option>
+              <option value="FAILED">FAILED</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="ledger-table">
+            <thead>
+              <tr>
+                <th>Run ID</th>
+                <th>Timestamp</th>
+                <th>Kernel / Version</th>
+                <th>Compute</th>
+                <th>Status</th>
+                <th>Outcome Gate</th>
+                <th>Finding Narrative</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-tbody">
+              <tr><td colspan="7" style="text-align:center; color: var(--text-muted);">Loading ledger telemetry...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: Live Retention Heatmaps -->
+    <div id="tab-retention" class="tab-content">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>2D Forgetting vs Retention Heatmap</span>
+            <span class="badge badge-success" id="retention-dataset-badge">Wave 6b (1M Subspace)</span>
+          </div>
+          <div class="panel-controls">
+            <label style="font-size: 0.85rem; color: var(--text-muted);">Metric:</label>
+            <select id="retention-metric-select" class="select-input" onchange="renderRetentionHeatmap()">
+              <option value="retention_ratio">Retention Ratio (%)</option>
+              <option value="exact_match">Exact Match Accuracy (%)</option>
+              <option value="token_acc">Token Accuracy (%)</option>
+            </select>
+          </div>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+          Displays post-continual retention across sequential task evaluations. Higher values indicate resistance to catastrophic forgetting.
+        </p>
+
+        <div class="heatmap-grid-wrapper">
+          <table class="heatmap-table" id="heatmap-table">
+            <!-- Dynamically populated -->
+          </table>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 16px; font-size: 0.75rem; color: var(--text-muted);">
+          <span>Gradient:</span>
+          <span style="background: #ef4444; width: 16px; height: 16px; border-radius: 3px; display:inline-block;"></span> 0% Forgetting
+          <span style="background: #f59e0b; width: 16px; height: 16px; border-radius: 3px; display:inline-block;"></span> 50%
+          <span style="background: #10b981; width: 16px; height: 16px; border-radius: 3px; display:inline-block;"></span> 100% Full Retention
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Learning Curves -->
+    <div id="tab-curves" class="tab-content">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Training & Evaluation Dynamics</span>
+          </div>
+          <div class="panel-controls">
+            <select id="curves-mode-select" class="select-input" onchange="updateCurvesChart()">
+              <option value="meta">Wave 5c Meta-Learning (Loss & Reward)</option>
+              <option value="wave1">Wave 1 Strategy Comparison (Accuracy)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <canvas id="curves-canvas"></canvas>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 0.82rem; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <strong>Insight:</strong> Evolved update rules demonstrate 16.7% - 5.27x sample efficiency improvements over fixed baselines.
+          </div>
+          <div id="chart-fallback-notice" style="display: none; color: var(--warning);">
+            * Using native HTML5 canvas renderer (Chart.js CDN offline)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: AST Program Lineage -->
+    <div id="tab-lineage" class="tab-content">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Evolved DSL Update Rule Lineage</span>
+            <span class="badge badge-info" id="lineage-count-badge">Evolved Programs</span>
+          </div>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+          Visual representation of candidate update programs composed from typed AST operators discovered during evolutionary policy search.
+        </p>
+
+        <!-- DSL Operator Catalog -->
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">DSL Operator Primitives:</div>
+          <div id="operator-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Lineage DAG Nodes -->
+        <div class="lineage-canvas-wrapper">
+          <div class="lineage-tree" id="lineage-tree-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-backdrop" id="detail-modal" onclick="closeModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3 id="modal-title" style="margin-bottom: 12px; color: var(--accent);">Details</h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // State Store
+    let rawLedgerData = [];
+    let retentionData = null;
+    let curvesData = null;
+    let lineageData = null;
+    let chartInstance = null;
+    let pollingTimer = null;
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      if (tabId === 'tab-curves') {
+        setTimeout(updateCurvesChart, 50);
+      }
+    }
+
+    // Modal Control
+    function showModal(title, contentHtml) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-body').innerHTML = contentHtml;
+      document.getElementById('detail-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('detail-modal').classList.remove('active');
+    }
+
+    // Fetch Helper
+    async function apiFetch(endpoint) {
+      const resp = await fetch(endpoint);
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status} on ${endpoint}`);
+      }
+      return await resp.json();
+    }
+
+    // Refresh All Data
+    async function refreshAllData() {
+      const spinner = document.getElementById('refresh-spinner');
+      spinner.style.display = 'inline-block';
+
+      try {
+        const [status, ledger, retention, curves, lineage] = await Promise.all([
+          apiFetch('/api/status'),
+          apiFetch('/api/ledger'),
+          apiFetch('/api/retention'),
+          apiFetch('/api/curves'),
+          apiFetch('/api/lineage')
+        ]);
+
+        rawLedgerData = ledger;
+        retentionData = retention;
+        curvesData = curves;
+        lineageData = lineage;
+
+        renderKPIs(status);
+        renderLedgerTable();
+        renderRetentionHeatmap();
+        renderLineageView();
+        updateCurvesChart();
+
+        document.getElementById('telemetry-status-text').innerText = "LIVE TELEMETRY";
+        document.querySelector('.telemetry-status').style.color = "var(--success)";
+      } catch (err) {
+        console.error("Cockpit polling failed:", err);
+        document.getElementById('telemetry-status-text').innerText = "DISCONNECTED";
+        document.querySelector('.telemetry-status').style.color = "var(--danger)";
+      } finally {
+        spinner.style.display = 'none';
+      }
+    }
+
+    // Render KPIs
+    function renderKPIs(status) {
+      document.getElementById('kpi-total-runs').innerText = status.total_runs || 0;
+      document.getElementById('kpi-completed-runs').innerText = `${status.completed_runs || 0} / ${status.total_runs || 0} Completed`;
+      document.getElementById('kpi-total-compute').innerText = `${status.total_compute_hours || 0} hrs`;
+      document.getElementById('kpi-compute-breakdown').innerText = `CPU: ${status.total_cpu_hours || 0}h | GPU: ${status.total_gpu_hours || 0}h`;
+      document.getElementById('kpi-latest-gate').innerText = status.latest_outcome || 'N/A';
+      document.getElementById('kpi-latest-time').innerText = status.latest_timestamp ? new Date(status.latest_timestamp).toLocaleTimeString() : 'N/A';
+    }
+
+    // Render Ledger Table
+    function renderLedgerTable() {
+      filterLedgerTable();
+    }
+
+    function filterLedgerTable() {
+      const tbody = document.getElementById('ledger-tbody');
+      const search = (document.getElementById('ledger-search').value || '').toLowerCase();
+      const statusFilter = document.getElementById('ledger-status-filter').value;
+
+      const filtered = rawLedgerData.filter(item => {
+        const matchStatus = (statusFilter === 'ALL') || (item.status === statusFilter);
+        const matchSearch = !search ||
+          (item.run_id && item.run_id.toLowerCase().includes(search)) ||
+          (item.outcome && item.outcome.toLowerCase().includes(search)) ||
+          (item.finding && item.finding.toLowerCase().includes(search));
+        return matchStatus && matchSearch;
+      });
+
+      document.getElementById('ledger-count-badge').innerText = `${filtered.length} Runs`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--text-muted);">No runs matching filter</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((r, i) => {
+        const computeStr = r.gpu_minutes ? `${r.gpu_minutes}m (GPU)` : (r.cpu_minutes ? `${r.cpu_minutes}m (CPU)` : '—');
+        const outcomeBadgeClass = r.outcome && r.outcome.includes('PASS') ? 'badge-success' :
+                                 (r.outcome && r.outcome.includes('SIGNAL') ? 'badge-info' : 'badge-warning');
+
+        return `
+          <tr style="cursor: pointer;" onclick="inspectRun(${i})">
+            <td><strong style="color: #93c5fd;">${escapeHtml(r.run_id || '')}</strong></td>
+            <td style="color: var(--text-muted); font-size: 0.75rem;">${r.timestamp ? r.timestamp.replace('T', ' ').replace('Z', '') : '—'}</td>
+            <td>${escapeHtml(r.kernel || '')} <span style="color: var(--text-muted);">v${r.version || 1}</span></td>
+            <td>${computeStr}</td>
+            <td><span class="badge badge-success">${escapeHtml(r.status || 'COMPLETE')}</span></td>
+            <td><span class="badge ${outcomeBadgeClass}">${escapeHtml(r.outcome || '')}</span></td>
+            <td style="max-width: 380px;">
+              <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                ${escapeHtml(r.finding || '')}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function inspectRun(index) {
+      const r = rawLedgerData[index];
+      if (!r) return;
+      const html = `
+        <p><strong>Run ID:</strong> ${escapeHtml(r.run_id)}</p>
+        <p><strong>Timestamp:</strong> ${escapeHtml(r.timestamp)}</p>
+        <p><strong>Kernel:</strong> ${escapeHtml(r.kernel)} (v${r.version})</p>
+        <p><strong>Compute Time:</strong> ${r.gpu_minutes ? r.gpu_minutes + ' GPU minutes' : r.cpu_minutes + ' CPU minutes'}</p>
+        <p><strong>Status:</strong> ${escapeHtml(r.status)}</p>
+        <p><strong>Outcome Gate:</strong> ${escapeHtml(r.outcome)}</p>
+        <div style="margin-top: 12px;"><strong>Finding Narrative:</strong></div>
+        <p style="background: #111827; padding: 10px; border-radius: 6px; border: 1px solid #1f2937; margin-top: 6px; font-size: 0.85rem;">
+          ${escapeHtml(r.finding || '')}
+        </p>
+        <pre class="code-block">${escapeHtml(JSON.stringify(r, null, 2))}</pre>
+      `;
+      showModal(`Run Inspection: ${r.run_id}`, html);
+    }
+
+    // Render Retention Heatmap
+    function renderRetentionHeatmap() {
+      if (!retentionData || !retentionData.matrix) return;
+
+      const metric = document.getElementById('retention-metric-select').value;
+      const table = document.getElementById('heatmap-table');
+      const conditions = retentionData.conditions || [];
+      const tasks = retentionData.tasks || [];
+      const matrix = retentionData.matrix;
+
+      if (retentionData.dataset_name) {
+        document.getElementById('retention-dataset-badge').innerText = retentionData.dataset_name;
+      }
+
+      // Build Table Header
+      let headerHtml = `<tr><th style="text-align: left; width: 260px;">Condition / Baseline</th>`;
+      tasks.forEach(t => {
+        headerHtml += `<th style="text-align: center;">${escapeHtml(t)}</th>`;
+      });
+      headerHtml += `</tr>`;
+
+      // Build Rows
+      let rowsHtml = '';
+      conditions.forEach(cond => {
+        rowsHtml += `<tr>`;
+        rowsHtml += `<td style="font-weight: 700; color: #93c5fd; background: #162032; border-radius: 6px; padding: 12px 16px;">${escapeHtml(cond)}</td>`;
+
+        tasks.forEach(task => {
+          const cell = (matrix[cond] && matrix[cond][task]) ? matrix[cond][task] : null;
+          const val = cell ? (cell[metric] !== undefined ? cell[metric] : cell.retention_ratio) : 0.0;
+          const pct = Math.round(val * 1000) / 10;
+
+          // Color interpolation
+          const color = getHeatmapColor(val);
+
+          rowsHtml += `
+            <td class="heatmap-cell" style="background: ${color}; color: #ffffff;"
+                onclick="inspectCell('${escapeHtml(cond)}', '${escapeHtml(task)}')">
+              ${pct}%
+              <span class="cell-subtext">EM: ${cell ? Math.round(cell.exact_match * 100) : 0}%</span>
+            </td>
+          `;
+        });
+        rowsHtml += `</tr>`;
+      });
+
+      table.innerHTML = headerHtml + rowsHtml;
+    }
+
+    function getHeatmapColor(value) {
+      // Interpolate from Red (0.0) -> Yellow (0.5) -> Green (1.0)
+      const v = Math.max(0, Math.min(1, value));
+      let r, g, b;
+      if (v < 0.5) {
+        // Red to Yellow
+        const t = v / 0.5;
+        r = 239;
+        g = Math.round(68 + t * (179 - 68));
+        b = 68;
+      } else {
+        // Yellow to Green
+        const t = (v - 0.5) / 0.5;
+        r = Math.round(245 - t * (245 - 16));
+        g = Math.round(158 + t * (185 - 158));
+        b = Math.round(11 + t * (129 - 11));
+      }
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function inspectCell(cond, task) {
+      if (!retentionData || !retentionData.matrix) return;
+      const cell = retentionData.matrix[cond] ? retentionData.matrix[cond][task] : null;
+      if (!cell) return;
+
+      const html = `
+        <p><strong>Condition:</strong> ${escapeHtml(cond)}</p>
+        <p><strong>Task Family:</strong> ${escapeHtml(task)}</p>
+        <hr style="border: 0; border-top: 1px solid #1f2937; margin: 12px 0;">
+        <p><strong>Retention Ratio:</strong> ${(cell.retention_ratio * 100).toFixed(2)}%</p>
+        <p><strong>Exact Match Accuracy:</strong> ${(cell.exact_match * 100).toFixed(2)}%</p>
+        <p><strong>Token Accuracy:</strong> ${(cell.token_acc * 100).toFixed(2)}%</p>
+        <p><strong>Evaluated Samples:</strong> ${cell.samples_count || 1}</p>
+      `;
+      showModal(`Retention Inspection`, html);
+    }
+
+    // Render Curves
+    function updateCurvesChart() {
+      if (!curvesData) return;
+      const mode = document.getElementById('curves-mode-select').value;
+      const ctx = document.getElementById('curves-canvas');
+      if (!ctx) return;
+
+      if (window.Chart) {
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+
+        if (mode === 'meta') {
+          const trials = curvesData.meta_curve || [];
+          const labels = trials.map(t => `T${t.trial}`);
+          const lossData = trials.map(t => t.learned_loss);
+          const rewardData = trials.map(t => t.raw_reward);
+          const baselineData = trials.map(t => t.running_baseline);
+
+          chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Learned Loss',
+                  data: lossData,
+                  borderColor: '#f43f5e',
+                  backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                  borderWidth: 2,
+                  yAxisID: 'yLoss',
+                  tension: 0.3,
+                  pointRadius: 3
+                },
+                {
+                  label: 'Raw Reward',
+                  data: rewardData,
+                  borderColor: '#10b981',
+                  backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                  borderWidth: 2,
+                  yAxisID: 'yReward',
+                  tension: 0.3,
+                  pointRadius: 3
+                },
+                {
+                  label: 'Running Baseline',
+                  data: baselineData,
+                  borderColor: '#38bdf8',
+                  borderDash: [5, 5],
+                  borderWidth: 1.5,
+                  yAxisID: 'yReward',
+                  tension: 0.2,
+                  pointRadius: 0
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              animation: false,
+              scales: {
+                x: {
+                  grid: { color: '#1f2937' },
+                  ticks: { color: '#94a3b8' }
+                },
+                yLoss: {
+                  type: 'linear',
+                  position: 'left',
+                  grid: { color: '#1f2937' },
+                  ticks: { color: '#f43f5e' },
+                  title: { display: true, text: 'Loss', color: '#f43f5e' }
+                },
+                yReward: {
+                  type: 'linear',
+                  position: 'right',
+                  grid: { drawOnChartArea: false },
+                  ticks: { color: '#10b981' },
+                  title: { display: true, text: 'Reward', color: '#10b981' }
+                }
+              },
+              plugins: {
+                legend: { labels: { color: '#f9fafb' } }
+              }
+            }
+          });
+        } else {
+          // Wave 1 multi-strategy comparison
+          const seriesMap = curvesData.wave1_curves || {};
+          const datasets = [];
+          const colors = {
+            learned: '#10b981',
+            heuristic: '#38bdf8',
+            shuffled: '#f59e0b',
+            random: '#a855f7',
+            frozen: '#6b7280'
+          };
+
+          let maxLen = 0;
+          for (const [cond, points] of Object.entries(seriesMap)) {
+            maxLen = Math.max(maxLen, points.length);
+            datasets.push({
+              label: cond.toUpperCase(),
+              data: points.map(p => p.acc),
+              borderColor: colors[cond] || '#38bdf8',
+              backgroundColor: 'transparent',
+              borderWidth: cond === 'learned' ? 3 : 1.5,
+              tension: 0.2
+            });
+          }
+
+          const labels = Array.from({length: maxLen}, (_, i) => `T${i + 1}`);
+
+          chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: { labels: labels, datasets: datasets },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              animation: false,
+              scales: {
+                x: { grid: { color: '#1f2937' }, ticks: { color: '#94a3b8' } },
+                y: { grid: { color: '#1f2937' }, ticks: { color: '#94a3b8' }, title: { display: true, text: 'Final Exact Accuracy', color: '#94a3b8' } }
+              },
+              plugins: {
+                legend: { labels: { color: '#f9fafb' } }
+              }
+            }
+          });
+        }
+      } else {
+        // Fallback Native Canvas Rendering if CDN is offline
+        renderNativeCanvasFallback(ctx, mode);
+      }
+    }
+
+    function renderNativeCanvasFallback(canvas, mode) {
+      document.getElementById('chart-fallback-notice').style.display = 'block';
+      const c = canvas.getContext('2d');
+      const w = canvas.width = canvas.parentElement.clientWidth;
+      const h = canvas.height = canvas.parentElement.clientHeight;
+
+      c.fillStyle = '#0f1523';
+      c.fillRect(0, 0, w, h);
+
+      c.strokeStyle = '#1f2937';
+      c.lineWidth = 1;
+      for (let y = 40; y < h - 40; y += 40) {
+        c.beginPath();
+        c.moveTo(50, y);
+        c.lineTo(w - 20, y);
+        c.stroke();
+      }
+
+      c.fillStyle = '#38bdf8';
+      c.font = '12px sans-serif';
+      c.fillText(`Moonshot Dynamic Curves Renderer (${mode})`, 60, 25);
+
+      const trials = (curvesData && curvesData.meta_curve) ? curvesData.meta_curve : [];
+      if (trials.length > 1) {
+        const stepX = (w - 80) / (trials.length - 1);
+
+        // Draw Loss in Rose
+        c.strokeStyle = '#f43f5e';
+        c.lineWidth = 2;
+        c.beginPath();
+        trials.forEach((t, i) => {
+          const x = 50 + i * stepX;
+          const y = h - 50 - (t.learned_loss * 120);
+          if (i === 0) c.moveTo(x, y); else c.lineTo(x, y);
+        });
+        c.stroke();
+
+        // Draw Reward in Green
+        c.strokeStyle = '#10b981';
+        c.lineWidth = 2;
+        c.beginPath();
+        trials.forEach((t, i) => {
+          const x = 50 + i * stepX;
+          const y = h - 50 - (t.raw_reward * 200);
+          if (i === 0) c.moveTo(x, y); else c.lineTo(x, y);
+        });
+        c.stroke();
+      }
+    }
+
+    // Render Lineage View
+    function renderLineageView() {
+      if (!lineageData) return;
+
+      // Operator Chips
+      const chipsContainer = document.getElementById('operator-chips');
+      const ops = lineageData.operators || [];
+      chipsContainer.innerHTML = ops.map(op => {
+        return `<span class="op-tag">${escapeHtml(op.name)}</span>`;
+      }).join('');
+
+      // Lineage Tree Nodes
+      const treeContainer = document.getElementById('lineage-tree-container');
+      const best = lineageData.best_programs || [];
+      document.getElementById('lineage-count-badge').innerText = `${best.length} Evolved Programs`;
+
+      if (best.length === 0) {
+        treeContainer.innerHTML = `<div style="color: var(--text-muted);">No AST lineage programs found.</div>`;
+        return;
+      }
+
+      treeContainer.innerHTML = best.map((prog, i) => {
+        const scoreBadgeClass = prog.best_val_score > 1.0 ? 'badge-success' : 'badge-info';
+        const opsBadges = (prog.ops || []).map(op => `<span class="op-tag">${escapeHtml(op.name)}</span>`).join(' ➔ ');
+
+        return `
+          <div class="lineage-node-card" onclick="inspectProgram(${i})">
+            <div class="node-header">
+              <span class="node-title">${escapeHtml(prog.family || 'Update Rule')}</span>
+              <span class="badge ${scoreBadgeClass}">Score: ${prog.best_val_score}</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Seed: ${prog.seed} | Condition: ${escapeHtml(prog.condition)}</div>
+            <div class="node-ops">
+              ${opsBadges}
+            </div>
+            <div style="font-size: 0.72rem; color: #94a3b8;">
+              ${escapeHtml(prog.description)}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function inspectProgram(index) {
+      const prog = (lineageData && lineageData.best_programs) ? lineageData.best_programs[index] : null;
+      if (!prog) return;
+
+      const html = `
+        <p><strong>Program ID:</strong> ${escapeHtml(prog.id)}</p>
+        <p><strong>Task Family:</strong> ${escapeHtml(prog.family)}</p>
+        <p><strong>Best Val Score:</strong> ${prog.best_val_score}</p>
+        <p><strong>Seed:</strong> ${prog.seed}</p>
+        <div style="margin-top: 12px;"><strong>AST Composition:</strong></div>
+        <p style="background: #111827; padding: 10px; border-radius: 6px; border: 1px solid #1f2937; margin-top: 6px; font-family: monospace; font-size: 0.85rem;">
+          ${escapeHtml(prog.description)}
+        </p>
+        <pre class="code-block">${escapeHtml(JSON.stringify(prog, null, 2))}</pre>
+      `;
+      showModal(`AST Program Details`, html);
+    }
+
+    // Auto-refresh control
+    function setupPolling() {
+      const check = document.getElementById('auto-refresh-check');
+      function resetTimer() {
+        if (pollingTimer) clearInterval(pollingTimer);
+        if (check.checked) {
+          pollingTimer = setInterval(refreshAllData, 5000);
+        }
+      }
+      check.addEventListener('change', resetTimer);
+      resetTimer();
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      refreshAllData();
+      setupPolling();
+    });
+  </script>
+</body>
+</html>
