@@ -1,0 +1,9 @@
+{
+  "gate_s1_passed": true,
+  "mean_retention_1m_adapters": 0.8333333730697632,
+  "mean_retention_1m_shared": 0.0,
+  "mean_retention_77k_shared": 0.0,
+  "retention_advantage": 0.8333333730697632,
+  "target_floor": 0.5,
+  "wave": "Wave 6B: Representation Subspace & Catastrophic Forgetting (Leap S1)"
+}
