@@ -37,7 +37,9 @@ not a claim that Cycle 5 GPU training already works. The Antigravity team must:
    and `final_loss`. The smoke JSON additionally needs
    `cpu_gpu_parity_passed=true`; each capability JSON needs `seed`,
    `dataset_split_sha256`, `train_exact_match`, `validation_exact_match`
-   and `test_exact_match`, with each score in `[0, 1]`.
+   and `test_exact_match`, with each score in `[0, 1]`, plus
+   `task_family="tool-workflow-basic"`, `checkpoint_file` (relative to its
+   result folder), and the actual file's `checkpoint_sha256`.
 6. Independently review the Rust code and the emitted hardware telemetry.
    Claims in a JSON file alone are **not** proof of CUDA execution.
 
