@@ -27,7 +27,9 @@ import traceback
 
 
 REPO_URL = "https://github.com/JEDIx420/moonshot.git"
-REPO_DIR = pathlib.Path("/kaggle/working/moonshot-source")
+# Compile outside /kaggle/working so Kaggle does not export the entire source
+# tree and target/ directory as massive notebook output artifacts.
+REPO_DIR = pathlib.Path("/tmp/moonshot-cycle5-source")
 RESULTS_DIR = pathlib.Path("/kaggle/working/results")
 
 # The deploying agent MUST replace this with the exact reviewed Git commit
