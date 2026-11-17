@@ -13,6 +13,7 @@ old wave6 command or silently execute a CPU fallback.
 
 import csv
 import datetime as dt
+import hashlib
 import json
 import math
 import os
@@ -195,12 +196,23 @@ def require_result(path, *, smoke, expected_seed=None):
     else:
         if result.get("seed") != expected_seed:
             raise RuntimeError(f"Unexpected evaluation seed in {path}")
+        if result.get("task_family") != TASK_FAMILY:
+            raise RuntimeError(f"Unexpected task family in {path}")
         for key in ("train_exact_match", "validation_exact_match", "test_exact_match"):
             score = result.get(key)
             if not isinstance(score, (float, int)) or not math.isfinite(score) or not 0 <= score <= 1:
                 raise RuntimeError(f"Invalid or missing {key} in {path}")
         if not result.get("dataset_split_sha256"):
             raise RuntimeError("Missing dataset split hash")
+        checkpoint_file = result.get("checkpoint_file")
+        if not isinstance(checkpoint_file, str) or not checkpoint_file:
+            raise RuntimeError(f"Missing checkpoint file reference in {path}")
+        checkpoint = (path.parent / checkpoint_file).resolve()
+        if not checkpoint.is_relative_to(path.parent.resolve()) or not checkpoint.is_file():
+            raise RuntimeError(f"Missing/unsafe checkpoint file: {checkpoint}")
+        checksum = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+        if checksum != result.get("checkpoint_sha256"):
+            raise RuntimeError(f"Checkpoint SHA-256 mismatch in {path}")
     return result
 
 
