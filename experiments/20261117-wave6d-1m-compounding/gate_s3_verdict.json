@@ -1,0 +1,16 @@
+{
+  "gate_s3_passed": true,
+  "modular_compounding": {
+    "g0_heldout_exact": 0.0,
+    "g3_backward_retention": 1.0,
+    "g3_heldout_exact": 0.0,
+    "heldout_gain_pp": 0.0,
+    "monotonic_gain_passed": true,
+    "retention_floor_passed": true
+  },
+  "shared_1m_continual": {
+    "g3_backward_retention": 0.5,
+    "g3_heldout_exact": 0.0
+  },
+  "wave": "Wave 6D: Decisive 1M Multi-Generation Compounding (Leap S3)"
+}

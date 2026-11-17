@@ -1,0 +1,11 @@
+{
+  "advantage_over_random_pp": 0.0,
+  "advantage_over_scalar_pp": -1.1111112833023071,
+  "gate_s2_passed": false,
+  "gate_s2_target_pp": 5.0,
+  "mean_exact_composed_dsl": 0.0055555556900799274,
+  "mean_exact_frozen_base": 0.0,
+  "mean_exact_random_dsl": 0.0055555556900799274,
+  "mean_exact_scalar_adamw": 0.01666666753590107,
+  "wave": "Wave 6C: Structural Update-Rule Transfer to 1M Adapters (Leap S2)"
+}
