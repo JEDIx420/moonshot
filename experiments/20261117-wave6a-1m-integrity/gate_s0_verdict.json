@@ -1,0 +1,11 @@
+{
+  "checkpoint_restore_passed": true,
+  "finite_diff_max_rel_err": 1.2801289558410645,
+  "gate_s0_passed": false,
+  "gradient_check_passed": false,
+  "mean_exact_match_1m": 0.07777778059244156,
+  "mean_exact_match_77k": 0.45000001788139343,
+  "parameters_1m": 1095744,
+  "target_exact_threshold": 0.85,
+  "wave": "Wave 6A: 1M Mathematical Integrity & Single-Task Capability"
+}

@@ -99,7 +99,43 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 0: WAVE 0 SMOKE & GRADIENT INTEGRITY TEST ---", flush=True)
         run_cmd([str(bin_path), "smoke", "--output-dir", str(OUTPUT_DIR), "--git-commit", git_sha], cwd=REPO_DIR)
 
-    if stage in ("wave3", "all"):
+    if stage in ("wave5a", "all"):
+        print("\n--- PHASE 5A: WAVE 5A EVIDENCE, MODEL, EVALUATOR & CONTAINMENT AUDIT ---", flush=True)
+        run_cmd([str(bin_path), "audit-wave5a", "--output-dir", str(OUTPUT_DIR)], cwd=REPO_DIR)
+
+    if stage in ("wave5b", "all"):
+        print("\n--- PHASE 5B: WAVE 5B CAUSAL MICROSCOPE FOR CATASTROPHIC FORGETTING (LEAP M1) ---", flush=True)
+        run_cmd([str(bin_path), "wave5b-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave5c", "all"):
+        print("\n--- PHASE 5C: WAVE 5C LEARNED EDITOR VS STRONG RANDOM CONTROLS (LEAP M2) ---", flush=True)
+        run_cmd([str(bin_path), "wave5c-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave5d", "all"):
+        print("\n--- PHASE 5D: WAVE 5D STABLE MODULAR KNOWLEDGE (LEAP M3) ---", flush=True)
+        run_cmd([str(bin_path), "wave5d-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave5e", "all"):
+        print("\n--- PHASE 5E: WAVE 5E EVOLVING UPDATE-RULE PROGRAMS (LEAP M4) ---", flush=True)
+        run_cmd([str(bin_path), "wave5e-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave5f", "all"):
+        print("\n--- PHASE 5F: WAVE 5F DECISIVE COMPOUNDING EXPERIMENT (LEAP M5) ---", flush=True)
+        run_cmd([str(bin_path), "wave5f-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave6a", "wave6", "all"):
+        print("\n--- PHASE 6A: WAVE 6A 1.09M MATHEMATICAL INTEGRITY & BENCHMARK ---", flush=True)
+        run_cmd([str(bin_path), "wave6a-runner", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave6b", "wave6", "all"):
+        print("\n--- PHASE 6B: WAVE 6B 1.09M MODULAR SUBSPACE & FORGETTING (LEAP S1) ---", flush=True)
+        run_cmd([str(bin_path), "wave6b-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave4",):
+        print("\n--- PHASE 4: WAVE 4 APPLIED MULTI-STEP TOOL AGENT SANDBOX (LEAP D) ---", flush=True)
+        run_cmd([str(bin_path), "wave4-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave3",):
         print("\n--- PHASE 3: WAVE 3 COMPOUNDING MULTI-GENERATION LEARNING (LEAP C) ---", flush=True)
         run_cmd([str(bin_path), "wave3-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
@@ -131,7 +167,7 @@ def build_and_run(git_sha, stage="all"):
 
 
 def main():
-    stage = os.environ.get("MOONSHOT_STAGE", "all")
+    stage = os.environ.get("MOONSHOT_STAGE", "wave6")
     if len(sys.argv) > 1:
         stage = sys.argv[1]
 

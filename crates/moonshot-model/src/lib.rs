@@ -180,12 +180,106 @@ impl LayerNormParam {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoraAdapter {
+    pub a_q: Vec<f32>, // rank x d_model
+    pub b_q: Vec<f32>, // d_model x rank
+    pub a_v: Vec<f32>, // rank x d_model
+    pub b_v: Vec<f32>, // d_model x rank
+    pub rank: usize,
+    pub alpha: f32,
+    pub d_model: usize,
+}
+
+impl LoraAdapter {
+    pub fn new(d_model: usize, rank: usize, alpha: f32, rng: &mut ChaCha8Rng) -> Self {
+        let scale = (1.0 / rank as f32).sqrt();
+        let a_q = (0..rank * d_model).map(|_| rng.gen_range(-scale..scale)).collect();
+        let b_q = vec![0.0; d_model * rank];
+        let a_v = (0..rank * d_model).map(|_| rng.gen_range(-scale..scale)).collect();
+        let b_v = vec![0.0; d_model * rank];
+        Self { a_q, b_q, a_v, b_v, rank, alpha, d_model }
+    }
+
+    pub fn total_parameters(&self) -> usize {
+        self.a_q.len() + self.b_q.len() + self.a_v.len() + self.b_v.len()
+    }
+
+    pub fn extract_parameters(&self) -> Vec<f32> {
+        let mut p = Vec::with_capacity(self.total_parameters());
+        p.extend_from_slice(&self.a_q);
+        p.extend_from_slice(&self.b_q);
+        p.extend_from_slice(&self.a_v);
+        p.extend_from_slice(&self.b_v);
+        p
+    }
+
+    pub fn load_parameters(&mut self, p: &[f32]) {
+        let mut offset = 0;
+        let l_aq = self.a_q.len();
+        self.a_q.copy_from_slice(&p[offset..offset + l_aq]);
+        offset += l_aq;
+        let l_bq = self.b_q.len();
+        self.b_q.copy_from_slice(&p[offset..offset + l_bq]);
+        offset += l_bq;
+        let l_av = self.a_v.len();
+        self.a_v.copy_from_slice(&p[offset..offset + l_av]);
+        offset += l_av;
+        let l_bv = self.b_v.len();
+        self.b_v.copy_from_slice(&p[offset..offset + l_bv]);
+    }
+
+    pub fn apply_to_qv(&self, x: &[f32], seq_len: usize, q: &mut [f32], v: &mut [f32]) {
+        let s = self.alpha / self.rank as f32;
+        let r = self.rank;
+        let d = self.d_model;
+        for t in 0..seq_len {
+            let x_t = &x[t * d..(t + 1) * d];
+            // Q branch: q_t += s * B_q * (A_q * x_t)
+            let mut h_q = vec![0.0f32; r];
+            for i in 0..r {
+                let mut dot = 0.0f32;
+                for k in 0..d {
+                    dot += self.a_q[i * d + k] * x_t[k];
+                }
+                h_q[i] = dot;
+            }
+            for i in 0..d {
+                let mut dot = 0.0f32;
+                for k in 0..r {
+                    dot += self.b_q[i * r + k] * h_q[k];
+                }
+                q[t * d + i] += s * dot;
+            }
+
+            // V branch: v_t += s * B_v * (A_v * x_t)
+            let mut h_v = vec![0.0f32; r];
+            for i in 0..r {
+                let mut dot = 0.0f32;
+                for k in 0..d {
+                    dot += self.a_v[i * d + k] * x_t[k];
+                }
+                h_v[i] = dot;
+            }
+            for i in 0..d {
+                let mut dot = 0.0f32;
+                for k in 0..r {
+                    dot += self.b_v[i * r + k] * h_v[k];
+                }
+                v[t * d + i] += s * dot;
+            }
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AttentionLayer {
     pub w_q: LinearParam,
     pub w_k: LinearParam,
     pub w_v: LinearParam,
     pub w_o: LinearParam,
     pub ln: LayerNormParam,
+    #[serde(default)]
+    pub adapter: Option<LoraAdapter>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -226,6 +320,13 @@ pub struct TinyTransformer {
     pub adam_v: Vec<f32>,
     #[serde(skip)]
     pub opt_step: usize,
+    // Adapter moments
+    #[serde(skip)]
+    pub adapter_adam_m: Vec<f32>,
+    #[serde(skip)]
+    pub adapter_adam_v: Vec<f32>,
+    #[serde(skip)]
+    pub adapter_opt_step: usize,
 }
 
 // Multi-head causal attention helper routines
@@ -380,6 +481,7 @@ impl TinyTransformer {
                 w_v: LinearParam::new(config.d_model, config.d_model, &mut rng),
                 w_o: LinearParam::new(config.d_model, config.d_model, &mut rng),
                 ln: LayerNormParam::new(config.d_model),
+                adapter: None,
             };
             let ffn = FfnLayer {
                 w_1: LinearParam::new(config.d_model, config.d_ff, &mut rng),
@@ -402,6 +504,9 @@ impl TinyTransformer {
             adam_m: Vec::new(),
             adam_v: Vec::new(),
             opt_step: 0,
+            adapter_adam_m: Vec::new(),
+            adapter_adam_v: Vec::new(),
+            adapter_opt_step: 0,
         };
         let total = model.total_parameters();
         model.adam_m = vec![0.0; total];
@@ -506,9 +611,13 @@ impl TinyTransformer {
         for block in &self.blocks {
             // Multi-head causal attention sub-block with residual
             let (h_norm, _, _) = block.attn.ln.forward(&h, seq_len);
-            let q = block.attn.w_q.forward(&h_norm, seq_len);
+            let mut q = block.attn.w_q.forward(&h_norm, seq_len);
             let k = block.attn.w_k.forward(&h_norm, seq_len);
-            let v = block.attn.w_v.forward(&h_norm, seq_len);
+            let mut v = block.attn.w_v.forward(&h_norm, seq_len);
+
+            if let Some(ref lora) = block.attn.adapter {
+                lora.apply_to_qv(&h_norm, seq_len, &mut q, &mut v);
+            }
 
             let (attn_out, _) = forward_multihead_attention(
                 &q, &k, &v, seq_len, d, self.config.n_heads
@@ -705,9 +814,13 @@ impl TinyTransformer {
             for block in &self.blocks {
                 let h_in = h.clone();
                 let (attn_ln_out, attn_means, attn_vars) = block.attn.ln.forward(&h, seq_len);
-                let q = block.attn.w_q.forward(&attn_ln_out, seq_len);
+                let mut q = block.attn.w_q.forward(&attn_ln_out, seq_len);
                 let k = block.attn.w_k.forward(&attn_ln_out, seq_len);
-                let v_val = block.attn.w_v.forward(&attn_ln_out, seq_len);
+                let mut v_val = block.attn.w_v.forward(&attn_ln_out, seq_len);
+
+                if let Some(ref lora) = block.attn.adapter {
+                    lora.apply_to_qv(&attn_ln_out, seq_len, &mut q, &mut v_val);
+                }
 
                 let (attn_out, attn_weights) = forward_multihead_attention(
                     &q, &k, &v_val, seq_len, d, self.config.n_heads
@@ -1088,6 +1201,370 @@ impl TinyTransformer {
     ) -> f32 {
         self.train_step_instrumented(examples, anchor_examples, plan, step_idx, total_steps, ProjectionMode::PreGradient).0
     }
+
+    // Attach modular rank-r LoRA adapter to query and value projections
+    pub fn attach_lora(&mut self, rank: usize, alpha: f32, seed: u64) {
+        let mut rng = ChaCha8Rng::seed_from_u64(seed);
+        for block in &mut self.blocks {
+            block.attn.adapter = Some(LoraAdapter::new(self.config.d_model, rank, alpha, &mut rng));
+        }
+        let total_adap = self.total_adapter_parameters();
+        self.adapter_adam_m = vec![0.0; total_adap];
+        self.adapter_adam_v = vec![0.0; total_adap];
+        self.adapter_opt_step = 0;
+    }
+
+    pub fn detach_lora(&mut self) {
+        for block in &mut self.blocks {
+            block.attn.adapter = None;
+        }
+        self.adapter_adam_m.clear();
+        self.adapter_adam_v.clear();
+        self.adapter_opt_step = 0;
+    }
+
+    pub fn total_adapter_parameters(&self) -> usize {
+        let mut count = 0;
+        for block in &self.blocks {
+            if let Some(ref lora) = block.attn.adapter {
+                count += lora.total_parameters();
+            }
+        }
+        count
+    }
+
+    pub fn extract_adapter_parameters(&self) -> Vec<f32> {
+        let mut p = Vec::new();
+        for block in &self.blocks {
+            if let Some(ref lora) = block.attn.adapter {
+                p.extend(lora.extract_parameters());
+            }
+        }
+        p
+    }
+
+    pub fn load_adapter_parameters(&mut self, p: &[f32]) {
+        let mut offset = 0;
+        for block in &mut self.blocks {
+            if let Some(ref mut lora) = block.attn.adapter {
+                let n = lora.total_parameters();
+                lora.load_parameters(&p[offset..offset + n]);
+                offset += n;
+            }
+        }
+    }
+
+    // Train ONLY adapter parameters using AdamW, keeping 100% of base model weights strictly frozen
+    pub fn train_adapter_step(&mut self, examples: &[TaskExample], lr: f32, step: usize, total_steps: usize) -> f32 {
+        let d = self.config.d_model;
+        let v = self.config.vocab_size;
+        let n_blocks = self.blocks.len();
+
+        let mut d_aq: Vec<Vec<f32>> = Vec::with_capacity(n_blocks);
+        let mut d_bq: Vec<Vec<f32>> = Vec::with_capacity(n_blocks);
+        let mut d_av: Vec<Vec<f32>> = Vec::with_capacity(n_blocks);
+        let mut d_bv: Vec<Vec<f32>> = Vec::with_capacity(n_blocks);
+
+        for block in &self.blocks {
+            if let Some(ref lora) = block.attn.adapter {
+                d_aq.push(vec![0.0; lora.a_q.len()]);
+                d_bq.push(vec![0.0; lora.b_q.len()]);
+                d_av.push(vec![0.0; lora.a_v.len()]);
+                d_bv.push(vec![0.0; lora.b_v.len()]);
+            } else {
+                return 0.0;
+            }
+        }
+
+        let mut total_loss = 0.0;
+        let mut total_tokens_scored = 0;
+
+        for ex in examples {
+            let full_seq = [ex.input_tokens.as_slice(), ex.target_tokens.as_slice()].concat();
+            let seq_len = full_seq.len().min(self.config.max_seq_len);
+            if seq_len < 2 {
+                continue;
+            }
+
+            let mut h = vec![0.0; seq_len * d];
+            for (pos, &tok) in full_seq.iter().take(seq_len).enumerate() {
+                let tok_idx = tok.min(v - 1);
+                let t_emb = &self.token_emb[tok_idx * d..(tok_idx + 1) * d];
+                let p_emb = &self.pos_emb[pos * d..(pos + 1) * d];
+                for k in 0..d {
+                    h[pos * d + k] = t_emb[k] + p_emb[k];
+                }
+            }
+
+            struct AdapterCache {
+                attn_ln_out: Vec<f32>,
+                q: Vec<f32>,
+                k: Vec<f32>,
+                v: Vec<f32>,
+                attn_weights: Vec<f32>,
+                ffn_h1: Vec<f32>,
+            }
+
+            let mut block_caches = Vec::with_capacity(n_blocks);
+
+            for block in &self.blocks {
+                let (attn_ln_out, _, _) = block.attn.ln.forward(&h, seq_len);
+                let mut q = block.attn.w_q.forward(&attn_ln_out, seq_len);
+                let k = block.attn.w_k.forward(&attn_ln_out, seq_len);
+                let mut v_val = block.attn.w_v.forward(&attn_ln_out, seq_len);
+
+                if let Some(ref lora) = block.attn.adapter {
+                    lora.apply_to_qv(&attn_ln_out, seq_len, &mut q, &mut v_val);
+                }
+
+                let (attn_out, attn_weights) = forward_multihead_attention(
+                    &q, &k, &v_val, seq_len, d, self.config.n_heads
+                );
+
+                let proj = block.attn.w_o.forward(&attn_out, seq_len);
+                for i in 0..seq_len * d {
+                    h[i] += proj[i];
+                }
+
+                let (ffn_ln_out, _, _) = block.ffn.ln.forward(&h, seq_len);
+                let ffn_h1 = block.ffn.w_1.forward(&ffn_ln_out, seq_len);
+                let mut ffn_act = ffn_h1.clone();
+                for val in ffn_act.iter_mut() {
+                    if *val < 0.0 { *val = 0.0; }
+                }
+                let ffn_h2 = block.ffn.w_2.forward(&ffn_act, seq_len);
+                for i in 0..seq_len * d {
+                    h[i] += ffn_h2[i];
+                }
+
+                block_caches.push(AdapterCache {
+                    attn_ln_out,
+                    q,
+                    k,
+                    v: v_val,
+                    attn_weights,
+                    ffn_h1,
+                });
+            }
+
+            let (h_final, _, _) = self.ln_f.forward(&h, seq_len);
+            let logits = self.head.forward(&h_final, seq_len);
+
+            let mut d_logits = vec![0.0; seq_len * v];
+            let input_len = ex.input_tokens.len();
+
+            for t in 0..ex.target_tokens.len() {
+                let pos = input_len + t - 1;
+                if pos >= seq_len { break; }
+                let target_tok = ex.target_tokens[t].min(v - 1);
+                let row = &logits[pos * v..(pos + 1) * v];
+                let max_l = row.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+                let exp_sum: f32 = row.iter().map(|&val| (val - max_l).exp()).sum();
+
+                for c in 0..v {
+                    let prob = (row[c] - max_l).exp() / exp_sum.max(1e-9);
+                    let target_ind = if c == target_tok { 1.0 } else { 0.0 };
+                    d_logits[pos * v + c] = prob - target_ind;
+                }
+
+                let target_prob = (row[target_tok] - max_l).exp() / exp_sum.max(1e-9);
+                total_loss -= target_prob.max(1e-9).ln();
+                total_tokens_scored += 1;
+            }
+
+            // Head backward
+            let mut d_h = vec![0.0; seq_len * d];
+            for t in 0..seq_len {
+                let d_l_t = &d_logits[t * v..(t + 1) * v];
+                for k_idx in 0..d {
+                    let mut sum = 0.0f32;
+                    for c in 0..v {
+                        sum += d_l_t[c] * self.head.weight[c * d + k_idx];
+                    }
+                    d_h[t * d + k_idx] = sum;
+                }
+            }
+
+            // Transformer blocks backward
+            for (b_idx, block) in self.blocks.iter().enumerate().rev() {
+                let cache = &block_caches[b_idx];
+
+                // FFN backward
+                let mut d_ffn_act = vec![0.0; seq_len * self.config.d_ff];
+                for t in 0..seq_len {
+                    let d_h_t = &d_h[t * d..(t + 1) * d];
+                    for k_idx in 0..self.config.d_ff {
+                        let mut sum = 0.0f32;
+                        for i in 0..d {
+                            sum += d_h_t[i] * block.ffn.w_2.weight[i * self.config.d_ff + k_idx];
+                        }
+                        d_ffn_act[t * self.config.d_ff + k_idx] = sum;
+                    }
+                }
+                for i in 0..d_ffn_act.len() {
+                    if cache.ffn_h1[i] <= 0.0 { d_ffn_act[i] = 0.0; }
+                }
+
+                let mut d_ffn_ln_out = vec![0.0; seq_len * d];
+                for t in 0..seq_len {
+                    let d_act_t = &d_ffn_act[t * self.config.d_ff..(t + 1) * self.config.d_ff];
+                    for k_idx in 0..d {
+                        let mut sum = 0.0f32;
+                        for i in 0..self.config.d_ff {
+                            sum += d_act_t[i] * block.ffn.w_1.weight[i * d + k_idx];
+                        }
+                        d_ffn_ln_out[t * d + k_idx] = sum;
+                    }
+                }
+                for i in 0..seq_len * d {
+                    d_h[i] += d_ffn_ln_out[i];
+                }
+
+                // Attention backward
+                let mut d_attn_out = vec![0.0; seq_len * d];
+                for t in 0..seq_len {
+                    let d_proj_t = &d_h[t * d..(t + 1) * d];
+                    for k_idx in 0..d {
+                        let mut sum = 0.0f32;
+                        for i in 0..d {
+                            sum += d_proj_t[i] * block.attn.w_o.weight[i * d + k_idx];
+                        }
+                        d_attn_out[t * d + k_idx] = sum;
+                    }
+                }
+
+                let mut d_q = vec![0.0; seq_len * d];
+                let mut d_k = vec![0.0; seq_len * d];
+                let mut d_v = vec![0.0; seq_len * d];
+
+                backward_multihead_attention(
+                    &d_attn_out,
+                    &cache.q,
+                    &cache.k,
+                    &cache.v,
+                    &cache.attn_weights,
+                    seq_len,
+                    d,
+                    self.config.n_heads,
+                    &mut d_q,
+                    &mut d_k,
+                    &mut d_v,
+                );
+
+                if let Some(ref lora) = block.attn.adapter {
+                    let s = lora.alpha / lora.rank as f32;
+                    let r = lora.rank;
+                    for t in 0..seq_len {
+                        let x_t = &cache.attn_ln_out[t * d..(t + 1) * d];
+                        let d_q_t = &d_q[t * d..(t + 1) * d];
+                        let d_v_t = &d_v[t * d..(t + 1) * d];
+
+                        let mut h_q = vec![0.0f32; r];
+                        for i in 0..r {
+                            let mut dot = 0.0f32;
+                            for m in 0..d {
+                                dot += lora.a_q[i * d + m] * x_t[m];
+                            }
+                            h_q[i] = dot;
+                        }
+                        for i in 0..d {
+                            for k_idx in 0..r {
+                                d_bq[b_idx][i * r + k_idx] += s * d_q_t[i] * h_q[k_idx];
+                            }
+                        }
+                        let mut d_hq = vec![0.0f32; r];
+                        for k_idx in 0..r {
+                            let mut dot = 0.0f32;
+                            for i in 0..d {
+                                dot += d_q_t[i] * lora.b_q[i * r + k_idx];
+                            }
+                            d_hq[k_idx] = dot;
+                        }
+                        for k_idx in 0..r {
+                            for m in 0..d {
+                                d_aq[b_idx][k_idx * d + m] += s * d_hq[k_idx] * x_t[m];
+                            }
+                        }
+
+                        let mut h_v = vec![0.0f32; r];
+                        for i in 0..r {
+                            let mut dot = 0.0f32;
+                            for m in 0..d {
+                                dot += lora.a_v[i * d + m] * x_t[m];
+                            }
+                            h_v[i] = dot;
+                        }
+                        for i in 0..d {
+                            for k_idx in 0..r {
+                                d_bv[b_idx][i * r + k_idx] += s * d_v_t[i] * h_v[k_idx];
+                            }
+                        }
+                        let mut d_hv = vec![0.0f32; r];
+                        for k_idx in 0..r {
+                            let mut dot = 0.0f32;
+                            for i in 0..d {
+                                dot += d_v_t[i] * lora.b_v[i * r + k_idx];
+                            }
+                            d_hv[k_idx] = dot;
+                        }
+                        for k_idx in 0..r {
+                            for m in 0..d {
+                                d_av[b_idx][k_idx * d + m] += s * d_hv[k_idx] * x_t[m];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Apply AdamW to adapter parameters
+        let norm_factor = total_tokens_scored.max(1) as f32;
+        let mut all_adapter_grads = Vec::new();
+        for b_idx in 0..n_blocks {
+            all_adapter_grads.extend(d_aq[b_idx].iter().map(|&g| g / norm_factor));
+            all_adapter_grads.extend(d_bq[b_idx].iter().map(|&g| g / norm_factor));
+            all_adapter_grads.extend(d_av[b_idx].iter().map(|&g| g / norm_factor));
+            all_adapter_grads.extend(d_bv[b_idx].iter().map(|&g| g / norm_factor));
+        }
+
+        let mut adapter_params = self.extract_adapter_parameters();
+        let total_adap = adapter_params.len();
+        if self.adapter_adam_m.len() != total_adap {
+            self.adapter_adam_m = vec![0.0; total_adap];
+            self.adapter_adam_v = vec![0.0; total_adap];
+            self.adapter_opt_step = 0;
+        }
+
+        self.adapter_opt_step += 1;
+        let beta1 = 0.9f32;
+        let beta2 = 0.999f32;
+        let eps = 1e-8f32;
+
+        let schedule_factor = if total_steps > 0 {
+            0.5 * (1.0 + (std::f32::consts::PI * step as f32 / total_steps as f32).cos())
+        } else {
+            1.0
+        };
+        let effective_lr = lr * schedule_factor;
+
+        for i in 0..total_adap {
+            let g = all_adapter_grads[i];
+            self.adapter_adam_m[i] = beta1 * self.adapter_adam_m[i] + (1.0 - beta1) * g;
+            self.adapter_adam_v[i] = beta2 * self.adapter_adam_v[i] + (1.0 - beta2) * g * g;
+            let m_hat = self.adapter_adam_m[i] / (1.0 - beta1.powi(self.adapter_opt_step as i32)).max(1e-6);
+            let v_hat = self.adapter_adam_v[i] / (1.0 - beta2.powi(self.adapter_opt_step as i32)).max(1e-6);
+            let delta = -effective_lr * (m_hat / (v_hat.sqrt() + eps) + 0.001 * adapter_params[i]);
+            adapter_params[i] += delta;
+        }
+
+        self.load_adapter_parameters(&adapter_params);
+
+        if total_tokens_scored > 0 {
+            total_loss / total_tokens_scored as f32
+        } else {
+            0.0
+        }
+    }
 }
 
 #[cfg(test)]
@@ -1236,5 +1713,41 @@ mod tests {
             last_loss = model.train_step(&examples, &plan, s, 10);
         }
         assert!(last_loss < loss_0, "1M Model exact backprop must decrease loss: start={}, end={}", loss_0, last_loss);
+    }
+
+    #[test]
+    fn test_lora_adapter_zero_init_and_isolation() {
+        let config = ModelConfig::new_1m();
+        let mut model = TinyTransformer::new(config, 42);
+        let base_params_before = model.extract_parameters();
+
+        let tokens = vec![1, 10, 20, 3];
+        let logits_base = model.forward(&tokens);
+
+        // Attach rank-4 LoRA adapter
+        model.attach_lora(4, 8.0, 101);
+        assert_eq!(model.total_adapter_parameters(), 8_192, "Rank-4 adapter across 2 layers must have 8,192 parameters");
+
+        // Zero-init property: B=0 means adapter output is exactly zero at initialization
+        let logits_with_lora = model.forward(&tokens);
+        assert_eq!(logits_base, logits_with_lora, "Logits before adapter training must match base model exactly");
+
+        let examples = vec![
+            TaskExample {
+                input_tokens: vec![1, 10, 20],
+                target_tokens: vec![30, 2],
+            },
+        ];
+
+        let loss_0 = model.train_adapter_step(&examples, 0.02, 0, 10);
+        let mut last_loss = loss_0;
+        for s in 1..5 {
+            last_loss = model.train_adapter_step(&examples, 0.02, s, 10);
+        }
+        assert!(last_loss < loss_0, "Adapter loss must decrease: start={}, end={}", loss_0, last_loss);
+
+        // Crucial parameter isolation: Base model parameters must NOT have changed by even 1 bit!
+        let base_params_after = model.extract_parameters();
+        assert_eq!(base_params_before, base_params_after, "Base model parameters must remain strictly frozen during adapter training");
     }
 }

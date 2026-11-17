@@ -123,9 +123,13 @@ def build_and_run(git_sha, stage="all"):
         print("\n--- PHASE 5F: WAVE 5F DECISIVE COMPOUNDING EXPERIMENT (LEAP M5) ---", flush=True)
         run_cmd([str(bin_path), "wave5f-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
-    if stage in ("wave6a", "all"):
+    if stage in ("wave6a", "wave6", "all"):
         print("\n--- PHASE 6A: WAVE 6A 1.09M MATHEMATICAL INTEGRITY & BENCHMARK ---", flush=True)
         run_cmd([str(bin_path), "wave6a-runner", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
+
+    if stage in ("wave6b", "wave6", "all"):
+        print("\n--- PHASE 6B: WAVE 6B 1.09M MODULAR SUBSPACE & FORGETTING (LEAP S1) ---", flush=True)
+        run_cmd([str(bin_path), "wave6b-sweep", "--output-dir", str(OUTPUT_DIR), "--seed", "42", "--target-acc", "0.80"], cwd=REPO_DIR)
 
     if stage in ("wave4",):
         print("\n--- PHASE 4: WAVE 4 APPLIED MULTI-STEP TOOL AGENT SANDBOX (LEAP D) ---", flush=True)
@@ -163,7 +167,7 @@ def build_and_run(git_sha, stage="all"):
 
 
 def main():
-    stage = os.environ.get("MOONSHOT_STAGE", "wave6a")
+    stage = os.environ.get("MOONSHOT_STAGE", "wave6")
     if len(sys.argv) > 1:
         stage = sys.argv[1]
 
