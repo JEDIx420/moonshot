@@ -28,6 +28,17 @@ def text_of(value, limit=1400):
 
 
 def sessions(data, mode):
+    if mode == "tau_bench":
+        if isinstance(data, list):
+            for index, row in enumerate(data):
+                if isinstance(row, dict) and type(row.get("task_id")) is int and isinstance(row.get("traj"), list):
+                    yield index, {"task_id": row["task_id"], "messages": row["traj"]}
+        return
+    for index, session in enumerate(normalized_sessions(data, mode)):
+        yield index, session
+
+
+def normalized_sessions(data, mode):
     if isinstance(data, dict):
         if isinstance(data.get("messages"), list):
             yield data
@@ -36,10 +47,10 @@ def sessions(data, mode):
             for name in ("trajectories", "results", "runs"):
                 if isinstance(data.get(name), list):
                     for item in data[name]:
-                        yield from sessions(item, mode)
+                        yield from normalized_sessions(item, mode)
     elif isinstance(data, list):
         for item in data:
-            yield from sessions(item, mode)
+            yield from normalized_sessions(item, mode)
 
 
 def normalized_tool_events(messages):
@@ -53,22 +64,29 @@ def normalized_tool_events(messages):
             if isinstance(call, dict) and call.get("id"):
                 calls[call["id"]] = call
     events = []
-    for msg in messages:
+    for index, msg in enumerate(messages):
         if not isinstance(msg, dict) or msg.get("role") != "tool":
             continue
         call_id = msg.get("tool_call_id")
         call = msg.get("tool_call") or calls.get(call_id) or {}
         if not isinstance(call, dict):
             call = {}
-        name = call.get("function") or msg.get("name") or msg.get("tool_name")
+        function = call.get("function")
+        if isinstance(function, dict):
+            function = function.get("name")
+        name = function or msg.get("name") or msg.get("tool_name")
         if not isinstance(name, str) or not name.strip():
             continue
         error = msg.get("error")
-        status = "error" if error else "ok" if msg.get("content") is not None else "unknown"
+        recorded = msg.get("status")
+        status = "error" if error else recorded if recorded in ("ok", "error", "pending") else "unknown"
+        text = text_of(msg.get("content"))
+        if not text.strip():
+            continue
         events.append({"id": f"e{len(events)}", "tool_name": name.strip(),
                        "call_id": call_id if isinstance(call_id, str) else None,
                        "status": status,
-                       "text": text_of(msg.get("content"))})
+                       "text": text, "message_index": index})
     return events
 
 
@@ -78,12 +96,15 @@ def final_text(messages):
     tool_indices = [i for i, m in enumerate(messages) if isinstance(m, dict) and m.get("role") == "tool"]
     if not tool_indices:
         return ""
-    for msg in reversed(messages[tool_indices[-1] + 1:]):
+    for index in range(len(messages) - 1, tool_indices[-1], -1):
+        msg = messages[index]
         if isinstance(msg, dict) and msg.get("role") == "assistant" and not msg.get("tool_calls"):
             raw = msg.get("content")
             if isinstance(raw, str):
-                cleaned = re.sub(r"<thinking>.*?</thinking>", "", raw, flags=re.S | re.I).strip()
-                return cleaned[:4000]
+                cleaned = re.split(r"</thinking>", raw, flags=re.I)[-1].strip()
+                if re.search(r"<thinking>", cleaned, flags=re.I):
+                    return ""
+                return cleaned[:4000], index
     return ""
 
 
@@ -93,7 +114,13 @@ def source_group(data, rel, mode):
         if not suite or not task:
             raise ValueError(f"missing AgentDojo task group for {rel}")
         return f"{suite}/{task}"
-    task = data.get("task_id") or data.get("user_task_id") or data.get("id")
+    if mode == "tau_bench":
+        domain = re.search(r"-(airline|retail)\.json$", rel)
+        if not domain:
+            raise ValueError("unrecognized historical environment")
+        return f"{domain[1]}/{data['task_id']}"
+    task = next((data[key] for key in ("task_id", "user_task_id", "id")
+                 if data.get(key) is not None), None)
     if task is None:
         raise ValueError(f"missing normalized task_id in {rel}; no synthetic grouping")
     return str(task)
@@ -103,7 +130,7 @@ def extract(root, source, repo, revision, license_id, mode="agentdojo", max_file
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("pin upstream to full 40-character Git commit")
     result, stats = [], Counter()
-    paths = sorted(root.rglob("*.json"))
+    paths = sorted(root.rglob("none.json" if mode == "agentdojo" else "*.json"))
     if max_files:
         paths = paths[:max_files]
     for file in paths:
@@ -114,9 +141,12 @@ def extract(root, source, repo, revision, license_id, mode="agentdojo", max_file
         except (OSError, UnicodeError, json.JSONDecodeError):
             stats["invalid_json"] += 1
             continue
+        if mode == "agentdojo" and (data.get("attack_type") not in (None, "none") or data.get("injections")):
+            stats["excluded_injection_variants"] += 1
+            continue
         source_sha = sha256(file)
         found = False
-        for index, session in enumerate(sessions(data, mode)):
+        for index, session in sessions(data, mode):
             found = True
             stats["sessions_seen"] += 1
             messages = session["messages"]
@@ -124,6 +154,7 @@ def extract(root, source, repo, revision, license_id, mode="agentdojo", max_file
                 continue
             events = normalized_tool_events(messages)
             final = final_text(messages)
+            stats["tool_observations"] += len(events)
             if len(events) < 2 or not final:
                 stats["no_usable_tool_trace"] += 1
                 continue
@@ -142,11 +173,13 @@ def extract(root, source, repo, revision, license_id, mode="agentdojo", max_file
             result.append({"case_id": case_id, "source_id": source,
                            "group_id": group, "stratum": "natural",
                            "claim_text": "", "claim_call_id": None,
-                           "assistant_final_text_for_review": final,
+                           "assistant_final_text_for_review": final[0],
+                           "assistant_final_message_index": final[1],
                            "candidate_truncated": len(events) > 16,
                            "candidates": selected,
                            "provenance": {"repo": repo, "revision": revision,
                                           "relative_path": rel, "sha256": source_sha,
+                                          "session_index": index,
                                           "license": license_id, "environment": "sandbox"},
                            "gold": None})
             stats["unlabelled_drafts"] += 1
@@ -164,7 +197,7 @@ def main():
     parser.add_argument("--repo", required=True)
     parser.add_argument("--revision", required=True)
     parser.add_argument("--license", required=True)
-    parser.add_argument("--format", choices=("agentdojo", "normalized"), default="agentdojo")
+    parser.add_argument("--format", choices=("agentdojo", "tau_bench", "normalized"), default="agentdojo")
     parser.add_argument("--max-files", type=int, default=0)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()

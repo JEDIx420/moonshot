@@ -11,12 +11,12 @@ looking data: keep raw data out of Moonshot Git even if published upstream.
 | `agentdojo` | `ethz-spylab/agentdojo@089ed468cf3ed0322acc66b0211f26d9d90dbf60` | `runs/**/none/*.json` and other recorded variants; message roles `assistant` / `tool`, tool call/result references | Simulated tool environments; injection variants should be separately flagged, not assumed production. |
 | `tau_bench` | `sierra-research/tau-bench@59a200c6d575d595120f1cb70fea53cef0632f6b` | `historical_trajectories/*.json` | Authors explicitly call old task suites outdated. Historical rollouts are **not** a current task-success reference or independent claim labels. |
 
-The importer supports AgentDojo's verified message structure and a
-**normalized transcript JSON** containing a `messages` array with tool
-call/result records. For tau-bench, inspect the actual history schema and
-implement/test a dedicated deterministic adapter if it does not match the
-normalized format. Do not silently skip tau-bench or rename AgentDojo data
-as a second source.
+The importer recognizes tool-call and assistant messages in both pinned
+formats. AgentDojo drafts use the non-injection `none.json` recordings.
+Tau-bench uses the recorded `traj` array and groups retries and model
+variants by environment and upstream `task_id`. Reward and task-success
+metadata are excluded. Each draft keeps the original source file and
+session index, final-message index, and tool-message indices.
 
 The CLI verifies the local source checkout's full Git HEAD matches the
 declared upstream revision. Importing from an unpinned directory fails.

@@ -35,5 +35,7 @@ python3 experiments/cycle8/source_import.py \
 **That command does not generate truth labels.** Select real atomic claims,
 inspect original raw tool outputs, adjudicate evidence separately, then use
 `benchmark.py freeze` and `audit` on the reviewed JSONL as described in the
-case contract. The tau-bench importer may require a dedicated adapter for
-its actual historical-trajectory shape; do not mark imported until tested.
+case contract. The tau-bench adapter supports the pinned historical files via
+`--format tau_bench`. Run `audit_drafts.py DRAFTS SOURCE_ROOT COHORT` for
+independent byte, task-group, message-pointer and label-absence checks.
+See [the execution findings](FINDINGS.md) for the audited preparation status.

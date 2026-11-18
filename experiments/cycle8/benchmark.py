@@ -14,6 +14,7 @@ import math
 from pathlib import Path
 import random
 import re
+import tempfile
 
 SEED = 800800
 RELATIONS = {"supports", "contradicts", "insufficient"}
@@ -412,17 +413,14 @@ def preflight(dataset, split="validation"):
     # An intentionally cheap visible deterministic comparator. The research
     # protocol additionally requires a strong BM25/embedding rule and a
     # validation-selected best comparator before training.
-    path = dataset / "_cycle8_preflight_baseline.jsonl"
-    if path.exists():
-        raise ValueError("refusing to overwrite existing preflight predictions")
-    baseline(dataset, split, "combined", path)
-    try:
+    # Kaggle data mounts are read-only, including during preflight.
+    with tempfile.TemporaryDirectory(prefix="cycle8-preflight-") as directory:
+        path = Path(directory) / "combined.jsonl"
+        baseline(dataset, split, "combined", path)
         result = score(dataset, split, path)
-    finally:
-        path.unlink()
     if result["exact_accuracy"] is None:
         raise ValueError("no validation data; cannot preflight a neural run")
-    too_easy = result["exact_accuracy"] >= 0.95 or 1 - result["exact_accuracy"] < 0.20
+    too_easy = result["exact_accuracy"] > 0.80
     result["preliminary_rule_gate_pass"] = not too_easy
     result["note"] = "Additional BM25/embedding controls required; preliminary gate is not a scientific acceptance."
     return result

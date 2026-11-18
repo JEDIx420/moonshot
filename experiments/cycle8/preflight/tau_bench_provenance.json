@@ -1,0 +1,33 @@
+{
+  "candidate_lists_truncated": 8,
+  "candidate_pointers_checked": 12167,
+  "cohort": "tau_bench",
+  "drafts_checked": 1650,
+  "import_counts": {
+    "no_usable_tool_trace": 330,
+    "sessions_seen": 1980,
+    "source_files": 4,
+    "tool_observations": 13896,
+    "unlabelled_drafts": 1650
+  },
+  "independent_adjudications": 0,
+  "license": "MIT",
+  "license_sha256": "243d23d45b80122b5ac575586ccef352fdc9c45e6d7d2605449aca8a17478b42",
+  "potential_group_split_counts": {
+    "test": 33,
+    "train": 100,
+    "validation": 25
+  },
+  "privacy": "raw text remains private locally; derived benchmark privacy review pending",
+  "raw_file_sha256": {
+    "gpt-4o-airline.json": "e9e6c0297660c537f83d4fd9c476ce7a9a86ecd2784874b7bfc13be598e37bfa",
+    "gpt-4o-retail.json": "df01707894836168ff0ec9616b0bf08f66c7e5afcf313e5fe4f7a2f5c2ec938b",
+    "sonnet-35-new-airline.json": "fe62fcd514b855b36f156dd4c3c7748597b392b006aff739b53337a9f3ba94d1",
+    "sonnet-35-new-retail.json": "0df526398e9d2720c32d340815cffb04fe8c4f8a61b1f4f84bf3bb558f760131"
+  },
+  "raw_files_referenced": 4,
+  "real_reviewed_labels": 0,
+  "repo": "sierra-research/tau-bench",
+  "revision": "59a200c6d575d595120f1cb70fea53cef0632f6b",
+  "task_groups": 158
+}

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/private/tmp/moonshot-cycle8-codex/experiments/cycle8/benchmark.py", line 518, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/moonshot-cycle8-codex/experiments/cycle8/benchmark.py", line 499, in main
+    result = freeze(args.reviewed, args.output_dir, args.pilot)
+  File "/private/tmp/moonshot-cycle8-codex/experiments/cycle8/benchmark.py", line 162, in freeze
+    validate_case(case, pilot=pilot)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/moonshot-cycle8-codex/experiments/cycle8/benchmark.py", line 67, in validate_case
+    valid_nonempty(case.get(key), key)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/moonshot-cycle8-codex/experiments/cycle8/benchmark.py", line 62, in valid_nonempty
+    raise ValueError(f"invalid {title}")
+ValueError: invalid claim_text

@@ -1,0 +1,22 @@
+{
+  "cycle": 8,
+  "full_run_minimum_reviewed_cases": 500,
+  "gate_status": {
+    "G8-A": "not_evaluated",
+    "G8-D": "unmet",
+    "G8-I": "not_evaluated",
+    "G8-R": "unverified",
+    "G8-S": "not_evaluated",
+    "G8-U": "not_evaluated"
+  },
+  "independently_adjudicated_cases": 0,
+  "kaggle_submitted": false,
+  "pilot_executed": false,
+  "pilot_minimum_reviewed_cases": 200,
+  "remaining_pretrained_condition": "compact_pretrained",
+  "reviewed_cases": 0,
+  "status": "blocked_before_freeze",
+  "tool_pointers_checked": 19825,
+  "training_updates": 0,
+  "unlabelled_drafts": 3564
+}

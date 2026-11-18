@@ -1,4 +1,7 @@
 #[cfg(feature = "cuda")]
+mod cycle8;
+
+#[cfg(feature = "cuda")]
 mod cycle7;
 
 #[cfg(feature = "cuda")]
@@ -260,6 +263,25 @@ enum Commands {
         git_commit: String,
         #[arg(long)]
         output_dir: PathBuf,
+    },
+    /// Cycle 8 fresh ranker preparation for reviewed recorded evidence
+    #[cfg(feature = "cuda")]
+    Cycle8Research {
+        #[arg(long, value_parser = ["cuda"])]
+        device: String,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long)]
+        dataset_dir: PathBuf,
+        #[arg(long)]
+        git_commit: String,
+        #[arg(long, value_parser = ["6000"])]
+        max_updates: String,
+        #[arg(long)]
+        output_dir: PathBuf,
+        /// Explicitly run the fresh ranker and negative controls only
+        #[arg(long)]
+        fresh_only: bool,
     },
 }
 
@@ -4776,6 +4798,14 @@ fn run_wave6d_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
 fn main() {
     let cli = Cli::parse();
     match cli.command {
+        #[cfg(feature = "cuda")]
+        Commands::Cycle8Research { seed, dataset_dir, git_commit, output_dir, fresh_only, .. } => {
+            if let Err(error) = cycle8::run(seed, &dataset_dir, &git_commit, &output_dir, fresh_only) {
+                eprintln!("Cycle 8: {error}");
+                std::process::exit(1);
+            }
+        }
+
         #[cfg(feature = "cuda")]
         Commands::Cycle7Research { seed, dataset_dir, git_commit, output_dir, .. } => {
             cycle7::run(seed, &dataset_dir, &git_commit, &output_dir).unwrap();

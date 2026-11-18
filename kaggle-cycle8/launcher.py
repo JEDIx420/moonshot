@@ -204,8 +204,8 @@ def main():
                 not control.get("baseline_name") or
                 not isinstance(control.get("validation_exact_accuracy"), (float, int))):
             raise RuntimeError("invalid validation-selected strong control")
-        if control["validation_exact_accuracy"] >= 0.95:
-            raise RuntimeError("best non-neural control >=95%; fail benchmark before GPU")
+        if control["validation_exact_accuracy"] > 0.80:
+            raise RuntimeError("fewer than 20% of validation cases challenge the selected control; refuse GPU")
         manifest["strong_control"] = control
         # Construct the *only* directory passed to Rust: test inputs OK,
         # never test gold, source transcript, or provenance.

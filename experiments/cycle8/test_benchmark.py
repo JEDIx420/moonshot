@@ -117,6 +117,16 @@ class Cycle8Tests(unittest.TestCase):
             self.assertEqual(result["false_support_count"], 1)
             self.assertEqual(result["regressions"], 1)
 
+    def test_preflight_leaves_frozen_mount_untouched(self):
+        with tempfile.TemporaryDirectory() as d:
+            freeze = self.frozen_pilot(Path(d))
+            before = {path.relative_to(freeze): path.read_bytes()
+                      for path in freeze.rglob("*") if path.is_file()}
+            result = b.preflight(freeze)
+            self.assertFalse(result["preliminary_rule_gate_pass"])
+            self.assertEqual({path.relative_to(freeze): path.read_bytes()
+                              for path in freeze.rglob("*") if path.is_file()}, before)
+
     def test_control_lock_pins_test_predictions_and_selection(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
@@ -148,7 +158,7 @@ class Cycle8Tests(unittest.TestCase):
                          {"role": "tool", "tool_call_id": "c1", "content": "Report created", "error": None},
                          {"role": "tool", "tool_call_id": "c2", "content": "Dispatch queued", "error": None},
                          {"role": "assistant", "content": "The report has been sent."}]}
-            (root / "run.json").write_text(json.dumps(trace))
+            (root / "none.json").write_text(json.dumps(trace))
             drafts, stats = s.extract(root, "agentdojo", "ethz-spylab/agentdojo", UPSTREAM_REV, "MIT")
             self.assertEqual(stats["unlabelled_drafts"], 1)
             self.assertEqual(len(drafts[0]["candidates"]), 2)
@@ -156,6 +166,29 @@ class Cycle8Tests(unittest.TestCase):
             self.assertIsNone(drafts[0]["gold"])
             with self.assertRaises(ValueError):
                 b.validate_case(drafts[0])
+
+    def test_tau_history_groups_trials_and_preserves_source_pointers(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            messages = [
+                {"role": "assistant", "tool_calls": [{"id": "call-0", "function": {"name": "lookup"}}]},
+                {"role": "tool", "tool_call_id": "call-0", "content": "found"},
+                {"role": "tool", "name": "details", "content": "recorded"},
+                {"role": "assistant", "content": "The lookup found the record."},
+            ]
+            for name in ("gpt-4o-airline.json", "sonnet-35-new-airline.json", "gpt-4o-retail.json"):
+                (root / name).write_text(json.dumps([{"task_id": 0, "traj": messages,
+                                                      "reward": 1.0, "trial": 2}]))
+            repo, revision = b.PINNED_SOURCES["tau_bench"]
+            drafts, _ = s.extract(root, "tau_bench", repo, revision, "MIT", mode="tau_bench")
+            self.assertEqual([row["group_id"] for row in drafts], ["airline/0", "retail/0", "airline/0"])
+            for row in drafts:
+                self.assertIsNone(row["gold"])
+                self.assertNotIn("reward", row)
+                self.assertEqual(row["assistant_final_message_index"], 3)
+                self.assertEqual(row["candidates"][0]["message_index"], 1)
+                self.assertEqual(row["candidates"][0]["status"], "unknown")
+                self.assertIsNone(row["candidates"][1]["call_id"])
 
     def test_monitor_state_parser(self):
         location = ROOT / "kaggle-cycle8/monitor.py"

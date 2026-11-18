@@ -17,7 +17,7 @@ use std::{
 };
 
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
-const WIDTH: usize = 512;
+pub(super) const WIDTH: usize = 512;
 const HIDDEN: usize = 1920;
 const BATCH: usize = 64;
 const STEPS: usize = 12000;
@@ -70,24 +70,27 @@ struct Prediction<'a> {
 }
 
 #[derive(Module, Debug)]
-struct Ranker {
+pub(super) struct Ranker {
     hidden: Linear,
     output: Linear,
 }
 
 impl Ranker {
-    fn new(device: &Device) -> Self {
+    pub(super) fn new(device: &Device) -> Self {
         Self {
             hidden: LinearConfig::new(WIDTH, HIDDEN).init(device),
             output: LinearConfig::new(HIDDEN, 6).init(device),
         }
     }
 
+    pub(super) fn pair_scores(&self, input: Tensor<3>) -> Tensor<3> {
+        self.output
+            .forward(activation::relu(self.hidden.forward(input)))
+    }
+
     fn forward(&self, input: Tensor<3>) -> Tensor<2> {
         let [batch, _, _] = input.dims();
-        let scores = self
-            .output
-            .forward(activation::relu(self.hidden.forward(input)));
+        let scores = self.pair_scores(input);
         let pairs = scores
             .clone()
             .slice([0..batch, 0..4, 0..5])
@@ -99,7 +102,7 @@ impl Ranker {
         Tensor::cat(vec![pairs, none], 1)
     }
 
-    fn checkpoint(&self) -> Result<Vec<u8>> {
+    pub(super) fn checkpoint(&self) -> Result<Vec<u8>> {
         let data = [
             (
                 "hidden.weight",
@@ -148,7 +151,7 @@ impl Ranker {
         Ok(serialize(views, &None)?)
     }
 
-    fn restore(bytes: &[u8], device: &Device) -> Result<Self> {
+    pub(super) fn restore(bytes: &[u8], device: &Device) -> Result<Self> {
         let tensors = SafeTensors::deserialize(bytes)?;
         let load = |name, shape: &[usize]| -> Result<Vec<f32>> {
             let tensor = tensors.tensor(name)?;
@@ -178,23 +181,23 @@ impl Ranker {
     }
 }
 
-fn hash(data: &[u8]) -> String {
+pub(super) fn hash(data: &[u8]) -> String {
     format!("{:x}", Sha256::digest(data))
 }
 
-fn jsonl<T: for<'a> Deserialize<'a>>(path: &Path) -> Result<Vec<T>> {
+pub(super) fn jsonl<T: for<'a> Deserialize<'a>>(path: &Path) -> Result<Vec<T>> {
     BufReader::new(File::open(path)?)
         .lines()
         .map(|line| Ok(serde_json::from_str(&line?)?))
         .collect()
 }
 
-fn write_json(path: &Path, value: &Value) -> Result<()> {
+pub(super) fn write_json(path: &Path, value: &Value) -> Result<()> {
     fs::write(path, serde_json::to_vec_pretty(value)?)?;
     Ok(())
 }
 
-fn text_features(text: &str, bins: &mut [f32]) {
+pub(super) fn text_features(text: &str, bins: &mut [f32]) {
     for token in text
         .split(|c: char| !c.is_ascii_alphabetic())
         .filter(|token| !token.is_empty())
@@ -207,7 +210,7 @@ fn text_features(text: &str, bins: &mut [f32]) {
     }
 }
 
-fn redact(text: &str) -> String {
+pub(super) fn redact(text: &str) -> String {
     // Remove entire opaque ID bindings and time values before token hashing.
     text.split_whitespace()
         .filter(|word| !word.bytes().any(|b| b.is_ascii_digit()))
