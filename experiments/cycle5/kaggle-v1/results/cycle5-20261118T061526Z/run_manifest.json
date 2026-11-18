@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "cycle": 5,
+  "status": "completed",
+  "stage": "all",
+  "utc_start": "20261118T061526Z",
+  "pinned_commit": "8f237e3c6f315759916b01e1b918b3d06ce849ef",
+  "model_parameters": 1095744,
+  "backend_required": "burn-cuda",
+  "eval_seeds": [
+    4109,
+    4201,
+    4303
+  ],
+  "target_exact_match": 0.85,
+  "gpu_devices": "Tesla T4, GPU-e3230159-678b-a9ef-5138-e860e669081b, 580.178.04, 15360 MiB\nTesla T4, GPU-ad516556-352e-bacf-e533-98beed1e8f53, 580.178.04, 15360 MiB",
+  "git_commit": "8f237e3c6f315759916b01e1b918b3d06ce849ef",
+  "smoke_verified": true,
+  "completed_seeds": [
+    {
+      "seed": 4109,
+      "test_exact_match": 1.0,
+      "validation_exact_match": 1.0
+    },
+    {
+      "seed": 4201,
+      "test_exact_match": 1.0,
+      "validation_exact_match": 1.0
+    },
+    {
+      "seed": 4303,
+      "test_exact_match": 1.0,
+      "validation_exact_match": 1.0
+    }
+  ],
+  "scientific_gate_met": true,
+  "utc_end": "2026-11-18T06:26:53.974486+00:00"
+}
