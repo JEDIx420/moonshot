@@ -1,0 +1,7 @@
+{
+  "audit": "PASS",
+  "cases": 1920,
+  "groups": 960,
+  "separate_sealed_test_oracle": true,
+  "source": "stateful_synthetic_simulator_not_recorded_enterprise_traces"
+}

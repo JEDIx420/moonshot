@@ -1,0 +1,29 @@
+{
+  "abstain_count": 0,
+  "assertive_support_precision": 0.03977272727272727,
+  "by_stratum": {
+    "canonical": {
+      "joint_exact_accuracy": 0.14285714285714285,
+      "n": 84
+    },
+    "delayed": {
+      "joint_exact_accuracy": 0.11904761904761904,
+      "n": 84
+    },
+    "masked": {
+      "joint_exact_accuracy": 0.14705882352941177,
+      "n": 68
+    },
+    "spoofed": {
+      "joint_exact_accuracy": 0.0641025641025641,
+      "n": 78
+    }
+  },
+  "count": 314,
+  "false_support_count": 169,
+  "joint_exact_accuracy": 0.1178343949044586,
+  "relation_accuracy": 0.3885350318471338,
+  "source": "controlled_simulator_not_real_world",
+  "split": "validation",
+  "support_assertions": 176
+}

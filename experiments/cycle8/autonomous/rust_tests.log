@@ -1,0 +1,168 @@
+   Compiling moonshot-autodiff v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-autodiff)
+   Compiling moonshot-core v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-core)
+   Compiling moonshot-model v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-model)
+   Compiling moonshot-oracle v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-oracle)
+   Compiling moonshot-editor v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-editor)
+   Compiling moonshot-runner v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-runner)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.70s
+     Running unittests src/lib.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot_autodiff-477254056c523a9b)
+
+running 22 tests
+test gradcheck::tests::test_grad_cross_entropy ... ok
+test gradcheck::tests::test_grad_add_row_broadcast ... ok
+test gradcheck::tests::test_grad_mul_elementwise ... ok
+test gradcheck::tests::test_grad_mul_self_fanout ... ok
+test gradcheck::tests::test_grad_gelu ... ok
+test gradcheck::tests::test_grad_add_elementwise ... ok
+test gradcheck::tests::test_grad_softmax_1d ... ok
+test gradcheck::tests::test_grad_matmul ... ok
+test gradcheck::tests::test_grad_layernorm ... ok
+test gradcheck::tests::test_grad_sub_elementwise ... ok
+test tape::tests::test_cross_entropy_1d ... ok
+test tape::tests::test_cubic_fanout ... ok
+test gradcheck::tests::test_grad_softmax_2d_rowwise ... ok
+test tape::tests::test_gradients_indexing ... ok
+test gradcheck::tests::test_grad_sub_row_broadcast ... ok
+test tape::tests::test_tape_basic_and_clear ... ok
+test tape::tests::test_residual_branch_gradient ... ok
+test tape::tests::test_tape_error_handling ... ok
+test tensor::tests::test_tensor_creation_and_indexing ... ok
+test tensor::tests::test_tensor_reshape ... ok
+test tensor::tests::test_tensor_transpose ... ok
+test gradcheck::tests::test_composite_transformer_block ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/adversarial_stress.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/adversarial_stress-5fc326b6b5562706)
+
+running 11 tests
+test test_layernorm_zero_variance_all_identical_inputs ... ok
+test test_adversarial_error_conditions ... ok
+test test_cross_entropy_extreme_logits ... ok
+test test_high_degree_fanout_10_branches ... ok
+test test_softmax_extreme_large_logits ... ok
+test test_degenerate_batch_single_class_cross_entropy ... ok
+test test_softmax_extreme_negative_logits ... ok
+test test_fanout_cubic_plus_gelu ... ok
+test test_zero_dependencies_enforcement ... ok
+test test_fanout_diamond_graph ... ok
+test test_high_dimensional_matmul ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/lib.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot_core-3bdd6b99bf174d8d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot_editor-650cb64d77157166)
+
+running 2 tests
+test tests::test_sandbox_typechecker_bounds ... ok
+test tests::test_learned_proposal_policy_update ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot_model-5f34c59567a796de)
+
+running 18 tests
+test safetensors::tests::test_safetensors_corrupted_header_handling ... ok
+test safetensors::tests::test_safetensors_missing_tensor_error ... ok
+test safetensors::tests::test_safetensors_8byte_alignment ... ok
+test safetensors::tests::test_safetensors_77k_roundtrip_bitwise ... ok
+test safetensors::tests::test_safetensors_alias_compatibility ... ok
+test tests::test_finite_difference_gradients ... ok
+test safetensors::tests::test_safetensors_reconstruct_without_metadata ... ok
+test safetensors::tests::test_safetensors_forward_logits_equality ... ok
+test tests::test_forward_with_attention_consistency ... ok
+test tests::test_transformer_init_and_forward ... ok
+test tests::test_tiny_transformer_to_and_from_safetensors_methods ... ok
+test tests::test_checkpoint_roundtrip_bitwise ... ok
+test tests::test_exact_backprop_reduces_loss ... ok
+test tests::test_lora_adapter_zero_init_and_isolation ... ok
+test safetensors::tests::test_safetensors_shape_mismatch_error ... ok
+test safetensors::tests::test_safetensors_export_to_target_for_external_validation ... ok
+test safetensors::tests::test_safetensors_1m_roundtrip_bitwise ... ok
+test tests::test_1m_model_parameter_count_and_gradients ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.66s
+
+     Running tests/adversarial_safetensors.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/adversarial_safetensors-87a7cbc0263409db)
+
+running 6 tests
+test test_corrupted_buffer_handling_no_panics ... ok
+test test_fuzz_random_buffers_no_panics ... ok
+test test_corrupted_tensor_metadata_rejection ... ok
+test test_load_into_model_safety_checks ... ok
+test test_strict_8byte_alignment_77k_and_1m ... ok
+test test_roundtrip_bitwise_fidelity_and_logits_77k_and_1m ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.57s
+
+     Running unittests src/lib.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot_oracle-b834d1cdf44065c1)
+
+running 5 tests
+test tests::test_oracle_exact_scoring ... ok
+test tests::test_held_out_flags ... ok
+test tests::test_sandbox_containment_negative_cases ... ok
+test tests::test_sandbox_state_execution ... ok
+test tests::test_task_generation_deterministic ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/cycle6_verify.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/cycle6_verify-9550081eec4bca7d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/lab.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/lab-29ef6f23e4d5c465)
+
+running 8 tests
+test tests::test_live_sandbox_execution ... ok
+test tests::test_token_name_and_parsing ... ok
+test tests::test_render_boxes_and_status ... ok
+test tests::test_attention_renderers ... ok
+test tests::test_cli_parser ... ok
+test tests::test_forward_with_attention_matches_forward ... ok
+test tests::test_lab_session_stepping ... ok
+test tests::test_command_execution ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running unittests src/main.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot-cdd545c40b6f3ac1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests moonshot_autodiff
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests moonshot_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests moonshot_editor
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests moonshot_model
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests moonshot_oracle
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

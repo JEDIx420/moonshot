@@ -1,0 +1,60 @@
+{
+  "files_sha256": {
+    "inputs/test.jsonl": "b2e82d6f09fc55ae766cdf5d9c400bd530f26e0d6f9e4c31719d13834dc11689",
+    "inputs/train.jsonl": "eb42ba9ba035a95b7c8160b5728835ba2bbea81d0b577cd52d741c2b9bf50a55",
+    "inputs/validation.jsonl": "cc1c2c7ecbd2a92cfb951939d9696bbf76e13f0bc49f43f4618e8a45ba9bf4c0",
+    "sealed_oracle/journal.jsonl": "ca97e2746388c7a2e349f0319f4553fa759f72615a1b2d88e85ab554ca3c5f79",
+    "sealed_oracle/test.jsonl": "fb466c6dd5f1836fa2688206d1abe92e4d38b13af84a412896bd289d5fec7528",
+    "sealed_oracle/train.jsonl": "53fbba16aaba4e596585185da8d337001a66467d55dfb1b396c36710b421d1c8",
+    "sealed_oracle/validation.jsonl": "62e463f49b304ce6edd577b74bb76d5987b6222056dbe294439edffd3ecab73c"
+  },
+  "groups_per_domain": 240,
+  "human_review_required": false,
+  "inference_only_after_model_freeze": [
+    "inputs/test.jsonl"
+  ],
+  "labels_derived_from": "authoritative_state_journal_before_observation_rendering",
+  "model_training_may_read": [
+    "inputs/train.jsonl",
+    "inputs/validation.jsonl",
+    "sealed_oracle/train.jsonl",
+    "sealed_oracle/validation.jsonl"
+  ],
+  "never_mount_on_kaggle": [
+    "sealed_oracle/test.jsonl",
+    "sealed_oracle/journal.jsonl"
+  ],
+  "scientific_claim_scope": "simulator_observational_evidence_only",
+  "seed": 8181,
+  "source_type": "stateful_synthetic_simulator_not_recorded_enterprise_traces",
+  "splits": {
+    "test": {
+      "cases": 778,
+      "groups": 389,
+      "relation_counts": {
+        "contradicts": 191,
+        "insufficient": 396,
+        "supports": 191
+      }
+    },
+    "train": {
+      "cases": 828,
+      "groups": 414,
+      "relation_counts": {
+        "contradicts": 212,
+        "insufficient": 404,
+        "supports": 212
+      }
+    },
+    "validation": {
+      "cases": 314,
+      "groups": 157,
+      "relation_counts": {
+        "contradicts": 77,
+        "insufficient": 160,
+        "supports": 77
+      }
+    }
+  },
+  "version": "cycle8b-state-oracle-v1"
+}

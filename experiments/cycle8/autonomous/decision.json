@@ -1,0 +1,20 @@
+{
+  "dataset_manifest_sha256": "70fb069f7dc8b284c3473303aeb6e9f96bc19f68ca100f7ae2cbbefa552fdda4",
+  "false_support_count": 0,
+  "gate_status": {
+    "B8B-A": "not_evaluated",
+    "B8B-I": "not_evaluated",
+    "B8B-R": "unverified",
+    "B8B-S": "not_evaluated",
+    "B8B-T": "not_evaluated"
+  },
+  "kaggle_submitted": false,
+  "optimizer_updates": 0,
+  "predictions_unchanged_with_reversed_candidates": true,
+  "sealed_test_scored": false,
+  "selected_control": "scoped_receipt",
+  "selected_control_validation_exact": 1.0,
+  "selected_on": "validation",
+  "status": "STOP_BEFORE_GPU_VALIDATION_CEILING",
+  "unsolved_validation_cases": 0
+}

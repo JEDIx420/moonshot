@@ -1,0 +1,7 @@
+    Checking moonshot-core v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-core)
+    Checking moonshot-autodiff v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-autodiff)
+    Checking moonshot-model v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-model)
+    Checking moonshot-oracle v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-oracle)
+    Checking moonshot-editor v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-editor)
+    Checking moonshot-runner v0.1.0 (/private/tmp/moonshot-cycle8b-codex/crates/moonshot-runner)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.91s
