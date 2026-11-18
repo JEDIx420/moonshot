@@ -6,9 +6,14 @@
 > demonstrated real Rust/Burn CUDA training and checkpoint reproducibility,
 > but its 36-prompt copying task is solved **108/108 by a zero-training rule**;
 > its 100% held-out score is **not** evidence of learned compositional reasoning.
-> **Next:** [Cycle 6 preregistered grand-stage protocol](experiments/cycle6/PROTOCOL.md)
-> and [Kaggle GPU launcher](kaggle-cycle6/README.md). The Cycle 6 gates are
-> hypotheses, not results; do not announce a leap before independent audit.
+> [Cycle 6 audited findings](experiments/cycle6/FINDINGS.md) report successful
+> primitive acquisition and substantial uniform-replay retention, but the
+> feedback-policy superiority and unseen-composition hypotheses **failed**.
+> **Next:** [Cycle 7 preregistered Rift Intelligence Scout](experiments/cycle7/PROTOCOL.md),
+> [frozen two-track benchmark](experiments/cycle7/BENCHMARK.md) and
+> [fail-closed Kaggle handoff](kaggle-cycle7/README.md). Cycle 7 has
+> **no neural results yet**. Its agent-evidence and schema-matching hypotheses
+> must be compared to strong non-neural controls before any product claim.
 
 > **Completed Research Cycle 4 (2026-11-17):** [Cycle 4 Final Research Report](experiments/CYCLE4_FINAL_RESEARCH_REPORT.md) | [Cycle 4 Scaling & Modular Subspace Plan](docs/RESEARCH_CYCLE_4_1M_SCALING_PLAN_2026-11-17.md) | [Cycle 3 Final Research Report](experiments/CYCLE3_FINAL_RESEARCH_REPORT.md) | [Scientific Protocol](docs/EXPERIMENT_PROTOCOL.md) | [Antigravity Instructions](ANTIGRAVITY_AGENT.md).
 >
