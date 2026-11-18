@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Fail-closed Kaggle *orchestrator* for Cycle 7; no Python model training.
 
-This file is intentionally NOT RUNNABLE until the Rust Cycle 7 science command
-is implemented, reviewed, and PINNED_COMMIT set to its immutable 40-char SHA.
-Do not treat a successful Python/bootstrap execution as a research result.
+The pinned Rust revision provides all training and neural predictions.
+The independent fixture evaluator runs after all conditions finish.
 """
 
 import csv
@@ -20,7 +19,7 @@ import threading
 import traceback
 
 REPOSITORY = "https://github.com/JEDIx420/moonshot.git"
-PINNED_COMMIT = "REPLACE_AFTER_RUST_CYCLE7_IMPLEMENTATION"
+PINNED_COMMIT = "8221bfa46cdc3a5d6d9b9e01a1d625ed857915ff"
 RUST_TOOLCHAIN = "1.96.1"
 SOURCE = Path("/tmp/moonshot-cycle7-source")
 OUTPUT_ROOT = Path("/kaggle/working/results")
@@ -205,12 +204,6 @@ def main():
                 shutil.copy2(dataset / "answers" / f"{split}.jsonl",
                              model_view / "answers" / f"{split}.jsonl")
         assert not (model_view / "answers" / "test.jsonl").exists()
-        for mode in ("exact", "lexical", "structured"):
-            for split in ("validation", "test"):
-                predictions = evidence / "baselines" / f"{mode}_{split}.jsonl"
-                run([sys.executable, str(fixture_script), "baseline",
-                     "--dataset-dir", str(dataset), "--split", split,
-                     "--mode", mode, "--output", str(predictions)])
         update("building")
         run(["cargo", "test", "--locked", "--release", "-p", "moonshot-runner",
              "--features", "cuda", "cycle7"], cwd=SOURCE, log=evidence / "rust_tests.log")
@@ -245,30 +238,11 @@ def main():
         # are complete for ALL seeds. Score every failed hypothesis honestly.
         if stage == "all":
             update("independent_scoring")
-            for mode in ("exact", "lexical", "structured"):
-                for split in ("validation", "test"):
-                    target = evidence / "scores" / f"{mode}_{split}.json"
-                    run([sys.executable, str(fixture_script), "score",
-                         "--dataset-dir", str(dataset), "--split", split,
-                         "--predictions", str(evidence / "baselines" /
-                                              f"{mode}_{split}.jsonl"),
-                         "--output", str(target)],
-                        log=evidence / "scores" / f"{mode}_{split}.log")
-            for seed in SEEDS:
-                for condition in CONDITIONS:
-                    folder = evidence / f"seed_{seed}" / condition
-                    selection = json.loads((folder / "selection.json").read_text())
-                    threshold = selection["validation_confidence_threshold"]
-                    if not isinstance(threshold, (float, int)) or not 0 <= threshold <= 1:
-                        raise RuntimeError("invalid frozen validation threshold")
-                    for split in ("validation", "test"):
-                        target = evidence / "scores" / f"{seed}_{condition}_{split}.json"
-                        run([sys.executable, str(fixture_script), "score",
-                             "--dataset-dir", str(dataset), "--split", split,
-                             "--predictions", str(folder / f"{split}_predictions.jsonl"),
-                             "--confidence-threshold", str(threshold), "--output", str(target)],
-                            log=evidence / "scores" / f"{seed}_{condition}_{split}.log")
-            manifest["science_gate"] = "pending_postrun_independent_review"
+            run([sys.executable, str(SOURCE / "experiments/cycle7/evaluate_run.py"), str(evidence)],
+                log=evidence / "independent_scoring.log")
+            audit = json.loads((evidence / "independent_summary.json").read_text())
+            manifest["science_gate"] = {key: value for key, value in audit.items() if key.startswith("G7")}
+
         else:
             manifest["science_gate"] = "not_run_smoke_only"
         update("completed")
