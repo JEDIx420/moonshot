@@ -1,5 +1,7 @@
 # Cycle 8: Real recorded agent evidence, only when it beats rules
 
+**New fully autonomous alternative:** [Cycle 8B state-oracle protocol](AUTONOMOUS_PROTOCOL.md), [executable generator/scorer](autonomous_oracle.py) and [single-agent Kaggle runbook](../../kaggle-cycle8/AUTONOMOUS_RUNBOOK.md). This is a separately preregistered *simulator* benchmark with **no human reviewers**; it does not replace the original recorded-trace scientific claims.
+
 **Current state:** design, importer, independent frozen-case scorer,
 baseline/preflight and Kaggle orchestration are ready. No reviewed Cycle 8
 dataset, trained Rust Cycle 8 model, Kaggle results or production integration
