@@ -1,0 +1,18 @@
+{
+  "generator_version": 1,
+  "generator_seed": 707707,
+  "examples_per_family": 512,
+  "files": {
+    "inputs/train.jsonl": "d07831af9e5f64454ec847d7b8d533cb78a2132cc9ca05748d3c819d0c83a32a",
+    "answers/train.jsonl": "a1710552ec30af400faaa93acb375dfa2b2b3b78b294aaaa139f49b45c05bf66",
+    "inputs/validation.jsonl": "654376af12a72e00315601fd20948e62c2864bcdc110901a4cf3707d9fe59950",
+    "answers/validation.jsonl": "49a8f4611e7b27a4741a6a5ed71b2c68d8ac46a496f8cf9c5d12176e98dc9a80",
+    "inputs/test.jsonl": "93373fb8f8848f6241900c980c4a84b809580d55691d3cfa83958b639d3ee38c",
+    "answers/test.jsonl": "76f06296e5bd8c1990e63e8613f86cc07a57b874e12af415cd1656b08e2afca3"
+  },
+  "counts": {
+    "train": 6144,
+    "validation": 3072,
+    "test": 3072
+  }
+}

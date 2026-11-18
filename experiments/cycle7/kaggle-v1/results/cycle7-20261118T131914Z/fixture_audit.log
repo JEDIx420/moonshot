@@ -1,0 +1,36 @@
+{
+  "counts": {
+    "train": 6144,
+    "validation": 3072,
+    "test": 3072
+  },
+  "labels": {
+    "train": {
+      "agent_evidence:contradicts": 1016,
+      "agent_evidence:none": 1033,
+      "schema_map:none": 1354,
+      "schema_map:multiply_100": 292,
+      "schema_map:identity": 1169,
+      "agent_evidence:supports": 1023,
+      "schema_map:divide_100": 257
+    },
+    "validation": {
+      "schema_map:none": 673,
+      "schema_map:multiply_100": 130,
+      "agent_evidence:contradicts": 513,
+      "schema_map:identity": 587,
+      "agent_evidence:supports": 500,
+      "schema_map:divide_100": 146,
+      "agent_evidence:none": 523
+    },
+    "test": {
+      "agent_evidence:none": 499,
+      "agent_evidence:contradicts": 492,
+      "schema_map:none": 664,
+      "agent_evidence:supports": 545,
+      "schema_map:identity": 575,
+      "schema_map:divide_100": 146,
+      "schema_map:multiply_100": 151
+    }
+  }
+}

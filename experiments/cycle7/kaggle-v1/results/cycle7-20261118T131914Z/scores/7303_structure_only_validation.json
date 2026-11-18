@@ -1,0 +1,5665 @@
+{
+  "confidence_threshold": 0.9995927600884256,
+  "confusion": {
+    "agent_evidence": {
+      "contradicts": {
+        "contradicts": 513
+      },
+      "none": {
+        "none": 523
+      },
+      "supports": {
+        "supports": 500
+      }
+    },
+    "schema_map": {
+      "divide_100": {
+        "divide_100": 146
+      },
+      "identity": {
+        "identity": 435,
+        "none": 152
+      },
+      "multiply_100": {
+        "multiply_100": 130
+      },
+      "none": {
+        "none": 673
+      }
+    }
+  },
+  "domain_bootstrap_95": {
+    "agent_evidence": [
+      1.0,
+      1.0
+    ],
+    "schema_map": [
+      0.818359375,
+      0.85546875
+    ]
+  },
+  "errors": [
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0141",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0141",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0141",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0152",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0152",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0152",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0462",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0462",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0462",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0043",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0043",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0043",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0332",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0332",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0332",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0106",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0106",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0106",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0344",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0344",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0344",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0296",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0296",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0296",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0349",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0349",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0349",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0146",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0146",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0146",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0200",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0200",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0200",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0048",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0048",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0048",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0234",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0234",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0234",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0375",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0375",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0375",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0172",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0172",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0172",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0065",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0065",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0065",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0241",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0241",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0241",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0298",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0298",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0298",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0205",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0205",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0205",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0387",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0387",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0387",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0067",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0067",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0067",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0447",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0447",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0447",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0493",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0493",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0493",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0184",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0184",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0184",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0269",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0269",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0269",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0305",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0305",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0305",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0223",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0223",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0223",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0270",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0270",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0270",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0259",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0259",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0259",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0301",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0301",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0301",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0170",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0170",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0170",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0233",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0233",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0233",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0366",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0366",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0366",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0495",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0495",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0495",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0278",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0278",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0278",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0313",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0313",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0313",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0459",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0459",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0459",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0129",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0129",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0129",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0482",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0482",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0482",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0225",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0225",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0225",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0334",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0334",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0334",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0114",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0114",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0114",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0061",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0061",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0061",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0489",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0489",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0489",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0061",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0061",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0061",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0448",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0448",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0448",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0164",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0164",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0164",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0087",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0087",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0087",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0399",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0399",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0399",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0472",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0472",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0472",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0487",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0487",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0487",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0304",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0304",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0304",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0501",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0501",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0501",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0208",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0208",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0208",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0338",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0338",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0338",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0068",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0068",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0068",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0138",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0138",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0138",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0125",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0125",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0125",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0033",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0033",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0033",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0365",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0365",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0365",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0114",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0114",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0114",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0382",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0382",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0382",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0158",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0158",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0158",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0180",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0180",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0180",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0445",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0445",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0445",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0281",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0281",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0281",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0180",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0180",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0180",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0123",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0123",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0123",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0463",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0463",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0463",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0391",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0391",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0391",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0157",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0157",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0157",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0136",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0136",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0136",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0405",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0405",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0405",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0238",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0238",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0238",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0257",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0257",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0257",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0415",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0415",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0415",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0104",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0104",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0104",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0486",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0486",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0486",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0318",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0318",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0318",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0189",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0189",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0189",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0011",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0011",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0011",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0356",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0356",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0356",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0046",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0046",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0046",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0440",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0440",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0440",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0181",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0181",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0181",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0262",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0262",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0262",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0022",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0022",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0022",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0103",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0103",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0103",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0401",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0401",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0401",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0201",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0201",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0201",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0257",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0257",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0257",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0306",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0306",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0306",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0059",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0059",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0059",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0188",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0188",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0188",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0339",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0339",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0339",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0114",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0114",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0114",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0460",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0460",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0460",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0003",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0003",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0003",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0072",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0072",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0072",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0189",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0189",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0189",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0260",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0260",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0260",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0162",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0162",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0162",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0077",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0077",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0077",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0485",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0485",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0485",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0498",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0498",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0498",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0331",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0331",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0331",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0401",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0401",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0401",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0299",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0299",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0299",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0227",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0227",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0227",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0163",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0163",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0163",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0282",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0282",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0282",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0430",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0430",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0430",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0480",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0480",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0480",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0304",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0304",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0304",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0452",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0452",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0452",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0425",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0425",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0425",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0300",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0300",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0300",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0034",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0034",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0034",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0256",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0256",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0256",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0438",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0438",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0438",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0252",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0252",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0252",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0276",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0276",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0276",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0451",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0451",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0451",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0266",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0266",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0266",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0093",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0093",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0093",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0122",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0122",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0122",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0458",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0458",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0458",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0256",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0256",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0256",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0151",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0151",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0151",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0248",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0248",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0248",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0474",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0474",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0474",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0267",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0267",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0267",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0314",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0314",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0314",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0165",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0165",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0165",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0156",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0156",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0156",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0418",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0418",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0418",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0309",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0309",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0309",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0084",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0084",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0084",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0224",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0224",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0224",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0096",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0096",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0096",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0298",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0298",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0298",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0478",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0478",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0478",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0438",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0438",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0438",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0083",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0083",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0083",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0457",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0457",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0457",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0117",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0117",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0117",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0212",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0212",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0212",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0504",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0504",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0504",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0118",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0118",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0118",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0074",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0074",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0074",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0427",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0427",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0427",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0449",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0449",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0449",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0078",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0078",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0078",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0058",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0058",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0058",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0133",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0133",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0133",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0358",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0358",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0358",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0402",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0402",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0402",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0032",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0032",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0032",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0124",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0124",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0124",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0229",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0229",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0229",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0126",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0126",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0126",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0263",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0263",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0263",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0393",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0393",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0393",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0026",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0026",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0026",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0083",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0083",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0083",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0120",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0120",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0120",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0019",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0019",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0019",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0469",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0469",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0469",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0413",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0413",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0413",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0448",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0448",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0448",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0420",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0420",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0420",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0444",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0444",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0444",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0347",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0347",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0347",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0001",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0001",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0001",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0501",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0501",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0501",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0446",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0446",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0446",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0100",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0100",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0100",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0198",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0198",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0198",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0406",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0406",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0406",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0433",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0433",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0433",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0237",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0237",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0237",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0040",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0040",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0040",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0375",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0375",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0375",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0212",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0212",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0212",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0084",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0084",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0084",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0307",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0307",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0307",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0298",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0298",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0298",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0261",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0261",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0261",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0122",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0122",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0122",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0087",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0087",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0087",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0384",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0384",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0384",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0188",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0188",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0188",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0155",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0155",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0155",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0429",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0429",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0429",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0145",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0145",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0145",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0508",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0508",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0508",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0159",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0159",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0159",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0134",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0134",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0134",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0154",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0154",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0154",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0212",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0212",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0212",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0091",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0091",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0091",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0232",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0232",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0232",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0460",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0460",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0460",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0464",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0464",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0464",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0215",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0215",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0215",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0466",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0466",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0466",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0000",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0000",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0000",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-insurance-0455",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0455",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0455",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0053",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0053",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0053",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0035",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0035",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0035",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0155",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0155",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0155",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0327",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0327",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0327",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0385",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0385",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0385",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0275",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0275",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0275",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0307",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0307",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0307",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0428",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0428",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0428",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-logistics-0188",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0188",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0188",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0419",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0419",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0419",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0502",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0502",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0502",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0192",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0192",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0192",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0144",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0144",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0144",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0504",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0504",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0504",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0319",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0319",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0319",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0137",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0137",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0137",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0454",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0454",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0454",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0471",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0471",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0471",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-education-0234",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0234",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0234",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0050",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0050",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0050",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0397",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0397",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0397",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0355",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0355",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0355",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-logistics-0100",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0100",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0100",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-education-0488",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0488",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0488",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-validation-education-0177",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0177",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0177",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0134",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0134",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0134",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-validation-insurance-0243",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0243",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0243",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0438",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0438",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0438",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-insurance-0478",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0478",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0478",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0286",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0286",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0286",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-insurance-0511",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-insurance-0511",
+      "family": "insurance",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-insurance-0511",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0286",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0286",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0286",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0228",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0228",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0228",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-validation-logistics-0199",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0199",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0199",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-education-0110",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-education-0110",
+      "family": "education",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-education-0110",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-validation-logistics-0158",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-validation-logistics-0158",
+      "family": "logistics",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-validation-logistics-0158",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    }
+  ],
+  "metrics": {
+    "agent_evidence": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 1536,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 523,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:storage": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 169,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:ticketing": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 183,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:warehouse": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 171,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "overall": {
+      "accepted_coverage": 0.64453125,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 3072,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.9205729166666666,
+      "no_match_cases": 1196,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map": {
+      "accepted_coverage": 0.2890625,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 1536,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.8411458333333334,
+      "no_match_cases": 673,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:education": {
+      "accepted_coverage": 0.28125,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.818359375,
+      "no_match_cases": 209,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:insurance": {
+      "accepted_coverage": 0.28125,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.849609375,
+      "no_match_cases": 227,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:logistics": {
+      "accepted_coverage": 0.3046875,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.85546875,
+      "no_match_cases": 237,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    }
+  },
+  "split": "validation"
+}

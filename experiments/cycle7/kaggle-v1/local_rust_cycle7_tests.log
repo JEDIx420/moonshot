@@ -1,0 +1,22 @@
+   Compiling moonshot-runner v0.1.0 (/private/tmp/moonshot-cycle7-codex/crates/moonshot-runner)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.04s
+     Running unittests src/bin/cycle6_verify.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/cycle6_verify-542b4513f1d55750)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/lab.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/lab-7c983400e7691af9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/tmp/moonshot-cycle5-codex/target/debug/deps/moonshot-69c8ed07568bb121)
+
+running 2 tests
+test cycle7::tests::cycle7_rank_mask_and_redaction ... ok
+test cycle7::tests::cycle7_cpu_checkpoint_roundtrip ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.41s
+

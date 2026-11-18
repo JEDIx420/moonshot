@@ -1,0 +1,4726 @@
+{
+  "G7-A": false,
+  "G7-I": true,
+  "G7-S": false,
+  "G7-V": "unverified",
+  "baselines": {
+    "contract": {
+      "test": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 499,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:notification": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 172,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:repository": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 173,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:retrieval": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 154,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 1163,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 664,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:banking": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 221,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:manufacturing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 230,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:travel": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 213,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      },
+      "validation": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 523,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:storage": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 169,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:ticketing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 183,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:warehouse": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 171,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 1196,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 673,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:education": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 209,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:insurance": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 227,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:logistics": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 1.0,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 1.0,
+          "no_match_cases": 237,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      }
+    },
+    "exact": {
+      "test": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3248697916666667,
+          "candidate_recall_at_3": 0.6744791666666666,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3248697916666667,
+          "no_match_cases": 499,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:notification": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3359375,
+          "candidate_recall_at_3": 0.703125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3359375,
+          "no_match_cases": 172,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:repository": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.337890625,
+          "candidate_recall_at_3": 0.693359375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.337890625,
+          "no_match_cases": 173,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:retrieval": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.30078125,
+          "candidate_recall_at_3": 0.626953125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.30078125,
+          "no_match_cases": 154,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3785807291666667,
+          "candidate_recall_at_3": 0.697265625,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3785807291666667,
+          "no_match_cases": 1163,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.4322916666666667,
+          "candidate_recall_at_3": 0.7200520833333334,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.4322916666666667,
+          "no_match_cases": 664,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:banking": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.431640625,
+          "candidate_recall_at_3": 0.751953125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.431640625,
+          "no_match_cases": 221,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:manufacturing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.44921875,
+          "candidate_recall_at_3": 0.712890625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.44921875,
+          "no_match_cases": 230,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:travel": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.416015625,
+          "candidate_recall_at_3": 0.6953125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.416015625,
+          "no_match_cases": 213,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      },
+      "validation": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3404947916666667,
+          "candidate_recall_at_3": 0.6608072916666666,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3404947916666667,
+          "no_match_cases": 523,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:storage": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.330078125,
+          "candidate_recall_at_3": 0.65234375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.330078125,
+          "no_match_cases": 169,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:ticketing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.357421875,
+          "candidate_recall_at_3": 0.6640625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.357421875,
+          "no_match_cases": 183,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:warehouse": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.333984375,
+          "candidate_recall_at_3": 0.666015625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.333984375,
+          "no_match_cases": 171,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3893229166666667,
+          "candidate_recall_at_3": 0.6848958333333334,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3893229166666667,
+          "no_match_cases": 1196,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.4381510416666667,
+          "candidate_recall_at_3": 0.708984375,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.4381510416666667,
+          "no_match_cases": 673,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:education": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.408203125,
+          "candidate_recall_at_3": 0.669921875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.408203125,
+          "no_match_cases": 209,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:insurance": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.443359375,
+          "candidate_recall_at_3": 0.728515625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.443359375,
+          "no_match_cases": 227,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:logistics": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.462890625,
+          "candidate_recall_at_3": 0.728515625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.462890625,
+          "no_match_cases": 237,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      }
+    },
+    "lexical": {
+      "test": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3248697916666667,
+          "candidate_recall_at_3": 0.8958333333333334,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3248697916666667,
+          "no_match_cases": 499,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:notification": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3359375,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3359375,
+          "no_match_cases": 172,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:repository": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.337890625,
+          "candidate_recall_at_3": 0.6875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.337890625,
+          "no_match_cases": 173,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:retrieval": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.30078125,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.30078125,
+          "no_match_cases": 154,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.16243489583333334,
+          "candidate_recall_at_3": 0.6897786458333334,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.16243489583333334,
+          "no_match_cases": 1163,
+          "no_match_false_positives": 664,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.4837239583333333,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 664,
+          "no_match_false_positives": 664,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:banking": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.546875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 221,
+          "no_match_false_positives": 221,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:manufacturing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.390625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 230,
+          "no_match_false_positives": 230,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:travel": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.513671875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 213,
+          "no_match_false_positives": 213,
+          "non_abstention_coverage": 1.0
+        }
+      },
+      "validation": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.3404947916666667,
+          "candidate_recall_at_3": 0.8854166666666666,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.3404947916666667,
+          "no_match_cases": 523,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:storage": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.330078125,
+          "candidate_recall_at_3": 0.65625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.330078125,
+          "no_match_cases": 169,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:ticketing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.357421875,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.357421875,
+          "no_match_cases": 183,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:warehouse": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.333984375,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.333984375,
+          "no_match_cases": 171,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.17024739583333334,
+          "candidate_recall_at_3": 0.7119140625,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.17024739583333334,
+          "no_match_cases": 1196,
+          "no_match_false_positives": 673,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.5384114583333334,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 673,
+          "no_match_false_positives": 673,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:education": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.521484375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 209,
+          "no_match_false_positives": 209,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:insurance": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.556640625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 227,
+          "no_match_false_positives": 227,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:logistics": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.0,
+          "candidate_recall_at_3": 0.537109375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.0,
+          "no_match_cases": 237,
+          "no_match_false_positives": 237,
+          "non_abstention_coverage": 1.0
+        }
+      }
+    },
+    "random": {
+      "test": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.09635416666666667,
+          "candidate_recall_at_3": 0.5221354166666666,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 233,
+          "exact_top1_relation": 0.09635416666666667,
+          "no_match_cases": 499,
+          "no_match_false_positives": 445,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:notification": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.10546875,
+          "candidate_recall_at_3": 0.505859375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 78,
+          "exact_top1_relation": 0.10546875,
+          "no_match_cases": 172,
+          "no_match_false_positives": 153,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:repository": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.078125,
+          "candidate_recall_at_3": 0.509765625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 71,
+          "exact_top1_relation": 0.078125,
+          "no_match_cases": 173,
+          "no_match_false_positives": 158,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:retrieval": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.10546875,
+          "candidate_recall_at_3": 0.55078125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 84,
+          "exact_top1_relation": 0.10546875,
+          "no_match_cases": 154,
+          "no_match_false_positives": 134,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.08756510416666667,
+          "candidate_recall_at_3": 0.4889322916666667,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 233,
+          "exact_top1_relation": 0.08756510416666667,
+          "no_match_cases": 1163,
+          "no_match_false_positives": 1057,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.07877604166666667,
+          "candidate_recall_at_3": 0.4557291666666667,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.07877604166666667,
+          "no_match_cases": 664,
+          "no_match_false_positives": 612,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:banking": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.087890625,
+          "candidate_recall_at_3": 0.453125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.087890625,
+          "no_match_cases": 221,
+          "no_match_false_positives": 206,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:manufacturing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.068359375,
+          "candidate_recall_at_3": 0.451171875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.068359375,
+          "no_match_cases": 230,
+          "no_match_false_positives": 207,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:travel": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.080078125,
+          "candidate_recall_at_3": 0.462890625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.080078125,
+          "no_match_cases": 213,
+          "no_match_false_positives": 199,
+          "non_abstention_coverage": 1.0
+        }
+      },
+      "validation": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.09765625,
+          "candidate_recall_at_3": 0.5006510416666666,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 227,
+          "exact_top1_relation": 0.09765625,
+          "no_match_cases": 523,
+          "no_match_false_positives": 475,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:storage": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.115234375,
+          "candidate_recall_at_3": 0.5234375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 80,
+          "exact_top1_relation": 0.115234375,
+          "no_match_cases": 169,
+          "no_match_false_positives": 153,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:ticketing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.09375,
+          "candidate_recall_at_3": 0.48046875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 75,
+          "exact_top1_relation": 0.09375,
+          "no_match_cases": 183,
+          "no_match_false_positives": 165,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:warehouse": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.083984375,
+          "candidate_recall_at_3": 0.498046875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 72,
+          "exact_top1_relation": 0.083984375,
+          "no_match_cases": 171,
+          "no_match_false_positives": 157,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.09049479166666667,
+          "candidate_recall_at_3": 0.4729817708333333,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 227,
+          "exact_top1_relation": 0.09049479166666667,
+          "no_match_cases": 1196,
+          "no_match_false_positives": 1091,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.08333333333333333,
+          "candidate_recall_at_3": 0.4453125,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.08333333333333333,
+          "no_match_cases": 673,
+          "no_match_false_positives": 616,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:education": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.08984375,
+          "candidate_recall_at_3": 0.458984375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.08984375,
+          "no_match_cases": 209,
+          "no_match_false_positives": 190,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:insurance": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.091796875,
+          "candidate_recall_at_3": 0.453125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.091796875,
+          "no_match_cases": 227,
+          "no_match_false_positives": 205,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:logistics": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.068359375,
+          "candidate_recall_at_3": 0.423828125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.068359375,
+          "no_match_cases": 237,
+          "no_match_false_positives": 221,
+          "non_abstention_coverage": 1.0
+        }
+      }
+    },
+    "structured": {
+      "test": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.6751302083333334,
+          "candidate_recall_at_3": 0.6751302083333334,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.6751302083333334,
+          "no_match_cases": 499,
+          "no_match_false_positives": 499,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:notification": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.6640625,
+          "candidate_recall_at_3": 0.6640625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.6640625,
+          "no_match_cases": 172,
+          "no_match_false_positives": 172,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:repository": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.662109375,
+          "candidate_recall_at_3": 0.662109375,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.662109375,
+          "no_match_cases": 173,
+          "no_match_false_positives": 173,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:retrieval": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.69921875,
+          "candidate_recall_at_3": 0.69921875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.69921875,
+          "no_match_cases": 154,
+          "no_match_false_positives": 154,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.6767578125,
+          "candidate_recall_at_3": 0.8375651041666666,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.6767578125,
+          "no_match_cases": 1163,
+          "no_match_false_positives": 499,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.6783854166666666,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.6783854166666666,
+          "no_match_cases": 664,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:banking": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.595703125,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.595703125,
+          "no_match_cases": 221,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:manufacturing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.650390625,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.650390625,
+          "no_match_cases": 230,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:travel": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.7890625,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.7890625,
+          "no_match_cases": 213,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      },
+      "validation": {
+        "agent_evidence": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.4915364583333333,
+          "candidate_recall_at_3": 0.6595052083333334,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 133,
+          "exact_top1_relation": 0.4915364583333333,
+          "no_match_cases": 523,
+          "no_match_false_positives": 523,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:storage": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.669921875,
+          "candidate_recall_at_3": 0.669921875,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.669921875,
+          "no_match_cases": 169,
+          "no_match_false_positives": 169,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:ticketing": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.642578125,
+          "candidate_recall_at_3": 0.642578125,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.642578125,
+          "no_match_cases": 183,
+          "no_match_false_positives": 183,
+          "non_abstention_coverage": 1.0
+        },
+        "agent_evidence:warehouse": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.162109375,
+          "candidate_recall_at_3": 0.666015625,
+          "cases": 512,
+          "contradiction_wrongly_supported": 133,
+          "exact_top1_relation": 0.162109375,
+          "no_match_cases": 171,
+          "no_match_false_positives": 171,
+          "non_abstention_coverage": 1.0
+        },
+        "overall": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.5869140625,
+          "candidate_recall_at_3": 0.8297526041666666,
+          "cases": 3072,
+          "contradiction_wrongly_supported": 133,
+          "exact_top1_relation": 0.5869140625,
+          "no_match_cases": 1196,
+          "no_match_false_positives": 523,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.6822916666666666,
+          "candidate_recall_at_3": 1.0,
+          "cases": 1536,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.6822916666666666,
+          "no_match_cases": 673,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:education": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.5859375,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.5859375,
+          "no_match_cases": 209,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:insurance": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.62890625,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.62890625,
+          "no_match_cases": 227,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        },
+        "schema_map:logistics": {
+          "accepted_coverage": 1.0,
+          "accepted_precision": 0.83203125,
+          "candidate_recall_at_3": 1.0,
+          "cases": 512,
+          "contradiction_wrongly_supported": 0,
+          "exact_top1_relation": 0.83203125,
+          "no_match_cases": 237,
+          "no_match_false_positives": 0,
+          "non_abstention_coverage": 1.0
+        }
+      }
+    }
+  },
+  "external_validity": "unverified",
+  "seeds": {
+    "7109": {
+      "G7-A": false,
+      "G7-S": false,
+      "conditions": {
+        "hybrid": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.9860026041666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.9720052083333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.916015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "identity_time_masked": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.8880208333333334,
+              "accepted_precision": 0.3658357771260997,
+              "candidate_recall_at_3": 0.8235677083333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.90625,
+              "accepted_precision": 0.3706896551724138,
+              "candidate_recall_at_3": 0.8359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.927734375,
+              "accepted_precision": 0.3642105263157895,
+              "candidate_recall_at_3": 0.81640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.830078125,
+              "accepted_precision": 0.3623529411764706,
+              "candidate_recall_at_3": 0.818359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.6868489583333334,
+              "accepted_precision": 0.5511848341232227,
+              "candidate_recall_at_3": 0.9117838541666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4293619791666667,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4856770833333333,
+              "accepted_precision": 0.8900804289544236,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5338541666666666,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.431640625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.64453125,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.609375,
+              "accepted_precision": 0.7371794871794872,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.416015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5078125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.916015625,
+              "accepted_precision": 0.3717128642501777,
+              "candidate_recall_at_3": 0.8287760416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.84375,
+              "accepted_precision": 0.3912037037037037,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 0.357421875,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.904296875,
+              "accepted_precision": 0.3693304535637149,
+              "candidate_recall_at_3": 0.837890625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.6770833333333334,
+              "accepted_precision": 0.575,
+              "candidate_recall_at_3": 0.9143880208333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.47265625,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4381510416666667,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6048177083333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.408203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.626953125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.443359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.53515625,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.462890625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.65234375,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "query_blind": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.20963541666666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9811197916666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.681640625,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.130859375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.943359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.65625,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.3694661458333333,
+              "accepted_precision": 0.9814977973568282,
+              "candidate_recall_at_3": 0.9905598958333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7516276041666666,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.529296875,
+              "accepted_precision": 0.974169741697417,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8216145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.55078125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.890625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.52734375,
+              "accepted_precision": 0.9222222222222223,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.728515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.509765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.845703125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.248046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.962890625,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6946614583333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.341796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.240234375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.955078125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.384765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9700520833333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7809244791666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 35,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9772135416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8671875,
+              "no_match_cases": 673,
+              "no_match_false_positives": 35,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.541015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.931640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.841796875,
+              "no_match_cases": 209,
+              "no_match_false_positives": 35,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.884765625,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.501953125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.875,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "shuffled_labels": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.8229166666666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.642578125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.826171875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.65625,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3785807291666667,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.4895833333333333,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4322916666666667,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.51953125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.431640625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.533203125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.416015625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.416015625,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.935546875,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.806640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.728515625,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3893229166666667,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.521484375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4381510416666667,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.498046875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.408203125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.505859375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.443359375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.560546875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.462890625,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "structure_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.6663411458333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.91796875,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.3326822916666667,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8359375,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.306640625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.833984375,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.353515625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.853515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.337890625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8203125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.6669921875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9205729166666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.333984375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8411458333333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.322265625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.818359375,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.326171875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.849609375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.353515625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.85546875,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "text_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.22526041666666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9850260416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6848958333333334,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.177734375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.71875,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.955078125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6484375,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.4622395833333333,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9925130208333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8157552083333334,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.69921875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9466145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.76953125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.50390625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.83984375,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.82421875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.2799479166666667,
+              "accepted_precision": 0.9604651162790697,
+              "candidate_recall_at_3": 0.9609375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6907552083333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.341796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.30859375,
+              "accepted_precision": 0.8924050632911392,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.189453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.94921875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.689453125,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.5139973958333334,
+              "accepted_precision": 0.9892336922102597,
+              "candidate_recall_at_3": 0.98046875,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8453776041666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.748046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.71875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.84765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.677734375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        }
+      }
+    },
+    "7207": {
+      "G7-A": false,
+      "G7-S": false,
+      "conditions": {
+        "hybrid": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.9860026041666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.9720052083333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.916015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "identity_time_masked": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.9537760416666666,
+              "accepted_precision": 0.34061433447098977,
+              "candidate_recall_at_3": 0.8235677083333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 0.3359375,
+              "candidate_recall_at_3": 0.8359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.927734375,
+              "accepted_precision": 0.3642105263157895,
+              "candidate_recall_at_3": 0.81640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.93359375,
+              "accepted_precision": 0.32217573221757323,
+              "candidate_recall_at_3": 0.818359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.7197265625,
+              "accepted_precision": 0.5260063319764813,
+              "candidate_recall_at_3": 0.9117838541666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4140625,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4856770833333333,
+              "accepted_precision": 0.8900804289544236,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5032552083333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.431640625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.59765625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.609375,
+              "accepted_precision": 0.7371794871794872,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.416015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.462890625,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.9752604166666666,
+              "accepted_precision": 0.34913217623498,
+              "candidate_recall_at_3": 0.8287760416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.92578125,
+              "accepted_precision": 0.35654008438818563,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 0.357421875,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 0.333984375,
+              "candidate_recall_at_3": 0.837890625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.7067057291666666,
+              "accepted_precision": 0.5508982035928144,
+              "candidate_recall_at_3": 0.9143880208333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4811197916666667,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4381510416666667,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6217447916666666,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.408203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.626953125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.443359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5859375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.462890625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.65234375,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "query_blind": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.20963541666666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9811197916666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.681640625,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.130859375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.943359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.65625,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.3694661458333333,
+              "accepted_precision": 0.9814977973568282,
+              "candidate_recall_at_3": 0.9905598958333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7516276041666666,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.529296875,
+              "accepted_precision": 0.974169741697417,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8216145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.55078125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.890625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.52734375,
+              "accepted_precision": 0.9222222222222223,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.728515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.509765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.845703125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.134765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9609375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6907552083333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.197265625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.017578125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.189453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.94921875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.689453125,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.328125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9544270833333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7721354166666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 80,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9479166666666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.853515625,
+              "no_match_cases": 673,
+              "no_match_false_positives": 80,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.541015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.931640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.861328125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 35,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.884765625,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.501953125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.912109375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.814453125,
+              "no_match_cases": 237,
+              "no_match_false_positives": 45,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "shuffled_labels": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.2923177083333333,
+              "accepted_precision": 0.7572383073496659,
+              "candidate_recall_at_3": 0.671875,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.44140625,
+              "accepted_precision": 0.7610619469026548,
+              "candidate_recall_at_3": 0.65625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.111328125,
+              "accepted_precision": 0.8245614035087719,
+              "candidate_recall_at_3": 0.6796875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.32421875,
+              "accepted_precision": 0.7289156626506024,
+              "candidate_recall_at_3": 0.6796875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.4895833333333333,
+              "accepted_precision": 0.5917553191489362,
+              "candidate_recall_at_3": 0.7604166666666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3785807291666667,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.6868489583333334,
+              "accepted_precision": 0.5213270142180095,
+              "candidate_recall_at_3": 0.8489583333333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4322916666666667,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.458984375,
+              "accepted_precision": 0.4553191489361702,
+              "candidate_recall_at_3": 0.923828125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.431640625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.83984375,
+              "accepted_precision": 0.5348837209302325,
+              "candidate_recall_at_3": 0.8828125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.76171875,
+              "accepted_precision": 0.5461538461538461,
+              "candidate_recall_at_3": 0.740234375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.416015625,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.029296875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.7708333333333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.865234375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.087890625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.6953125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.751953125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.2470703125,
+              "accepted_precision": 0.538866930171278,
+              "candidate_recall_at_3": 0.8102213541666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3893229166666667,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.46484375,
+              "accepted_precision": 0.5098039215686274,
+              "candidate_recall_at_3": 0.849609375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4381510416666667,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.5078125,
+              "accepted_precision": 0.5192307692307693,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.408203125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.548828125,
+              "accepted_precision": 0.5516014234875445,
+              "candidate_recall_at_3": 0.912109375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.443359375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.337890625,
+              "accepted_precision": 0.4277456647398844,
+              "candidate_recall_at_3": 0.8125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.462890625,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "structure_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.7180989583333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.91796875,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4361979166666667,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8359375,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.416015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.833984375,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.44921875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.853515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.443359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8203125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.716796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9205729166666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.43359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8411458333333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.41796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.818359375,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.43359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.849609375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.44921875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.85546875,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "text_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.2727864583333333,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9850260416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6848958333333334,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.3203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.71875,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.955078125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6484375,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.45703125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9925130208333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8157552083333334,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.6412760416666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9466145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.7265625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.50390625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.83984375,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.693359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.23111979166666666,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9609375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6907552083333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.341796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.189453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.94921875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.689453125,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.4895833333333333,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.98046875,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8453776041666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.748046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.71875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.84765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.677734375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        }
+      }
+    },
+    "7303": {
+      "G7-A": false,
+      "G7-S": false,
+      "conditions": {
+        "hybrid": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "identity_time_masked": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.9329427083333334,
+              "accepted_precision": 0.34822051639916257,
+              "candidate_recall_at_3": 0.8235677083333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.9375,
+              "accepted_precision": 0.35833333333333334,
+              "candidate_recall_at_3": 0.8359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.927734375,
+              "accepted_precision": 0.3642105263157895,
+              "candidate_recall_at_3": 0.81640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.93359375,
+              "accepted_precision": 0.32217573221757323,
+              "candidate_recall_at_3": 0.818359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.7093098958333334,
+              "accepted_precision": 0.5337310692978431,
+              "candidate_recall_at_3": 0.9117838541666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4000651041666667,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4856770833333333,
+              "accepted_precision": 0.8900804289544236,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4752604166666667,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.431640625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.544921875,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.609375,
+              "accepted_precision": 0.7371794871794872,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.416015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.431640625,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.943359375,
+              "accepted_precision": 0.3609385783298827,
+              "candidate_recall_at_3": 0.8287760416666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.92578125,
+              "accepted_precision": 0.35654008438818563,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 0.357421875,
+              "candidate_recall_at_3": 0.82421875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.904296875,
+              "accepted_precision": 0.3693304535637149,
+              "candidate_recall_at_3": 0.837890625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.6985677083333334,
+              "accepted_precision": 0.5573159366262814,
+              "candidate_recall_at_3": 0.9143880208333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4384765625,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.4537760416666667,
+              "accepted_precision": 0.9655667144906743,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5364583333333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.408203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.5859375,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.443359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.458984375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.509765625,
+              "accepted_precision": 0.9080459770114943,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.564453125,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "query_blind": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.2571614583333333,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9811197916666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.681640625,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.130859375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.943359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.65625,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.3046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.3932291666666667,
+              "accepted_precision": 0.9826158940397351,
+              "candidate_recall_at_3": 0.9905598958333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7516276041666666,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.529296875,
+              "accepted_precision": 0.974169741697417,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8216145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.55078125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.890625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.52734375,
+              "accepted_precision": 0.9222222222222223,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.728515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.509765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.845703125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.22591145833333334,
+              "accepted_precision": 0.9510086455331412,
+              "candidate_recall_at_3": 0.9609375,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6907552083333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.341796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.146484375,
+              "accepted_precision": 0.7733333333333333,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.189453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.94921875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.689453125,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.3736979166666667,
+              "accepted_precision": 0.985191637630662,
+              "candidate_recall_at_3": 0.9544270833333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7688802083333334,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 80,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9479166666666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8470052083333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 80,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.541015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.931640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.841796875,
+              "no_match_cases": 209,
+              "no_match_false_positives": 35,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.521484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.884765625,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.501953125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.912109375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.814453125,
+              "no_match_cases": 237,
+              "no_match_false_positives": 45,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "shuffled_labels": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.6796875,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3248697916666667,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.6796875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3359375,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.6953125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.337890625,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.6640625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.30078125,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.7747395833333334,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3785807291666667,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.8697916666666666,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4322916666666667,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.900390625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.431640625,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.908203125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.44921875,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.80078125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.416015625,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.7239583333333334,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3404947916666667,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.658203125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.330078125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.869140625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.357421875,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.64453125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.333984375,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.8141276041666666,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.3893229166666667,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.904296875,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.4381510416666667,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.888671875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.408203125,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.91796875,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.443359375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.0,
+              "accepted_precision": null,
+              "candidate_recall_at_3": 0.90625,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.462890625,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "structure_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.646484375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.91796875,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.29296875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8359375,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.2734375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.833984375,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.314453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.853515625,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.291015625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8203125,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 1.0,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.64453125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9205729166666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.2890625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8411458333333334,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.28125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.818359375,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.28125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.849609375,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.3046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.85546875,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        },
+        "text_only": {
+          "test": {
+            "agent_evidence": {
+              "accepted_coverage": 0.3203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.7024739583333334,
+              "no_match_cases": 499,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:notification": {
+              "accepted_coverage": 0.3203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.71875,
+              "no_match_cases": 172,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:repository": {
+              "accepted_coverage": 0.3046875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 173,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:retrieval": {
+              "accepted_coverage": 0.3359375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6875,
+              "no_match_cases": 154,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.5283203125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8245442708333334,
+              "no_match_cases": 1163,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.736328125,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.9466145833333334,
+              "no_match_cases": 664,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:banking": {
+              "accepted_coverage": 0.857421875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 221,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:manufacturing": {
+              "accepted_coverage": 0.50390625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.83984375,
+              "no_match_cases": 230,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:travel": {
+              "accepted_coverage": 0.84765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 213,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          },
+          "validation": {
+            "agent_evidence": {
+              "accepted_coverage": 0.2864583333333333,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.962890625,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.6946614583333334,
+              "no_match_cases": 523,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:storage": {
+              "accepted_coverage": 0.341796875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.720703125,
+              "no_match_cases": 169,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:ticketing": {
+              "accepted_coverage": 0.162109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.93359375,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.662109375,
+              "no_match_cases": 183,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "agent_evidence:warehouse": {
+              "accepted_coverage": 0.35546875,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.955078125,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.701171875,
+              "no_match_cases": 171,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "overall": {
+              "accepted_coverage": 0.5432942708333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 0.9814453125,
+              "cases": 3072,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 0.8473307291666666,
+              "no_match_cases": 1196,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map": {
+              "accepted_coverage": 0.8001302083333334,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 1536,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 673,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:education": {
+              "accepted_coverage": 0.787109375,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 209,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:insurance": {
+              "accepted_coverage": 0.84765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 227,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            },
+            "schema_map:logistics": {
+              "accepted_coverage": 0.765625,
+              "accepted_precision": 1.0,
+              "candidate_recall_at_3": 1.0,
+              "cases": 512,
+              "contradiction_wrongly_supported": 0,
+              "exact_top1_relation": 1.0,
+              "no_match_cases": 237,
+              "no_match_false_positives": 0,
+              "non_abstention_coverage": 1.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "source": "8221bfa46cdc3a5d6d9b9e01a1d625ed857915ff",
+  "strongest_on_validation": {
+    "agent_evidence": "contract",
+    "schema_map": "contract"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "total_source": 1037,
+    "total_target": 1037,
+    "matching": 1037,
+    "modified": 0,
+    "deleted": 0,
+    "inserted": 0
+  },
+  "discrepancies": [],
+  "total_discrepancies": 0,
+  "displayed_discrepancies": 0
+}

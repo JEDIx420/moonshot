@@ -1,0 +1,15 @@
+{
+  "architecture": "shared pointwise 512x1920x6 MLP, class logits by candidate, mean pooled NONE",
+  "batch": 64,
+  "checkpoint_selection": "highest pooled validation exact count; earliest checkpoint wins ties",
+  "features": "track tag, FNV-1a binary alphabetic token buckets for text, explicit equality/unit/status/time-delta features for structure",
+  "learning_rate": 0.001,
+  "matched_pairwise_identity_only": true,
+  "optimizer": "Adam",
+  "query_blind": "candidate text and track only",
+  "raw_case_candidate_and_family_id_features": false,
+  "raw_trace_resource_scope_ids": false,
+  "sampling": "ChaCha8 uniform train with replacement, shared ordering",
+  "shuffled_labels": "train labels permuted within track over fixed candidate slots",
+  "threshold_selection": "maximum validation agent coverage at >=95% exact precision; 1 if no feasible threshold"
+}

@@ -1,0 +1,1 @@
+{"fields": [{"name": "case_id", "type": "string"}, {"name": "trace_id", "type": "string"}, {"name": "resource_id", "type": "string"}, {"name": "status", "type": "string"}]}

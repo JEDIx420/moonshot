@@ -1,0 +1,14 @@
+[
+  {
+    "update": 3000,
+    "validation_exact_count": 1196
+  },
+  {
+    "update": 6000,
+    "validation_exact_count": 1196
+  },
+  {
+    "update": 12000,
+    "validation_exact_count": 1196
+  }
+]

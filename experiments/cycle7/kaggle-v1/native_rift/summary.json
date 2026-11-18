@@ -1,0 +1,111 @@
+{
+  "native_version": "rift 0.1.1",
+  "scope": "synthetic observed-status agreement only",
+  "seeds": {
+    "7109": {
+      "dispositions": {
+        "no_observation_proposed": 1163,
+        "submitted": 1037,
+        "unverified_schema_profiles_only": 872
+      },
+      "staging_seconds": 0.003057125002669636,
+      "native_check": {
+        "command": [
+          "rift",
+          "compare",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7109/proposed.jsonl",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7109/observed.jsonl",
+          "--schema",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7109/schema.json",
+          "--key",
+          "case_id",
+          "--max-diffs",
+          "1037",
+          "--output",
+          "json",
+          "--non-interactive"
+        ],
+        "exit": 0,
+        "seconds": 0.013353499998629559,
+        "summary": {
+          "total_source": 1037,
+          "total_target": 1037,
+          "matching": 1037,
+          "modified": 0,
+          "deleted": 0,
+          "inserted": 0
+        }
+      }
+    },
+    "7207": {
+      "dispositions": {
+        "no_observation_proposed": 1163,
+        "submitted": 1037,
+        "unverified_schema_profiles_only": 872
+      },
+      "staging_seconds": 0.0031775839961483143,
+      "native_check": {
+        "command": [
+          "rift",
+          "compare",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7207/proposed.jsonl",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7207/observed.jsonl",
+          "--schema",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7207/schema.json",
+          "--key",
+          "case_id",
+          "--max-diffs",
+          "1037",
+          "--output",
+          "json",
+          "--non-interactive"
+        ],
+        "exit": 0,
+        "seconds": 0.009667791993706487,
+        "summary": {
+          "total_source": 1037,
+          "total_target": 1037,
+          "matching": 1037,
+          "modified": 0,
+          "deleted": 0,
+          "inserted": 0
+        }
+      }
+    },
+    "7303": {
+      "dispositions": {
+        "no_observation_proposed": 1163,
+        "submitted": 1037,
+        "unverified_schema_profiles_only": 872
+      },
+      "staging_seconds": 0.002959082994493656,
+      "native_check": {
+        "command": [
+          "rift",
+          "compare",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7303/proposed.jsonl",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7303/observed.jsonl",
+          "--schema",
+          "/tmp/moonshot-cycle7-v1/native_rift/seed_7303/schema.json",
+          "--key",
+          "case_id",
+          "--max-diffs",
+          "1037",
+          "--output",
+          "json",
+          "--non-interactive"
+        ],
+        "exit": 0,
+        "seconds": 0.009561624996422324,
+        "summary": {
+          "total_source": 1037,
+          "total_target": 1037,
+          "matching": 1037,
+          "modified": 0,
+          "deleted": 0,
+          "inserted": 0
+        }
+      }
+    }
+  }
+}

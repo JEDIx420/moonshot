@@ -1,0 +1,1037 @@
+[
+  {
+    "name": "contract_test.jsonl",
+    "size": 976,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "contract_validation.jsonl",
+    "size": 994,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "exact_test.jsonl",
+    "size": 967,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "exact_validation.jsonl",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "lexical_test.jsonl",
+    "size": 973,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "lexical_validation.jsonl",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "random_test.jsonl",
+    "size": 970,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "random_validation.jsonl",
+    "size": 988,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "structured_test.jsonl",
+    "size": 982,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "structured_validation.jsonl",
+    "size": 1000,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 941,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "smoke_result.json",
+    "size": 970,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test.jsonl",
+    "size": 961,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "train.jsonl",
+    "size": 964,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation.jsonl",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test.jsonl",
+    "size": 960,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "train.jsonl",
+    "size": 963,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation.jsonl",
+    "size": 978,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "manifest.json",
+    "size": 952,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fixture_audit.log",
+    "size": 947,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "gpu_telemetry.csv",
+    "size": 948,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "independent_scoring.log",
+    "size": 964,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "independent_summary.json",
+    "size": 970,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "run_manifest.json",
+    "size": 948,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust_build.log",
+    "size": 938,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust_tests.log",
+    "size": 939,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_hybrid_test.json",
+    "size": 974,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_hybrid_validation.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_identity_time_masked_test.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_identity_time_masked_validation.json",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_query_blind_test.json",
+    "size": 990,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_query_blind_validation.json",
+    "size": 1008,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_shuffled_labels_test.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_shuffled_labels_validation.json",
+    "size": 1020,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_structure_only_test.json",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_structure_only_validation.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_text_only_test.json",
+    "size": 984,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7109_text_only_validation.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_hybrid_test.json",
+    "size": 974,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_hybrid_validation.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_identity_time_masked_test.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_identity_time_masked_validation.json",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_query_blind_test.json",
+    "size": 990,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_query_blind_validation.json",
+    "size": 1008,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_shuffled_labels_test.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_shuffled_labels_validation.json",
+    "size": 1020,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_structure_only_test.json",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_structure_only_validation.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_text_only_test.json",
+    "size": 984,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7207_text_only_validation.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_hybrid_test.json",
+    "size": 974,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_hybrid_validation.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_identity_time_masked_test.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_identity_time_masked_validation.json",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_query_blind_test.json",
+    "size": 990,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_query_blind_validation.json",
+    "size": 1008,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_shuffled_labels_test.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_shuffled_labels_validation.json",
+    "size": 1020,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_structure_only_test.json",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_structure_only_validation.json",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_text_only_test.json",
+    "size": 984,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "7303_text_only_validation.json",
+    "size": 1002,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "contract_test.json",
+    "size": 965,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "contract_validation.json",
+    "size": 983,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "exact_test.json",
+    "size": 957,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "exact_validation.json",
+    "size": 975,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "lexical_test.json",
+    "size": 963,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "lexical_validation.json",
+    "size": 981,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "random_test.json",
+    "size": 960,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "random_validation.json",
+    "size": 978,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "structured_test.json",
+    "size": 972,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "structured_validation.json",
+    "size": 990,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feature_manifest.json",
+    "size": 980,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 976,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 973,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_identity_time_masked.jsonl",
+    "size": 1026,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_identity_time_masked.jsonl",
+    "size": 1044,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 986,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 983,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1019,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "run_manifest.json",
+    "size": 968,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 940,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 994,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1003,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1025,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1033,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 982,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1005,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1023,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feature_manifest.json",
+    "size": 980,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 976,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 973,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_identity_time_masked.jsonl",
+    "size": 1026,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_identity_time_masked.jsonl",
+    "size": 1044,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 986,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 983,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1019,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "run_manifest.json",
+    "size": 968,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 940,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 994,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1003,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1025,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1033,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 982,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1005,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1023,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feature_manifest.json",
+    "size": 980,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 976,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 973,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_identity_time_masked.jsonl",
+    "size": 1026,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 999,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_identity_time_masked.jsonl",
+    "size": 1044,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 986,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 983,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1019,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "run_manifest.json",
+    "size": 968,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 940,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 994,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1009,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1017,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1003,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1027,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1035,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 992,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 995,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 989,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 1001,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1025,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1033,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "checkpoint.json",
+    "size": 982,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cpu_profile.json",
+    "size": 985,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 997,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "selection.json",
+    "size": 979,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "test_predictions.jsonl",
+    "size": 1005,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "training_curve.csv",
+    "size": 991,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_candidates.json",
+    "size": 1015,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "validation_predictions.jsonl",
+    "size": 1023,
+    "creationDate": "1:19 pm, Wednesday 18 November 2026 UTC"
+  }
+]

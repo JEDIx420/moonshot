@@ -1,0 +1,2 @@
+CUDA seed=42 update=1/8 loss=4.209561
+CUDA seed=42 update=8/8 loss=0.015263

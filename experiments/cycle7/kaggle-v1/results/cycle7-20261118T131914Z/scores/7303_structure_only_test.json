@@ -1,0 +1,5824 @@
+{
+  "confidence_threshold": 0.9995927600884256,
+  "confusion": {
+    "agent_evidence": {
+      "contradicts": {
+        "contradicts": 492
+      },
+      "none": {
+        "none": 499
+      },
+      "supports": {
+        "supports": 545
+      }
+    },
+    "schema_map": {
+      "divide_100": {
+        "divide_100": 146
+      },
+      "identity": {
+        "identity": 440,
+        "none": 135
+      },
+      "multiply_100": {
+        "multiply_100": 151
+      },
+      "none": {
+        "none": 664
+      }
+    }
+  },
+  "domain_bootstrap_95": {
+    "agent_evidence": [
+      1.0,
+      1.0
+    ],
+    "schema_map": [
+      0.8203125,
+      0.853515625
+    ]
+  },
+  "errors": [
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0281",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0281",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0281",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0150",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0150",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0150",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0356",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0356",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0356",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0262",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0262",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0262",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0007",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0007",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0007",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0435",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0435",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0435",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0101",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0101",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0101",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0299",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0299",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0299",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0065",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0065",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0065",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0450",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0450",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0450",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0076",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0076",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0076",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0500",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0500",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0500",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0218",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0218",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0218",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0379",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0379",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0379",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0166",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0166",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0166",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0348",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0348",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0348",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0473",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0473",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0473",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0509",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0509",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0509",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0153",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0153",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0153",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0404",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0404",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0404",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0009",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0009",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0009",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0437",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0437",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0437",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0207",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0207",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0207",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0509",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0509",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0509",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0020",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0020",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0020",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0288",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0288",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0288",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0007",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0007",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0007",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0015",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0015",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0015",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0156",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0156",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0156",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0257",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0257",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0257",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0192",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0192",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0192",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0177",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0177",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0177",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0463",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0463",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0463",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0356",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0356",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0356",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0005",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0005",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0005",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0464",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0464",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0464",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0207",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0207",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0207",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0295",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0295",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0295",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0039",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0039",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0039",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0181",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0181",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0181",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0405",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0405",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0405",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0350",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0350",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0350",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0181",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0181",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0181",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0070",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0070",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0070",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0050",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0050",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0050",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0185",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0185",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0185",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0501",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0501",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0501",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0504",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0504",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0504",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0047",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0047",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0047",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0012",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0012",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0012",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0178",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0178",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0178",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0408",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0408",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0408",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0048",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0048",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0048",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0083",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0083",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0083",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0273",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0273",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0273",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0398",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0398",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0398",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0191",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0191",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0191",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0387",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0387",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0387",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0364",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0364",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0364",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0318",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0318",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0318",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0198",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0198",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0198",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0297",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0297",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0297",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0309",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0309",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0309",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0199",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0199",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0199",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0205",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0205",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0205",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0407",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0407",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0407",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0276",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0276",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0276",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0351",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0351",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0351",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0297",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0297",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0297",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0345",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0345",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0345",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0265",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0265",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0265",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0293",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0293",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0293",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0042",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0042",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0042",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0098",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0098",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0098",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0264",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0264",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0264",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0472",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0472",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0472",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0347",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0347",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0347",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0153",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0153",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0153",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0023",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0023",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0023",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0232",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0232",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0232",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0021",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0021",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0021",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0392",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0392",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0392",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0394",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0394",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0394",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0115",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0115",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0115",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0028",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0028",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0028",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0110",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0110",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0110",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0063",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0063",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0063",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0033",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0033",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0033",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0179",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0179",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0179",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0048",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0048",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0048",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0186",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0186",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0186",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0022",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0022",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0022",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0492",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0492",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0492",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0503",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0503",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0503",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0290",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0290",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0290",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0232",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0232",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0232",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0313",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0313",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0313",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0241",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0241",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0241",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0320",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0320",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0320",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0134",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0134",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0134",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0229",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0229",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0229",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0388",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0388",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0388",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0449",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0449",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0449",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0296",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0296",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0296",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0345",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0345",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0345",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0464",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0464",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0464",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0169",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0169",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0169",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0495",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0495",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0495",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0239",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0239",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0239",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0310",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0310",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0310",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0465",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0465",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0465",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0341",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0341",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0341",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0280",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0280",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0280",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0384",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0384",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0384",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0368",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0368",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0368",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0282",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0282",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0282",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0163",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0163",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0163",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0391",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0391",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0391",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0254",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0254",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0254",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0340",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0340",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0340",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0197",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0197",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0197",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0282",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0282",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0282",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0446",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0446",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0446",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0029",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0029",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0029",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0274",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0274",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0274",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0027",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0027",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0027",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0190",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0190",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0190",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0329",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0329",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0329",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0189",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0189",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0189",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0286",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0286",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0286",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0111",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0111",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0111",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0324",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0324",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0324",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0038",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0038",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0038",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0150",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0150",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0150",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0326",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0326",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0326",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0434",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0434",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0434",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0182",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0182",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0182",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0342",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0342",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0342",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0144",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0144",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0144",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0010",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0010",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0010",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0073",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0073",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0073",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0199",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0199",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0199",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0084",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0084",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0084",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0321",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0321",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0321",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0225",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0225",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0225",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0263",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0263",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0263",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0271",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0271",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0271",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0120",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0120",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0120",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0263",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0263",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0263",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0161",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0161",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0161",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0364",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0364",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0364",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0019",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0019",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0019",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0160",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0160",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0160",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0483",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0483",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0483",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0314",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0314",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0314",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0254",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0254",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0254",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0498",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0498",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0498",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0306",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0306",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0306",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0227",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0227",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0227",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0137",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0137",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0137",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0046",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0046",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0046",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0290",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0290",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0290",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0239",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0239",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0239",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0458",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0458",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0458",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0032",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0032",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0032",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0066",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0066",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0066",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0322",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0322",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0322",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0231",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0231",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0231",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0408",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0408",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0408",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0491",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0491",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0491",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0195",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0195",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0195",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0174",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0174",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0174",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0219",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0219",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0219",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0261",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0261",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0261",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0162",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0162",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0162",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0111",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0111",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0111",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0129",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0129",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0129",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0102",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0102",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0102",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0198",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0198",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0198",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0177",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0177",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0177",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0248",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0248",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0248",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0374",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0374",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0374",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0372",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0372",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0372",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0226",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0226",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0226",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0328",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0328",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0328",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0492",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0492",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0492",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0348",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0348",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0348",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0049",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0049",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0049",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0370",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0370",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0370",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0224",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0224",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0224",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0474",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0474",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0474",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0258",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0258",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0258",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0108",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0108",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0108",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0273",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0273",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0273",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0038",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0038",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0038",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0245",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0245",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0245",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0165",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0165",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0165",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0475",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0475",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0475",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0192",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0192",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0192",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0039",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0039",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0039",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0092",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0092",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0092",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0224",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0224",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0224",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0205",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0205",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0205",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0143",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0143",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0143",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0047",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0047",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0047",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0395",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0395",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0395",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0459",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0459",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0459",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0428",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0428",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0428",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0427",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0427",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0427",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0196",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0196",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0196",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0461",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0461",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0461",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0444",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0444",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0444",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0301",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0301",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0301",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0023",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0023",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0023",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-banking-0046",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0046",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0046",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0433",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0433",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0433",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0279",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0279",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0279",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0094",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0094",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0094",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-travel-0476",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0476",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0476",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0493",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0493",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0493",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0052",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0052",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0052",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0173",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0173",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0173",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0267",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0267",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0267",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0504",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0504",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0504",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0502",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0502",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0502",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0252",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0252",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0252",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-manufacturing-0262",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0262",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0262",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0186",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0186",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0186",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0238",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0238",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0238",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0479",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0479",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0479",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0419",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0419",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0419",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c3",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-travel-0304",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0304",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0304",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0003",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0003",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0003",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0312",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0312",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0312",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0140",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0140",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0140",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0076",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0076",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0076",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0183",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0183",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0183",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-banking-0166",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0166",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0166",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c3",
+          "c0",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0313",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0313",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0313",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0466",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0466",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0466",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-banking-0428",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0428",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0428",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0137",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0137",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0137",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c0",
+        "case_id": "schema-map-test-manufacturing-0273",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0273",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0273",
+        "confidence": 0.6312478882241689,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-manufacturing-0037",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0037",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0037",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0365",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0365",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0365",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0284",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0284",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0284",
+        "confidence": 0.6312478882241688,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c1",
+          "c0",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0478",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0478",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0478",
+        "confidence": 0.4971706855834378,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c2",
+          "c3",
+          "c0",
+          "c1"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-banking-0345",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-banking-0345",
+      "family": "banking",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-banking-0345",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c3",
+        "case_id": "schema-map-test-travel-0135",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0135",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0135",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c3",
+          "c0",
+          "c1",
+          "c2"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c1",
+        "case_id": "schema-map-test-manufacturing-0103",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-manufacturing-0103",
+      "family": "manufacturing",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-manufacturing-0103",
+        "confidence": 0.497170685583438,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c0",
+          "c1",
+          "c2",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0497",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0497",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0497",
+        "confidence": 0.4971706855834379,
+        "predicted_relation": "identity",
+        "ranked_candidate_ids": [
+          "c1",
+          "c2",
+          "c0",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    },
+    {
+      "actual": {
+        "candidate_id": "c2",
+        "case_id": "schema-map-test-travel-0175",
+        "relation": "identity"
+      },
+      "case_id": "schema-map-test-travel-0175",
+      "family": "travel",
+      "predicted": {
+        "abstain": false,
+        "case_id": "schema-map-test-travel-0175",
+        "confidence": 0.6312478882241687,
+        "predicted_relation": "none",
+        "ranked_candidate_ids": [
+          "NONE",
+          "c2",
+          "c0",
+          "c1",
+          "c3"
+        ]
+      },
+      "track": "schema_map"
+    }
+  ],
+  "metrics": {
+    "agent_evidence": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 1536,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 499,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:notification": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 172,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:repository": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 173,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "agent_evidence:retrieval": {
+      "accepted_coverage": 1.0,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 1.0,
+      "no_match_cases": 154,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "overall": {
+      "accepted_coverage": 0.646484375,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 3072,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.91796875,
+      "no_match_cases": 1163,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map": {
+      "accepted_coverage": 0.29296875,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 1536,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.8359375,
+      "no_match_cases": 664,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:banking": {
+      "accepted_coverage": 0.2734375,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.833984375,
+      "no_match_cases": 221,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:manufacturing": {
+      "accepted_coverage": 0.314453125,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.853515625,
+      "no_match_cases": 230,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    },
+    "schema_map:travel": {
+      "accepted_coverage": 0.291015625,
+      "accepted_precision": 1.0,
+      "candidate_recall_at_3": 1.0,
+      "cases": 512,
+      "contradiction_wrongly_supported": 0,
+      "exact_top1_relation": 0.8203125,
+      "no_match_cases": 213,
+      "no_match_false_positives": 0,
+      "non_abstention_coverage": 1.0
+    }
+  },
+  "split": "test"
+}

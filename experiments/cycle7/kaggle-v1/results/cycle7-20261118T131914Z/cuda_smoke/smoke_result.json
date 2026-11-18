@@ -1,0 +1,31 @@
+{
+  "backend": "burn-cuda",
+  "batch_size": 2,
+  "cpu_gpu_max_logit_error": 2.205371856689453e-6,
+  "cpu_gpu_parity_passed": true,
+  "final_loss": 0.011161888018250465,
+  "git_commit": "8221bfa46cdc3a5d6d9b9e01a1d625ed857915ff",
+  "gpu_backward": true,
+  "gpu_forward": true,
+  "gpu_optimizer_update": true,
+  "gradient_tensors_per_step": 38,
+  "initial_loss": 4.209561347961426,
+  "learning_rate": 0.001,
+  "loss_by_step": [
+    4.209561347961426,
+    1.7796945571899414,
+    1.1008663177490234,
+    0.45646849274635315,
+    0.12520666420459747,
+    0.0458809956908226,
+    0.023966286331415176,
+    0.015263254754245281,
+    0.011161888018250465
+  ],
+  "model_parameters": 1095744,
+  "optimizer": "Adam",
+  "optimizer_updates": 8,
+  "seed": 42,
+  "training_steps": 8,
+  "weights_changed": true
+}

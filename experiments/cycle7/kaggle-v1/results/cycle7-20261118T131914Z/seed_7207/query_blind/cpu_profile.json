@@ -1,0 +1,9 @@
+{
+  "backend": "burn-flex",
+  "p50_ms": 0.366795,
+  "p95_ms": 0.416173,
+  "preprocess_p50_ms": 0.005026,
+  "process_peak_rss_kib": 424760,
+  "samples": 255,
+  "verification_time_ms": null
+}

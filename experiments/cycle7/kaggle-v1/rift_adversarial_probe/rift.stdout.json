@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "total_source": 1,
+    "total_target": 1,
+    "matching": 0,
+    "modified": 1,
+    "deleted": 0,
+    "inserted": 0
+  },
+  "discrepancies": [
+    {
+      "key": {
+        "case_id": "fixture"
+      },
+      "change_type": "MODIFIED",
+      "differing_columns": [
+        "status"
+      ]
+    }
+  ],
+  "total_discrepancies": 1,
+  "displayed_discrepancies": 1
+}

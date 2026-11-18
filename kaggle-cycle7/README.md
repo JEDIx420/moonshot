@@ -1,15 +1,15 @@
-# Cycle 7 Kaggle handoff (NOT YET DEPLOYED)
+# Cycle 7 Kaggle deployment
 
-**State:** the fixed benchmark, independent scorer and fail-closed Kaggle
-bootstrap are committed. The neural research command does not exist yet. Do
-**not** launch the notebook until the agent implements and reviews it.
+Version 1 completed the locked experiment. See the [audited findings and
+evidence](../experiments/cycle7/FINDINGS.md). The launcher pins the reviewed
+Rust experiment revision.
 
 Read the protocol at ../experiments/cycle7/PROTOCOL.md and benchmark contract
 at ../experiments/cycle7/BENCHMARK.md before code changes. Do not invent
 shortcuts, mutate frozen oracle data, or report a positive gate without
 all negative controls and an independent Rift integration audit.
 
-## Implementation/deployment checklist for Antigravity
+## Implementation/deployment checklist
 
 1. Sync branch codex/cycle7-rift-intelligence-benchmark from GitHub. Preserve
    unrelated local edits and check the fixed benchmark lock.
@@ -70,12 +70,11 @@ status=completed, model_parameters, conditions (all three), and
 optimizer_updates_by_condition (at least 12000 each). Include optimizer counts,
 training examples, runtime and reload proof as additional fields.
 
-The current launcher.py **deliberately fails** until PINNED_COMMIT is replaced
-and the Rust cycle7-research command exists. Do not push the placeholder.
+The launcher validates the immutable source pin and checks that the real Rust command exists.
 
 ## Monitoring and final report
 
-The Antigravity agent, not this file, must do the 10-minute remote polling.
+Use monitor.py for the 10-minute remote polling.
 The notebook records nvidia-smi samples every two seconds during the GPU
 experiment; never infer actual usage from T4 selection alone.
 

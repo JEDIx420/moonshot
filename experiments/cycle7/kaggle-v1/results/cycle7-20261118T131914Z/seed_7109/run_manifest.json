@@ -1,0 +1,63 @@
+{
+  "backend": "burn-cuda",
+  "conditions": [
+    "text_only",
+    "structure_only",
+    "hybrid"
+  ],
+  "dataset_hashes": {
+    "answers/train.jsonl": "a1710552ec30af400faaa93acb375dfa2b2b3b78b294aaaa139f49b45c05bf66",
+    "answers/validation.jsonl": "49a8f4611e7b27a4741a6a5ed71b2c68d8ac46a496f8cf9c5d12176e98dc9a80",
+    "inputs/test.jsonl": "93373fb8f8848f6241900c980c4a84b809580d55691d3cfa83958b639d3ee38c",
+    "inputs/train.jsonl": "d07831af9e5f64454ec847d7b8d533cb78a2132cc9ca05748d3c819d0c83a32a",
+    "inputs/validation.jsonl": "654376af12a72e00315601fd20948e62c2864bcdc110901a4cf3707d9fe59950"
+  },
+  "git_commit": "8221bfa46cdc3a5d6d9b9e01a1d625ed857915ff",
+  "gradient_tensors_per_step": 4,
+  "model_parameters": 996486,
+  "negative_controls": [
+    "query_blind",
+    "shuffled_labels"
+  ],
+  "optimizer_updates_by_condition": {
+    "hybrid": 12000,
+    "query_blind": 12000,
+    "shuffled_labels": 12000,
+    "structure_only": 12000,
+    "text_only": 12000
+  },
+  "seed": 7109,
+  "status": "completed",
+  "training": [
+    {
+      "condition": "text_only",
+      "optimizer_updates": 12000,
+      "training_examples": 768000,
+      "training_wall_seconds": 40.307079315
+    },
+    {
+      "condition": "structure_only",
+      "optimizer_updates": 12000,
+      "training_examples": 768000,
+      "training_wall_seconds": 35.427030496
+    },
+    {
+      "condition": "hybrid",
+      "optimizer_updates": 12000,
+      "training_examples": 768000,
+      "training_wall_seconds": 36.056853325
+    },
+    {
+      "condition": "query_blind",
+      "optimizer_updates": 12000,
+      "training_examples": 768000,
+      "training_wall_seconds": 36.313467215
+    },
+    {
+      "condition": "shuffled_labels",
+      "optimizer_updates": 12000,
+      "training_examples": 768000,
+      "training_wall_seconds": 36.030730917
+    }
+  ]
+}

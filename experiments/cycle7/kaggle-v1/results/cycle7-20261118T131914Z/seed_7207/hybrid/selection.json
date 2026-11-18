@@ -1,0 +1,6 @@
+{
+  "update": 3000,
+  "validation_confidence_threshold": 0.9912092640703755,
+  "validation_exact_count": 3072,
+  "validation_precision_feasible": true
+}
