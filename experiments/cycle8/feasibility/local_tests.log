@@ -1,0 +1,33 @@
+test_blank_packets_are_blocked_not_success (test_annotation_feasibility.AnnotationFeasibilityTests.test_blank_packets_are_blocked_not_success) ... ok
+test_deterministic_repeatable_sampling (test_annotation_feasibility.AnnotationFeasibilityTests.test_deterministic_repeatable_sampling) ... ok
+test_different_claim_extraction_flags_redesign (test_annotation_feasibility.AnnotationFeasibilityTests.test_different_claim_extraction_flags_redesign) ... ok
+test_disagreeing_relations_flags_redesign (test_annotation_feasibility.AnnotationFeasibilityTests.test_disagreeing_relations_flags_redesign) ... ok
+test_missing_reviews_cannot_pass_threshold (test_annotation_feasibility.AnnotationFeasibilityTests.test_missing_reviews_cannot_pass_threshold) ... ok
+test_refuses_overwriting_review_packets (test_annotation_feasibility.AnnotationFeasibilityTests.test_refuses_overwriting_review_packets) ... ok
+test_rejects_claim_or_gold_in_drafts (test_annotation_feasibility.AnnotationFeasibilityTests.test_rejects_claim_or_gold_in_drafts) ... ok
+test_report_cannot_be_overwritten (test_annotation_feasibility.AnnotationFeasibilityTests.test_report_cannot_be_overwritten) ... ok
+test_same_identity_cannot_pass_as_two_reviewers (test_annotation_feasibility.AnnotationFeasibilityTests.test_same_identity_cannot_pass_as_two_reviewers) ... ok
+test_samples_25_per_cohort_in_training_groups_only (test_annotation_feasibility.AnnotationFeasibilityTests.test_samples_25_per_cohort_in_training_groups_only) ... ok
+test_sealed_only_groups_fail_to_sample (test_annotation_feasibility.AnnotationFeasibilityTests.test_sealed_only_groups_fail_to_sample) ... ok
+test_single_relation_agreement_has_undefined_kappa (test_annotation_feasibility.AnnotationFeasibilityTests.test_single_relation_agreement_has_undefined_kappa) ... ok
+test_tampered_recorded_candidate_is_rejected (test_annotation_feasibility.AnnotationFeasibilityTests.test_tampered_recorded_candidate_is_rejected) ... ok
+test_truncated_source_cases_never_selected (test_annotation_feasibility.AnnotationFeasibilityTests.test_truncated_source_cases_never_selected) ... ok
+test_two_distinct_completed_mock_reviewers_pass_mechanical_screen (test_annotation_feasibility.AnnotationFeasibilityTests.test_two_distinct_completed_mock_reviewers_pass_mechanical_screen) ... ok
+test_agentdojo_import_has_no_generated_gold (test_benchmark.Cycle8Tests.test_agentdojo_import_has_no_generated_gold) ... ok
+test_control_lock_pins_test_predictions_and_selection (test_benchmark.Cycle8Tests.test_control_lock_pins_test_predictions_and_selection) ... ok
+test_empty_visible_final_message_is_not_reviewable (test_benchmark.Cycle8Tests.test_empty_visible_final_message_is_not_reviewable) ... ok
+test_freeze_and_audit_isolation (test_benchmark.Cycle8Tests.test_freeze_and_audit_isolation) ... ok
+test_group_split_stable_and_disjoint (test_benchmark.Cycle8Tests.test_group_split_stable_and_disjoint) ... ok
+test_launcher_fails_closed_without_pinned_evidence (test_benchmark.Cycle8Tests.test_launcher_fails_closed_without_pinned_evidence) ... ok
+test_missing_provenance_and_bad_none_rejected (test_benchmark.Cycle8Tests.test_missing_provenance_and_bad_none_rejected) ... ok
+test_monitor_state_parser (test_benchmark.Cycle8Tests.test_monitor_state_parser) ... ok
+test_perfect_scoring_and_missed_case (test_benchmark.Cycle8Tests.test_perfect_scoring_and_missed_case) ... ok
+test_preflight_leaves_frozen_mount_untouched (test_benchmark.Cycle8Tests.test_preflight_leaves_frozen_mount_untouched) ... ok
+test_tamper_detected (test_benchmark.Cycle8Tests.test_tamper_detected) ... ok
+test_tau_history_groups_trials_and_preserves_source_pointers (test_benchmark.Cycle8Tests.test_tau_history_groups_trials_and_preserves_source_pointers) ... ok
+test_unlabelled_and_fake_gold_rejected (test_benchmark.Cycle8Tests.test_unlabelled_and_fake_gold_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.163s
+
+OK

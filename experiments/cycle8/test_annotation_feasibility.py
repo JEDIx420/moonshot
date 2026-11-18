@@ -68,7 +68,7 @@ class AnnotationFeasibilityTests(unittest.TestCase):
                               self.packets, verify=fake_audit)
 
     def labelled(self, name, *, claim="Agent reported tool action.",
-                 candidate="e0", relation="supports", skips=0):
+                 candidate="e0", relation="supports", skips=0, vary_relation=False):
         rows = read_jsonl(self.packets / "reviewer_a.jsonl")
         for index, row in enumerate(rows):
             row["reviewer_id"] = name
@@ -77,7 +77,7 @@ class AnnotationFeasibilityTests(unittest.TestCase):
                 continue
             row["claim_text"] = claim
             row["candidate_id"] = candidate
-            row["relation"] = relation
+            row["relation"] = "insufficient" if vary_relation and index % 2 else relation
             row["rationale"] = "Mock fixture only; not evidence."
             row["evidence_pointer"] = "fixture:0"
         path = self.root / f"{name}.jsonl"
@@ -130,13 +130,21 @@ class AnnotationFeasibilityTests(unittest.TestCase):
 
     def test_two_distinct_completed_mock_reviewers_pass_mechanical_screen(self):
         self.create()
-        a, b = self.labelled("alice"), self.labelled("bob")
+        a, b = self.labelled("alice", vary_relation=True), self.labelled("bob", vary_relation=True)
         report = score_packets(self.packets, a, b, self.root / "report.json")
         self.assertEqual(report["status"], "READY_TO_SCALE_HUMAN_REVIEW")
         self.assertEqual(report["joint_exact_agreement_rate_on_both_labelled"], 1)
         self.assertEqual(report["relation_cohens_kappa_on_aligned_claims"], 1)
         self.assertFalse(report["human_identities_verified"])
         self.assertTrue(report["not_valid_for_cycle8_pilot_or_science"])
+
+    def test_single_relation_agreement_has_undefined_kappa(self):
+        self.create()
+        a, b = self.labelled("alice"), self.labelled("bob")
+        report = score_packets(self.packets, a, b, self.root / "report.json")
+        self.assertEqual(report["status"], "REVIEW_TASK_NEEDS_REDESIGN")
+        self.assertIsNone(report["relation_cohens_kappa_on_aligned_claims"])
+        self.assertEqual(report["joint_exact_agreement_rate_on_both_labelled"], 1)
 
     def test_different_claim_extraction_flags_redesign(self):
         self.create()

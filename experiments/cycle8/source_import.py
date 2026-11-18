@@ -102,7 +102,7 @@ def final_text(messages):
             raw = msg.get("content")
             if isinstance(raw, str):
                 cleaned = re.split(r"</thinking>", raw, flags=re.I)[-1].strip()
-                if re.search(r"<thinking>", cleaned, flags=re.I):
+                if not cleaned or re.search(r"<thinking>", cleaned, flags=re.I):
                     return ""
                 return cleaned[:4000], index
     return ""

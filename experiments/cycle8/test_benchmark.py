@@ -190,6 +190,11 @@ class Cycle8Tests(unittest.TestCase):
                 self.assertEqual(row["candidates"][0]["status"], "unknown")
                 self.assertIsNone(row["candidates"][1]["call_id"])
 
+    def test_empty_visible_final_message_is_not_reviewable(self):
+        messages = [{"role": "tool", "content": "recorded"},
+                    {"role": "assistant", "content": "<thinking>hidden</thinking>   "}]
+        self.assertFalse(s.final_text(messages))
+
     def test_monitor_state_parser(self):
         location = ROOT / "kaggle-cycle8/monitor.py"
         spec = importlib.util.spec_from_file_location("cycle8_monitor", location)

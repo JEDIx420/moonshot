@@ -1,0 +1,74 @@
+{
+  "benchmark_frozen": false,
+  "blank_packet_preflight": "BLOCKED_INSUFFICIENT_HUMAN_REVIEW",
+  "candidate_lists_truncated_in_sample": 0,
+  "cases_prepared": 50,
+  "distinct_training_task_groups": 50,
+  "gpu_authorized": false,
+  "imports": {
+    "agentdojo": {
+      "no_usable_tool_trace": 1651,
+      "sessions_seen": 3560,
+      "source_files": 3560,
+      "tool_observations": 11128,
+      "unlabelled_drafts": 1909
+    },
+    "tau_bench": {
+      "no_usable_tool_trace": 339,
+      "sessions_seen": 1980,
+      "source_files": 4,
+      "tool_observations": 13896,
+      "unlabelled_drafts": 1641
+    }
+  },
+  "joint_exact_agreement": null,
+  "nontraining_cases_sampled": 0,
+  "purpose": "annotation_feasibility_only",
+  "readiness_decision": "unavailable_pending_two_independent_human_submissions",
+  "relation_kappa": null,
+  "reversed_input_reproduces_sample": true,
+  "review_submissions_received": 0,
+  "selection": {
+    "agentdojo": {
+      "eligible_groups": 86,
+      "excluded_nontrain_drafts": 687,
+      "excluded_truncated": 6,
+      "selected_candidate_count_bands": {
+        "long": 8,
+        "medium": 8,
+        "short": 9
+      },
+      "selected_count": 25,
+      "source": "agentdojo"
+    },
+    "tau_bench": {
+      "eligible_groups": 100,
+      "excluded_nontrain_drafts": 583,
+      "excluded_truncated": 4,
+      "selected_candidate_count_bands": {
+        "long": 8,
+        "medium": 8,
+        "short": 9
+      },
+      "selected_count": 25,
+      "source": "tau_bench"
+    }
+  },
+  "source_audits": {
+    "agentdojo": {
+      "candidate_pointers_checked": 7640,
+      "cohort": "agentdojo",
+      "drafts_checked": 1909,
+      "real_reviewed_labels": 0,
+      "revision": "089ed468cf3ed0322acc66b0211f26d9d90dbf60"
+    },
+    "tau_bench": {
+      "candidate_pointers_checked": 12110,
+      "cohort": "tau_bench",
+      "drafts_checked": 1641,
+      "real_reviewed_labels": 0,
+      "revision": "59a200c6d575d595120f1cb70fea53cef0632f6b"
+    }
+  },
+  "status": "AWAITING_REAL_REVIEWERS"
+}

@@ -276,8 +276,9 @@ def kappa(pairs):
     ca = Counter(a for a, _ in pairs)
     cb = Counter(b for _, b in pairs)
     chance = sum((ca[label] / total) * (cb[label] / total) for label in RELATIONS)
+    # Kappa is undefined when both reviewers use only the same category.
     if chance == 1:
-        return 1.0 if observed == 1 else None
+        return None
     return (observed - chance) / (1 - chance)
 
 
@@ -312,6 +313,10 @@ def score_packets(directory, review_a, review_b, output):
             "both_labelled": len(source_ids),
             "same_claim": sum(cid in aligned for cid in source_ids),
             "exact_agreement": sum(cid in exact for cid in source_ids),
+            "candidate_mismatches_on_aligned_claims": sum(
+                cid in aligned and a[cid]["candidate_id"] != b[cid]["candidate_id"] for cid in source_ids),
+            "relation_mismatches_on_aligned_claims": sum(
+                cid in aligned and a[cid]["relation"] != b[cid]["relation"] for cid in source_ids),
         }
     status_counts = {
         name: dict(Counter(statuses.values()))
