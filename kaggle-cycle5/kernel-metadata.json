@@ -1,6 +1,6 @@
 {
   "id": "jayanandj/moonshot-cycle5-gpu",
-  "title": "Moonshot Cycle 5 GPU Research",
+  "title": "Moonshot Cycle5 GPU",
   "code_file": "launcher.py",
   "language": "python",
   "kernel_type": "script",
