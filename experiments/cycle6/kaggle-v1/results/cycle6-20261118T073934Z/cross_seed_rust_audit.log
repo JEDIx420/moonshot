@@ -1,0 +1,4 @@
+[AUDIT PASS] seed=6109 acquired=10 retention=false composition=false joint_ood=0.1437
+[AUDIT PASS] seed=6203 acquired=10 retention=false composition=false joint_ood=0.1734
+[AUDIT PASS] seed=6301 acquired=10 retention=false composition=false joint_ood=0.1805
+[CROSS-SEED AUDIT PASS] {"acquired_on_all_seeds":[0,1,2,3,4,5,6,7,8,9],"acquisition_gate":true,"composition_gate":false,"retention_gate":false,"scientific_leap_gate":false}

@@ -1,0 +1,21 @@
+{
+  "backend": "burn-cuda",
+  "composition_completed": true,
+  "composition_train_steps": 2000,
+  "cycle": 6,
+  "dataset_sha256": {
+    "operator_pair_splits": "00adfeeaabf2aafa53c6cadf789fa02b4886899f0999cc9bcabaa689b8e55993",
+    "primitive_splits": "6bce5a232ee26e4f602add4d64cbf42b100b59deefe8cd02ed845bc7a3516950"
+  },
+  "domain": "ten-symbolic-state-operators-with-heldout-ordered-compositions",
+  "fewshot_adaptation_steps": 32,
+  "git_commit": "770dc8f66d173539c253f6c2bd251ff0a175ac64",
+  "model_parameters": 1095744,
+  "scientific_leap_gate": false,
+  "seed": 6109,
+  "sequential_completed": true,
+  "status": "completed",
+  "total_wall_seconds": 320.714069097,
+  "train_steps_per_primitive": 400,
+  "trainer": "rust-burn-cuda"
+}

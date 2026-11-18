@@ -1,0 +1,1940 @@
+[{"stream_name":"stdout","time":0.972220327,"data":"[GPU] 0, Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":0.972259846,"data":"1, Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":0.979767063,"data":"[RUN] bash -c set -o pipefail; curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none\n"}
+,{"stream_name":"stderr","time":1.223860529,"data":"info: downloading installer\n"}
+,{"stream_name":"stderr","time":1.584013176,"data":"info: profile set to default\n"}
+,{"stream_name":"stdout","time":1.584031709,"data":"\n"}
+,{"stream_name":"stderr","time":1.584037621,"data":"info: default host tuple is x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":1.584046631,"data":"info: skipping toolchain installation\n"}
+,{"stream_name":"stdout","time":1.5842611089999998,"data":"\n"}
+,{"stream_name":"stdout","time":1.5842685319999998,"data":"Rust is installed now. Great!\n"}
+,{"stream_name":"stdout","time":1.584272591,"data":"\n"}
+,{"stream_name":"stdout","time":1.5842761680000002,"data":"To get started you may need to restart your current shell.\n"}
+,{"stream_name":"stdout","time":1.584279556,"data":"This would reload your PATH environment variable to include\n"}
+,{"stream_name":"stdout","time":1.584282897,"data":"Cargo's bin directory ($HOME/.cargo/bin).\n"}
+,{"stream_name":"stdout","time":1.584286248,"data":"\n"}
+,{"stream_name":"stdout","time":1.58428931,"data":"To configure your current shell, you need to source the\n"}
+,{"stream_name":"stdout","time":1.584292591,"data":"corresponding env file under $HOME/.cargo.\n"}
+,{"stream_name":"stdout","time":1.5842958089999999,"data":"\n"}
+,{"stream_name":"stdout","time":1.584319722,"data":"Consider running the right command for your shell (note the leading DOT):\n"}
+,{"stream_name":"stdout","time":1.584323983,"data":". \"$HOME/.cargo/env\" # For sh/ash/dash/pdksh/bash\n"}
+,{"stream_name":"stdout","time":1.584391492,"data":"cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":1.5843969690000002,"data":"CC_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":1.584400839,"data":"cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":1.584405253,"data":"CC_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":1.58440923,"data":"cargo:rerun-if-env-changed=HOST_CC\n"}
+,{"stream_name":"stdout","time":1.5844131689999998,"data":"HOST_CC = None\n"}
+,{"stream_name":"stdout","time":1.584416536,"data":"cargo:rerun-if-env-changed=CC\n"}
+,{"stream_name":"stdout","time":1.5844197709999999,"data":"CC = None\n"}
+,{"stream_name":"stdout","time":1.590743175,"data":"cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT\n"}
+,{"stream_name":"stdout","time":1.685026237,"data":"cargo:rerun-if-env-changed=CPATH\n"}
+,{"stream_name":"stdout","time":1.685047007,"data":"cargo:rerun-if-env-changed=C_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":1.685051147,"data":"cargo:rerun-if-env-changed=CPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":1.685054591,"data":"cargo:rerun-if-env-changed=OBJC_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":1.685057969,"data":"cargo:rerun-if-env-changed=OBJCPLUS_INCLUDE_PATH\n"}
+,{"stream_name":"stdout","time":1.685061346,"data":"cargo:rerun-if-env-changed=COMPILER_PATH\n"}
+,{"stream_name":"stdout","time":1.6850645389999999,"data":"cargo:rerun-if-env-changed=SOURCE_DATE_EPOCH\n"}
+,{"stream_name":"stdout","time":1.685068342,"data":"cargo:rerun-if-env-changed=GCC_EXEC_PREFIX\n"}
+,{"stream_name":"stdout","time":1.6850721260000001,"data":"cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS\n"}
+,{"stream_name":"stdout","time":1.6850854339999999,"data":"CRATE_CC_NO_DEFAULTS = None\n"}
+,{"stream_name":"stdout","time":1.685089242,"data":"cargo:rerun-if-env-changed=CFLAGS\n"}
+,{"stream_name":"stdout","time":1.685092501,"data":"CFLAGS = None\n"}
+,{"stream_name":"stdout","time":1.685095649,"data":"cargo:rerun-if-env-changed=HOST_CFLAGS\n"}
+,{"stream_name":"stdout","time":1.685098971,"data":"HOST_CFLAGS = None\n"}
+,{"stream_name":"stdout","time":1.6851022690000002,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu\n"}
+,{"stream_name":"stdout","time":1.685105596,"data":"CFLAGS_x86_64_unknown_linux_gnu = None\n"}
+,{"stream_name":"stdout","time":1.685108748,"data":"cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stdout","time":1.685112069,"data":"CFLAGS_x86_64-unknown-linux-gnu = None\n"}
+,{"stream_name":"stdout","time":1.694856259,"data":"[RUN] rustup toolchain install 1.96.1 --profile minimal\n"}
+,{"stream_name":"stderr","time":1.7015091839999998,"data":"info: syncing channel updates for 1.96.1-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":2.080763936,"data":"info: latest update on 2026-06-30 for version 1.96.1 (31fca3adb 2026-06-26)\n"}
+,{"stream_name":"stderr","time":2.080846317,"data":"info: downloading 3 components\n"}
+,{"stream_name":"stdout","time":12.785205292,"data":"\n"}
+,{"stream_name":"stdout","time":12.795194883,"data":"  1.96.1-x86_64-unknown-linux-gnu installed - rustc 1.96.1 (31fca3adb 2026-06-26)\n"}
+,{"stream_name":"stdout","time":12.79521665,"data":"\n"}
+,{"stream_name":"stderr","time":12.801042277,"data":"info: default toolchain set to 1.96.1-x86_64-unknown-linux-gnu\n"}
+,{"stream_name":"stderr","time":12.801210873,"data":"info: checking for self-update (current version: 1.29.3)\n"}
+,{"stream_name":"stdout","time":12.931391679,"data":"[RUN] git clone --no-checkout https://github.com/JEDIx420/moonshot.git /tmp/moonshot-cycle6-source\n"}
+,{"stream_name":"stderr","time":12.955110408,"data":"Cloning into '/tmp/moonshot-cycle6-source'...\n"}
+,{"stream_name":"stdout","time":14.164347809,"data":"[RUN] git checkout --detach 770dc8f66d173539c253f6c2bd251ff0a175ac64\n"}
+,{"stream_name":"stderr","time":14.378694718,"data":"HEAD is now at 770dc8f Audit Cycle 6 cross-seed acquisition and checkpoint contents\n"}
+,{"stream_name":"stdout","time":14.385249948,"data":"[RUN] cargo test --locked --release -p moonshot-runner --features cuda cycle6::tests -- --nocapture\n"}
+,{"stream_name":"stdout","time":14.456969854,"data":"    Updating crates.io index\n"}
+,{"stream_name":"stdout","time":16.031247655,"data":" Downloading crates ...\n"}
+,{"stream_name":"stdout","time":16.129071654,"data":"  Downloaded aead v0.5.2\n"}
+,{"stream_name":"stdout","time":16.143971465,"data":"  Downloaded adler2 v2.0.1\n"}
+,{"stream_name":"stdout","time":16.151618306,"data":"  Downloaded addr2line v0.27.1\n"}
+,{"stream_name":"stdout","time":16.155621001,"data":"  Downloaded aes v0.8.4\n"}
+,{"stream_name":"stdout","time":16.162348351,"data":"  Downloaded cipher v0.4.4\n"}
+,{"stream_name":"stdout","time":16.165577413,"data":"  Downloaded ciborium-ll v0.2.2\n"}
+,{"stream_name":"stdout","time":16.168328636,"data":"  Downloaded cfg-if v1.0.5\n"}
+,{"stream_name":"stdout","time":16.17116832,"data":"  Downloaded cfg_aliases v0.2.2\n"}
+,{"stream_name":"stdout","time":16.17419929,"data":"  Downloaded clap_derive v4.6.7\n"}
+,{"stream_name":"stdout","time":16.178717992,"data":"  Downloaded cfg_block v0.1.1\n"}
+,{"stream_name":"stdout","time":16.181423111,"data":"  Downloaded atomic_float v1.1.0\n"}
+,{"stream_name":"stdout","time":16.184900645,"data":"  Downloaded awint_macros v0.19.0\n"}
+,{"stream_name":"stdout","time":16.188541183,"data":"  Downloaded clap_lex v1.1.1\n"}
+,{"stream_name":"stdout","time":16.192113371,"data":"  Downloaded cpufeatures v0.3.1\n"}
+,{"stream_name":"stdout","time":16.195686545,"data":"  Downloaded event-listener-strategy v0.5.4\n"}
+,{"stream_name":"stdout","time":16.200456399,"data":"  Downloaded cexpr v0.6.0\n"}
+,{"stream_name":"stdout","time":16.206100039,"data":"  Downloaded concurrent-queue v2.5.0\n"}
+,{"stream_name":"stdout","time":16.217054432,"data":"  Downloaded filetime v0.2.30\n"}
+,{"stream_name":"stdout","time":16.230137862,"data":"  Downloaded float-ord v0.3.2\n"}
+,{"stream_name":"stdout","time":16.245639815,"data":"  Downloaded genawaiter v0.99.1\n"}
+,{"stream_name":"stdout","time":16.26211766,"data":"  Downloaded heck v0.5.0\n"}
+,{"stream_name":"stdout","time":16.276985997,"data":"  Downloaded inout v0.1.4\n"}
+,{"stream_name":"stdout","time":16.288703381,"data":"  Downloaded is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stdout","time":16.300341432,"data":"  Downloaded memchr v2.8.3\n"}
+,{"stream_name":"stdout","time":16.318606615,"data":"  Downloaded pkg-config v0.3.34\n"}
+,{"stream_name":"stdout","time":16.330637639,"data":"  Downloaded pin-project-lite v0.2.17\n"}
+,{"stream_name":"stdout","time":16.349545051,"data":"  Downloaded profiling v1.0.18\n"}
+,{"stream_name":"stdout","time":16.358359748,"data":"  Downloaded rapidhash v4.5.1\n"}
+,{"stream_name":"stdout","time":16.370569622,"data":"  Downloaded siphasher v1.0.4\n"}
+,{"stream_name":"stdout","time":16.376747676,"data":"  Downloaded target-features v0.1.6\n"}
+,{"stream_name":"stdout","time":16.384097313,"data":"  Downloaded tracing-attributes v0.1.31\n"}
+,{"stream_name":"stdout","time":16.392051922,"data":"  Downloaded tracing-log v0.2.0\n"}
+,{"stream_name":"stdout","time":16.396203899,"data":"  Downloaded turso v0.8.3\n"}
+,{"stream_name":"stdout","time":16.402529056,"data":"  Downloaded utf8-chars v3.0.7\n"}
+,{"stream_name":"stdout","time":16.407098902,"data":"  Downloaded wgpu-core-deps-windows-linux-android v30.0.2\n"}
+,{"stream_name":"stdout","time":16.409669484,"data":"  Downloaded wgpu-types v30.0.2\n"}
+,{"stream_name":"stdout","time":16.417005243,"data":"  Downloaded turso_sdk_kit_macros v0.8.3\n"}
+,{"stream_name":"stdout","time":16.419117414,"data":"  Downloaded zune-core v0.5.3\n"}
+,{"stream_name":"stdout","time":16.423485403,"data":"  Downloaded zerovec-derive v0.11.7\n"}
+,{"stream_name":"stdout","time":16.427288096,"data":"  Downloaded unsynn v0.3.0\n"}
+,{"stream_name":"stdout","time":16.434632226,"data":"  Downloaded zune-jpeg v0.5.15\n"}
+,{"stream_name":"stdout","time":16.440843282,"data":"  Downloaded zune-inflate v0.2.54\n"}
+,{"stream_name":"stdout","time":16.443911448,"data":"  Downloaded webpki-roots v0.26.11\n"}
+,{"stream_name":"stdout","time":16.446144662000002,"data":"  Downloaded weezl v0.1.12\n"}
+,{"stream_name":"stdout","time":16.449979445,"data":"  Downloaded zstd v0.11.2+zstd.1.5.2\n"}
+,{"stream_name":"stdout","time":16.454738377,"data":"  Downloaded write16 v1.0.0\n"}
+,{"stream_name":"stdout","time":16.456687978,"data":"  Downloaded zerocopy v0.8.63\n"}
+,{"stream_name":"stdout","time":16.492095311,"data":"  Downloaded zeroize v1.9.2\n"}
+,{"stream_name":"stdout","time":16.494914793,"data":"  Downloaded yoke v0.8.4\n"}
+,{"stream_name":"stdout","time":16.497756489,"data":"  Downloaded zerotrie v0.2.5\n"}
+,{"stream_name":"stdout","time":16.503381116,"data":"  Downloaded y4m v0.8.0\n"}
+,{"stream_name":"stdout","time":16.505470317,"data":"  Downloaded xattr v1.7.0\n"}
+,{"stream_name":"stdout","time":16.507750445,"data":"  Downloaded zerovec v0.11.9\n"}
+,{"stream_name":"stdout","time":16.516585077,"data":"  Downloaded wrapcenum-derive v0.4.1\n"}
+,{"stream_name":"stdout","time":16.518005422999998,"data":"  Downloaded which v4.4.2\n"}
+,{"stream_name":"stdout","time":16.52023716,"data":"  Downloaded zerofrom v0.1.8\n"}
+,{"stream_name":"stdout","time":16.521730409,"data":"  Downloaded zerocopy-derive v0.8.63\n"}
+,{"stream_name":"stdout","time":16.54077534,"data":"  Downloaded yoke-derive v0.8.4\n"}
+,{"stream_name":"stdout","time":16.542458336,"data":"  Downloaded xxhash-rust v0.8.21\n"}
+,{"stream_name":"stdout","time":16.545026732,"data":"  Downloaded zstd-safe v5.0.2+zstd.1.5.2\n"}
+,{"stream_name":"stdout","time":16.546846875,"data":"  Downloaded writeable v0.6.4\n"}
+,{"stream_name":"stdout","time":16.549759371,"data":"  Downloaded winnow v1.0.5\n"}
+,{"stream_name":"stdout","time":16.563024919,"data":"  Downloaded wgpu-core v30.0.2\n"}
+,{"stream_name":"stdout","time":16.576548119999998,"data":"  Downloaded zerofrom-derive v0.1.8\n"}
+,{"stream_name":"stdout","time":16.57805454,"data":"  Downloaded zstd-sys v2.1.3+zstd.1.5.7\n"}
+,{"stream_name":"stdout","time":16.602124785,"data":"  Downloaded wide v1.7.1\n"}
+,{"stream_name":"stdout","time":16.611013065,"data":"  Downloaded wgpu v30.0.2\n"}
+,{"stream_name":"stdout","time":16.629021156,"data":"  Downloaded webpki-roots v1.0.12\n"}
+,{"stream_name":"stdout","time":16.633395724,"data":"  Downloaded wasm-bindgen-macro-support v0.2.130\n"}
+,{"stream_name":"stdout","time":16.637193278,"data":"  Downloaded wasm-bindgen v0.2.130\n"}
+,{"stream_name":"stdout","time":16.641133619,"data":"  Downloaded web-time v1.1.0\n"}
+,{"stream_name":"stdout","time":16.643396195,"data":"  Downloaded wayland-sys v0.31.11\n"}
+,{"stream_name":"stdout","time":16.645076178,"data":"  Downloaded wasm-bindgen-shared v0.2.130\n"}
+,{"stream_name":"stdout","time":16.646567778,"data":"  Downloaded wasm-bindgen-macro v0.2.130\n"}
+,{"stream_name":"stdout","time":16.64779829,"data":"  Downloaded turso_core v0.8.3\n"}
+,{"stream_name":"stdout","time":16.739085687,"data":"  Downloaded zmij v1.0.23\n"}
+,{"stream_name":"stdout","time":16.741410766,"data":"  Downloaded zlib-rs v0.6.8\n"}
+,{"stream_name":"stdout","time":16.748749175,"data":"  Downloaded zip v0.6.6\n"}
+,{"stream_name":"stdout","time":16.753855823,"data":"  Downloaded unicode-width v0.1.14\n"}
+,{"stream_name":"stdout","time":16.761158489,"data":"  Downloaded unicode-width v0.2.3\n"}
+,{"stream_name":"stdout","time":16.76739028,"data":"  Downloaded wgpu-hal v30.0.2\n"}
+,{"stream_name":"stdout","time":16.783120743,"data":"  Downloaded ureq v2.12.1\n"}
+,{"stream_name":"stdout","time":16.789551828,"data":"  Downloaded untrusted v0.9.0\n"}
+,{"stream_name":"stdout","time":16.791587838,"data":"  Downloaded universal-hash v0.5.1\n"}
+,{"stream_name":"stdout","time":16.792754284,"data":"  Downloaded unicode-xid v0.2.6\n"}
+,{"stream_name":"stdout","time":16.79440698,"data":"  Downloaded turso_sdk_kit v0.8.3\n"}
+,{"stream_name":"stdout","time":16.796982612,"data":"  Downloaded turso_parser v0.8.3\n"}
+,{"stream_name":"stdout","time":16.800975098,"data":"  Downloaded turso_macros v0.8.3\n"}
+,{"stream_name":"stdout","time":16.803090315,"data":"  Downloaded turso_ext v0.8.3\n"}
+,{"stream_name":"stdout","time":16.804720353,"data":"  Downloaded tch v0.22.0\n"}
+,{"stream_name":"stdout","time":16.929285496,"data":"  Downloaded wgpu-naga-bridge v30.0.2\n"}
+,{"stream_name":"stdout","time":16.930400541,"data":"  Downloaded v_frame v0.3.9\n"}
+,{"stream_name":"stdout","time":16.932443151,"data":"  Downloaded ureq-proto v0.7.1\n"}
+,{"stream_name":"stdout","time":16.938008373,"data":"  Downloaded walkdir v2.5.0\n"}
+,{"stream_name":"stdout","time":16.940286299,"data":"  Downloaded version_check v0.9.5\n"}
+,{"stream_name":"stdout","time":16.941955661,"data":"  Downloaded variadics_please v2.0.0\n"}
+,{"stream_name":"stdout","time":16.944393991,"data":"  Downloaded uuid v1.29.3\n"}
+,{"stream_name":"stdout","time":16.948329989,"data":"  Downloaded utf_types v1.0.0\n"}
+,{"stream_name":"stdout","time":16.949941084,"data":"  Downloaded utf8parse v0.2.2\n"}
+,{"stream_name":"stdout","time":16.951235502,"data":"  Downloaded utf8_iter v1.1.0\n"}
+,{"stream_name":"stdout","time":16.95292001,"data":"  Downloaded utf8-zero v0.8.1\n"}
+,{"stream_name":"stdout","time":16.954688807,"data":"  Downloaded utf16_iter v1.1.0\n"}
+,{"stream_name":"stdout","time":16.956270155,"data":"  Downloaded ureq v3.5.2\n"}
+,{"stream_name":"stdout","time":16.967948671,"data":"  Downloaded url v2.5.8\n"}
+,{"stream_name":"stdout","time":16.97185726,"data":"  Downloaded unicode-segmentation v1.13.3\n"}
+,{"stream_name":"stdout","time":16.975903395,"data":"  Downloaded unicode-ident v1.0.27\n"}
+,{"stream_name":"stdout","time":16.980239767,"data":"  Downloaded uncased v0.9.10\n"}
+,{"stream_name":"stdout","time":16.981943614,"data":"  Downloaded typenum v1.20.1\n"}
+,{"stream_name":"stdout","time":16.987314612,"data":"  Downloaded tynm v0.2.0\n"}
+,{"stream_name":"stdout","time":16.989623474,"data":"  Downloaded twox-hash v2.1.5\n"}
+,{"stream_name":"stdout","time":16.992612493,"data":"  Downloaded turso_sync_sdk_kit v0.8.3\n"}
+,{"stream_name":"stdout","time":16.994845446,"data":"  Downloaded turso_sync_engine v0.8.3\n"}
+,{"stream_name":"stdout","time":17.000689082,"data":"  Downloaded tracing v0.1.44\n"}
+,{"stream_name":"stdout","time":17.023773922,"data":"  Downloaded triple_arena v0.15.1\n"}
+,{"stream_name":"stdout","time":17.030165637,"data":"  Downloaded tracing-subscriber v0.3.23\n"}
+,{"stream_name":"stdout","time":17.041337785,"data":"  Downloaded tracel-rspirv v0.16.1+sdk-1.4.357.0\n"}
+,{"stream_name":"stdout","time":17.053344707,"data":"  Downloaded torch-sys v0.22.0\n"}
+,{"stream_name":"stdout","time":17.061051842,"data":"  Downloaded time v0.3.55\n"}
+,{"stream_name":"stdout","time":17.080016131,"data":"  Downloaded tiff v0.11.3\n"}
+,{"stream_name":"stdout","time":17.086024754,"data":"  Downloaded thread_local v1.1.10\n"}
+,{"stream_name":"stdout","time":17.087720579,"data":"  Downloaded thiserror-impl v2.0.21\n"}
+,{"stream_name":"stdout","time":17.089799388,"data":"  Downloaded thiserror-impl v1.0.69\n"}
+,{"stream_name":"stdout","time":17.091742132,"data":"  Downloaded thiserror v2.0.21\n"}
+,{"stream_name":"stdout","time":17.106618983,"data":"  Downloaded thiserror v1.0.69\n"}
+,{"stream_name":"stdout","time":17.113470731,"data":"  Downloaded textdistance v1.1.1\n"}
+,{"stream_name":"stdout","time":17.117941505,"data":"  Downloaded text_placeholder v0.5.1\n"}
+,{"stream_name":"stdout","time":17.119250774,"data":"  Downloaded termcolor v1.4.1\n"}
+,{"stream_name":"stdout","time":17.120876596,"data":"  Downloaded tempfile v3.27.0\n"}
+,{"stream_name":"stdout","time":17.124246753,"data":"  Downloaded static_assertions v1.1.0\n"}
+,{"stream_name":"stdout","time":17.126146797,"data":"  Downloaded stable_deref_trait v1.2.1\n"}
+,{"stream_name":"stdout","time":17.12732978,"data":"  Downloaded spirv v0.4.0+sdk-1.4.341.0\n"}
+,{"stream_name":"stdout","time":17.129065036,"data":"  Downloaded spin v0.12.3\n"}
+,{"stream_name":"stdout","time":17.132023857,"data":"  Downloaded softaes v0.1.8\n"}
+,{"stream_name":"stdout","time":17.133545907,"data":"  Downloaded slotmap v1.1.1\n"}
+,{"stream_name":"stdout","time":17.136375323,"data":"  Downloaded tracing-core v0.1.36\n"}
+,{"stream_name":"stdout","time":17.13987677,"data":"  Downloaded tracing-appender v0.2.5\n"}
+,{"stream_name":"stdout","time":17.141952784,"data":"  Downloaded tracel-llvm-bundler v23.1.0-4\n"}
+,{"stream_name":"stdout","time":17.143821194,"data":"  Downloaded toml_writer v1.2.0+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":17.145940152,"data":"  Downloaded toml_parser v1.1.5+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":17.148922871,"data":"  Downloaded toml_datetime v1.1.3+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":17.150619467,"data":"  Downloaded toml v1.2.1+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":17.155770466,"data":"  Downloaded tinystr v0.8.5\n"}
+,{"stream_name":"stdout","time":17.15835103,"data":"  Downloaded tiny-keccak v2.0.2\n"}
+,{"stream_name":"stdout","time":17.161531945,"data":"  Downloaded time-macros v0.2.32\n"}
+,{"stream_name":"stdout","time":17.164719222,"data":"  Downloaded syn v3.0.10\n"}
+,{"stream_name":"stdout","time":17.178823986,"data":"  Downloaded strum_macros v0.26.4\n"}
+,{"stream_name":"stdout","time":17.182037837,"data":"  Downloaded strum v0.26.3\n"}
+,{"stream_name":"stdout","time":17.183095868,"data":"  Downloaded strsim v0.11.1\n"}
+,{"stream_name":"stdout","time":17.184782444,"data":"  Downloaded smallvec v1.16.5\n"}
+,{"stream_name":"stdout","time":17.186642916,"data":"  Downloaded slab v0.4.12\n"}
+,{"stream_name":"stdout","time":17.190978561,"data":"  Downloaded ring v0.17.14\n"}
+,{"stream_name":"stdout","time":17.247784859,"data":"  Downloaded time-core v0.1.9\n"}
+,{"stream_name":"stdout","time":17.249167734,"data":"  Downloaded sysinfo v0.39.6\n"}
+,{"stream_name":"stdout","time":17.265347094,"data":"  Downloaded syn v2.0.119\n"}
+,{"stream_name":"stdout","time":17.279057112,"data":"  Downloaded rustls v0.23.46\n"}
+,{"stream_name":"stdout","time":17.302691515,"data":"  Downloaded rustix v1.1.6\n"}
+,{"stream_name":"stdout","time":17.338994125,"data":"  Downloaded rustix v0.38.44\n"}
+,{"stream_name":"stdout","time":17.381294107,"data":"  Downloaded roaring v0.11.5\n"}
+,{"stream_name":"stdout","time":17.390357837,"data":"  Downloaded regex-lite v0.1.9\n"}
+,{"stream_name":"stdout","time":17.394777037,"data":"  Downloaded rav1e v0.8.1\n"}
+,{"stream_name":"stdout","time":17.449111693,"data":"  Downloaded tar v0.4.46\n"}
+,{"stream_name":"stdout","time":17.453147114,"data":"  Downloaded synstructure v0.14.0\n"}
+,{"stream_name":"stdout","time":17.454660976,"data":"  Downloaded symlink v0.1.0\n"}
+,{"stream_name":"stdout","time":17.45620024,"data":"  Downloaded subtle v2.6.1\n"}
+,{"stream_name":"stdout","time":17.457690483,"data":"  Downloaded simsimd v6.5.16\n"}
+,{"stream_name":"stdout","time":17.462372803,"data":"  Downloaded simd-adler32 v0.3.10\n"}
+,{"stream_name":"stdout","time":17.464814525,"data":"  Downloaded shlex v2.0.1\n"}
+,{"stream_name":"stdout","time":17.466633328,"data":"  Downloaded sharded-slab v0.1.7\n"}
+,{"stream_name":"stdout","time":17.471113288,"data":"  Downloaded sha2 v0.10.9\n"}
+,{"stream_name":"stdout","time":17.47537451,"data":"  Downloaded serde_json v1.0.154\n"}
+,{"stream_name":"stdout","time":17.487460652,"data":"  Downloaded serde_derive v1.0.229\n"}
+,{"stream_name":"stdout","time":17.492152894,"data":"  Downloaded serde_core v1.0.229\n"}
+,{"stream_name":"stdout","time":17.496254857,"data":"  Downloaded serde v1.0.229\n"}
+,{"stream_name":"stdout","time":17.501158066,"data":"  Downloaded seq-macro v0.3.6\n"}
+,{"stream_name":"stdout","time":17.503517425,"data":"  Downloaded sanitize-filename v0.6.0\n"}
+,{"stream_name":"stdout","time":17.50461631,"data":"  Downloaded same-file v1.0.6\n"}
+,{"stream_name":"stdout","time":17.506364329,"data":"  Downloaded safetensors v0.8.0\n"}
+,{"stream_name":"stdout","time":17.50825883,"data":"  Downloaded safetensors v0.3.3\n"}
+,{"stream_name":"stdout","time":17.510052411,"data":"  Downloaded safe_arch v1.2.0\n"}
+,{"stream_name":"stdout","time":17.516801508,"data":"  Downloaded ryu v1.0.23\n"}
+,{"stream_name":"stdout","time":17.527997463,"data":"  Downloaded rustversion v1.0.23\n"}
+,{"stream_name":"stdout","time":17.531370724,"data":"  Downloaded rustls-webpki v0.103.17\n"}
+,{"stream_name":"stdout","time":17.536274201,"data":"  Downloaded rustls-pki-types v1.16.0\n"}
+,{"stream_name":"stdout","time":17.539830421,"data":"  Downloaded rustc_apfloat v0.2.3+llvm-462a31f5a5ab\n"}
+,{"stream_name":"stdout","time":17.543746086,"data":"  Downloaded rustc-demangle v0.1.28\n"}
+,{"stream_name":"stdout","time":17.546358083,"data":"  Downloaded rgb v0.8.53\n"}
+,{"stream_name":"stdout","time":17.549780336,"data":"  Downloaded renderdoc-sys v1.1.0\n"}
+,{"stream_name":"stdout","time":17.551192565,"data":"  Downloaded regex-automata v0.4.19\n"}
+,{"stream_name":"stdout","time":17.571650024,"data":"  Downloaded regex v1.13.2\n"}
+,{"stream_name":"stdout","time":17.579990037,"data":"  Downloaded simdutf8 v0.1.5\n"}
+,{"stream_name":"stdout","time":17.583213458,"data":"  Downloaded simd_helpers v0.1.0\n"}
+,{"stream_name":"stdout","time":17.58426358,"data":"  Downloaded shlex v1.3.0\n"}
+,{"stream_name":"stdout","time":17.586025655,"data":"  Downloaded sha1_smol v1.0.1\n"}
+,{"stream_name":"stdout","time":17.587972444000002,"data":"  Downloaded sha1 v0.10.7\n"}
+,{"stream_name":"stdout","time":17.59019418,"data":"  Downloaded serde_spanned v1.1.3\n"}
+,{"stream_name":"stdout","time":17.591694208,"data":"  Downloaded serde_bytes v0.11.19\n"}
+,{"stream_name":"stdout","time":17.593728646,"data":"  Downloaded semver v1.0.28\n"}
+,{"stream_name":"stdout","time":17.596724048,"data":"  Downloaded scopeguard v1.2.0\n"}
+,{"stream_name":"stdout","time":17.598227721,"data":"  Downloaded rustc_version v0.4.1\n"}
+,{"stream_name":"stdout","time":17.599885003,"data":"  Downloaded rustc-hash v2.1.3\n"}
+,{"stream_name":"stdout","time":17.601685474,"data":"  Downloaded rustc-hash v1.1.0\n"}
+,{"stream_name":"stdout","time":17.602916964,"data":"  Downloaded regex-syntax v0.8.12\n"}
+,{"stream_name":"stdout","time":17.613092693,"data":"  Downloaded recasting v0.2.3\n"}
+,{"stream_name":"stdout","time":17.61447605,"data":"  Downloaded reborrow v0.5.5\n"}
+,{"stream_name":"stdout","time":17.615524821,"data":"  Downloaded rayon-core v1.13.0\n"}
+,{"stream_name":"stdout","time":17.621183299,"data":"  Downloaded rayon v1.12.0\n"}
+,{"stream_name":"stdout","time":17.641348919,"data":"  Downloaded rawpointer v0.2.1\n"}
+,{"stream_name":"stdout","time":17.64268432,"data":"  Downloaded raw-window-handle v0.6.2\n"}
+,{"stream_name":"stdout","time":17.645457966,"data":"  Downloaded raw-cpuid v11.6.0\n"}
+,{"stream_name":"stdout","time":17.650782524,"data":"  Downloaded ravif v0.13.0\n"}
+,{"stream_name":"stdout","time":17.652563276,"data":"  Downloaded pxfm v0.1.30\n"}
+,{"stream_name":"stdout","time":17.691542527,"data":"  Downloaded pulp v0.22.3\n"}
+,{"stream_name":"stdout","time":17.698044732,"data":"  Downloaded prettyplease v0.3.0\n"}
+,{"stream_name":"stdout","time":17.702792371,"data":"  Downloaded presser v0.3.1\n"}
+,{"stream_name":"stdout","time":17.705110113,"data":"  Downloaded ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stdout","time":17.707009751,"data":"  Downloaded portable-atomic v1.15.0\n"}
+,{"stream_name":"stdout","time":17.716907502,"data":"  Downloaded polling v3.11.0\n"}
+,{"stream_name":"stdout","time":17.721227326,"data":"  Downloaded png v0.18.1\n"}
+,{"stream_name":"stdout","time":17.73023175,"data":"  Downloaded pliron-llvm v0.19.0\n"}
+,{"stream_name":"stdout","time":17.738382179,"data":"  Downloaded pliron-derive v0.19.0\n"}
+,{"stream_name":"stdout","time":17.742270562,"data":"  Downloaded rand_distr v0.6.0\n"}
+,{"stream_name":"stdout","time":17.747959739,"data":"  Downloaded rand_core v0.10.1\n"}
+,{"stream_name":"stdout","time":17.750513015,"data":"  Downloaded rand_core v0.9.5\n"}
+,{"stream_name":"stdout","time":17.752590068,"data":"  Downloaded rand_core v0.6.4\n"}
+,{"stream_name":"stdout","time":17.754744646,"data":"  Downloaded rand_chacha v0.9.0\n"}
+,{"stream_name":"stdout","time":17.756812898,"data":"  Downloaded rand_chacha v0.3.1\n"}
+,{"stream_name":"stdout","time":17.758462161,"data":"  Downloaded rand v0.10.4\n"}
+,{"stream_name":"stdout","time":17.764336344,"data":"  Downloaded rand v0.9.5\n"}
+,{"stream_name":"stdout","time":17.770100398,"data":"  Downloaded rand v0.8.8\n"}
+,{"stream_name":"stdout","time":17.77469446,"data":"  Downloaded quote v1.0.47\n"}
+,{"stream_name":"stdout","time":17.77839297,"data":"  Downloaded quick-error v2.0.1\n"}
+,{"stream_name":"stdout","time":17.780184338,"data":"  Downloaded qoi v0.4.1\n"}
+,{"stream_name":"stdout","time":17.784153632,"data":"  Downloaded pulp-wasm-simd-flag v0.1.1\n"}
+,{"stream_name":"stdout","time":17.785036102,"data":"  Downloaded prost-derive v0.14.6\n"}
+,{"stream_name":"stdout","time":17.786850072,"data":"  Downloaded prost v0.14.6\n"}
+,{"stream_name":"stdout","time":17.789217573,"data":"  Downloaded profiling-procmacros v1.0.18\n"}
+,{"stream_name":"stdout","time":17.790169122000002,"data":"  Downloaded prettyplease v0.2.37\n"}
+,{"stream_name":"stdout","time":17.795013458,"data":"  Downloaded powerfmt v0.2.1\n"}
+,{"stream_name":"stdout","time":17.796767364,"data":"  Downloaded potential_utf v0.1.6\n"}
+,{"stream_name":"stdout","time":17.798249165,"data":"  Downloaded portable-atomic-util v0.2.8\n"}
+,{"stream_name":"stdout","time":17.800951827,"data":"  Downloaded polyval v0.6.2\n"}
+,{"stream_name":"stdout","time":17.803431107,"data":"  Downloaded pliron-spirv v0.16.1+sdk-1.4.357.0\n"}
+,{"stream_name":"stdout","time":17.810464428,"data":"  Downloaded num-bigint v0.4.8\n"}
+,{"stream_name":"stdout","time":17.816763072,"data":"  Downloaded nom v8.0.0\n"}
+,{"stream_name":"stdout","time":17.824040436,"data":"  Downloaded nom v7.1.3\n"}
+,{"stream_name":"stdout","time":17.834237992,"data":"  Downloaded ndarray v0.17.2\n"}
+,{"stream_name":"stdout","time":17.846482837,"data":"  Downloaded ndarray v0.16.1\n"}
+,{"stream_name":"stdout","time":17.864215225,"data":"  Downloaded naga v30.0.2\n"}
+,{"stream_name":"stdout","time":17.892641332,"data":"  Downloaded multiversion-macros v0.8.1\n"}
+,{"stream_name":"stdout","time":17.894243568,"data":"  Downloaded multiversion v0.8.1\n"}
+,{"stream_name":"stdout","time":17.896379319,"data":"  Downloaded moxcms v0.8.1\n"}
+,{"stream_name":"stdout","time":17.908918779,"data":"  Downloaded miniz_oxide v0.9.1\n"}
+,{"stream_name":"stdout","time":17.912226784,"data":"  Downloaded miniz_oxide v0.8.9\n"}
+,{"stream_name":"stdout","time":17.91577012,"data":"  Downloaded linux-raw-sys v0.4.15\n"}
+,{"stream_name":"stdout","time":17.983952541,"data":"  Downloaded liblzma-sys v0.4.9\n"}
+,{"stream_name":"stdout","time":18.049050569,"data":"  Downloaded proc-macro2 v1.0.107\n"}
+,{"stream_name":"stdout","time":18.053789818,"data":"  Downloaded pliron v0.19.0\n"}
+,{"stream_name":"stdout","time":18.07228968,"data":"  Downloaded num-rational v0.4.2\n"}
+,{"stream_name":"stdout","time":18.073931191,"data":"  Downloaded num-derive v0.4.2\n"}
+,{"stream_name":"stdout","time":18.076200757,"data":"  Downloaded num-complex v0.4.6\n"}
+,{"stream_name":"stdout","time":18.07810937,"data":"  Downloaded nu-ansi-term v0.50.3\n"}
+,{"stream_name":"stdout","time":18.081050581,"data":"  Downloaded noop_proc_macro v0.3.0\n"}
+,{"stream_name":"stdout","time":18.082209965,"data":"  Downloaded no_std_io2 v0.9.4\n"}
+,{"stream_name":"stdout","time":18.084860194,"data":"  Downloaded new_debug_unreachable v1.0.6\n"}
+,{"stream_name":"stdout","time":18.0862036,"data":"  Downloaded mutants v0.0.3\n"}
+,{"stream_name":"stdout","time":18.087039825,"data":"  Downloaded moddef v0.3.0\n"}
+,{"stream_name":"stdout","time":18.092220052,"data":"  Downloaded minimal-lexical v0.2.1\n"}
+,{"stream_name":"stdout","time":18.098320509,"data":"  Downloaded linux-raw-sys v0.12.1\n"}
+,{"stream_name":"stdout","time":18.187313463,"data":"  Downloaded icu_locale_data v2.4.0\n"}
+,{"stream_name":"stdout","time":18.224218082,"data":"  Downloaded pbkdf2 v0.11.0\n"}
+,{"stream_name":"stdout","time":18.227352712,"data":"  Downloaded pastey v0.2.3\n"}
+,{"stream_name":"stdout","time":18.228987575,"data":"  Downloaded pastey v0.1.1\n"}
+,{"stream_name":"stdout","time":18.231097076,"data":"  Downloaded paste v1.0.15\n"}
+,{"stream_name":"stdout","time":18.234882601,"data":"  Downloaded password-hash v0.4.2\n"}
+,{"stream_name":"stdout","time":18.237124453,"data":"  Downloaded parking_lot_core v0.9.12\n"}
+,{"stream_name":"stdout","time":18.240020196,"data":"  Downloaded parking_lot v0.12.5\n"}
+,{"stream_name":"stdout","time":18.243246131,"data":"  Downloaded parking v2.2.1\n"}
+,{"stream_name":"stdout","time":18.247081595,"data":"  Downloaded pack1 v1.1.0\n"}
+,{"stream_name":"stdout","time":18.248920095,"data":"  Downloaded ordered-float v5.5.1\n"}
+,{"stream_name":"stdout","time":18.251282345,"data":"  Downloaded option-ext v0.2.0\n"}
+,{"stream_name":"stdout","time":18.252408547,"data":"  Downloaded object v0.40.0\n"}
+,{"stream_name":"stdout","time":18.270609276,"data":"  Downloaded nvml-wrapper v0.13.0\n"}
+,{"stream_name":"stdout","time":18.276485577,"data":"  Downloaded num-integer v0.1.47\n"}
+,{"stream_name":"stdout","time":18.278568282,"data":"  Downloaded num-conv v0.2.2\n"}
+,{"stream_name":"stdout","time":18.279647995,"data":"  Downloaded naga-types v30.0.2\n"}
+,{"stream_name":"stdout","time":18.281108601,"data":"  Downloaded miette-derive v7.6.0\n"}
+,{"stream_name":"stdout","time":18.283050382,"data":"  Downloaded miette v7.6.0\n"}
+,{"stream_name":"stdout","time":18.289127513,"data":"  Downloaded libc v0.2.191\n"}
+,{"stream_name":"stdout","time":18.353756719,"data":"  Downloaded icu_collator v2.4.0\n"}
+,{"stream_name":"stdout","time":18.377480607,"data":"  Downloaded percent-encoding v2.3.2\n"}
+,{"stream_name":"stdout","time":18.381498413,"data":"  Downloaded opaque-debug v0.3.1\n"}
+,{"stream_name":"stdout","time":18.382763103,"data":"  Downloaded oneshot v0.2.1\n"}
+,{"stream_name":"stdout","time":18.387220071,"data":"  Downloaded once_vec v0.4.0\n"}
+,{"stream_name":"stdout","time":18.388968111,"data":"  Downloaded once_cell v1.21.4\n"}
+,{"stream_name":"stdout","time":18.392281102,"data":"  Downloaded nvml-wrapper-sys v0.10.0\n"}
+,{"stream_name":"stdout","time":18.394770269,"data":"  Downloaded num-traits v0.2.19\n"}
+,{"stream_name":"stdout","time":18.398202701,"data":"  Downloaded memoffset v0.9.1\n"}
+,{"stream_name":"stdout","time":18.399901785,"data":"  Downloaded memmap2 v0.9.12\n"}
+,{"stream_name":"stdout","time":18.402450321,"data":"  Downloaded libm v0.2.16\n"}
+,{"stream_name":"stdout","time":18.416180084,"data":"  Downloaded itertools v0.15.0\n"}
+,{"stream_name":"stdout","time":18.42533333,"data":"  Downloaded itertools v0.14.0\n"}
+,{"stream_name":"stdout","time":18.439801767,"data":"  Downloaded itertools v0.12.1\n"}
+,{"stream_name":"stdout","time":18.448461467,"data":"  Downloaded maybe-rayon v0.1.1\n"}
+,{"stream_name":"stdout","time":18.449523121,"data":"  Downloaded matrixmultiply v0.3.11\n"}
+,{"stream_name":"stdout","time":18.453611039,"data":"  Downloaded matchers v0.2.0\n"}
+,{"stream_name":"stdout","time":18.45495627,"data":"  Downloaded macerator-macros v0.3.2\n"}
+,{"stream_name":"stdout","time":18.455970697,"data":"  Downloaded macerator v0.5.2\n"}
+,{"stream_name":"stdout","time":18.462013671,"data":"  Downloaded loop9 v0.1.5\n"}
+,{"stream_name":"stdout","time":18.462970998,"data":"  Downloaded log v0.4.35\n"}
+,{"stream_name":"stdout","time":18.466344704,"data":"  Downloaded lock_api v0.4.14\n"}
+,{"stream_name":"stdout","time":18.468035209,"data":"  Downloaded llvm-sys v231.0.2\n"}
+,{"stream_name":"stdout","time":18.472722734,"data":"  Downloaded litrs v1.0.1\n"}
+,{"stream_name":"stdout","time":18.476539897,"data":"  Downloaded litemap v0.8.3\n"}
+,{"stream_name":"stdout","time":18.479442906,"data":"  Downloaded linkme-impl v0.3.38\n"}
+,{"stream_name":"stdout","time":18.481035556,"data":"  Downloaded linkme v0.3.38\n"}
+,{"stream_name":"stdout","time":18.485394927,"data":"  Downloaded liblzma v0.4.9\n"}
+,{"stream_name":"stdout","time":18.488009802,"data":"  Downloaded libloading v0.9.1\n"}
+,{"stream_name":"stdout","time":18.490883776,"data":"  Downloaded libloading v0.8.9\n"}
+,{"stream_name":"stdout","time":18.495440312,"data":"  Downloaded lebe v0.5.3\n"}
+,{"stream_name":"stdout","time":18.496922642,"data":"  Downloaded lazycell v1.3.0\n"}
+,{"stream_name":"stdout","time":18.498174623,"data":"  Downloaded lazy_static v1.5.1\n"}
+,{"stream_name":"stdout","time":18.500249006,"data":"  Downloaded khronos-egl v6.0.0\n"}
+,{"stream_name":"stdout","time":18.502764826,"data":"  Downloaded jobserver v0.1.35\n"}
+,{"stream_name":"stdout","time":18.505234795,"data":"  Downloaded itoa v1.0.19\n"}
+,{"stream_name":"stdout","time":18.507067654,"data":"  Downloaded io-uring v0.7.16\n"}
+,{"stream_name":"stdout","time":18.512045788000002,"data":"  Downloaded intrusive-collections v0.9.7\n"}
+,{"stream_name":"stdout","time":18.5150017,"data":"  Downloaded image v0.25.10\n"}
+,{"stream_name":"stdout","time":18.527728996,"data":"  Downloaded icu_properties_data v2.4.0\n"}
+,{"stream_name":"stdout","time":18.541634923,"data":"  Downloaded icu_normalizer v2.4.0\n"}
+,{"stream_name":"stdout","time":18.555384329,"data":"  Downloaded cudarc v0.19.10\n"}
+,{"stream_name":"stdout","time":18.588219676,"data":"  Downloaded cubek-tile v0.3.1\n"}
+,{"stream_name":"stdout","time":18.6131689,"data":"  Downloaded cubecl-hip-sys v7.14.6085001\n"}
+,{"stream_name":"stdout","time":18.633215826,"data":"  Downloaded internment v0.8.6\n"}
+,{"stream_name":"stdout","time":18.636414622,"data":"  Downloaded indexmap v2.14.2\n"}
+,{"stream_name":"stdout","time":18.642265319,"data":"  Downloaded imgref v1.12.3\n"}
+,{"stream_name":"stdout","time":18.643911012,"data":"  Downloaded image-webp v0.2.4\n"}
+,{"stream_name":"stdout","time":18.646857907,"data":"  Downloaded idna v1.1.0\n"}
+,{"stream_name":"stdout","time":18.655079442,"data":"  Downloaded icu_properties v2.4.0\n"}
+,{"stream_name":"stdout","time":18.660521468,"data":"  Downloaded icu_locale_fallback_data v2.4.0\n"}
+,{"stream_name":"stdout","time":18.66186648,"data":"  Downloaded icu_locale_fallback v2.4.0\n"}
+,{"stream_name":"stdout","time":18.663434985,"data":"  Downloaded icu_locale_core v2.4.0\n"}
+,{"stream_name":"stdout","time":18.672124514,"data":"  Downloaded icu_locale v2.4.0\n"}
+,{"stream_name":"stdout","time":18.675660017,"data":"  Downloaded icu_collator_data v2.4.0\n"}
+,{"stream_name":"stdout","time":18.687564849,"data":"  Downloaded iana-time-zone v0.1.65\n"}
+,{"stream_name":"stdout","time":18.691679958,"data":"  Downloaded http v1.5.0\n"}
+,{"stream_name":"stdout","time":18.696537276,"data":"  Downloaded hmac v0.12.1\n"}
+,{"stream_name":"stdout","time":18.699027704,"data":"  Downloaded hi_sparse_bitset v0.10.0\n"}
+,{"stream_name":"stdout","time":18.704834828,"data":"  Downloaded hi_sparse_bitset v0.9.0\n"}
+,{"stream_name":"stdout","time":18.710699992,"data":"  Downloaded cubek-matmul v0.3.1\n"}
+,{"stream_name":"stdout","time":18.746906227,"data":"  Downloaded cubecl-core v0.11.4\n"}
+,{"stream_name":"stdout","time":18.763865266,"data":"  Downloaded inflections v1.1.1\n"}
+,{"stream_name":"stdout","time":18.765335151,"data":"  Downloaded idna_adapter v1.2.2\n"}
+,{"stream_name":"stdout","time":18.766563765,"data":"  Downloaded ident_case v1.0.1\n"}
+,{"stream_name":"stdout","time":18.767711701,"data":"  Downloaded icu_provider v2.4.0\n"}
+,{"stream_name":"stdout","time":18.771076471,"data":"  Downloaded icu_normalizer_data v2.4.0\n"}
+,{"stream_name":"stdout","time":18.773998120999998,"data":"  Downloaded icu_collections v2.4.0\n"}
+,{"stream_name":"stdout","time":18.785039913,"data":"  Downloaded httparse v1.10.1\n"}
+,{"stream_name":"stdout","time":18.78849453,"data":"  Downloaded home v0.5.12\n"}
+,{"stream_name":"stdout","time":18.789812732,"data":"  Downloaded hex v0.4.3\n"}
+,{"stream_name":"stdout","time":18.791899759,"data":"  Downloaded hashbrown v0.17.1\n"}
+,{"stream_name":"stdout","time":18.798913891,"data":"  Downloaded hashbrown v0.16.1\n"}
+,{"stream_name":"stdout","time":18.806037363,"data":"  Downloaded hashbrown v0.15.5\n"}
+,{"stream_name":"stdout","time":18.812403935,"data":"  Downloaded hashbrown v0.13.2\n"}
+,{"stream_name":"stdout","time":18.817438452,"data":"  Downloaded half v2.7.1\n"}
+,{"stream_name":"stdout","time":18.820964563,"data":"  Downloaded gpu-allocator v0.28.0\n"}
+,{"stream_name":"stdout","time":18.824675553,"data":"  Downloaded glow v0.17.0\n"}
+,{"stream_name":"stdout","time":18.834186182,"data":"  Downloaded glob v0.3.4\n"}
+,{"stream_name":"stdout","time":18.836254521,"data":"  Downloaded gimli v0.34.0\n"}
+,{"stream_name":"stdout","time":18.849337089,"data":"  Downloaded gif v0.14.2\n"}
+,{"stream_name":"stdout","time":18.851554789,"data":"  Downloaded ghash v0.5.1\n"}
+,{"stream_name":"stdout","time":18.853469384,"data":"  Downloaded getrandom v0.4.3\n"}
+,{"stream_name":"stdout","time":18.859368455,"data":"  Downloaded getrandom v0.3.4\n"}
+,{"stream_name":"stdout","time":18.865130817,"data":"  Downloaded getrandom v0.2.17\n"}
+,{"stream_name":"stdout","time":18.869943638,"data":"  Downloaded generic-array v0.14.7\n"}
+,{"stream_name":"stdout","time":18.872047645,"data":"  Downloaded genawaiter-macro v0.99.1\n"}
+,{"stream_name":"stdout","time":18.872949803,"data":"  Downloaded gemm-f32 v0.19.0\n"}
+,{"stream_name":"stdout","time":18.874295388,"data":"  Downloaded gemm-f16 v0.19.0\n"}
+,{"stream_name":"stdout","time":18.875835577,"data":"  Downloaded gemm-common v0.19.0\n"}
+,{"stream_name":"stdout","time":18.878337346,"data":"  Downloaded gemm-c64 v0.19.0\n"}
+,{"stream_name":"stdout","time":18.879696594,"data":"  Downloaded flate2 v1.1.11\n"}
+,{"stream_name":"stdout","time":18.887590938,"data":"  Downloaded derive_more-impl v2.1.1\n"}
+,{"stream_name":"stdout","time":18.895458617,"data":"  Downloaded darling_core v0.24.1\n"}
+,{"stream_name":"stdout","time":18.904191119,"data":"  Downloaded darling_core v0.20.11\n"}
+,{"stream_name":"stdout","time":18.914904663,"data":"  Downloaded cubek-reduce v0.3.1\n"}
+,{"stream_name":"stdout","time":18.928085525,"data":"  Downloaded cubek-convolution v0.3.1\n"}
+,{"stream_name":"stdout","time":18.940734336,"data":"  Downloaded cubek-attention v0.3.1\n"}
+,{"stream_name":"stdout","time":18.952919894,"data":"  Downloaded cubecl-wgpu v0.11.4\n"}
+,{"stream_name":"stdout","time":18.961012958,"data":"  Downloaded cubecl-std v0.11.4\n"}
+,{"stream_name":"stdout","time":18.969268428,"data":"  Downloaded cubecl-server v0.11.4\n"}
+,{"stream_name":"stdout","time":18.978759612,"data":"  Downloaded cubecl-runtime v0.11.4\n"}
+,{"stream_name":"stdout","time":18.991570707,"data":"  Downloaded cubecl-opt v0.11.4\n"}
+,{"stream_name":"stdout","time":18.996872857,"data":"  Downloaded cubecl-llvm v0.11.4\n"}
+,{"stream_name":"stdout","time":19.006122467,"data":"  Downloaded cubecl-ir v0.11.4\n"}
+,{"stream_name":"stdout","time":19.013750872,"data":"  Downloaded cubecl-hip v0.11.4\n"}
+,{"stream_name":"stdout","time":19.01732295,"data":"  Downloaded cubecl-environment v0.11.4\n"}
+,{"stream_name":"stdout","time":19.025217737,"data":"  Downloaded cubecl-cuda v0.11.4\n"}
+,{"stream_name":"stdout","time":19.029135329,"data":"  Downloaded cubecl-cpp v0.11.4\n"}
+,{"stream_name":"stdout","time":19.037156094,"data":"  Downloaded cubecl-common v0.11.4\n"}
+,{"stream_name":"stdout","time":19.042188717,"data":"  Downloaded combine v4.6.9\n"}
+,{"stream_name":"stdout","time":19.053443391,"data":"  Downloaded clap_builder v4.6.7\n"}
+,{"stream_name":"stdout","time":19.061743079,"data":"  Downloaded bzip2-sys v0.1.13+1.0.8\n"}
+,{"stream_name":"stdout","time":19.076692961,"data":"  Downloaded ash v0.38.0+1.3.281\n"}
+,{"stream_name":"stdout","time":19.096581173,"data":"  Downloaded futures-util v0.3.34\n"}
+,{"stream_name":"stdout","time":19.113115405,"data":"  Downloaded futures-task v0.3.34\n"}
+,{"stream_name":"stdout","time":19.114666801,"data":"  Downloaded futures-lite v2.6.1\n"}
+,{"stream_name":"stdout","time":19.117017629,"data":"  Downloaded float8 v0.7.0\n"}
+,{"stream_name":"stdout","time":19.119188404,"data":"  Downloaded fallible-iterator v0.3.0\n"}
+,{"stream_name":"stdout","time":19.120826956,"data":"  Downloaded exr v1.74.3\n"}
+,{"stream_name":"stdout","time":19.135563622,"data":"  Downloaded derive_more v2.1.1\n"}
+,{"stream_name":"stdout","time":19.157121788,"data":"  Downloaded darling_core v0.21.3\n"}
+,{"stream_name":"stdout","time":19.164201104,"data":"  Downloaded darling v0.24.1\n"}
+,{"stream_name":"stdout","time":19.172353219,"data":"  Downloaded darling v0.21.3\n"}
+,{"stream_name":"stdout","time":19.178858554,"data":"  Downloaded cubek-std v0.3.1\n"}
+,{"stream_name":"stdout","time":19.183444061,"data":"  Downloaded cubek-random v0.3.1\n"}
+,{"stream_name":"stdout","time":19.186773321,"data":"  Downloaded cubek-pool v0.3.1\n"}
+,{"stream_name":"stdout","time":19.192328231,"data":"  Downloaded cubek-interpolate v0.3.1\n"}
+,{"stream_name":"stdout","time":19.204930934,"data":"  Downloaded cubek-fft v0.3.1\n"}
+,{"stream_name":"stdout","time":19.208591748,"data":"  Downloaded cubek v0.3.1\n"}
+,{"stream_name":"stdout","time":19.210620321,"data":"  Downloaded cubecl-spirv v0.11.4\n"}
+,{"stream_name":"stdout","time":19.214144841,"data":"  Downloaded cubecl-metal v0.11.4\n"}
+,{"stream_name":"stdout","time":19.217080528,"data":"  Downloaded cubecl-macros v0.11.4\n"}
+,{"stream_name":"stdout","time":19.222502796,"data":"  Downloaded cubecl-cpu v0.11.4\n"}
+,{"stream_name":"stdout","time":19.226918736000002,"data":"  Downloaded cubecl v0.11.4\n"}
+,{"stream_name":"stdout","time":19.229388045,"data":"  Downloaded crossbeam-channel v0.5.17\n"}
+,{"stream_name":"stdout","time":19.234658361,"data":"  Downloaded convert_case v0.11.0\n"}
+,{"stream_name":"stdout","time":19.237033874,"data":"  Downloaded convert_case v0.10.0\n"}
+,{"stream_name":"stdout","time":19.239217807,"data":"  Downloaded colored v3.1.1\n"}
+,{"stream_name":"stdout","time":19.24259282,"data":"  Downloaded codespan-reporting v0.13.1\n"}
+,{"stream_name":"stdout","time":19.251892499,"data":"  Downloaded chrono v0.4.45\n"}
+,{"stream_name":"stdout","time":19.260708768,"data":"  Downloaded burn-tensor v0.22.1\n"}
+,{"stream_name":"stdout","time":19.276963058,"data":"  Downloaded burn-nn v0.22.1\n"}
+,{"stream_name":"stdout","time":19.288959823,"data":"  Downloaded burn-fusion v0.22.1\n"}
+,{"stream_name":"stdout","time":19.297810914,"data":"  Downloaded burn-flex v0.22.1\n"}
+,{"stream_name":"stdout","time":19.307489373,"data":"  Downloaded branches v0.4.6\n"}
+,{"stream_name":"stdout","time":19.310929255,"data":"  Downloaded bindgen v0.69.5\n"}
+,{"stream_name":"stdout","time":19.319459768,"data":"  Downloaded av-scenechange v0.14.1\n"}
+,{"stream_name":"stdout","time":19.334755604,"data":"  Downloaded aho-corasick v1.1.5\n"}
+,{"stream_name":"stdout","time":19.342042227,"data":"  Downloaded gemm-f64 v0.19.0\n"}
+,{"stream_name":"stdout","time":19.343493516,"data":"  Downloaded gemm-c32 v0.19.0\n"}
+,{"stream_name":"stdout","time":19.353822484,"data":"  Downloaded gemm v0.19.0\n"}
+,{"stream_name":"stdout","time":19.355780687,"data":"  Downloaded futures-io v0.3.34\n"}
+,{"stream_name":"stdout","time":19.356915978,"data":"  Downloaded futures-core v0.3.34\n"}
+,{"stream_name":"stdout","time":19.358610031,"data":"  Downloaded form_urlencoded v1.2.2\n"}
+,{"stream_name":"stdout","time":19.359625855,"data":"  Downloaded foldhash v0.2.0\n"}
+,{"stream_name":"stdout","time":19.361237788,"data":"  Downloaded foldhash v0.1.5\n"}
+,{"stream_name":"stdout","time":19.362864719,"data":"  Downloaded fnv v1.0.7\n"}
+,{"stream_name":"stdout","time":19.364018973,"data":"  Downloaded float4 v0.2.0\n"}
+,{"stream_name":"stdout","time":19.365806348,"data":"  Downloaded etcetera v0.11.0\n"}
+,{"stream_name":"stdout","time":19.367893868,"data":"  Downloaded equator v0.4.2\n"}
+,{"stream_name":"stdout","time":19.369779504,"data":"  Downloaded env_logger v0.11.11\n"}
+,{"stream_name":"stdout","time":19.372779667,"data":"  Downloaded enumset_derive v0.15.1\n"}
+,{"stream_name":"stdout","time":19.374388358,"data":"  Downloaded enumset v1.1.15\n"}
+,{"stream_name":"stdout","time":19.376556478,"data":"  Downloaded either v1.19.0\n"}
+,{"stream_name":"stdout","time":19.378518502,"data":"  Downloaded dyn-stack v0.13.2\n"}
+,{"stream_name":"stdout","time":19.380343844,"data":"  Downloaded digest v0.10.7\n"}
+,{"stream_name":"stdout","time":19.38266901,"data":"  Downloaded deranged v0.5.9\n"}
+,{"stream_name":"stdout","time":19.384526938,"data":"  Downloaded data-encoding v2.11.1\n"}
+,{"stream_name":"stdout","time":19.385933248,"data":"  Downloaded darling v0.20.11\n"}
+,{"stream_name":"stdout","time":19.392624567,"data":"  Downloaded cubecl-zspace v0.11.4\n"}
+,{"stream_name":"stdout","time":19.395478613,"data":"  Downloaded cubecl-monitoring v0.11.4\n"}
+,{"stream_name":"stdout","time":19.398483174,"data":"  Downloaded constcat v0.6.1\n"}
+,{"stream_name":"stdout","time":19.399603549,"data":"  Downloaded constant_time_eq v0.1.5\n"}
+,{"stream_name":"stdout","time":19.40078387,"data":"  Downloaded const_fn v0.4.12\n"}
+,{"stream_name":"stdout","time":19.402550284,"data":"  Downloaded const-random v0.1.18\n"}
+,{"stream_name":"stdout","time":19.403890813,"data":"  Downloaded colorchoice v1.0.5\n"}
+,{"stream_name":"stdout","time":19.405104435,"data":"  Downloaded cc v1.11.2\n"}
+,{"stream_name":"stdout","time":19.410883878,"data":"  Downloaded burn-vision v0.22.1\n"}
+,{"stream_name":"stdout","time":19.426689543,"data":"  Downloaded burn-store v0.22.1\n"}
+,{"stream_name":"stdout","time":19.433529362,"data":"  Downloaded burn-std v0.22.1\n"}
+,{"stream_name":"stdout","time":19.438467963,"data":"  Downloaded burn-optim v0.22.1\n"}
+,{"stream_name":"stdout","time":19.444364474,"data":"  Downloaded burn-ndarray v0.22.1\n"}
+,{"stream_name":"stdout","time":19.457114118,"data":"  Downloaded burn-cubecl-fusion v0.22.1\n"}
+,{"stream_name":"stdout","time":19.465257279,"data":"  Downloaded burn-cubecl v0.22.1\n"}
+,{"stream_name":"stdout","time":19.478315577,"data":"  Downloaded burn-core v0.22.1\n"}
+,{"stream_name":"stdout","time":19.484979098,"data":"  Downloaded burn-backend v0.22.1\n"}
+,{"stream_name":"stdout","time":19.490878668,"data":"  Downloaded burn-autodiff v0.22.1\n"}
+,{"stream_name":"stdout","time":19.495646105,"data":"  Downloaded burn v0.22.1\n"}
+,{"stream_name":"stdout","time":19.499042446,"data":"  Downloaded bumpalo v3.20.4\n"}
+,{"stream_name":"stdout","time":19.502630719,"data":"  Downloaded bon-macros v3.10.3\n"}
+,{"stream_name":"stdout","time":19.511260182,"data":"  Downloaded bigdecimal v0.4.11\n"}
+,{"stream_name":"stdout","time":19.521001678,"data":"  Downloaded base64 v0.23.1\n"}
+,{"stream_name":"stdout","time":19.526027721,"data":"  Downloaded base64 v0.22.1\n"}
+,{"stream_name":"stdout","time":19.530910379,"data":"  Downloaded backtrace v0.3.77\n"}
+,{"stream_name":"stdout","time":19.537211746,"data":"  Downloaded arc-swap v1.9.5\n"}
+,{"stream_name":"stdout","time":19.542578043,"data":"  Downloaded allocator-api2 v0.4.0\n"}
+,{"stream_name":"stdout","time":19.545893073,"data":"  Downloaded aes-gcm v0.10.3\n"}
+,{"stream_name":"stdout","time":19.55014687,"data":"  Downloaded aegis v0.9.21\n"}
+,{"stream_name":"stdout","time":19.568905252,"data":"  Downloaded find-msvc-tools v0.1.15\n"}
+,{"stream_name":"stdout","time":19.571210281,"data":"  Downloaded errno v0.3.15\n"}
+,{"stream_name":"stdout","time":19.573041529,"data":"  Downloaded equivalent v1.0.3\n"}
+,{"stream_name":"stdout","time":19.575779892,"data":"  Downloaded env_filter v2.0.0\n"}
+,{"stream_name":"stdout","time":19.577482151,"data":"  Downloaded embassy-futures v0.1.2\n"}
+,{"stream_name":"stdout","time":19.578832414,"data":"  Downloaded dyn-stack-macros v0.1.3\n"}
+,{"stream_name":"stdout","time":19.579850572,"data":"  Downloaded downcast-rs v2.0.2\n"}
+,{"stream_name":"stdout","time":19.581480309,"data":"  Downloaded document-features v0.2.12\n"}
+,{"stream_name":"stdout","time":19.583099732,"data":"  Downloaded dlib v0.5.3\n"}
+,{"stream_name":"stdout","time":19.584313427,"data":"  Downloaded displaydoc v0.2.7\n"}
+,{"stream_name":"stdout","time":19.586830381,"data":"  Downloaded dirs-sys v0.5.0\n"}
+,{"stream_name":"stdout","time":19.588235873,"data":"  Downloaded derive-new v0.7.0\n"}
+,{"stream_name":"stdout","time":19.589425117,"data":"  Downloaded darling_macro v0.24.1\n"}
+,{"stream_name":"stdout","time":19.590283377,"data":"  Downloaded darling_macro v0.20.11\n"}
+,{"stream_name":"stdout","time":19.591121593,"data":"  Downloaded cubek-quant v0.3.1\n"}
+,{"stream_name":"stdout","time":19.594134113,"data":"  Downloaded crc32fast v1.5.5\n"}
+,{"stream_name":"stdout","time":19.597226106,"data":"  Downloaded const-random-macro v0.1.16\n"}
+,{"stream_name":"stdout","time":19.598145134,"data":"  Downloaded bytes v1.12.2\n"}
+,{"stream_name":"stdout","time":19.603311858,"data":"  Downloaded burn-tch v0.22.1\n"}
+,{"stream_name":"stdout","time":19.606932059000002,"data":"  Downloaded burn-signal v0.22.1\n"}
+,{"stream_name":"stdout","time":19.611739547,"data":"  Downloaded burn-rocm v0.22.1\n"}
+,{"stream_name":"stdout","time":19.616154706,"data":"  Downloaded burn-linalg v0.22.1\n"}
+,{"stream_name":"stdout","time":19.620911749,"data":"  Downloaded burn-ir v0.22.1\n"}
+,{"stream_name":"stdout","time":19.623692012,"data":"  Downloaded burn-dispatch v0.22.1\n"}
+,{"stream_name":"stdout","time":19.6273895,"data":"  Downloaded bon v3.10.3\n"}
+,{"stream_name":"stdout","time":19.638735285,"data":"  Downloaded bitstream-io v4.10.0\n"}
+,{"stream_name":"stdout","time":19.64249808,"data":"  Downloaded bitflags v2.13.2\n"}
+,{"stream_name":"stdout","time":19.648391223,"data":"  Downloaded awint_macro_internals v0.19.0\n"}
+,{"stream_name":"stdout","time":19.650748028,"data":"  Downloaded awint_ext v0.19.0\n"}
+,{"stream_name":"stdout","time":19.653593001,"data":"  Downloaded awint_core v0.19.0\n"}
+,{"stream_name":"stdout","time":19.657082031,"data":"  Downloaded awint v0.19.0\n"}
+,{"stream_name":"stdout","time":19.658477245,"data":"  Downloaded av1-grain v0.2.5\n"}
+,{"stream_name":"stdout","time":19.662229276,"data":"  Downloaded allocator-api2 v0.2.21\n"}
+,{"stream_name":"stdout","time":19.665693275,"data":"  Downloaded fdeflate v0.3.7\n"}
+,{"stream_name":"stdout","time":19.667977304,"data":"  Downloaded fax v0.2.7\n"}
+,{"stream_name":"stdout","time":19.670393562,"data":"  Downloaded fastrand v2.5.0\n"}
+,{"stream_name":"stdout","time":19.683410327,"data":"  Downloaded fastbloom v0.14.1\n"}
+,{"stream_name":"stdout","time":19.685319342,"data":"  Downloaded event-listener v5.4.2\n"}
+,{"stream_name":"stdout","time":19.687753293,"data":"  Downloaded equator-macro v0.4.2\n"}
+,{"stream_name":"stdout","time":19.689241074999998,"data":"  Downloaded dyn-clone v1.0.20\n"}
+,{"stream_name":"stdout","time":19.691744492,"data":"  Downloaded dirs v6.0.0\n"}
+,{"stream_name":"stdout","time":19.6966173,"data":"  Downloaded darling_macro v0.21.3\n"}
+,{"stream_name":"stdout","time":19.697561649,"data":"  Downloaded cubecl-macros-internal v0.11.4\n"}
+,{"stream_name":"stdout","time":19.699536927,"data":"  Downloaded ctr v0.9.2\n"}
+,{"stream_name":"stdout","time":19.708836709,"data":"  Downloaded crossbeam-utils v0.8.23\n"}
+,{"stream_name":"stdout","time":19.71416188,"data":"  Downloaded crossbeam-epoch v0.9.21\n"}
+,{"stream_name":"stdout","time":19.717510615,"data":"  Downloaded crossbeam-deque v0.8.8\n"}
+,{"stream_name":"stdout","time":19.719485958,"data":"  Downloaded critical-section v1.2.0\n"}
+,{"stream_name":"stdout","time":19.721523259,"data":"  Downloaded crc32c v0.6.9\n"}
+,{"stream_name":"stdout","time":19.723703851,"data":"  Downloaded cpufeatures v0.2.17\n"}
+,{"stream_name":"stdout","time":19.726857047,"data":"  Downloaded color_quant v1.1.0\n"}
+,{"stream_name":"stdout","time":19.728234245,"data":"  Downloaded clang-sys v1.9.1\n"}
+,{"stream_name":"stdout","time":19.731473012,"data":"  Downloaded chacha20 v0.10.2\n"}
+,{"stream_name":"stdout","time":19.734491117,"data":"  Downloaded bytemuck v1.25.2\n"}
+,{"stream_name":"stdout","time":19.741636706,"data":"  Downloaded burn-wgpu v0.22.1\n"}
+,{"stream_name":"stdout","time":19.743490004,"data":"  Downloaded burn-cuda v0.22.1\n"}
+,{"stream_name":"stdout","time":19.745199488,"data":"  Downloaded burn-cpu v0.22.1\n"}
+,{"stream_name":"stdout","time":19.746902261,"data":"  Downloaded burn-backend-extension v0.22.1\n"}
+,{"stream_name":"stdout","time":19.749100764,"data":"  Downloaded built v0.8.1\n"}
+,{"stream_name":"stdout","time":19.755042265,"data":"  Downloaded base64ct v1.8.3\n"}
+,{"stream_name":"stdout","time":19.758513813,"data":"  Downloaded awint_dag v0.19.0\n"}
+,{"stream_name":"stdout","time":19.761209501,"data":"  Downloaded arrayvec v0.7.8\n"}
+,{"stream_name":"stdout","time":19.763836466,"data":"  Downloaded ahash v0.8.12\n"}
+,{"stream_name":"stdout","time":19.76955942,"data":"  Downloaded ciborium v0.2.2\n"}
+,{"stream_name":"stdout","time":19.772586992,"data":"  Downloaded bzip2 v0.4.4\n"}
+,{"stream_name":"stdout","time":19.774808606,"data":"  Downloaded burn-pack v0.22.1\n"}
+,{"stream_name":"stdout","time":19.77880441,"data":"  Downloaded bit-vec v0.9.1\n"}
+,{"stream_name":"stdout","time":19.781002416,"data":"  Downloaded bit-set v0.10.0\n"}
+,{"stream_name":"stdout","time":19.782854274,"data":"  Downloaded avif-serialize v0.8.9\n"}
+,{"stream_name":"stdout","time":19.784335845,"data":"  Downloaded aristo-macros v0.4.1\n"}
+,{"stream_name":"stdout","time":19.79391824,"data":"  Downloaded anyhow v1.0.104\n"}
+,{"stream_name":"stdout","time":19.802370963,"data":"  Downloaded anstyle v1.0.14\n"}
+,{"stream_name":"stdout","time":19.804205788,"data":"  Downloaded bytemuck_derive v1.12.1\n"}
+,{"stream_name":"stdout","time":19.806067682,"data":"  Downloaded burn-derive v0.22.1\n"}
+,{"stream_name":"stdout","time":19.809106405,"data":"  Downloaded awint_internals v0.19.0\n"}
+,{"stream_name":"stdout","time":19.810698975,"data":"  Downloaded autocfg v1.5.1\n"}
+,{"stream_name":"stdout","time":19.814178903,"data":"  Downloaded as-slice v0.2.1\n"}
+,{"stream_name":"stdout","time":19.815345165,"data":"  Downloaded anstream v1.0.0\n"}
+,{"stream_name":"stdout","time":19.817910309,"data":"  Downloaded crypto-common v0.1.7\n"}
+,{"stream_name":"stdout","time":19.819338229,"data":"  Downloaded crunchy v0.2.4\n"}
+,{"stream_name":"stdout","time":19.820476511,"data":"  Downloaded byteorder v1.5.0\n"}
+,{"stream_name":"stdout","time":19.827920523,"data":"  Downloaded burn-einsum v0.22.1\n"}
+,{"stream_name":"stdout","time":19.829016859,"data":"  Downloaded anstyle-query v1.1.5\n"}
+,{"stream_name":"stdout","time":19.830474697,"data":"  Downloaded clap v4.6.7\n"}
+,{"stream_name":"stdout","time":19.845092709,"data":"  Downloaded bit_field v0.10.4\n"}
+,{"stream_name":"stdout","time":19.846886337,"data":"  Downloaded arg_enum_proc_macro v0.3.4\n"}
+,{"stream_name":"stdout","time":19.850820371,"data":"  Downloaded aligned v0.4.3\n"}
+,{"stream_name":"stdout","time":19.852266921000002,"data":"  Downloaded ciborium-io v0.2.2\n"}
+,{"stream_name":"stdout","time":19.853345168,"data":"  Downloaded byteorder-lite v0.1.0\n"}
+,{"stream_name":"stdout","time":19.854819331,"data":"  Downloaded buildid v1.1.0\n"}
+,{"stream_name":"stdout","time":19.856695415,"data":"  Downloaded async-channel v2.5.0\n"}
+,{"stream_name":"stdout","time":19.858467207,"data":"  Downloaded aristo v0.4.1\n"}
+,{"stream_name":"stdout","time":19.859973681,"data":"  Downloaded anstyle-parse v1.0.0\n"}
+,{"stream_name":"stdout","time":19.863535979,"data":"  Downloaded aligned-vec v0.6.4\n"}
+,{"stream_name":"stdout","time":19.865039862,"data":"  Downloaded block-buffer v0.10.4\n"}
+,{"stream_name":"stdout","time":20.128633372,"data":"   Compiling proc-macro2 v1.0.107\n"}
+,{"stream_name":"stdout","time":20.128684919,"data":"   Compiling unicode-ident v1.0.27\n"}
+,{"stream_name":"stdout","time":20.128842737,"data":"   Compiling quote v1.0.47\n"}
+,{"stream_name":"stdout","time":20.129115407,"data":"   Compiling libc v0.2.191\n"}
+,{"stream_name":"stdout","time":20.223045193,"data":"   Compiling serde_core v1.0.229\n"}
+,{"stream_name":"stdout","time":20.367559455,"data":"   Compiling cfg-if v1.0.5\n"}
+,{"stream_name":"stdout","time":20.412516377,"data":"   Compiling version_check v0.9.5\n"}
+,{"stream_name":"stdout","time":20.541764256,"data":"   Compiling serde v1.0.229\n"}
+,{"stream_name":"stdout","time":20.783433448,"data":"   Compiling memchr v2.8.3\n"}
+,{"stream_name":"stdout","time":21.864458995,"data":"   Compiling syn v3.0.10\n"}
+,{"stream_name":"stdout","time":22.65310677,"data":"   Compiling syn v2.0.119\n"}
+,{"stream_name":"stdout","time":22.804288665,"data":"   Compiling zmij v1.0.23\n"}
+,{"stream_name":"stdout","time":24.345562877,"data":"   Compiling libm v0.2.16\n"}
+,{"stream_name":"stdout","time":24.43167065,"data":"   Compiling zerocopy v0.8.63\n"}
+,{"stream_name":"stdout","time":24.566352618,"data":"   Compiling autocfg v1.5.1\n"}
+,{"stream_name":"stdout","time":25.018597472,"data":"   Compiling num-traits v0.2.19\n"}
+,{"stream_name":"stdout","time":25.22375625,"data":"   Compiling ident_case v1.0.1\n"}
+,{"stream_name":"stdout","time":25.32254397,"data":"   Compiling const_fn v0.4.12\n"}
+,{"stream_name":"stdout","time":25.583317941,"data":"   Compiling cfg_aliases v0.2.2\n"}
+,{"stream_name":"stdout","time":25.650390484,"data":"   Compiling jobserver v0.1.35\n"}
+,{"stream_name":"stdout","time":26.026878571,"data":"   Compiling generic-array v0.14.7\n"}
+,{"stream_name":"stdout","time":26.14102936,"data":"   Compiling find-msvc-tools v0.1.15\n"}
+,{"stream_name":"stdout","time":27.934593986,"data":"   Compiling shlex v2.0.1\n"}
+,{"stream_name":"stdout","time":28.078534448,"data":"   Compiling cc v1.11.2\n"}
+,{"stream_name":"stdout","time":28.593553218,"data":"   Compiling unicode-segmentation v1.13.3\n"}
+,{"stream_name":"stdout","time":29.109396801,"data":"   Compiling bytes v1.12.2\n"}
+,{"stream_name":"stdout","time":29.354648045,"data":"   Compiling serde_derive v1.0.229\n"}
+,{"stream_name":"stdout","time":29.926100467,"data":"   Compiling zerocopy-derive v0.8.63\n"}
+,{"stream_name":"stdout","time":29.934491181,"data":"   Compiling bytemuck_derive v1.12.1\n"}
+,{"stream_name":"stdout","time":30.752491507,"data":"   Compiling equivalent v1.0.3\n"}
+,{"stream_name":"stdout","time":30.811506255,"data":"   Compiling serde_json v1.0.154\n"}
+,{"stream_name":"stdout","time":30.97552573,"data":"   Compiling allocator-api2 v0.2.21\n"}
+,{"stream_name":"stdout","time":31.513389898,"data":"   Compiling bytemuck v1.25.2\n"}
+,{"stream_name":"stdout","time":31.862087682,"data":"   Compiling strsim v0.11.1\n"}
+,{"stream_name":"stdout","time":31.97391741,"data":"   Compiling itoa v1.0.19\n"}
+,{"stream_name":"stdout","time":32.957859668,"data":"   Compiling pin-project-lite v0.2.17\n"}
+,{"stream_name":"stdout","time":33.051525645,"data":"   Compiling scopeguard v1.2.0\n"}
+,{"stream_name":"stdout","time":33.108598237,"data":"   Compiling portable-atomic v1.15.0\n"}
+,{"stream_name":"stdout","time":33.512863299,"data":"   Compiling fnv v1.0.7\n"}
+,{"stream_name":"stdout","time":33.572391071,"data":"   Compiling foldhash v0.2.0\n"}
+,{"stream_name":"stdout","time":33.840316192,"data":"   Compiling lock_api v0.4.14\n"}
+,{"stream_name":"stdout","time":34.093643394,"data":"   Compiling parking v2.2.1\n"}
+,{"stream_name":"stdout","time":34.247538817,"data":"   Compiling rand_core v0.10.1\n"}
+,{"stream_name":"stdout","time":34.383254675,"data":"   Compiling smallvec v1.16.5\n"}
+,{"stream_name":"stdout","time":34.440606493,"data":"   Compiling crossbeam-utils v0.8.23\n"}
+,{"stream_name":"stdout","time":34.633414143,"data":"   Compiling getrandom v0.4.3\n"}
+,{"stream_name":"stdout","time":34.801755887,"data":"   Compiling hashbrown v0.17.1\n"}
+,{"stream_name":"stdout","time":35.222534107,"data":"   Compiling convert_case v0.10.0\n"}
+,{"stream_name":"stdout","time":35.510576577,"data":"   Compiling awint_internals v0.19.0\n"}
+,{"stream_name":"stdout","time":35.639259669,"data":"   Compiling futures-core v0.3.34\n"}
+,{"stream_name":"stdout","time":35.744044945,"data":"   Compiling parking_lot_core v0.9.12\n"}
+,{"stream_name":"stdout","time":35.877439824,"data":"   Compiling cpufeatures v0.3.1\n"}
+,{"stream_name":"stdout","time":35.926707333,"data":"   Compiling log v0.4.35\n"}
+,{"stream_name":"stdout","time":36.148202954,"data":"   Compiling unicode-xid v0.2.6\n"}
+,{"stream_name":"stdout","time":36.225855194,"data":"   Compiling derive_more-impl v2.1.1\n"}
+,{"stream_name":"stdout","time":36.326030308,"data":"   Compiling chacha20 v0.10.2\n"}
+,{"stream_name":"stdout","time":36.638645001,"data":"   Compiling awint_core v0.19.0\n"}
+,{"stream_name":"stdout","time":37.076492342,"data":"   Compiling spin v0.12.3\n"}
+,{"stream_name":"stdout","time":37.379783637,"data":"   Compiling event-listener v5.4.2\n"}
+,{"stream_name":"stdout","time":37.673210265,"data":"   Compiling derive-new v0.7.0\n"}
+,{"stream_name":"stdout","time":37.939217975,"data":"   Compiling ciborium-io v0.2.2\n"}
+,{"stream_name":"stdout","time":37.993071032,"data":"   Compiling winnow v1.0.5\n"}
+,{"stream_name":"stdout","time":38.374385098,"data":"   Compiling thiserror v2.0.21\n"}
+,{"stream_name":"stdout","time":38.550504065,"data":"   Compiling half v2.7.1\n"}
+,{"stream_name":"stdout","time":38.60623821,"data":"   Compiling recasting v0.2.3\n"}
+,{"stream_name":"stdout","time":38.624130405,"data":"   Compiling adler2 v2.0.1\n"}
+,{"stream_name":"stdout","time":38.739702901,"data":"   Compiling gimli v0.34.0\n"}
+,{"stream_name":"stdout","time":38.752235466,"data":"   Compiling triple_arena v0.15.1\n"}
+,{"stream_name":"stdout","time":39.508221517,"data":"   Compiling ciborium-ll v0.2.2\n"}
+,{"stream_name":"stdout","time":39.776862841,"data":"   Compiling miniz_oxide v0.9.1\n"}
+,{"stream_name":"stdout","time":40.010474007,"data":"   Compiling toml_parser v1.1.5+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":41.418512262,"data":"   Compiling concurrent-queue v2.5.0\n"}
+,{"stream_name":"stdout","time":41.644083982,"data":"   Compiling event-listener-strategy v0.5.4\n"}
+,{"stream_name":"stdout","time":41.753872184,"data":"   Compiling rand v0.10.4\n"}
+,{"stream_name":"stdout","time":42.131281701,"data":"   Compiling awint_ext v0.19.0\n"}
+,{"stream_name":"stdout","time":42.584523387,"data":"   Compiling addr2line v0.27.1\n"}
+,{"stream_name":"stdout","time":42.886729044,"data":"   Compiling safe_arch v1.2.0\n"}
+,{"stream_name":"stdout","time":43.10150854,"data":"   Compiling thiserror-impl v2.0.21\n"}
+,{"stream_name":"stdout","time":43.127413828,"data":"   Compiling cubecl-environment v0.11.4\n"}
+,{"stream_name":"stdout","time":43.37663384,"data":"   Compiling toml_datetime v1.1.3+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":43.892987477,"data":"   Compiling serde_spanned v1.1.3\n"}
+,{"stream_name":"stdout","time":43.940278658,"data":"   Compiling object v0.40.0\n"}
+,{"stream_name":"stdout","time":44.008846888,"data":"   Compiling aho-corasick v1.1.5\n"}
+,{"stream_name":"stdout","time":44.152483246,"data":"   Compiling toml_writer v1.2.0+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":44.433177571,"data":"   Compiling regex-syntax v0.8.12\n"}
+,{"stream_name":"stdout","time":44.61475449,"data":"   Compiling rustc-hash v2.1.3\n"}
+,{"stream_name":"stdout","time":44.856661707,"data":"   Compiling linkme-impl v0.3.38\n"}
+,{"stream_name":"stdout","time":45.023526821,"data":"   Compiling rustc-demangle v0.1.28\n"}
+,{"stream_name":"stdout","time":46.483556471,"data":"   Compiling futures-io v0.3.34\n"}
+,{"stream_name":"stdout","time":46.639435818,"data":"   Compiling fastrand v2.5.0\n"}
+,{"stream_name":"stdout","time":50.16986971,"data":"   Compiling regex-automata v0.4.19\n"}
+,{"stream_name":"stdout","time":53.239851751,"data":"   Compiling backtrace v0.3.77\n"}
+,{"stream_name":"stdout","time":53.510840641,"data":"   Compiling futures-lite v2.6.1\n"}
+,{"stream_name":"stdout","time":56.141291923,"data":"   Compiling toml v1.2.1+spec-1.1.0\n"}
+,{"stream_name":"stdout","time":56.399978,"data":"   Compiling wide v1.7.1\n"}
+,{"stream_name":"stdout","time":60.66719962,"data":"   Compiling parking_lot v0.12.5\n"}
+,{"stream_name":"stdout","time":62.073673306,"data":"   Compiling awint_macro_internals v0.19.0\n"}
+,{"stream_name":"stdout","time":63.463551504,"data":"   Compiling async-channel v2.5.0\n"}
+,{"stream_name":"stdout","time":63.692010909,"data":"   Compiling ciborium v0.2.2\n"}
+,{"stream_name":"stdout","time":64.761675173,"data":"   Compiling darling_core v0.24.1\n"}
+,{"stream_name":"stdout","time":64.954801622,"data":"   Compiling cubecl-common v0.11.4\n"}
+,{"stream_name":"stdout","time":65.130365943,"data":"   Compiling serde_bytes v0.11.19\n"}
+,{"stream_name":"stdout","time":65.385508944,"data":"   Compiling bitflags v2.13.2\n"}
+,{"stream_name":"stdout","time":65.872120087,"data":"   Compiling nom v8.0.0\n"}
+,{"stream_name":"stdout","time":68.790177948,"data":"   Compiling slotmap v1.1.1\n"}
+,{"stream_name":"stdout","time":68.901960689,"data":"   Compiling etcetera v0.11.0\n"}
+,{"stream_name":"stdout","time":69.026525805,"data":"   Compiling embassy-futures v0.1.2\n"}
+,{"stream_name":"stdout","time":69.06231944,"data":"   Compiling linkme v0.3.38\n"}
+,{"stream_name":"stdout","time":69.224384245,"data":"   Compiling oneshot v0.2.1\n"}
+,{"stream_name":"stdout","time":69.248539705,"data":"   Compiling web-time v1.1.0\n"}
+,{"stream_name":"stdout","time":69.346855629,"data":"   Compiling rustc_apfloat v0.2.3+llvm-462a31f5a5ab\n"}
+,{"stream_name":"stdout","time":69.523666466,"data":"   Compiling darling_macro v0.24.1\n"}
+,{"stream_name":"stdout","time":70.150336698,"data":"   Compiling indexmap v2.14.2\n"}
+,{"stream_name":"stdout","time":70.791745668,"data":"   Compiling tynm v0.2.0\n"}
+,{"stream_name":"stdout","time":71.111736947,"data":"   Compiling awint_macros v0.19.0\n"}
+,{"stream_name":"stdout","time":72.166549717,"data":"   Compiling regex v1.13.2\n"}
+,{"stream_name":"stdout","time":72.20751876,"data":"   Compiling derive_more v2.1.1\n"}
+,{"stream_name":"stdout","time":72.371859756,"data":"   Compiling float8 v0.7.0\n"}
+,{"stream_name":"stdout","time":72.938361746,"data":"   Compiling darling_core v0.20.11\n"}
+,{"stream_name":"stdout","time":74.250581986,"data":"   Compiling combine v4.6.9\n"}
+,{"stream_name":"stdout","time":74.763118961,"data":"   Compiling ring v0.17.14\n"}
+,{"stream_name":"stdout","time":75.231097867,"data":"   Compiling convert_case v0.11.0\n"}
+,{"stream_name":"stdout","time":75.572834303,"data":"   Compiling arrayvec v0.7.8\n"}
+,{"stream_name":"stdout","time":75.838569326,"data":"   Compiling xxhash-rust v0.8.21\n"}
+,{"stream_name":"stdout","time":76.361424406,"data":"   Compiling anyhow v1.0.104\n"}
+,{"stream_name":"stdout","time":76.522508376,"data":"   Compiling float4 v0.2.0\n"}
+,{"stream_name":"stdout","time":76.746504847,"data":"   Compiling darling_macro v0.20.11\n"}
+,{"stream_name":"stdout","time":76.845680374,"data":"   Compiling utf8-chars v3.0.7\n"}
+,{"stream_name":"stdout","time":77.085241923,"data":"   Compiling awint v0.19.0\n"}
+,{"stream_name":"stdout","time":77.853189104,"data":"   Compiling darling v0.24.1\n"}
+,{"stream_name":"stdout","time":78.724771658,"data":"   Compiling hi_sparse_bitset v0.10.0\n"}
+,{"stream_name":"stdout","time":80.092621193,"data":"   Compiling pliron-derive v0.19.0\n"}
+,{"stream_name":"stdout","time":80.536056035,"data":"   Compiling foldhash v0.1.5\n"}
+,{"stream_name":"stdout","time":80.773485208,"data":"   Compiling typenum v1.20.1\n"}
+,{"stream_name":"stdout","time":81.607201589,"data":"   Compiling thiserror v1.0.69\n"}
+,{"stream_name":"stdout","time":81.801004956,"data":"   Compiling mutants v0.0.3\n"}
+,{"stream_name":"stdout","time":81.843554517,"data":"   Compiling zeroize v1.9.2\n"}
+,{"stream_name":"stdout","time":82.004020976,"data":"   Compiling once_vec v0.4.0\n"}
+,{"stream_name":"stdout","time":82.049855065,"data":"   Compiling inflections v1.1.1\n"}
+,{"stream_name":"stdout","time":82.078281379,"data":"   Compiling downcast-rs v2.0.2\n"}
+,{"stream_name":"stdout","time":82.136367974,"data":"   Compiling dyn-clone v1.0.20\n"}
+,{"stream_name":"stdout","time":82.236334611,"data":"   Compiling rustls-pki-types v1.16.0\n"}
+,{"stream_name":"stdout","time":82.281899572,"data":"   Compiling unsynn v0.3.0\n"}
+,{"stream_name":"stdout","time":83.55524261,"data":"   Compiling hashbrown v0.15.5\n"}
+,{"stream_name":"stdout","time":83.577644793,"data":"   Compiling darling v0.20.11\n"}
+,{"stream_name":"stdout","time":83.983613423,"data":"   Compiling getrandom v0.2.17\n"}
+,{"stream_name":"stdout","time":84.132187149,"data":"   Compiling thiserror-impl v1.0.69\n"}
+,{"stream_name":"stdout","time":84.261960482,"data":"   Compiling libloading v0.8.9\n"}
+,{"stream_name":"stdout","time":84.480531902,"data":"   Compiling pkg-config v0.3.34\n"}
+,{"stream_name":"stdout","time":84.55824029,"data":"   Compiling rustix v1.1.6\n"}
+,{"stream_name":"stdout","time":84.822465151,"data":"   Compiling httparse v1.10.1\n"}
+,{"stream_name":"stdout","time":85.068524425,"data":"   Compiling untrusted v0.9.0\n"}
+,{"stream_name":"stdout","time":85.108905063,"data":"   Compiling either v1.19.0\n"}
+,{"stream_name":"stdout","time":85.345332408,"data":"   Compiling itertools v0.15.0\n"}
+,{"stream_name":"stdout","time":85.631293908,"data":"   Compiling liblzma-sys v0.4.9\n"}
+,{"stream_name":"stdout","time":86.017505478,"data":"   Compiling internment v0.8.6\n"}
+,{"stream_name":"stdout","time":86.191484839,"data":"   Compiling nvml-wrapper-sys v0.10.0\n"}
+,{"stream_name":"stdout","time":86.615727913,"data":"   Compiling pliron v0.19.0\n"}
+,{"stream_name":"stdout","time":87.705476056,"data":"   Compiling wrapcenum-derive v0.4.1\n"}
+,{"stream_name":"stdout","time":88.077534808,"data":"   Compiling variadics_please v2.0.0\n"}
+,{"stream_name":"stdout","time":88.120515669,"data":"   Compiling cubecl-macros-internal v0.11.4\n"}
+,{"stream_name":"stdout","time":88.575284971,"data":"   Compiling cubecl-zspace v0.11.4\n"}
+,{"stream_name":"stdout","time":89.052052858,"data":"   Compiling num-complex v0.4.6\n"}
+,{"stream_name":"stdout","time":89.599998349,"data":"   Compiling num-integer v0.1.47\n"}
+,{"stream_name":"stdout","time":89.810705124,"data":"   Compiling cubecl-monitoring v0.11.4\n"}
+,{"stream_name":"stdout","time":90.058047229,"data":"   Compiling prettyplease v0.3.0\n"}
+,{"stream_name":"stdout","time":90.170289595,"data":"   Compiling bumpalo v3.20.4\n"}
+,{"stream_name":"stdout","time":90.193449593,"data":"   Compiling float-ord v0.3.2\n"}
+,{"stream_name":"stdout","time":90.264190513,"data":"   Compiling rustls v0.23.46\n"}
+,{"stream_name":"stdout","time":90.346022285,"data":"   Compiling static_assertions v1.1.0\n"}
+,{"stream_name":"stdout","time":90.513523306,"data":"   Compiling filetime v0.2.30\n"}
+,{"stream_name":"stdout","time":90.52192499,"data":"   Compiling linux-raw-sys v0.12.1\n"}
+,{"stream_name":"stdout","time":90.602401069,"data":"   Compiling nvml-wrapper v0.13.0\n"}
+,{"stream_name":"stdout","time":90.800566948,"data":"   Compiling rustls-webpki v0.103.17\n"}
+,{"stream_name":"stdout","time":96.680583388,"data":"   Compiling http v1.5.0\n"}
+,{"stream_name":"stdout","time":97.902523198,"data":"   Compiling block-buffer v0.10.4\n"}
+,{"stream_name":"stdout","time":97.997514945,"data":"   Compiling crypto-common v0.1.7\n"}
+,{"stream_name":"stdout","time":98.0819927,"data":"   Compiling cubecl-runtime v0.11.4\n"}
+,{"stream_name":"stdout","time":98.400135523,"data":"   Compiling base64 v0.23.1\n"}
+,{"stream_name":"stdout","time":98.62896403,"data":"   Compiling once_cell v1.21.4\n"}
+,{"stream_name":"stdout","time":98.782708281,"data":"   Compiling option-ext v0.2.0\n"}
+,{"stream_name":"stdout","time":98.832373497,"data":"   Compiling futures-task v0.3.34\n"}
+,{"stream_name":"stdout","time":98.964668153,"data":"   Compiling slab v0.4.12\n"}
+,{"stream_name":"stdout","time":99.134149754,"data":"   Compiling subtle v2.6.1\n"}
+,{"stream_name":"stdout","time":99.158392545,"data":"   Compiling futures-util v0.3.34\n"}
+,{"stream_name":"stdout","time":101.862841785,"data":"   Compiling cubecl-ir v0.11.4\n"}
+,{"stream_name":"stdout","time":103.584250038,"data":"   Compiling dirs-sys v0.5.0\n"}
+,{"stream_name":"stdout","time":103.803486155,"data":"   Compiling ureq-proto v0.7.1\n"}
+,{"stream_name":"stdout","time":105.146620735,"data":"   Compiling digest v0.10.7\n"}
+,{"stream_name":"stdout","time":105.322382762,"data":"   Compiling xattr v1.7.0\n"}
+,{"stream_name":"stdout","time":105.755768926,"data":"   Compiling webpki-roots v1.0.12\n"}
+,{"stream_name":"stdout","time":105.841766659,"data":"   Compiling buildid v1.1.0\n"}
+,{"stream_name":"stdout","time":106.010756956,"data":"   Compiling cpufeatures v0.2.17\n"}
+,{"stream_name":"stdout","time":106.054490505,"data":"   Compiling paste v1.0.15\n"}
+,{"stream_name":"stdout","time":106.219005501,"data":"   Compiling same-file v1.0.6\n"}
+,{"stream_name":"stdout","time":106.319312708,"data":"   Compiling cubecl-macros v0.11.4\n"}
+,{"stream_name":"stdout","time":106.598858668,"data":"   Compiling percent-encoding v2.3.2\n"}
+,{"stream_name":"stdout","time":106.662403672,"data":"   Compiling utf8-zero v0.8.1\n"}
+,{"stream_name":"stdout","time":106.793515541,"data":"   Compiling ureq v3.5.2\n"}
+,{"stream_name":"stdout","time":108.540157766,"data":"   Compiling walkdir v2.5.0\n"}
+,{"stream_name":"stdout","time":108.847969474,"data":"   Compiling sha2 v0.10.9\n"}
+,{"stream_name":"stdout","time":108.946938753,"data":"   Compiling tar v0.4.46\n"}
+,{"stream_name":"stdout","time":110.006570051,"data":"   Compiling liblzma v0.4.9\n"}
+,{"stream_name":"stdout","time":110.203939194,"data":"   Compiling dirs v6.0.0\n"}
+,{"stream_name":"stdout","time":111.116611348,"data":"   Compiling lazy_static v1.5.1\n"}
+,{"stream_name":"stdout","time":111.166065928,"data":"   Compiling regex-lite v0.1.9\n"}
+,{"stream_name":"stdout","time":111.802612789,"data":"   Compiling constcat v0.6.1\n"}
+,{"stream_name":"stdout","time":111.849984093,"data":"   Compiling semver v1.0.28\n"}
+,{"stream_name":"stdout","time":112.17802491,"data":"   Compiling cudarc v0.19.10\n"}
+,{"stream_name":"stdout","time":112.186223946,"data":"   Compiling llvm-sys v231.0.2\n"}
+,{"stream_name":"stdout","time":112.41460686,"data":"   Compiling tracel-llvm-bundler v23.1.0-4\n"}
+,{"stream_name":"stdout","time":119.948850997,"data":"   Compiling hi_sparse_bitset v0.9.0\n"}
+,{"stream_name":"stdout","time":120.865534217,"data":"   Compiling libloading v0.9.1\n"}
+,{"stream_name":"stdout","time":128.511754612,"data":"   Compiling cubecl-server v0.11.4\n"}
+,{"stream_name":"stdout","time":128.766873998,"data":"   Compiling cubecl-cpp v0.11.4\n"}
+,{"stream_name":"stdout","time":128.894494698,"data":"   Compiling pliron-llvm v0.19.0\n"}
+,{"stream_name":"stdout","time":179.181608097,"data":"   Compiling cubecl-core v0.11.4\n"}
+,{"stream_name":"stdout","time":185.343493679,"data":"   Compiling cubecl-llvm v0.11.4\n"}
+,{"stream_name":"stdout","time":189.822621272,"data":"   Compiling cubecl-opt v0.11.4\n"}
+,{"stream_name":"stdout","time":220.765016977,"data":"   Compiling cubecl-cuda v0.11.4\n"}
+,{"stream_name":"stdout","time":220.90933721,"data":"   Compiling sanitize-filename v0.6.0\n"}
+,{"stream_name":"stdout","time":259.257574382,"data":"   Compiling cubecl v0.11.4\n"}
+,{"stream_name":"stdout","time":266.685283427,"data":"   Compiling cubecl-std v0.11.4\n"}
+,{"stream_name":"stdout","time":280.021525829,"data":"   Compiling cubek-tile v0.3.1\n"}
+,{"stream_name":"stdout","time":282.76853238,"data":"   Compiling ahash v0.8.12\n"}
+,{"stream_name":"stdout","time":283.242365508,"data":"   Compiling darling_core v0.21.3\n"}
+,{"stream_name":"stdout","time":286.925224933,"data":"   Compiling darling_macro v0.21.3\n"}
+,{"stream_name":"stdout","time":287.189848137,"data":"   Compiling darling v0.21.3\n"}
+,{"stream_name":"stdout","time":287.241469257,"data":"   Compiling rand_distr v0.6.0\n"}
+,{"stream_name":"stdout","time":287.840713951,"data":"   Compiling hashbrown v0.16.1\n"}
+,{"stream_name":"stdout","time":288.854213657,"data":"   Compiling data-encoding v2.11.1\n"}
+,{"stream_name":"stdout","time":293.34370451,"data":"   Compiling uuid v1.29.3\n"}
+,{"stream_name":"stdout","time":293.931421432,"data":"   Compiling burn-std v0.22.1\n"}
+,{"stream_name":"stdout","time":301.222406074,"data":"   Compiling cubek-std v0.3.1\n"}
+,{"stream_name":"stdout","time":303.059448872,"data":"   Compiling enumset_derive v0.15.1\n"}
+,{"stream_name":"stdout","time":304.473633124,"data":"   Compiling enumset v1.1.15\n"}
+,{"stream_name":"stdout","time":304.989501526,"data":"   Compiling cubek-matmul v0.3.1\n"}
+,{"stream_name":"stdout","time":319.121288571,"data":"   Compiling burn-backend v0.22.1\n"}
+,{"stream_name":"stdout","time":320.01815719,"data":"   Compiling cubek-reduce v0.3.1\n"}
+,{"stream_name":"stdout","time":323.254523193,"data":"   Compiling cubek-random v0.3.1\n"}
+,{"stream_name":"stdout","time":335.368373076,"data":"   Compiling cubek-attention v0.3.1\n"}
+,{"stream_name":"stdout","time":336.389387317,"data":"   Compiling cubek-convolution v0.3.1\n"}
+,{"stream_name":"stdout","time":367.266867951,"data":"   Compiling cubek-quant v0.3.1\n"}
+,{"stream_name":"stdout","time":370.816236188,"data":"   Compiling cubek-interpolate v0.3.1\n"}
+,{"stream_name":"stdout","time":397.683143531,"data":"   Compiling hashbrown v0.13.2\n"}
+,{"stream_name":"stdout","time":398.421928239,"data":"   Compiling cubek-pool v0.3.1\n"}
+,{"stream_name":"stdout","time":425.380644078,"data":"   Compiling cubek v0.3.1\n"}
+,{"stream_name":"stdout","time":425.457656445,"data":"   Compiling text_placeholder v0.5.1\n"}
+,{"stream_name":"stdout","time":425.89294665,"data":"   Compiling burn-ir v0.22.1\n"}
+,{"stream_name":"stdout","time":432.109504455,"data":"   Compiling burn-cubecl v0.22.1\n"}
+,{"stream_name":"stdout","time":433.764585859,"data":"   Compiling burn-dispatch v0.22.1\n"}
+,{"stream_name":"stdout","time":433.881289299,"data":"   Compiling burn-autodiff v0.22.1\n"}
+,{"stream_name":"stdout","time":440.941134804,"data":"   Compiling burn-backend-extension v0.22.1\n"}
+,{"stream_name":"stdout","time":441.652915855,"data":"   Compiling burn-einsum v0.22.1\n"}
+,{"stream_name":"stdout","time":442.036547306,"data":"   Compiling burn-derive v0.22.1\n"}
+,{"stream_name":"stdout","time":446.108532078,"data":"   Compiling colored v3.1.1\n"}
+,{"stream_name":"stdout","time":446.977982785,"data":"   Compiling byteorder v1.5.0\n"}
+,{"stream_name":"stdout","time":447.276917912,"data":"   Compiling burn-pack v0.22.1\n"}
+,{"stream_name":"stdout","time":453.404826141,"data":"   Compiling rand_core v0.6.4\n"}
+,{"stream_name":"stdout","time":453.863116789,"data":"   Compiling burn-cuda v0.22.1\n"}
+,{"stream_name":"stdout","time":453.943241868,"data":"   Compiling ppv-lite86 v0.2.21\n"}
+,{"stream_name":"stdout","time":454.405928143,"data":"   Compiling iana-time-zone v0.1.65\n"}
+,{"stream_name":"stdout","time":457.602443588,"data":"   Compiling chrono v0.4.45\n"}
+,{"stream_name":"stdout","time":463.22751905,"data":"   Compiling burn-tensor v0.22.1\n"}
+,{"stream_name":"stdout","time":481.059410896,"data":"   Compiling burn-core v0.22.1\n"}
+,{"stream_name":"stdout","time":486.221648777,"data":"   Compiling rand_chacha v0.3.1\n"}
+,{"stream_name":"stdout","time":487.10035516,"data":"   Compiling utf8parse v0.2.2\n"}
+,{"stream_name":"stdout","time":487.166538802,"data":"   Compiling anstyle-parse v1.0.0\n"}
+,{"stream_name":"stdout","time":487.36525276,"data":"   Compiling rand v0.8.8\n"}
+,{"stream_name":"stdout","time":488.456420248,"data":"   Compiling moonshot-core v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-core)\n"}
+,{"stream_name":"stdout","time":489.386986656,"data":"   Compiling colorchoice v1.0.5\n"}
+,{"stream_name":"stdout","time":489.454883566,"data":"   Compiling anstyle-query v1.1.5\n"}
+,{"stream_name":"stdout","time":489.523260184,"data":"   Compiling anstyle v1.0.14\n"}
+,{"stream_name":"stdout","time":489.793972416,"data":"   Compiling is_terminal_polyfill v1.70.2\n"}
+,{"stream_name":"stdout","time":489.849710569,"data":"   Compiling anstream v1.0.0\n"}
+,{"stream_name":"stdout","time":490.514392365,"data":"   Compiling burn-linalg v0.22.1\n"}
+,{"stream_name":"stdout","time":494.284349886,"data":"   Compiling clap_lex v1.1.1\n"}
+,{"stream_name":"stdout","time":495.75238057,"data":"   Compiling heck v0.5.0\n"}
+,{"stream_name":"stdout","time":495.947207637,"data":"   Compiling clap_derive v4.6.7\n"}
+,{"stream_name":"stdout","time":498.391144317,"data":"   Compiling clap_builder v4.6.7\n"}
+,{"stream_name":"stdout","time":515.131652089,"data":"   Compiling burn-nn v0.22.1\n"}
+,{"stream_name":"stdout","time":554.493261146,"data":"   Compiling moonshot-model v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-model)\n"}
+,{"stream_name":"stdout","time":563.010642747,"data":"   Compiling moonshot-oracle v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-oracle)\n"}
+,{"stream_name":"stdout","time":564.095425036,"data":"   Compiling burn-optim v0.22.1\n"}
+,{"stream_name":"stdout","time":587.814692551,"data":"   Compiling burn v0.22.1\n"}
+,{"stream_name":"stdout","time":587.903491546,"data":"   Compiling moonshot-editor v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-editor)\n"}
+,{"stream_name":"stdout","time":591.86651385,"data":"   Compiling clap v4.6.7\n"}
+,{"stream_name":"stdout","time":619.376402419,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-runner)\n"}
+,{"stream_name":"stdout","time":623.011752773,"data":"    Finished `release` profile [optimized] target(s) in 10m 08s\n"}
+,{"stream_name":"stdout","time":623.183844189,"data":"     Running unittests src/bin/cycle6_verify.rs (target/release/deps/cycle6_verify-0314fa06b7cf4cfc)\n"}
+,{"stream_name":"stdout","time":623.186054087,"data":"\n"}
+,{"stream_name":"stdout","time":623.18608477,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":623.186090575,"data":"\n"}
+,{"stream_name":"stdout","time":623.186095383,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":623.186100059,"data":"\n"}
+,{"stream_name":"stdout","time":623.18636944,"data":"     Running unittests src/bin/lab.rs (target/release/deps/lab-29fd97f522be4d31)\n"}
+,{"stream_name":"stdout","time":623.193135493,"data":"\n"}
+,{"stream_name":"stdout","time":623.193157004,"data":"running 0 tests\n"}
+,{"stream_name":"stdout","time":623.193162793,"data":"\n"}
+,{"stream_name":"stdout","time":623.193167662,"data":"test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s\n"}
+,{"stream_name":"stdout","time":623.193172665,"data":"\n"}
+,{"stream_name":"stdout","time":623.193717317,"data":"     Running unittests src/main.rs (target/release/deps/moonshot-47ccf3c1e3d617dc)\n"}
+,{"stream_name":"stdout","time":623.200200962,"data":"\n"}
+,{"stream_name":"stdout","time":623.200217457,"data":"running 2 tests\n"}
+,{"stream_name":"stdout","time":623.203561169,"data":"test cycle6::tests::cheap_copy_control_is_not_an_oracle_for_complex_composition ... ok\n"}
+,{"stream_name":"stdout","time":623.209349334,"data":"test cycle6::tests::frozen_oracle_and_composition_partitions_are_nontrivial ... ok\n"}
+,{"stream_name":"stdout","time":623.209363808,"data":"\n"}
+,{"stream_name":"stdout","time":623.209369521,"data":"test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.01s\n"}
+,{"stream_name":"stdout","time":623.209478897,"data":"\n"}
+,{"stream_name":"stdout","time":623.234041316,"data":"[RUN] cargo build --locked --release -p moonshot-runner --features cuda\n"}
+,{"stream_name":"stdout","time":623.753787856,"data":"   Compiling tracel-llvm-bundler v23.1.0-4\n"}
+,{"stream_name":"stdout","time":623.9915224,"data":"   Compiling cubecl-llvm v0.11.4\n"}
+,{"stream_name":"stdout","time":629.71013615,"data":"   Compiling cubecl-cuda v0.11.4\n"}
+,{"stream_name":"stdout","time":632.435232943,"data":"   Compiling cubecl v0.11.4\n"}
+,{"stream_name":"stdout","time":637.85494184,"data":"   Compiling cubek-tile v0.3.1\n"}
+,{"stream_name":"stdout","time":640.178689261,"data":"   Compiling burn-backend v0.22.1\n"}
+,{"stream_name":"stdout","time":657.5738792,"data":"   Compiling cubek-std v0.3.1\n"}
+,{"stream_name":"stdout","time":657.931400574,"data":"   Compiling cubek-interpolate v0.3.1\n"}
+,{"stream_name":"stdout","time":659.31453794,"data":"   Compiling cubek-matmul v0.3.1\n"}
+,{"stream_name":"stdout","time":664.73158906,"data":"   Compiling cubek-reduce v0.3.1\n"}
+,{"stream_name":"stdout","time":675.831925396,"data":"   Compiling cubek-random v0.3.1\n"}
+,{"stream_name":"stdout","time":688.226436437,"data":"   Compiling cubek-attention v0.3.1\n"}
+,{"stream_name":"stdout","time":713.197013858,"data":"   Compiling cubek-convolution v0.3.1\n"}
+,{"stream_name":"stdout","time":716.572587685,"data":"   Compiling cubek-quant v0.3.1\n"}
+,{"stream_name":"stdout","time":720.357602249,"data":"   Compiling cubek-pool v0.3.1\n"}
+,{"stream_name":"stdout","time":752.733013712,"data":"   Compiling cubek v0.3.1\n"}
+,{"stream_name":"stdout","time":752.807492719,"data":"   Compiling burn-ir v0.22.1\n"}
+,{"stream_name":"stdout","time":760.779838426,"data":"   Compiling burn-cubecl v0.22.1\n"}
+,{"stream_name":"stdout","time":775.36580554,"data":"   Compiling burn-autodiff v0.22.1\n"}
+,{"stream_name":"stdout","time":782.389780976,"data":"   Compiling burn-dispatch v0.22.1\n"}
+,{"stream_name":"stdout","time":791.697765204,"data":"   Compiling burn-cuda v0.22.1\n"}
+,{"stream_name":"stdout","time":880.087190417,"data":"   Compiling burn-tensor v0.22.1\n"}
+,{"stream_name":"stdout","time":897.883633786,"data":"   Compiling burn-core v0.22.1\n"}
+,{"stream_name":"stdout","time":903.123135918,"data":"   Compiling burn-linalg v0.22.1\n"}
+,{"stream_name":"stdout","time":906.929543497,"data":"   Compiling burn-nn v0.22.1\n"}
+,{"stream_name":"stdout","time":922.272498117,"data":"   Compiling burn-optim v0.22.1\n"}
+,{"stream_name":"stdout","time":946.523565189,"data":"   Compiling burn v0.22.1\n"}
+,{"stream_name":"stdout","time":948.309436856,"data":"   Compiling moonshot-runner v0.1.0 (/tmp/moonshot-cycle6-source/crates/moonshot-runner)\n"}
+,{"stream_name":"stdout","time":964.386115825,"data":"    Finished `release` profile [optimized] target(s) in 5m 41s\n"}
+,{"stream_name":"stdout","time":964.457722976,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/moonshot cycle5-gpu-smoke --device cuda --seed 42 --git-commit 770dc8f66d173539c253f6c2bd251ff0a175ac64 --output-dir /kaggle/working/results/cycle6-20261118T073934Z/smoke\n"}
+,{"stream_name":"stdout","time":972.636242344,"data":"CUDA seed=42 update=1/8 loss=4.209561\n"}
+,{"stream_name":"stdout","time":972.852357841,"data":"CUDA seed=42 update=8/8 loss=0.015263\n"}
+,{"stream_name":"stdout","time":973.06133934,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/moonshot cycle6-research --device cuda --seed 6109 --git-commit 770dc8f66d173539c253f6c2bd251ff0a175ac64 --output-dir /kaggle/working/results/cycle6-20261118T073934Z/seed_6109\n"}
+,{"stream_name":"stdout","time":973.10712572,"data":"[C6] seed=6109 isolated-task capability ceiling\n"}
+,{"stream_name":"stdout","time":985.151497091,"data":"cycle6 steps=100/400 loss=0.000562\n"}
+,{"stream_name":"stdout","time":986.415782564,"data":"cycle6 steps=200/400 loss=0.000337\n"}
+,{"stream_name":"stdout","time":987.680268853,"data":"cycle6 steps=300/400 loss=0.000238\n"}
+,{"stream_name":"stdout","time":988.95006954,"data":"cycle6 steps=400/400 loss=0.000186\n"}
+,{"stream_name":"stdout","time":995.397021012,"data":"[C6] seed=6109 isolated task=0 heldout=1.000\n"}
+,{"stream_name":"stdout","time":996.775164323,"data":"cycle6 steps=100/400 loss=0.000522\n"}
+,{"stream_name":"stdout","time":998.056032436,"data":"cycle6 steps=200/400 loss=0.000309\n"}
+,{"stream_name":"stdout","time":999.366481722,"data":"cycle6 steps=300/400 loss=0.000225\n"}
+,{"stream_name":"stdout","time":1000.652823526,"data":"cycle6 steps=400/400 loss=0.000171\n"}
+,{"stream_name":"stdout","time":1000.871052016,"data":"[C6] seed=6109 isolated task=1 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1002.315889222,"data":"cycle6 steps=100/400 loss=0.000587\n"}
+,{"stream_name":"stdout","time":1003.589702519,"data":"cycle6 steps=200/400 loss=0.000332\n"}
+,{"stream_name":"stdout","time":1004.845173781,"data":"cycle6 steps=300/400 loss=0.000232\n"}
+,{"stream_name":"stdout","time":1006.125769354,"data":"cycle6 steps=400/400 loss=0.000180\n"}
+,{"stream_name":"stdout","time":1006.325970194,"data":"[C6] seed=6109 isolated task=2 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1007.61861422,"data":"cycle6 steps=100/400 loss=0.000707\n"}
+,{"stream_name":"stdout","time":1008.879722649,"data":"cycle6 steps=200/400 loss=0.000403\n"}
+,{"stream_name":"stdout","time":1010.155743667,"data":"cycle6 steps=300/400 loss=0.000278\n"}
+,{"stream_name":"stdout","time":1011.457052856,"data":"cycle6 steps=400/400 loss=0.000208\n"}
+,{"stream_name":"stdout","time":1011.660241185,"data":"[C6] seed=6109 isolated task=3 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1012.923207648,"data":"cycle6 steps=100/400 loss=0.000610\n"}
+,{"stream_name":"stdout","time":1014.204621495,"data":"cycle6 steps=200/400 loss=0.000351\n"}
+,{"stream_name":"stdout","time":1015.474884397,"data":"cycle6 steps=300/400 loss=0.000250\n"}
+,{"stream_name":"stdout","time":1016.771087103,"data":"cycle6 steps=400/400 loss=0.000192\n"}
+,{"stream_name":"stdout","time":1016.969039209,"data":"[C6] seed=6109 isolated task=4 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1018.255831505,"data":"cycle6 steps=100/400 loss=1.530362\n"}
+,{"stream_name":"stdout","time":1019.5289357,"data":"cycle6 steps=200/400 loss=0.029729\n"}
+,{"stream_name":"stdout","time":1020.815091452,"data":"cycle6 steps=300/400 loss=0.000660\n"}
+,{"stream_name":"stdout","time":1022.120311046,"data":"cycle6 steps=400/400 loss=0.000412\n"}
+,{"stream_name":"stdout","time":1022.324437453,"data":"[C6] seed=6109 isolated task=5 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1023.585182668,"data":"cycle6 steps=100/400 loss=1.550267\n"}
+,{"stream_name":"stdout","time":1024.849589427,"data":"cycle6 steps=200/400 loss=0.550408\n"}
+,{"stream_name":"stdout","time":1026.11138937,"data":"cycle6 steps=300/400 loss=0.002591\n"}
+,{"stream_name":"stdout","time":1027.363764435,"data":"cycle6 steps=400/400 loss=0.000600\n"}
+,{"stream_name":"stdout","time":1027.586998767,"data":"[C6] seed=6109 isolated task=6 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1028.856934113,"data":"cycle6 steps=100/400 loss=0.000924\n"}
+,{"stream_name":"stdout","time":1030.146138611,"data":"cycle6 steps=200/400 loss=0.000447\n"}
+,{"stream_name":"stdout","time":1031.451183506,"data":"cycle6 steps=300/400 loss=0.000321\n"}
+,{"stream_name":"stdout","time":1032.729910226,"data":"cycle6 steps=400/400 loss=0.000234\n"}
+,{"stream_name":"stdout","time":1032.941325277,"data":"[C6] seed=6109 isolated task=7 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1034.225453042,"data":"cycle6 steps=100/400 loss=0.675679\n"}
+,{"stream_name":"stdout","time":1035.482180478,"data":"cycle6 steps=200/400 loss=0.028937\n"}
+,{"stream_name":"stdout","time":1036.750247805,"data":"cycle6 steps=300/400 loss=0.000567\n"}
+,{"stream_name":"stdout","time":1037.997002868,"data":"cycle6 steps=400/400 loss=0.000386\n"}
+,{"stream_name":"stdout","time":1038.209387577,"data":"[C6] seed=6109 isolated task=8 heldout=0.969\n"}
+,{"stream_name":"stdout","time":1039.499497645,"data":"cycle6 steps=100/400 loss=0.404822\n"}
+,{"stream_name":"stdout","time":1040.785087273,"data":"cycle6 steps=200/400 loss=0.002366\n"}
+,{"stream_name":"stdout","time":1042.109168166,"data":"cycle6 steps=300/400 loss=0.000476\n"}
+,{"stream_name":"stdout","time":1043.371980239,"data":"cycle6 steps=400/400 loss=0.000278\n"}
+,{"stream_name":"stdout","time":1043.594911854,"data":"[C6] seed=6109 isolated task=9 heldout=0.969\n"}
+,{"stream_name":"stdout","time":1043.596379966,"data":"[C6] seed=6109 sequential condition=shared\n"}
+,{"stream_name":"stdout","time":1044.90833529,"data":"cycle6 steps=100/400 loss=0.000537\n"}
+,{"stream_name":"stdout","time":1046.17064289,"data":"cycle6 steps=200/400 loss=0.000312\n"}
+,{"stream_name":"stdout","time":1047.460486045,"data":"cycle6 steps=300/400 loss=0.000224\n"}
+,{"stream_name":"stdout","time":1048.734278194,"data":"cycle6 steps=400/400 loss=0.000174\n"}
+,{"stream_name":"stdout","time":1048.763505598,"data":"[C6] seed=6109 shared generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1050.028489391,"data":"cycle6 steps=100/400 loss=0.001231\n"}
+,{"stream_name":"stdout","time":1051.354709414,"data":"cycle6 steps=200/400 loss=0.000406\n"}
+,{"stream_name":"stdout","time":1052.640737055,"data":"cycle6 steps=300/400 loss=0.000265\n"}
+,{"stream_name":"stdout","time":1053.925414531,"data":"cycle6 steps=400/400 loss=0.000190\n"}
+,{"stream_name":"stdout","time":1053.96917474,"data":"[C6] seed=6109 shared generation=2 current=1.000 prev_mean=0.031\n"}
+,{"stream_name":"stdout","time":1055.262313354,"data":"cycle6 steps=100/400 loss=0.544914\n"}
+,{"stream_name":"stdout","time":1056.530109415,"data":"cycle6 steps=200/400 loss=0.001270\n"}
+,{"stream_name":"stdout","time":1057.789501483,"data":"cycle6 steps=300/400 loss=0.000679\n"}
+,{"stream_name":"stdout","time":1059.059146602,"data":"cycle6 steps=400/400 loss=0.000444\n"}
+,{"stream_name":"stdout","time":1059.11868902,"data":"[C6] seed=6109 shared generation=3 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1060.380543206,"data":"cycle6 steps=100/400 loss=0.006429\n"}
+,{"stream_name":"stdout","time":1061.724589258,"data":"cycle6 steps=200/400 loss=0.001415\n"}
+,{"stream_name":"stdout","time":1062.988766143,"data":"cycle6 steps=300/400 loss=0.000680\n"}
+,{"stream_name":"stdout","time":1064.251282841,"data":"cycle6 steps=400/400 loss=0.000450\n"}
+,{"stream_name":"stdout","time":1064.322355554,"data":"[C6] seed=6109 shared generation=4 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1065.601012292,"data":"cycle6 steps=100/400 loss=0.005270\n"}
+,{"stream_name":"stdout","time":1066.871344339,"data":"cycle6 steps=200/400 loss=0.001304\n"}
+,{"stream_name":"stdout","time":1068.123758287,"data":"cycle6 steps=300/400 loss=0.000621\n"}
+,{"stream_name":"stdout","time":1069.40154678,"data":"cycle6 steps=400/400 loss=0.000410\n"}
+,{"stream_name":"stdout","time":1069.48807464,"data":"[C6] seed=6109 shared generation=5 current=1.000 prev_mean=0.074\n"}
+,{"stream_name":"stdout","time":1070.763296417,"data":"cycle6 steps=100/400 loss=1.519922\n"}
+,{"stream_name":"stdout","time":1072.058679171,"data":"cycle6 steps=200/400 loss=0.930052\n"}
+,{"stream_name":"stdout","time":1073.332801973,"data":"cycle6 steps=300/400 loss=0.813037\n"}
+,{"stream_name":"stdout","time":1074.614662917,"data":"cycle6 steps=400/400 loss=0.501318\n"}
+,{"stream_name":"stdout","time":1074.714690012,"data":"[C6] seed=6109 shared generation=6 current=0.031 prev_mean=0.013\n"}
+,{"stream_name":"stdout","time":1075.990864305,"data":"cycle6 steps=100/400 loss=0.734386\n"}
+,{"stream_name":"stdout","time":1077.260809391,"data":"cycle6 steps=200/400 loss=0.188214\n"}
+,{"stream_name":"stdout","time":1078.507210882,"data":"cycle6 steps=300/400 loss=0.103764\n"}
+,{"stream_name":"stdout","time":1079.766259159,"data":"cycle6 steps=400/400 loss=0.005300\n"}
+,{"stream_name":"stdout","time":1079.877812399,"data":"[C6] seed=6109 shared generation=7 current=1.000 prev_mean=0.062\n"}
+,{"stream_name":"stdout","time":1081.205335975,"data":"cycle6 steps=100/400 loss=0.466304\n"}
+,{"stream_name":"stdout","time":1082.460213993,"data":"cycle6 steps=200/400 loss=0.041482\n"}
+,{"stream_name":"stdout","time":1083.727381277,"data":"cycle6 steps=300/400 loss=0.005089\n"}
+,{"stream_name":"stdout","time":1084.973805309,"data":"cycle6 steps=400/400 loss=0.002591\n"}
+,{"stream_name":"stdout","time":1085.098096694,"data":"[C6] seed=6109 shared generation=8 current=0.797 prev_mean=0.038\n"}
+,{"stream_name":"stdout","time":1086.373782663,"data":"cycle6 steps=100/400 loss=0.271800\n"}
+,{"stream_name":"stdout","time":1087.644748495,"data":"cycle6 steps=200/400 loss=0.023355\n"}
+,{"stream_name":"stdout","time":1088.901251072,"data":"cycle6 steps=300/400 loss=0.005711\n"}
+,{"stream_name":"stdout","time":1090.173083209,"data":"cycle6 steps=400/400 loss=0.001289\n"}
+,{"stream_name":"stdout","time":1090.311669701,"data":"[C6] seed=6109 shared generation=9 current=0.969 prev_mean=0.006\n"}
+,{"stream_name":"stdout","time":1091.633867273,"data":"cycle6 steps=100/400 loss=0.537878\n"}
+,{"stream_name":"stdout","time":1092.890966477,"data":"cycle6 steps=200/400 loss=0.318523\n"}
+,{"stream_name":"stdout","time":1094.183574566,"data":"cycle6 steps=300/400 loss=0.272252\n"}
+,{"stream_name":"stdout","time":1095.453097316,"data":"cycle6 steps=400/400 loss=0.053190\n"}
+,{"stream_name":"stdout","time":1095.605784575,"data":"[C6] seed=6109 shared generation=10 current=0.766 prev_mean=0.010\n"}
+,{"stream_name":"stdout","time":1095.941198744,"data":"[C6] seed=6109 sequential condition=uniform\n"}
+,{"stream_name":"stdout","time":1097.22664058,"data":"cycle6 steps=100/400 loss=0.000537\n"}
+,{"stream_name":"stdout","time":1098.518416281,"data":"cycle6 steps=200/400 loss=0.000312\n"}
+,{"stream_name":"stdout","time":1099.816492317,"data":"cycle6 steps=300/400 loss=0.000224\n"}
+,{"stream_name":"stdout","time":1101.139194547,"data":"cycle6 steps=400/400 loss=0.000174\n"}
+,{"stream_name":"stdout","time":1101.168967985,"data":"[C6] seed=6109 uniform generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1103.817041647,"data":"cycle6 steps=100/400 loss=0.012137\n"}
+,{"stream_name":"stdout","time":1105.103730558,"data":"cycle6 steps=200/400 loss=0.001128\n"}
+,{"stream_name":"stdout","time":1106.400853165,"data":"cycle6 steps=300/400 loss=0.000406\n"}
+,{"stream_name":"stdout","time":1107.722947142,"data":"cycle6 steps=400/400 loss=0.000326\n"}
+,{"stream_name":"stdout","time":1107.767264492,"data":"[C6] seed=6109 uniform generation=2 current=1.000 prev_mean=0.938\n"}
+,{"stream_name":"stdout","time":1109.071948046,"data":"cycle6 steps=100/400 loss=0.040960\n"}
+,{"stream_name":"stdout","time":1110.386798587,"data":"cycle6 steps=200/400 loss=0.001254\n"}
+,{"stream_name":"stdout","time":1111.766939006,"data":"cycle6 steps=300/400 loss=0.000619\n"}
+,{"stream_name":"stdout","time":1113.075468189,"data":"cycle6 steps=400/400 loss=0.000336\n"}
+,{"stream_name":"stdout","time":1113.131355058,"data":"[C6] seed=6109 uniform generation=3 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1114.487147024,"data":"cycle6 steps=100/400 loss=0.005215\n"}
+,{"stream_name":"stdout","time":1115.821753045,"data":"cycle6 steps=200/400 loss=0.000855\n"}
+,{"stream_name":"stdout","time":1117.158674161,"data":"cycle6 steps=300/400 loss=0.000519\n"}
+,{"stream_name":"stdout","time":1118.523725562,"data":"cycle6 steps=400/400 loss=0.000311\n"}
+,{"stream_name":"stdout","time":1118.593960135,"data":"[C6] seed=6109 uniform generation=4 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1119.968985403,"data":"cycle6 steps=100/400 loss=0.002925\n"}
+,{"stream_name":"stdout","time":1121.462034665,"data":"cycle6 steps=200/400 loss=0.000446\n"}
+,{"stream_name":"stdout","time":1122.843521158,"data":"cycle6 steps=300/400 loss=0.000261\n"}
+,{"stream_name":"stdout","time":1124.216189856,"data":"cycle6 steps=400/400 loss=0.000196\n"}
+,{"stream_name":"stdout","time":1124.302860015,"data":"[C6] seed=6109 uniform generation=5 current=1.000 prev_mean=0.992\n"}
+,{"stream_name":"stdout","time":1125.704982887,"data":"cycle6 steps=100/400 loss=0.638592\n"}
+,{"stream_name":"stdout","time":1127.106880098,"data":"cycle6 steps=200/400 loss=0.386918\n"}
+,{"stream_name":"stdout","time":1128.511384711,"data":"cycle6 steps=300/400 loss=0.227057\n"}
+,{"stream_name":"stdout","time":1129.900413171,"data":"cycle6 steps=400/400 loss=0.112240\n"}
+,{"stream_name":"stdout","time":1130.001282366,"data":"[C6] seed=6109 uniform generation=6 current=0.469 prev_mean=0.969\n"}
+,{"stream_name":"stdout","time":1131.490759205,"data":"cycle6 steps=100/400 loss=0.236643\n"}
+,{"stream_name":"stdout","time":1132.916281915,"data":"cycle6 steps=200/400 loss=0.077369\n"}
+,{"stream_name":"stdout","time":1134.33976637,"data":"cycle6 steps=300/400 loss=0.028610\n"}
+,{"stream_name":"stdout","time":1135.771709165,"data":"cycle6 steps=400/400 loss=0.032549\n"}
+,{"stream_name":"stdout","time":1135.884542205,"data":"[C6] seed=6109 uniform generation=7 current=0.984 prev_mean=0.966\n"}
+,{"stream_name":"stdout","time":1137.34517447,"data":"cycle6 steps=100/400 loss=0.044656\n"}
+,{"stream_name":"stdout","time":1138.809857033,"data":"cycle6 steps=200/400 loss=0.023877\n"}
+,{"stream_name":"stdout","time":1140.283979114,"data":"cycle6 steps=300/400 loss=0.006097\n"}
+,{"stream_name":"stdout","time":1141.813409361,"data":"cycle6 steps=400/400 loss=0.006917\n"}
+,{"stream_name":"stdout","time":1141.937025621,"data":"[C6] seed=6109 uniform generation=8 current=0.984 prev_mean=0.953\n"}
+,{"stream_name":"stdout","time":1143.435218374,"data":"cycle6 steps=100/400 loss=0.081287\n"}
+,{"stream_name":"stdout","time":1144.909415803,"data":"cycle6 steps=200/400 loss=0.005950\n"}
+,{"stream_name":"stdout","time":1146.361182428,"data":"cycle6 steps=300/400 loss=0.041864\n"}
+,{"stream_name":"stdout","time":1147.846117391,"data":"cycle6 steps=400/400 loss=0.002247\n"}
+,{"stream_name":"stdout","time":1147.982481979,"data":"[C6] seed=6109 uniform generation=9 current=0.953 prev_mean=0.984\n"}
+,{"stream_name":"stdout","time":1149.501005008,"data":"cycle6 steps=100/400 loss=0.128762\n"}
+,{"stream_name":"stdout","time":1151.060487748,"data":"cycle6 steps=200/400 loss=0.034632\n"}
+,{"stream_name":"stdout","time":1152.558817653,"data":"cycle6 steps=300/400 loss=0.034370\n"}
+,{"stream_name":"stdout","time":1154.098143324,"data":"cycle6 steps=400/400 loss=0.040969\n"}
+,{"stream_name":"stdout","time":1154.251012158,"data":"[C6] seed=6109 uniform generation=10 current=0.797 prev_mean=0.887\n"}
+,{"stream_name":"stdout","time":1154.601733311,"data":"[C6] seed=6109 sequential condition=feedback\n"}
+,{"stream_name":"stdout","time":1155.893550614,"data":"cycle6 steps=100/400 loss=0.000537\n"}
+,{"stream_name":"stdout","time":1157.174023349,"data":"cycle6 steps=200/400 loss=0.000312\n"}
+,{"stream_name":"stdout","time":1158.43936134,"data":"cycle6 steps=300/400 loss=0.000224\n"}
+,{"stream_name":"stdout","time":1159.756536076,"data":"cycle6 steps=400/400 loss=0.000174\n"}
+,{"stream_name":"stdout","time":1159.787735423,"data":"[C6] seed=6109 feedback generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1161.148887489,"data":"cycle6 steps=100/400 loss=0.004385\n"}
+,{"stream_name":"stdout","time":1162.440902853,"data":"cycle6 steps=200/400 loss=0.000705\n"}
+,{"stream_name":"stdout","time":1163.73702114,"data":"cycle6 steps=300/400 loss=0.000343\n"}
+,{"stream_name":"stdout","time":1165.031175339,"data":"cycle6 steps=400/400 loss=0.000240\n"}
+,{"stream_name":"stdout","time":1165.077200414,"data":"[C6] seed=6109 feedback generation=2 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1166.399227427,"data":"cycle6 steps=100/400 loss=0.085541\n"}
+,{"stream_name":"stdout","time":1167.728378191,"data":"cycle6 steps=200/400 loss=0.001222\n"}
+,{"stream_name":"stdout","time":1169.054720781,"data":"cycle6 steps=300/400 loss=0.000389\n"}
+,{"stream_name":"stdout","time":1170.370642891,"data":"cycle6 steps=400/400 loss=0.000281\n"}
+,{"stream_name":"stdout","time":1170.430774076,"data":"[C6] seed=6109 feedback generation=3 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1171.835419314,"data":"cycle6 steps=100/400 loss=0.001929\n"}
+,{"stream_name":"stdout","time":1173.219760493,"data":"cycle6 steps=200/400 loss=0.000607\n"}
+,{"stream_name":"stdout","time":1174.560000337,"data":"cycle6 steps=300/400 loss=0.000432\n"}
+,{"stream_name":"stdout","time":1175.907459938,"data":"cycle6 steps=400/400 loss=0.000282\n"}
+,{"stream_name":"stdout","time":1175.978706923,"data":"[C6] seed=6109 feedback generation=4 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1177.359219172,"data":"cycle6 steps=100/400 loss=0.001843\n"}
+,{"stream_name":"stdout","time":1178.718776011,"data":"cycle6 steps=200/400 loss=0.000582\n"}
+,{"stream_name":"stdout","time":1180.099746903,"data":"cycle6 steps=300/400 loss=0.000323\n"}
+,{"stream_name":"stdout","time":1181.626455201,"data":"cycle6 steps=400/400 loss=0.000223\n"}
+,{"stream_name":"stdout","time":1181.710665111,"data":"[C6] seed=6109 feedback generation=5 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1183.121199558,"data":"cycle6 steps=100/400 loss=0.624101\n"}
+,{"stream_name":"stdout","time":1184.52267315,"data":"cycle6 steps=200/400 loss=0.367552\n"}
+,{"stream_name":"stdout","time":1185.926409354,"data":"cycle6 steps=300/400 loss=0.126475\n"}
+,{"stream_name":"stdout","time":1187.332697354,"data":"cycle6 steps=400/400 loss=0.157076\n"}
+,{"stream_name":"stdout","time":1187.433506401,"data":"[C6] seed=6109 feedback generation=6 current=0.688 prev_mean=0.900\n"}
+,{"stream_name":"stdout","time":1188.860576109,"data":"cycle6 steps=100/400 loss=0.105317\n"}
+,{"stream_name":"stdout","time":1190.28641887,"data":"cycle6 steps=200/400 loss=0.058359\n"}
+,{"stream_name":"stdout","time":1191.76991922,"data":"cycle6 steps=300/400 loss=0.081369\n"}
+,{"stream_name":"stdout","time":1193.200625095,"data":"cycle6 steps=400/400 loss=0.059650\n"}
+,{"stream_name":"stdout","time":1193.312912606,"data":"[C6] seed=6109 feedback generation=7 current=0.922 prev_mean=0.896\n"}
+,{"stream_name":"stdout","time":1194.772689856,"data":"cycle6 steps=100/400 loss=0.043043\n"}
+,{"stream_name":"stdout","time":1196.231693979,"data":"cycle6 steps=200/400 loss=0.052041\n"}
+,{"stream_name":"stdout","time":1197.683592814,"data":"cycle6 steps=300/400 loss=0.060152\n"}
+,{"stream_name":"stdout","time":1199.117086303,"data":"cycle6 steps=400/400 loss=0.008712\n"}
+,{"stream_name":"stdout","time":1199.240604838,"data":"[C6] seed=6109 feedback generation=8 current=0.984 prev_mean=0.987\n"}
+,{"stream_name":"stdout","time":1200.741622239,"data":"cycle6 steps=100/400 loss=0.041175\n"}
+,{"stream_name":"stdout","time":1202.2582532,"data":"cycle6 steps=200/400 loss=0.009682\n"}
+,{"stream_name":"stdout","time":1203.765599705,"data":"cycle6 steps=300/400 loss=0.004491\n"}
+,{"stream_name":"stdout","time":1205.251499613,"data":"cycle6 steps=400/400 loss=0.031101\n"}
+,{"stream_name":"stdout","time":1205.393436544,"data":"[C6] seed=6109 feedback generation=9 current=0.984 prev_mean=0.924\n"}
+,{"stream_name":"stdout","time":1206.935364535,"data":"cycle6 steps=100/400 loss=0.039841\n"}
+,{"stream_name":"stdout","time":1208.459105151,"data":"cycle6 steps=200/400 loss=0.015342\n"}
+,{"stream_name":"stdout","time":1209.996051409,"data":"cycle6 steps=300/400 loss=0.019763\n"}
+,{"stream_name":"stdout","time":1211.557818805,"data":"cycle6 steps=400/400 loss=0.017439\n"}
+,{"stream_name":"stdout","time":1211.709506249,"data":"[C6] seed=6109 feedback generation=10 current=0.969 prev_mean=0.951\n"}
+,{"stream_name":"stdout","time":1212.053565283,"data":"[C6] seed=6109 composition pretraining=primitives_only\n"}
+,{"stream_name":"stdout","time":1213.382697529,"data":"cycle6 steps=100/2000 loss=0.882202\n"}
+,{"stream_name":"stdout","time":1214.699079985,"data":"cycle6 steps=200/2000 loss=0.662211\n"}
+,{"stream_name":"stdout","time":1216.008428873,"data":"cycle6 steps=300/2000 loss=0.400573\n"}
+,{"stream_name":"stdout","time":1217.308494871,"data":"cycle6 steps=400/2000 loss=0.219803\n"}
+,{"stream_name":"stdout","time":1218.626376041,"data":"cycle6 steps=500/2000 loss=0.167599\n"}
+,{"stream_name":"stdout","time":1219.925322462,"data":"cycle6 steps=600/2000 loss=0.034408\n"}
+,{"stream_name":"stdout","time":1221.28119969,"data":"cycle6 steps=700/2000 loss=0.034397\n"}
+,{"stream_name":"stdout","time":1222.58940336,"data":"cycle6 steps=800/2000 loss=0.015118\n"}
+,{"stream_name":"stdout","time":1223.892089835,"data":"cycle6 steps=900/2000 loss=0.002415\n"}
+,{"stream_name":"stdout","time":1225.205327929,"data":"cycle6 steps=1000/2000 loss=0.001517\n"}
+,{"stream_name":"stdout","time":1226.503711388,"data":"cycle6 steps=1100/2000 loss=0.000698\n"}
+,{"stream_name":"stdout","time":1227.79101076,"data":"cycle6 steps=1200/2000 loss=0.054258\n"}
+,{"stream_name":"stdout","time":1229.097937851,"data":"cycle6 steps=1300/2000 loss=0.034093\n"}
+,{"stream_name":"stdout","time":1230.408523115,"data":"cycle6 steps=1400/2000 loss=0.003863\n"}
+,{"stream_name":"stdout","time":1231.752159647,"data":"cycle6 steps=1500/2000 loss=0.000471\n"}
+,{"stream_name":"stdout","time":1233.071293817,"data":"cycle6 steps=1600/2000 loss=0.000147\n"}
+,{"stream_name":"stdout","time":1234.414395342,"data":"cycle6 steps=1700/2000 loss=0.000132\n"}
+,{"stream_name":"stdout","time":1235.714727346,"data":"cycle6 steps=1800/2000 loss=0.000120\n"}
+,{"stream_name":"stdout","time":1237.015980786,"data":"cycle6 steps=1900/2000 loss=0.000089\n"}
+,{"stream_name":"stdout","time":1238.328087729,"data":"cycle6 steps=2000/2000 loss=0.000063\n"}
+,{"stream_name":"stdout","time":1239.228741521,"data":"[C6] seed=6109 composition pretraining=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1240.568636777,"data":"cycle6 steps=100/2000 loss=1.409071\n"}
+,{"stream_name":"stdout","time":1241.935476308,"data":"cycle6 steps=200/2000 loss=1.043782\n"}
+,{"stream_name":"stdout","time":1243.244842654,"data":"cycle6 steps=300/2000 loss=0.763379\n"}
+,{"stream_name":"stdout","time":1244.537685157,"data":"cycle6 steps=400/2000 loss=0.687229\n"}
+,{"stream_name":"stdout","time":1245.858482595,"data":"cycle6 steps=500/2000 loss=0.593864\n"}
+,{"stream_name":"stdout","time":1247.153735964,"data":"cycle6 steps=600/2000 loss=0.604834\n"}
+,{"stream_name":"stdout","time":1248.438149292,"data":"cycle6 steps=700/2000 loss=0.444604\n"}
+,{"stream_name":"stdout","time":1249.745678156,"data":"cycle6 steps=800/2000 loss=0.388833\n"}
+,{"stream_name":"stdout","time":1251.087459592,"data":"cycle6 steps=900/2000 loss=0.328212\n"}
+,{"stream_name":"stdout","time":1252.373056499,"data":"cycle6 steps=1000/2000 loss=0.417544\n"}
+,{"stream_name":"stdout","time":1253.683360044,"data":"cycle6 steps=1100/2000 loss=0.355214\n"}
+,{"stream_name":"stdout","time":1255.013816349,"data":"cycle6 steps=1200/2000 loss=0.404415\n"}
+,{"stream_name":"stdout","time":1256.290793188,"data":"cycle6 steps=1300/2000 loss=0.233043\n"}
+,{"stream_name":"stdout","time":1257.597857162,"data":"cycle6 steps=1400/2000 loss=0.313227\n"}
+,{"stream_name":"stdout","time":1258.881090409,"data":"cycle6 steps=1500/2000 loss=0.386305\n"}
+,{"stream_name":"stdout","time":1260.180368497,"data":"cycle6 steps=1600/2000 loss=0.318985\n"}
+,{"stream_name":"stdout","time":1261.514008632,"data":"cycle6 steps=1700/2000 loss=0.280861\n"}
+,{"stream_name":"stdout","time":1262.789677243,"data":"cycle6 steps=1800/2000 loss=0.193289\n"}
+,{"stream_name":"stdout","time":1264.08192513,"data":"cycle6 steps=1900/2000 loss=0.239074\n"}
+,{"stream_name":"stdout","time":1265.369352607,"data":"cycle6 steps=2000/2000 loss=0.197447\n"}
+,{"stream_name":"stdout","time":1266.260118295,"data":"[C6] seed=6109 16-shot condition=random_init\n"}
+,{"stream_name":"stdout","time":1269.165275867,"data":"cycle6 steps=32/32 loss=0.086482\n"}
+,{"stream_name":"stdout","time":1269.57410074,"data":"cycle6 steps=32/32 loss=0.005396\n"}
+,{"stream_name":"stdout","time":1269.973673867,"data":"cycle6 steps=32/32 loss=0.061932\n"}
+,{"stream_name":"stdout","time":1270.374353191,"data":"cycle6 steps=32/32 loss=0.002587\n"}
+,{"stream_name":"stdout","time":1270.788047957,"data":"cycle6 steps=32/32 loss=0.053496\n"}
+,{"stream_name":"stdout","time":1271.230723503,"data":"cycle6 steps=32/32 loss=0.036340\n"}
+,{"stream_name":"stdout","time":1271.631993745,"data":"cycle6 steps=32/32 loss=0.020953\n"}
+,{"stream_name":"stdout","time":1272.067550545,"data":"cycle6 steps=32/32 loss=0.038039\n"}
+,{"stream_name":"stdout","time":1272.481985818,"data":"cycle6 steps=32/32 loss=0.008537\n"}
+,{"stream_name":"stdout","time":1272.894618506,"data":"cycle6 steps=32/32 loss=0.039668\n"}
+,{"stream_name":"stdout","time":1273.326343869,"data":"cycle6 steps=32/32 loss=0.004137\n"}
+,{"stream_name":"stdout","time":1273.736266167,"data":"cycle6 steps=32/32 loss=0.003580\n"}
+,{"stream_name":"stdout","time":1274.151197095,"data":"cycle6 steps=32/32 loss=0.083284\n"}
+,{"stream_name":"stdout","time":1274.565618732,"data":"cycle6 steps=32/32 loss=0.014287\n"}
+,{"stream_name":"stdout","time":1274.971863514,"data":"cycle6 steps=32/32 loss=0.058732\n"}
+,{"stream_name":"stdout","time":1275.406778689,"data":"cycle6 steps=32/32 loss=0.046571\n"}
+,{"stream_name":"stdout","time":1275.822187286,"data":"cycle6 steps=32/32 loss=0.100745\n"}
+,{"stream_name":"stdout","time":1276.236383415,"data":"cycle6 steps=32/32 loss=0.053653\n"}
+,{"stream_name":"stdout","time":1276.645192798,"data":"cycle6 steps=32/32 loss=0.072470\n"}
+,{"stream_name":"stdout","time":1277.054001665,"data":"cycle6 steps=32/32 loss=0.110933\n"}
+,{"stream_name":"stdout","time":1277.084775097,"data":"[C6] seed=6109 16-shot condition=primitives_only\n"}
+,{"stream_name":"stdout","time":1277.478067278,"data":"cycle6 steps=32/32 loss=0.221320\n"}
+,{"stream_name":"stdout","time":1277.884235008,"data":"cycle6 steps=32/32 loss=0.002141\n"}
+,{"stream_name":"stdout","time":1278.284990534,"data":"cycle6 steps=32/32 loss=0.002322\n"}
+,{"stream_name":"stdout","time":1278.702178903,"data":"cycle6 steps=32/32 loss=0.005051\n"}
+,{"stream_name":"stdout","time":1279.112087471,"data":"cycle6 steps=32/32 loss=0.248079\n"}
+,{"stream_name":"stdout","time":1279.541333375,"data":"cycle6 steps=32/32 loss=0.192911\n"}
+,{"stream_name":"stdout","time":1279.960237208,"data":"cycle6 steps=32/32 loss=0.157179\n"}
+,{"stream_name":"stdout","time":1280.368218543,"data":"cycle6 steps=32/32 loss=0.031604\n"}
+,{"stream_name":"stdout","time":1280.791010624,"data":"cycle6 steps=32/32 loss=0.028697\n"}
+,{"stream_name":"stdout","time":1281.235053372,"data":"cycle6 steps=32/32 loss=0.104380\n"}
+,{"stream_name":"stdout","time":1281.665495968,"data":"cycle6 steps=32/32 loss=0.004449\n"}
+,{"stream_name":"stdout","time":1282.076418787,"data":"cycle6 steps=32/32 loss=0.299369\n"}
+,{"stream_name":"stdout","time":1282.488397127,"data":"cycle6 steps=32/32 loss=0.058039\n"}
+,{"stream_name":"stdout","time":1282.904301897,"data":"cycle6 steps=32/32 loss=0.001621\n"}
+,{"stream_name":"stdout","time":1283.308104685,"data":"cycle6 steps=32/32 loss=0.010688\n"}
+,{"stream_name":"stdout","time":1283.73485792,"data":"cycle6 steps=32/32 loss=0.795490\n"}
+,{"stream_name":"stdout","time":1284.146905802,"data":"cycle6 steps=32/32 loss=0.111704\n"}
+,{"stream_name":"stdout","time":1284.565499502,"data":"cycle6 steps=32/32 loss=0.367787\n"}
+,{"stream_name":"stdout","time":1284.9790262880001,"data":"cycle6 steps=32/32 loss=0.130022\n"}
+,{"stream_name":"stdout","time":1285.399809814,"data":"cycle6 steps=32/32 loss=0.341540\n"}
+,{"stream_name":"stdout","time":1285.431190275,"data":"[C6] seed=6109 16-shot condition=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1285.822344082,"data":"cycle6 steps=32/32 loss=0.003699\n"}
+,{"stream_name":"stdout","time":1286.226392102,"data":"cycle6 steps=32/32 loss=0.000475\n"}
+,{"stream_name":"stdout","time":1286.62868868,"data":"cycle6 steps=32/32 loss=0.002212\n"}
+,{"stream_name":"stdout","time":1287.033740846,"data":"cycle6 steps=32/32 loss=0.003862\n"}
+,{"stream_name":"stdout","time":1287.438012067,"data":"cycle6 steps=32/32 loss=0.008078\n"}
+,{"stream_name":"stdout","time":1287.863926708,"data":"cycle6 steps=32/32 loss=0.002065\n"}
+,{"stream_name":"stdout","time":1288.271744379,"data":"cycle6 steps=32/32 loss=0.000367\n"}
+,{"stream_name":"stdout","time":1288.679359179,"data":"cycle6 steps=32/32 loss=0.000412\n"}
+,{"stream_name":"stdout","time":1289.088698593,"data":"cycle6 steps=32/32 loss=0.000814\n"}
+,{"stream_name":"stdout","time":1289.500335206,"data":"cycle6 steps=32/32 loss=0.038295\n"}
+,{"stream_name":"stdout","time":1289.93050664,"data":"cycle6 steps=32/32 loss=0.002494\n"}
+,{"stream_name":"stdout","time":1290.343139437,"data":"cycle6 steps=32/32 loss=0.001916\n"}
+,{"stream_name":"stdout","time":1290.760809336,"data":"cycle6 steps=32/32 loss=0.005695\n"}
+,{"stream_name":"stdout","time":1291.21849093,"data":"cycle6 steps=32/32 loss=0.003888\n"}
+,{"stream_name":"stdout","time":1291.639783825,"data":"cycle6 steps=32/32 loss=0.000337\n"}
+,{"stream_name":"stdout","time":1292.052486494,"data":"cycle6 steps=32/32 loss=0.021273\n"}
+,{"stream_name":"stdout","time":1292.465598954,"data":"cycle6 steps=32/32 loss=0.002169\n"}
+,{"stream_name":"stdout","time":1292.884845854,"data":"cycle6 steps=32/32 loss=0.001357\n"}
+,{"stream_name":"stdout","time":1293.306798534,"data":"cycle6 steps=32/32 loss=0.004433\n"}
+,{"stream_name":"stdout","time":1293.745116699,"data":"cycle6 steps=32/32 loss=0.030170\n"}
+,{"stream_name":"stdout","time":1293.784157518,"data":"[C6] seed=6109 finished scientific_leap_gate=false\n"}
+,{"stream_name":"stdout","time":1294.119161674,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/cycle6-verify /kaggle/working/results/cycle6-20261118T073934Z/seed_6109\n"}
+,{"stream_name":"stdout","time":1294.707293235,"data":"[AUDIT PASS] seed=6109 acquired=10 retention=false composition=false joint_ood=0.1437\n"}
+,{"stream_name":"stdout","time":1294.713450042,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/moonshot cycle6-research --device cuda --seed 6203 --git-commit 770dc8f66d173539c253f6c2bd251ff0a175ac64 --output-dir /kaggle/working/results/cycle6-20261118T073934Z/seed_6203\n"}
+,{"stream_name":"stdout","time":1294.757396977,"data":"[C6] seed=6203 isolated-task capability ceiling\n"}
+,{"stream_name":"stdout","time":1303.389609219,"data":"cycle6 steps=100/400 loss=0.000498\n"}
+,{"stream_name":"stdout","time":1304.658478245,"data":"cycle6 steps=200/400 loss=0.000289\n"}
+,{"stream_name":"stdout","time":1305.951136564,"data":"cycle6 steps=300/400 loss=0.000216\n"}
+,{"stream_name":"stdout","time":1307.218746822,"data":"cycle6 steps=400/400 loss=0.000172\n"}
+,{"stream_name":"stdout","time":1312.063388406,"data":"[C6] seed=6203 isolated task=0 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1313.476001789,"data":"cycle6 steps=100/400 loss=0.000511\n"}
+,{"stream_name":"stdout","time":1314.753003617,"data":"cycle6 steps=200/400 loss=0.000289\n"}
+,{"stream_name":"stdout","time":1315.999401007,"data":"cycle6 steps=300/400 loss=0.000210\n"}
+,{"stream_name":"stdout","time":1317.262967514,"data":"cycle6 steps=400/400 loss=0.000170\n"}
+,{"stream_name":"stdout","time":1317.480919625,"data":"[C6] seed=6203 isolated task=1 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1318.743661266,"data":"cycle6 steps=100/400 loss=0.000523\n"}
+,{"stream_name":"stdout","time":1319.997434103,"data":"cycle6 steps=200/400 loss=0.000309\n"}
+,{"stream_name":"stdout","time":1321.31436629,"data":"cycle6 steps=300/400 loss=0.000225\n"}
+,{"stream_name":"stdout","time":1322.576880406,"data":"cycle6 steps=400/400 loss=0.000180\n"}
+,{"stream_name":"stdout","time":1322.782543246,"data":"[C6] seed=6203 isolated task=2 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1324.043778717,"data":"cycle6 steps=100/400 loss=0.000652\n"}
+,{"stream_name":"stdout","time":1325.313037908,"data":"cycle6 steps=200/400 loss=0.000334\n"}
+,{"stream_name":"stdout","time":1326.576090371,"data":"cycle6 steps=300/400 loss=0.000236\n"}
+,{"stream_name":"stdout","time":1327.849399699,"data":"cycle6 steps=400/400 loss=0.000178\n"}
+,{"stream_name":"stdout","time":1328.069023793,"data":"[C6] seed=6203 isolated task=3 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1329.338273309,"data":"cycle6 steps=100/400 loss=0.000523\n"}
+,{"stream_name":"stdout","time":1330.608576818,"data":"cycle6 steps=200/400 loss=0.000291\n"}
+,{"stream_name":"stdout","time":1331.89979242,"data":"cycle6 steps=300/400 loss=0.000210\n"}
+,{"stream_name":"stdout","time":1333.17073357,"data":"cycle6 steps=400/400 loss=0.000169\n"}
+,{"stream_name":"stdout","time":1333.386796937,"data":"[C6] seed=6203 isolated task=4 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1334.657917275,"data":"cycle6 steps=100/400 loss=1.202405\n"}
+,{"stream_name":"stdout","time":1335.903184921,"data":"cycle6 steps=200/400 loss=0.005489\n"}
+,{"stream_name":"stdout","time":1337.16699115,"data":"cycle6 steps=300/400 loss=0.000773\n"}
+,{"stream_name":"stdout","time":1338.441327987,"data":"cycle6 steps=400/400 loss=0.000480\n"}
+,{"stream_name":"stdout","time":1338.663244104,"data":"[C6] seed=6203 isolated task=5 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1339.948773888,"data":"cycle6 steps=100/400 loss=1.399387\n"}
+,{"stream_name":"stdout","time":1341.252805828,"data":"cycle6 steps=200/400 loss=0.007467\n"}
+,{"stream_name":"stdout","time":1342.512207997,"data":"cycle6 steps=300/400 loss=0.001240\n"}
+,{"stream_name":"stdout","time":1343.786560138,"data":"cycle6 steps=400/400 loss=0.000406\n"}
+,{"stream_name":"stdout","time":1343.991138157,"data":"[C6] seed=6203 isolated task=6 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1345.260770431,"data":"cycle6 steps=100/400 loss=0.000879\n"}
+,{"stream_name":"stdout","time":1346.51093571,"data":"cycle6 steps=200/400 loss=0.000415\n"}
+,{"stream_name":"stdout","time":1347.776296278,"data":"cycle6 steps=300/400 loss=0.000285\n"}
+,{"stream_name":"stdout","time":1349.041337539,"data":"cycle6 steps=400/400 loss=0.000218\n"}
+,{"stream_name":"stdout","time":1349.241505123,"data":"[C6] seed=6203 isolated task=7 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1350.499021495,"data":"cycle6 steps=100/400 loss=0.653261\n"}
+,{"stream_name":"stdout","time":1351.79691216,"data":"cycle6 steps=200/400 loss=0.006850\n"}
+,{"stream_name":"stdout","time":1353.067220642,"data":"cycle6 steps=300/400 loss=0.000566\n"}
+,{"stream_name":"stdout","time":1354.326726439,"data":"cycle6 steps=400/400 loss=0.000379\n"}
+,{"stream_name":"stdout","time":1354.531009442,"data":"[C6] seed=6203 isolated task=8 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1355.802879651,"data":"cycle6 steps=100/400 loss=0.375557\n"}
+,{"stream_name":"stdout","time":1357.070015363,"data":"cycle6 steps=200/400 loss=0.017459\n"}
+,{"stream_name":"stdout","time":1358.323516557,"data":"cycle6 steps=300/400 loss=0.000586\n"}
+,{"stream_name":"stdout","time":1359.582150337,"data":"cycle6 steps=400/400 loss=0.000330\n"}
+,{"stream_name":"stdout","time":1359.796318638,"data":"[C6] seed=6203 isolated task=9 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1359.797686122,"data":"[C6] seed=6203 sequential condition=shared\n"}
+,{"stream_name":"stdout","time":1361.088494659,"data":"cycle6 steps=100/400 loss=0.000496\n"}
+,{"stream_name":"stdout","time":1362.445671375,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1363.723403789,"data":"cycle6 steps=300/400 loss=0.000207\n"}
+,{"stream_name":"stdout","time":1364.976539054,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1365.005626154,"data":"[C6] seed=6203 shared generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1366.280757426,"data":"cycle6 steps=100/400 loss=0.000842\n"}
+,{"stream_name":"stdout","time":1367.5439805,"data":"cycle6 steps=200/400 loss=0.000403\n"}
+,{"stream_name":"stdout","time":1368.807362591,"data":"cycle6 steps=300/400 loss=0.000263\n"}
+,{"stream_name":"stdout","time":1370.080125082,"data":"cycle6 steps=400/400 loss=0.000204\n"}
+,{"stream_name":"stdout","time":1370.124823771,"data":"[C6] seed=6203 shared generation=2 current=1.000 prev_mean=0.031\n"}
+,{"stream_name":"stdout","time":1371.4759190300001,"data":"cycle6 steps=100/400 loss=0.004794\n"}
+,{"stream_name":"stdout","time":1372.732411818,"data":"cycle6 steps=200/400 loss=0.001528\n"}
+,{"stream_name":"stdout","time":1373.988110966,"data":"cycle6 steps=300/400 loss=0.000808\n"}
+,{"stream_name":"stdout","time":1375.242433923,"data":"cycle6 steps=400/400 loss=0.000528\n"}
+,{"stream_name":"stdout","time":1375.300466943,"data":"[C6] seed=6203 shared generation=3 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1376.571450047,"data":"cycle6 steps=100/400 loss=0.004593\n"}
+,{"stream_name":"stdout","time":1377.856519134,"data":"cycle6 steps=200/400 loss=0.001790\n"}
+,{"stream_name":"stdout","time":1379.119495314,"data":"cycle6 steps=300/400 loss=0.001071\n"}
+,{"stream_name":"stdout","time":1380.385375653,"data":"cycle6 steps=400/400 loss=0.000722\n"}
+,{"stream_name":"stdout","time":1380.455360099,"data":"[C6] seed=6203 shared generation=4 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1381.779168426,"data":"cycle6 steps=100/400 loss=0.002992\n"}
+,{"stream_name":"stdout","time":1383.025232733,"data":"cycle6 steps=200/400 loss=0.001213\n"}
+,{"stream_name":"stdout","time":1384.288808148,"data":"cycle6 steps=300/400 loss=0.000710\n"}
+,{"stream_name":"stdout","time":1385.541812823,"data":"cycle6 steps=400/400 loss=0.000419\n"}
+,{"stream_name":"stdout","time":1385.627593812,"data":"[C6] seed=6203 shared generation=5 current=1.000 prev_mean=0.074\n"}
+,{"stream_name":"stdout","time":1386.887955711,"data":"cycle6 steps=100/400 loss=1.524255\n"}
+,{"stream_name":"stdout","time":1388.161401214,"data":"cycle6 steps=200/400 loss=1.087713\n"}
+,{"stream_name":"stdout","time":1389.406661533,"data":"cycle6 steps=300/400 loss=0.652275\n"}
+,{"stream_name":"stdout","time":1390.674337258,"data":"cycle6 steps=400/400 loss=0.481544\n"}
+,{"stream_name":"stdout","time":1390.771938965,"data":"[C6] seed=6203 shared generation=6 current=0.219 prev_mean=0.022\n"}
+,{"stream_name":"stdout","time":1392.076249462,"data":"cycle6 steps=100/400 loss=0.797951\n"}
+,{"stream_name":"stdout","time":1393.334116115,"data":"cycle6 steps=200/400 loss=0.484796\n"}
+,{"stream_name":"stdout","time":1394.604920177,"data":"cycle6 steps=300/400 loss=0.315101\n"}
+,{"stream_name":"stdout","time":1395.856968582,"data":"cycle6 steps=400/400 loss=0.117063\n"}
+,{"stream_name":"stdout","time":1395.974025752,"data":"[C6] seed=6203 shared generation=7 current=0.422 prev_mean=0.055\n"}
+,{"stream_name":"stdout","time":1397.246272316,"data":"cycle6 steps=100/400 loss=0.338316\n"}
+,{"stream_name":"stdout","time":1398.544002968,"data":"cycle6 steps=200/400 loss=0.010800\n"}
+,{"stream_name":"stdout","time":1399.823872395,"data":"cycle6 steps=300/400 loss=0.001974\n"}
+,{"stream_name":"stdout","time":1401.13963452,"data":"cycle6 steps=400/400 loss=0.000870\n"}
+,{"stream_name":"stdout","time":1401.264409519,"data":"[C6] seed=6203 shared generation=8 current=0.938 prev_mean=0.038\n"}
+,{"stream_name":"stdout","time":1402.534678579,"data":"cycle6 steps=100/400 loss=0.185832\n"}
+,{"stream_name":"stdout","time":1403.792228462,"data":"cycle6 steps=200/400 loss=0.010383\n"}
+,{"stream_name":"stdout","time":1405.096506321,"data":"cycle6 steps=300/400 loss=0.003247\n"}
+,{"stream_name":"stdout","time":1406.374805094,"data":"cycle6 steps=400/400 loss=0.001097\n"}
+,{"stream_name":"stdout","time":1406.511739495,"data":"[C6] seed=6203 shared generation=9 current=1.000 prev_mean=0.006\n"}
+,{"stream_name":"stdout","time":1407.78212124,"data":"cycle6 steps=100/400 loss=0.509472\n"}
+,{"stream_name":"stdout","time":1409.056319853,"data":"cycle6 steps=200/400 loss=0.384218\n"}
+,{"stream_name":"stdout","time":1410.330660568,"data":"cycle6 steps=300/400 loss=0.249197\n"}
+,{"stream_name":"stdout","time":1411.641750974,"data":"cycle6 steps=400/400 loss=0.194038\n"}
+,{"stream_name":"stdout","time":1411.793240103,"data":"[C6] seed=6203 shared generation=10 current=0.234 prev_mean=0.016\n"}
+,{"stream_name":"stdout","time":1412.120489455,"data":"[C6] seed=6203 sequential condition=uniform\n"}
+,{"stream_name":"stdout","time":1413.40777263,"data":"cycle6 steps=100/400 loss=0.000496\n"}
+,{"stream_name":"stdout","time":1414.683129099,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1415.93455228,"data":"cycle6 steps=300/400 loss=0.000207\n"}
+,{"stream_name":"stdout","time":1417.213176824,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1417.244703402,"data":"[C6] seed=6203 uniform generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1419.511403734,"data":"cycle6 steps=100/400 loss=0.002558\n"}
+,{"stream_name":"stdout","time":1420.809444012,"data":"cycle6 steps=200/400 loss=0.000630\n"}
+,{"stream_name":"stdout","time":1422.189602515,"data":"cycle6 steps=300/400 loss=0.000353\n"}
+,{"stream_name":"stdout","time":1423.476107543,"data":"cycle6 steps=400/400 loss=0.000260\n"}
+,{"stream_name":"stdout","time":1423.518733814,"data":"[C6] seed=6203 uniform generation=2 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1424.824096867,"data":"cycle6 steps=100/400 loss=0.008894\n"}
+,{"stream_name":"stdout","time":1426.13614278,"data":"cycle6 steps=200/400 loss=0.000682\n"}
+,{"stream_name":"stdout","time":1427.457291434,"data":"cycle6 steps=300/400 loss=0.000376\n"}
+,{"stream_name":"stdout","time":1428.767511482,"data":"cycle6 steps=400/400 loss=0.000257\n"}
+,{"stream_name":"stdout","time":1428.824033484,"data":"[C6] seed=6203 uniform generation=3 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1430.163815338,"data":"cycle6 steps=100/400 loss=0.103021\n"}
+,{"stream_name":"stdout","time":1431.545214997,"data":"cycle6 steps=200/400 loss=0.012282\n"}
+,{"stream_name":"stdout","time":1432.895127143,"data":"cycle6 steps=300/400 loss=0.006803\n"}
+,{"stream_name":"stdout","time":1434.217455929,"data":"cycle6 steps=400/400 loss=0.015711\n"}
+,{"stream_name":"stdout","time":1434.289756968,"data":"[C6] seed=6203 uniform generation=4 current=1.000 prev_mean=0.953\n"}
+,{"stream_name":"stdout","time":1435.668150312,"data":"cycle6 steps=100/400 loss=0.003129\n"}
+,{"stream_name":"stdout","time":1437.056380118,"data":"cycle6 steps=200/400 loss=0.000625\n"}
+,{"stream_name":"stdout","time":1438.425785006,"data":"cycle6 steps=300/400 loss=0.039326\n"}
+,{"stream_name":"stdout","time":1439.782402463,"data":"cycle6 steps=400/400 loss=0.008782\n"}
+,{"stream_name":"stdout","time":1439.86581447,"data":"[C6] seed=6203 uniform generation=5 current=0.984 prev_mean=0.973\n"}
+,{"stream_name":"stdout","time":1441.320526463,"data":"cycle6 steps=100/400 loss=0.154725\n"}
+,{"stream_name":"stdout","time":1442.684757465,"data":"cycle6 steps=200/400 loss=0.002609\n"}
+,{"stream_name":"stdout","time":1444.078929354,"data":"cycle6 steps=300/400 loss=0.001048\n"}
+,{"stream_name":"stdout","time":1445.480533746,"data":"cycle6 steps=400/400 loss=0.000361\n"}
+,{"stream_name":"stdout","time":1445.579833701,"data":"[C6] seed=6203 uniform generation=6 current=1.000 prev_mean=0.994\n"}
+,{"stream_name":"stdout","time":1447.000771581,"data":"cycle6 steps=100/400 loss=0.067407\n"}
+,{"stream_name":"stdout","time":1448.410885997,"data":"cycle6 steps=200/400 loss=0.008784\n"}
+,{"stream_name":"stdout","time":1449.817836895,"data":"cycle6 steps=300/400 loss=0.000842\n"}
+,{"stream_name":"stdout","time":1451.290184546,"data":"cycle6 steps=400/400 loss=0.101593\n"}
+,{"stream_name":"stdout","time":1451.402867232,"data":"[C6] seed=6203 uniform generation=7 current=0.906 prev_mean=0.919\n"}
+,{"stream_name":"stdout","time":1452.858274972,"data":"cycle6 steps=100/400 loss=0.035998\n"}
+,{"stream_name":"stdout","time":1454.325157016,"data":"cycle6 steps=200/400 loss=0.069973\n"}
+,{"stream_name":"stdout","time":1455.790408453,"data":"cycle6 steps=300/400 loss=0.014431\n"}
+,{"stream_name":"stdout","time":1457.25753629,"data":"cycle6 steps=400/400 loss=0.001233\n"}
+,{"stream_name":"stdout","time":1457.386962325,"data":"[C6] seed=6203 uniform generation=8 current=1.000 prev_mean=0.998\n"}
+,{"stream_name":"stdout","time":1458.866152842,"data":"cycle6 steps=100/400 loss=0.151782\n"}
+,{"stream_name":"stdout","time":1460.395775911,"data":"cycle6 steps=200/400 loss=0.057715\n"}
+,{"stream_name":"stdout","time":1461.919112722,"data":"cycle6 steps=300/400 loss=0.024183\n"}
+,{"stream_name":"stdout","time":1463.400949463,"data":"cycle6 steps=400/400 loss=0.036041\n"}
+,{"stream_name":"stdout","time":1463.540936515,"data":"[C6] seed=6203 uniform generation=9 current=0.703 prev_mean=0.924\n"}
+,{"stream_name":"stdout","time":1465.042749157,"data":"cycle6 steps=100/400 loss=0.174821\n"}
+,{"stream_name":"stdout","time":1466.56335481,"data":"cycle6 steps=200/400 loss=0.055123\n"}
+,{"stream_name":"stdout","time":1468.079126186,"data":"cycle6 steps=300/400 loss=0.042784\n"}
+,{"stream_name":"stdout","time":1469.583122072,"data":"cycle6 steps=400/400 loss=0.001962\n"}
+,{"stream_name":"stdout","time":1469.735641598,"data":"[C6] seed=6203 uniform generation=10 current=0.750 prev_mean=0.962\n"}
+,{"stream_name":"stdout","time":1470.090268723,"data":"[C6] seed=6203 sequential condition=feedback\n"}
+,{"stream_name":"stdout","time":1471.437883415,"data":"cycle6 steps=100/400 loss=0.000496\n"}
+,{"stream_name":"stdout","time":1472.725036807,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1474.021160872,"data":"cycle6 steps=300/400 loss=0.000207\n"}
+,{"stream_name":"stdout","time":1475.30551435,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1475.334809329,"data":"[C6] seed=6203 feedback generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1476.637532666,"data":"cycle6 steps=100/400 loss=0.005970\n"}
+,{"stream_name":"stdout","time":1477.938677265,"data":"cycle6 steps=200/400 loss=0.000785\n"}
+,{"stream_name":"stdout","time":1479.236948933,"data":"cycle6 steps=300/400 loss=0.000414\n"}
+,{"stream_name":"stdout","time":1480.53657028,"data":"cycle6 steps=400/400 loss=0.000199\n"}
+,{"stream_name":"stdout","time":1480.582488919,"data":"[C6] seed=6203 feedback generation=2 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1481.992868932,"data":"cycle6 steps=100/400 loss=0.033808\n"}
+,{"stream_name":"stdout","time":1483.324739214,"data":"cycle6 steps=200/400 loss=0.000996\n"}
+,{"stream_name":"stdout","time":1484.645606607,"data":"cycle6 steps=300/400 loss=0.000447\n"}
+,{"stream_name":"stdout","time":1485.971599956,"data":"cycle6 steps=400/400 loss=0.000275\n"}
+,{"stream_name":"stdout","time":1486.029411557,"data":"[C6] seed=6203 feedback generation=3 current=0.984 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1487.374591181,"data":"cycle6 steps=100/400 loss=0.013247\n"}
+,{"stream_name":"stdout","time":1488.731898315,"data":"cycle6 steps=200/400 loss=0.001204\n"}
+,{"stream_name":"stdout","time":1490.088943142,"data":"cycle6 steps=300/400 loss=0.000469\n"}
+,{"stream_name":"stdout","time":1491.453962993,"data":"cycle6 steps=400/400 loss=0.000311\n"}
+,{"stream_name":"stdout","time":1491.526882648,"data":"[C6] seed=6203 feedback generation=4 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1492.89462865,"data":"cycle6 steps=100/400 loss=0.000826\n"}
+,{"stream_name":"stdout","time":1494.260128873,"data":"cycle6 steps=200/400 loss=0.000504\n"}
+,{"stream_name":"stdout","time":1495.611994043,"data":"cycle6 steps=300/400 loss=0.000246\n"}
+,{"stream_name":"stdout","time":1496.979342003,"data":"cycle6 steps=400/400 loss=0.000146\n"}
+,{"stream_name":"stdout","time":1497.06309785,"data":"[C6] seed=6203 feedback generation=5 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1498.466126121,"data":"cycle6 steps=100/400 loss=0.375391\n"}
+,{"stream_name":"stdout","time":1499.851895471,"data":"cycle6 steps=200/400 loss=0.015984\n"}
+,{"stream_name":"stdout","time":1501.296321055,"data":"cycle6 steps=300/400 loss=0.031031\n"}
+,{"stream_name":"stdout","time":1502.692151184,"data":"cycle6 steps=400/400 loss=0.076267\n"}
+,{"stream_name":"stdout","time":1502.790360531,"data":"[C6] seed=6203 feedback generation=6 current=0.844 prev_mean=0.978\n"}
+,{"stream_name":"stdout","time":1504.230555134,"data":"cycle6 steps=100/400 loss=0.027883\n"}
+,{"stream_name":"stdout","time":1505.640761638,"data":"cycle6 steps=200/400 loss=0.038816\n"}
+,{"stream_name":"stdout","time":1507.058126818,"data":"cycle6 steps=300/400 loss=0.007618\n"}
+,{"stream_name":"stdout","time":1508.493940058,"data":"cycle6 steps=400/400 loss=0.000793\n"}
+,{"stream_name":"stdout","time":1508.604673409,"data":"[C6] seed=6203 feedback generation=7 current=1.000 prev_mean=0.995\n"}
+,{"stream_name":"stdout","time":1510.041354014,"data":"cycle6 steps=100/400 loss=0.039420\n"}
+,{"stream_name":"stdout","time":1511.538034333,"data":"cycle6 steps=200/400 loss=0.013206\n"}
+,{"stream_name":"stdout","time":1512.996641493,"data":"cycle6 steps=300/400 loss=0.076887\n"}
+,{"stream_name":"stdout","time":1514.459534662,"data":"cycle6 steps=400/400 loss=0.013137\n"}
+,{"stream_name":"stdout","time":1514.58815704,"data":"[C6] seed=6203 feedback generation=8 current=1.000 prev_mean=0.944\n"}
+,{"stream_name":"stdout","time":1516.088432073,"data":"cycle6 steps=100/400 loss=0.035434\n"}
+,{"stream_name":"stdout","time":1517.599051642,"data":"cycle6 steps=200/400 loss=0.041838\n"}
+,{"stream_name":"stdout","time":1519.104933543,"data":"cycle6 steps=300/400 loss=0.008856\n"}
+,{"stream_name":"stdout","time":1520.646011177,"data":"cycle6 steps=400/400 loss=0.025766\n"}
+,{"stream_name":"stdout","time":1520.787408856,"data":"[C6] seed=6203 feedback generation=9 current=0.953 prev_mean=0.914\n"}
+,{"stream_name":"stdout","time":1522.352469991,"data":"cycle6 steps=100/400 loss=0.057087\n"}
+,{"stream_name":"stdout","time":1523.888658034,"data":"cycle6 steps=200/400 loss=0.031030\n"}
+,{"stream_name":"stdout","time":1525.404621906,"data":"cycle6 steps=300/400 loss=0.012198\n"}
+,{"stream_name":"stdout","time":1526.934653141,"data":"cycle6 steps=400/400 loss=0.002455\n"}
+,{"stream_name":"stdout","time":1527.088824882,"data":"[C6] seed=6203 feedback generation=10 current=0.953 prev_mean=0.976\n"}
+,{"stream_name":"stdout","time":1527.427460194,"data":"[C6] seed=6203 composition pretraining=primitives_only\n"}
+,{"stream_name":"stdout","time":1528.714858952,"data":"cycle6 steps=100/2000 loss=0.910649\n"}
+,{"stream_name":"stdout","time":1530.010199724,"data":"cycle6 steps=200/2000 loss=0.577145\n"}
+,{"stream_name":"stdout","time":1531.356143455,"data":"cycle6 steps=300/2000 loss=0.559416\n"}
+,{"stream_name":"stdout","time":1532.643200197,"data":"cycle6 steps=400/2000 loss=0.332349\n"}
+,{"stream_name":"stdout","time":1533.953241159,"data":"cycle6 steps=500/2000 loss=0.323443\n"}
+,{"stream_name":"stdout","time":1535.270744089,"data":"cycle6 steps=600/2000 loss=0.192795\n"}
+,{"stream_name":"stdout","time":1536.590463078,"data":"cycle6 steps=700/2000 loss=0.166831\n"}
+,{"stream_name":"stdout","time":1537.901354739,"data":"cycle6 steps=800/2000 loss=0.097969\n"}
+,{"stream_name":"stdout","time":1539.215336539,"data":"cycle6 steps=900/2000 loss=0.031389\n"}
+,{"stream_name":"stdout","time":1540.520029946,"data":"cycle6 steps=1000/2000 loss=0.009443\n"}
+,{"stream_name":"stdout","time":1541.965039605,"data":"cycle6 steps=1100/2000 loss=0.014947\n"}
+,{"stream_name":"stdout","time":1543.270674625,"data":"cycle6 steps=1200/2000 loss=0.020452\n"}
+,{"stream_name":"stdout","time":1544.565208364,"data":"cycle6 steps=1300/2000 loss=0.002380\n"}
+,{"stream_name":"stdout","time":1545.913363073,"data":"cycle6 steps=1400/2000 loss=0.000394\n"}
+,{"stream_name":"stdout","time":1547.204768173,"data":"cycle6 steps=1500/2000 loss=0.000368\n"}
+,{"stream_name":"stdout","time":1548.488632496,"data":"cycle6 steps=1600/2000 loss=0.000240\n"}
+,{"stream_name":"stdout","time":1549.793109105,"data":"cycle6 steps=1700/2000 loss=0.000216\n"}
+,{"stream_name":"stdout","time":1551.133771099,"data":"cycle6 steps=1800/2000 loss=0.000117\n"}
+,{"stream_name":"stdout","time":1552.42448836,"data":"cycle6 steps=1900/2000 loss=0.000163\n"}
+,{"stream_name":"stdout","time":1553.73027394,"data":"cycle6 steps=2000/2000 loss=0.000097\n"}
+,{"stream_name":"stdout","time":1554.606862581,"data":"[C6] seed=6203 composition pretraining=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1555.902331482,"data":"cycle6 steps=100/2000 loss=1.298295\n"}
+,{"stream_name":"stdout","time":1557.176512461,"data":"cycle6 steps=200/2000 loss=1.119841\n"}
+,{"stream_name":"stdout","time":1558.465771831,"data":"cycle6 steps=300/2000 loss=0.832585\n"}
+,{"stream_name":"stdout","time":1559.755815019,"data":"cycle6 steps=400/2000 loss=0.757607\n"}
+,{"stream_name":"stdout","time":1561.095232192,"data":"cycle6 steps=500/2000 loss=0.672598\n"}
+,{"stream_name":"stdout","time":1562.372385971,"data":"cycle6 steps=600/2000 loss=0.506268\n"}
+,{"stream_name":"stdout","time":1563.661852167,"data":"cycle6 steps=700/2000 loss=0.494829\n"}
+,{"stream_name":"stdout","time":1564.9361151,"data":"cycle6 steps=800/2000 loss=0.345370\n"}
+,{"stream_name":"stdout","time":1566.21598761,"data":"cycle6 steps=900/2000 loss=0.313244\n"}
+,{"stream_name":"stdout","time":1567.504839141,"data":"cycle6 steps=1000/2000 loss=0.350437\n"}
+,{"stream_name":"stdout","time":1568.811210217,"data":"cycle6 steps=1100/2000 loss=0.371602\n"}
+,{"stream_name":"stdout","time":1570.100361742,"data":"cycle6 steps=1200/2000 loss=0.310209\n"}
+,{"stream_name":"stdout","time":1571.433041163,"data":"cycle6 steps=1300/2000 loss=0.265025\n"}
+,{"stream_name":"stdout","time":1572.717746536,"data":"cycle6 steps=1400/2000 loss=0.204748\n"}
+,{"stream_name":"stdout","time":1574.01708505,"data":"cycle6 steps=1500/2000 loss=0.188431\n"}
+,{"stream_name":"stdout","time":1575.279388721,"data":"cycle6 steps=1600/2000 loss=0.204033\n"}
+,{"stream_name":"stdout","time":1576.565874244,"data":"cycle6 steps=1700/2000 loss=0.138075\n"}
+,{"stream_name":"stdout","time":1577.842749183,"data":"cycle6 steps=1800/2000 loss=0.170204\n"}
+,{"stream_name":"stdout","time":1579.135686087,"data":"cycle6 steps=1900/2000 loss=0.194686\n"}
+,{"stream_name":"stdout","time":1580.47111485,"data":"cycle6 steps=2000/2000 loss=0.332452\n"}
+,{"stream_name":"stdout","time":1581.370810237,"data":"[C6] seed=6203 16-shot condition=random_init\n"}
+,{"stream_name":"stdout","time":1583.493514801,"data":"cycle6 steps=32/32 loss=0.037662\n"}
+,{"stream_name":"stdout","time":1583.897034922,"data":"cycle6 steps=32/32 loss=0.005984\n"}
+,{"stream_name":"stdout","time":1584.315982844,"data":"cycle6 steps=32/32 loss=0.275469\n"}
+,{"stream_name":"stdout","time":1584.721000736,"data":"cycle6 steps=32/32 loss=0.006160\n"}
+,{"stream_name":"stdout","time":1585.123092977,"data":"cycle6 steps=32/32 loss=0.032595\n"}
+,{"stream_name":"stdout","time":1585.523148236,"data":"cycle6 steps=32/32 loss=0.050639\n"}
+,{"stream_name":"stdout","time":1585.933407049,"data":"cycle6 steps=32/32 loss=0.039615\n"}
+,{"stream_name":"stdout","time":1586.351354973,"data":"cycle6 steps=32/32 loss=0.060623\n"}
+,{"stream_name":"stdout","time":1586.760879396,"data":"cycle6 steps=32/32 loss=0.040046\n"}
+,{"stream_name":"stdout","time":1587.163871918,"data":"cycle6 steps=32/32 loss=0.035003\n"}
+,{"stream_name":"stdout","time":1587.575131322,"data":"cycle6 steps=32/32 loss=0.002975\n"}
+,{"stream_name":"stdout","time":1587.980286307,"data":"cycle6 steps=32/32 loss=0.003341\n"}
+,{"stream_name":"stdout","time":1588.403723857,"data":"cycle6 steps=32/32 loss=0.021265\n"}
+,{"stream_name":"stdout","time":1588.813926485,"data":"cycle6 steps=32/32 loss=0.030786\n"}
+,{"stream_name":"stdout","time":1589.223035812,"data":"cycle6 steps=32/32 loss=0.105763\n"}
+,{"stream_name":"stdout","time":1589.63515957,"data":"cycle6 steps=32/32 loss=0.224859\n"}
+,{"stream_name":"stdout","time":1590.052535048,"data":"cycle6 steps=32/32 loss=0.029446\n"}
+,{"stream_name":"stdout","time":1590.491408776,"data":"cycle6 steps=32/32 loss=0.057789\n"}
+,{"stream_name":"stdout","time":1590.96142012,"data":"cycle6 steps=32/32 loss=0.050619\n"}
+,{"stream_name":"stdout","time":1591.382360012,"data":"cycle6 steps=32/32 loss=0.097049\n"}
+,{"stream_name":"stdout","time":1591.416680345,"data":"[C6] seed=6203 16-shot condition=primitives_only\n"}
+,{"stream_name":"stdout","time":1591.791235395,"data":"cycle6 steps=32/32 loss=0.052602\n"}
+,{"stream_name":"stdout","time":1592.208690339,"data":"cycle6 steps=32/32 loss=0.007255\n"}
+,{"stream_name":"stdout","time":1592.618326251,"data":"cycle6 steps=32/32 loss=0.012392\n"}
+,{"stream_name":"stdout","time":1593.025951139,"data":"cycle6 steps=32/32 loss=0.101968\n"}
+,{"stream_name":"stdout","time":1593.4364049,"data":"cycle6 steps=32/32 loss=0.259414\n"}
+,{"stream_name":"stdout","time":1593.844979142,"data":"cycle6 steps=32/32 loss=0.020378\n"}
+,{"stream_name":"stdout","time":1594.26401554,"data":"cycle6 steps=32/32 loss=0.438786\n"}
+,{"stream_name":"stdout","time":1594.677658557,"data":"cycle6 steps=32/32 loss=0.112977\n"}
+,{"stream_name":"stdout","time":1595.088838942,"data":"cycle6 steps=32/32 loss=0.297495\n"}
+,{"stream_name":"stdout","time":1595.499915002,"data":"cycle6 steps=32/32 loss=0.015735\n"}
+,{"stream_name":"stdout","time":1595.912421421,"data":"cycle6 steps=32/32 loss=0.001452\n"}
+,{"stream_name":"stdout","time":1596.338632043,"data":"cycle6 steps=32/32 loss=0.013035\n"}
+,{"stream_name":"stdout","time":1596.7520521,"data":"cycle6 steps=32/32 loss=0.004248\n"}
+,{"stream_name":"stdout","time":1597.157413621,"data":"cycle6 steps=32/32 loss=0.026366\n"}
+,{"stream_name":"stdout","time":1597.564167127,"data":"cycle6 steps=32/32 loss=0.002559\n"}
+,{"stream_name":"stdout","time":1597.972662009,"data":"cycle6 steps=32/32 loss=0.220655\n"}
+,{"stream_name":"stdout","time":1598.406315883,"data":"cycle6 steps=32/32 loss=0.005195\n"}
+,{"stream_name":"stdout","time":1598.821797719,"data":"cycle6 steps=32/32 loss=0.062737\n"}
+,{"stream_name":"stdout","time":1599.227025056,"data":"cycle6 steps=32/32 loss=0.127834\n"}
+,{"stream_name":"stdout","time":1599.634404378,"data":"cycle6 steps=32/32 loss=0.202386\n"}
+,{"stream_name":"stdout","time":1599.665788768,"data":"[C6] seed=6203 16-shot condition=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1600.035243995,"data":"cycle6 steps=32/32 loss=0.000708\n"}
+,{"stream_name":"stdout","time":1600.464160735,"data":"cycle6 steps=32/32 loss=0.000560\n"}
+,{"stream_name":"stdout","time":1600.883850914,"data":"cycle6 steps=32/32 loss=0.001773\n"}
+,{"stream_name":"stdout","time":1601.41892069,"data":"cycle6 steps=32/32 loss=0.001996\n"}
+,{"stream_name":"stdout","time":1601.824783781,"data":"cycle6 steps=32/32 loss=0.001047\n"}
+,{"stream_name":"stdout","time":1602.220849621,"data":"cycle6 steps=32/32 loss=0.001811\n"}
+,{"stream_name":"stdout","time":1602.641897447,"data":"cycle6 steps=32/32 loss=0.002378\n"}
+,{"stream_name":"stdout","time":1603.044539013,"data":"cycle6 steps=32/32 loss=0.001944\n"}
+,{"stream_name":"stdout","time":1603.450559506,"data":"cycle6 steps=32/32 loss=0.006900\n"}
+,{"stream_name":"stdout","time":1603.857070023,"data":"cycle6 steps=32/32 loss=0.001530\n"}
+,{"stream_name":"stdout","time":1604.265138524,"data":"cycle6 steps=32/32 loss=0.000430\n"}
+,{"stream_name":"stdout","time":1604.692374289,"data":"cycle6 steps=32/32 loss=0.000201\n"}
+,{"stream_name":"stdout","time":1605.101263081,"data":"cycle6 steps=32/32 loss=0.000929\n"}
+,{"stream_name":"stdout","time":1605.512336779,"data":"cycle6 steps=32/32 loss=0.001928\n"}
+,{"stream_name":"stdout","time":1605.932499792,"data":"cycle6 steps=32/32 loss=0.000978\n"}
+,{"stream_name":"stdout","time":1606.346860076,"data":"cycle6 steps=32/32 loss=0.006186\n"}
+,{"stream_name":"stdout","time":1606.779483856,"data":"cycle6 steps=32/32 loss=0.001210\n"}
+,{"stream_name":"stdout","time":1607.196737746,"data":"cycle6 steps=32/32 loss=0.001279\n"}
+,{"stream_name":"stdout","time":1607.623371171,"data":"cycle6 steps=32/32 loss=0.015569\n"}
+,{"stream_name":"stdout","time":1608.04402346,"data":"cycle6 steps=32/32 loss=0.005209\n"}
+,{"stream_name":"stdout","time":1608.080095095,"data":"[C6] seed=6203 finished scientific_leap_gate=false\n"}
+,{"stream_name":"stdout","time":1608.407707468,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/cycle6-verify /kaggle/working/results/cycle6-20261118T073934Z/seed_6203\n"}
+,{"stream_name":"stdout","time":1609.000443329,"data":"[AUDIT PASS] seed=6203 acquired=10 retention=false composition=false joint_ood=0.1734\n"}
+,{"stream_name":"stdout","time":1609.006033422,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/moonshot cycle6-research --device cuda --seed 6301 --git-commit 770dc8f66d173539c253f6c2bd251ff0a175ac64 --output-dir /kaggle/working/results/cycle6-20261118T073934Z/seed_6301\n"}
+,{"stream_name":"stdout","time":1609.050644308,"data":"[C6] seed=6301 isolated-task capability ceiling\n"}
+,{"stream_name":"stdout","time":1617.416241794,"data":"cycle6 steps=100/400 loss=0.000505\n"}
+,{"stream_name":"stdout","time":1618.669558623,"data":"cycle6 steps=200/400 loss=0.000294\n"}
+,{"stream_name":"stdout","time":1619.936879182,"data":"cycle6 steps=300/400 loss=0.000210\n"}
+,{"stream_name":"stdout","time":1621.264971264,"data":"cycle6 steps=400/400 loss=0.000172\n"}
+,{"stream_name":"stdout","time":1626.12302151,"data":"[C6] seed=6301 isolated task=0 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1627.520547583,"data":"cycle6 steps=100/400 loss=0.000504\n"}
+,{"stream_name":"stdout","time":1628.758545003,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1630.022126415,"data":"cycle6 steps=300/400 loss=0.000214\n"}
+,{"stream_name":"stdout","time":1631.308552163,"data":"cycle6 steps=400/400 loss=0.000178\n"}
+,{"stream_name":"stdout","time":1631.522833172,"data":"[C6] seed=6301 isolated task=1 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1632.792649071,"data":"cycle6 steps=100/400 loss=0.000418\n"}
+,{"stream_name":"stdout","time":1634.092040606,"data":"cycle6 steps=200/400 loss=0.000251\n"}
+,{"stream_name":"stdout","time":1635.36625075,"data":"cycle6 steps=300/400 loss=0.000189\n"}
+,{"stream_name":"stdout","time":1636.624024654,"data":"cycle6 steps=400/400 loss=0.000156\n"}
+,{"stream_name":"stdout","time":1636.823098327,"data":"[C6] seed=6301 isolated task=2 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1638.099172999,"data":"cycle6 steps=100/400 loss=0.000585\n"}
+,{"stream_name":"stdout","time":1639.372531384,"data":"cycle6 steps=200/400 loss=0.000298\n"}
+,{"stream_name":"stdout","time":1640.649902838,"data":"cycle6 steps=300/400 loss=0.000221\n"}
+,{"stream_name":"stdout","time":1641.958626397,"data":"cycle6 steps=400/400 loss=0.000183\n"}
+,{"stream_name":"stdout","time":1642.161001259,"data":"[C6] seed=6301 isolated task=3 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1643.444117732,"data":"cycle6 steps=100/400 loss=0.000497\n"}
+,{"stream_name":"stdout","time":1644.704964984,"data":"cycle6 steps=200/400 loss=0.000277\n"}
+,{"stream_name":"stdout","time":1645.988728109,"data":"cycle6 steps=300/400 loss=0.000211\n"}
+,{"stream_name":"stdout","time":1647.25140042,"data":"cycle6 steps=400/400 loss=0.000169\n"}
+,{"stream_name":"stdout","time":1647.46795548,"data":"[C6] seed=6301 isolated task=4 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1648.728980973,"data":"cycle6 steps=100/400 loss=1.115450\n"}
+,{"stream_name":"stdout","time":1649.993367343,"data":"cycle6 steps=200/400 loss=0.001117\n"}
+,{"stream_name":"stdout","time":1651.282932672,"data":"cycle6 steps=300/400 loss=0.000452\n"}
+,{"stream_name":"stdout","time":1652.550919096,"data":"cycle6 steps=400/400 loss=0.000290\n"}
+,{"stream_name":"stdout","time":1652.759893236,"data":"[C6] seed=6301 isolated task=5 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1654.040377778,"data":"cycle6 steps=100/400 loss=1.520205\n"}
+,{"stream_name":"stdout","time":1655.302496445,"data":"cycle6 steps=200/400 loss=0.034015\n"}
+,{"stream_name":"stdout","time":1656.582146279,"data":"cycle6 steps=300/400 loss=0.000610\n"}
+,{"stream_name":"stdout","time":1657.853196582,"data":"cycle6 steps=400/400 loss=0.000351\n"}
+,{"stream_name":"stdout","time":1658.068645926,"data":"[C6] seed=6301 isolated task=6 heldout=0.969\n"}
+,{"stream_name":"stdout","time":1659.353031112,"data":"cycle6 steps=100/400 loss=0.000915\n"}
+,{"stream_name":"stdout","time":1660.62277675,"data":"cycle6 steps=200/400 loss=0.000450\n"}
+,{"stream_name":"stdout","time":1662.018486559,"data":"cycle6 steps=300/400 loss=0.000309\n"}
+,{"stream_name":"stdout","time":1663.281919337,"data":"cycle6 steps=400/400 loss=0.000224\n"}
+,{"stream_name":"stdout","time":1663.481648703,"data":"[C6] seed=6301 isolated task=7 heldout=1.000\n"}
+,{"stream_name":"stdout","time":1664.746226525,"data":"cycle6 steps=100/400 loss=0.655059\n"}
+,{"stream_name":"stdout","time":1666.018562262,"data":"cycle6 steps=200/400 loss=0.205978\n"}
+,{"stream_name":"stdout","time":1667.284984672,"data":"cycle6 steps=300/400 loss=0.000916\n"}
+,{"stream_name":"stdout","time":1668.56247758,"data":"cycle6 steps=400/400 loss=0.000425\n"}
+,{"stream_name":"stdout","time":1668.763643478,"data":"[C6] seed=6301 isolated task=8 heldout=0.984\n"}
+,{"stream_name":"stdout","time":1670.044464843,"data":"cycle6 steps=100/400 loss=0.895611\n"}
+,{"stream_name":"stdout","time":1671.324905976,"data":"cycle6 steps=200/400 loss=0.029864\n"}
+,{"stream_name":"stdout","time":1672.608791784,"data":"cycle6 steps=300/400 loss=0.000772\n"}
+,{"stream_name":"stdout","time":1673.858399722,"data":"cycle6 steps=400/400 loss=0.000445\n"}
+,{"stream_name":"stdout","time":1674.059865124,"data":"[C6] seed=6301 isolated task=9 heldout=0.984\n"}
+,{"stream_name":"stdout","time":1674.061334917,"data":"[C6] seed=6301 sequential condition=shared\n"}
+,{"stream_name":"stdout","time":1675.31298628,"data":"cycle6 steps=100/400 loss=0.000492\n"}
+,{"stream_name":"stdout","time":1676.57955921,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1677.829846192,"data":"cycle6 steps=300/400 loss=0.000208\n"}
+,{"stream_name":"stdout","time":1679.093270039,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1679.124542712,"data":"[C6] seed=6301 shared generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1680.385940599,"data":"cycle6 steps=100/400 loss=0.000632\n"}
+,{"stream_name":"stdout","time":1681.689686378,"data":"cycle6 steps=200/400 loss=0.000335\n"}
+,{"stream_name":"stdout","time":1682.947178571,"data":"cycle6 steps=300/400 loss=0.000212\n"}
+,{"stream_name":"stdout","time":1684.209581351,"data":"cycle6 steps=400/400 loss=0.000170\n"}
+,{"stream_name":"stdout","time":1684.252917988,"data":"[C6] seed=6301 shared generation=2 current=1.000 prev_mean=0.031\n"}
+,{"stream_name":"stdout","time":1685.518976657,"data":"cycle6 steps=100/400 loss=0.031117\n"}
+,{"stream_name":"stdout","time":1686.799103343,"data":"cycle6 steps=200/400 loss=0.001241\n"}
+,{"stream_name":"stdout","time":1688.054844083,"data":"cycle6 steps=300/400 loss=0.000692\n"}
+,{"stream_name":"stdout","time":1689.315912041,"data":"cycle6 steps=400/400 loss=0.000509\n"}
+,{"stream_name":"stdout","time":1689.3741815,"data":"[C6] seed=6301 shared generation=3 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1690.63748132,"data":"cycle6 steps=100/400 loss=0.003824\n"}
+,{"stream_name":"stdout","time":1691.941569265,"data":"cycle6 steps=200/400 loss=0.001322\n"}
+,{"stream_name":"stdout","time":1693.227265008,"data":"cycle6 steps=300/400 loss=0.000708\n"}
+,{"stream_name":"stdout","time":1694.510701495,"data":"cycle6 steps=400/400 loss=0.000436\n"}
+,{"stream_name":"stdout","time":1694.58020978,"data":"[C6] seed=6301 shared generation=4 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1695.838648736,"data":"cycle6 steps=100/400 loss=0.001804\n"}
+,{"stream_name":"stdout","time":1697.117781627,"data":"cycle6 steps=200/400 loss=0.000706\n"}
+,{"stream_name":"stdout","time":1698.375808267,"data":"cycle6 steps=300/400 loss=0.000479\n"}
+,{"stream_name":"stdout","time":1699.664471552,"data":"cycle6 steps=400/400 loss=0.000334\n"}
+,{"stream_name":"stdout","time":1699.752979949,"data":"[C6] seed=6301 shared generation=5 current=1.000 prev_mean=0.074\n"}
+,{"stream_name":"stdout","time":1701.093158182,"data":"cycle6 steps=100/400 loss=1.565768\n"}
+,{"stream_name":"stdout","time":1702.359909547,"data":"cycle6 steps=200/400 loss=1.519958\n"}
+,{"stream_name":"stdout","time":1703.643562153,"data":"cycle6 steps=300/400 loss=1.253668\n"}
+,{"stream_name":"stdout","time":1704.918703316,"data":"cycle6 steps=400/400 loss=0.928899\n"}
+,{"stream_name":"stdout","time":1705.014682882,"data":"[C6] seed=6301 shared generation=6 current=0.031 prev_mean=0.013\n"}
+,{"stream_name":"stdout","time":1706.277490903,"data":"cycle6 steps=100/400 loss=0.938834\n"}
+,{"stream_name":"stdout","time":1707.557431309,"data":"cycle6 steps=200/400 loss=0.502495\n"}
+,{"stream_name":"stdout","time":1708.836722995,"data":"cycle6 steps=300/400 loss=0.343152\n"}
+,{"stream_name":"stdout","time":1710.095795559,"data":"cycle6 steps=400/400 loss=0.026274\n"}
+,{"stream_name":"stdout","time":1710.206958015,"data":"[C6] seed=6301 shared generation=7 current=0.906 prev_mean=0.068\n"}
+,{"stream_name":"stdout","time":1711.517582646,"data":"cycle6 steps=100/400 loss=0.546871\n"}
+,{"stream_name":"stdout","time":1712.785539016,"data":"cycle6 steps=200/400 loss=0.259544\n"}
+,{"stream_name":"stdout","time":1714.057720486,"data":"cycle6 steps=300/400 loss=0.084969\n"}
+,{"stream_name":"stdout","time":1715.331356432,"data":"cycle6 steps=400/400 loss=0.012101\n"}
+,{"stream_name":"stdout","time":1715.455553914,"data":"[C6] seed=6301 shared generation=8 current=0.828 prev_mean=0.042\n"}
+,{"stream_name":"stdout","time":1716.716099455,"data":"cycle6 steps=100/400 loss=0.651019\n"}
+,{"stream_name":"stdout","time":1717.974755184,"data":"cycle6 steps=200/400 loss=0.137593\n"}
+,{"stream_name":"stdout","time":1719.244799624,"data":"cycle6 steps=300/400 loss=0.131635\n"}
+,{"stream_name":"stdout","time":1720.501475716,"data":"cycle6 steps=400/400 loss=0.009012\n"}
+,{"stream_name":"stdout","time":1720.63926849,"data":"[C6] seed=6301 shared generation=9 current=0.891 prev_mean=0.006\n"}
+,{"stream_name":"stdout","time":1722.053153663,"data":"cycle6 steps=100/400 loss=0.517643\n"}
+,{"stream_name":"stdout","time":1723.329193871,"data":"cycle6 steps=200/400 loss=0.286231\n"}
+,{"stream_name":"stdout","time":1724.591690729,"data":"cycle6 steps=300/400 loss=0.323836\n"}
+,{"stream_name":"stdout","time":1725.866513513,"data":"cycle6 steps=400/400 loss=0.152100\n"}
+,{"stream_name":"stdout","time":1726.019495447,"data":"[C6] seed=6301 shared generation=10 current=0.594 prev_mean=0.007\n"}
+,{"stream_name":"stdout","time":1726.346449465,"data":"[C6] seed=6301 sequential condition=uniform\n"}
+,{"stream_name":"stdout","time":1727.625066815,"data":"cycle6 steps=100/400 loss=0.000492\n"}
+,{"stream_name":"stdout","time":1728.883120988,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1730.161920165,"data":"cycle6 steps=300/400 loss=0.000208\n"}
+,{"stream_name":"stdout","time":1731.498362954,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1731.529468699,"data":"[C6] seed=6301 uniform generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1733.841650075,"data":"cycle6 steps=100/400 loss=0.007717\n"}
+,{"stream_name":"stdout","time":1735.126802501,"data":"cycle6 steps=200/400 loss=0.000435\n"}
+,{"stream_name":"stdout","time":1736.431280884,"data":"cycle6 steps=300/400 loss=0.000214\n"}
+,{"stream_name":"stdout","time":1737.748793074,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1737.790916823,"data":"[C6] seed=6301 uniform generation=2 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1739.099718019,"data":"cycle6 steps=100/400 loss=0.004058\n"}
+,{"stream_name":"stdout","time":1740.417114775,"data":"cycle6 steps=200/400 loss=0.000481\n"}
+,{"stream_name":"stdout","time":1741.79670758,"data":"cycle6 steps=300/400 loss=0.000278\n"}
+,{"stream_name":"stdout","time":1743.107035093,"data":"cycle6 steps=400/400 loss=0.000210\n"}
+,{"stream_name":"stdout","time":1743.163239433,"data":"[C6] seed=6301 uniform generation=3 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1744.527404624,"data":"cycle6 steps=100/400 loss=0.006182\n"}
+,{"stream_name":"stdout","time":1745.866189819,"data":"cycle6 steps=200/400 loss=0.000681\n"}
+,{"stream_name":"stdout","time":1747.197403998,"data":"cycle6 steps=300/400 loss=0.000412\n"}
+,{"stream_name":"stdout","time":1748.552431221,"data":"cycle6 steps=400/400 loss=0.000269\n"}
+,{"stream_name":"stdout","time":1748.624347001,"data":"[C6] seed=6301 uniform generation=4 current=0.969 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1749.992622978,"data":"cycle6 steps=100/400 loss=0.006178\n"}
+,{"stream_name":"stdout","time":1751.396796766,"data":"cycle6 steps=200/400 loss=0.000428\n"}
+,{"stream_name":"stdout","time":1752.774422052,"data":"cycle6 steps=300/400 loss=0.000228\n"}
+,{"stream_name":"stdout","time":1754.168672376,"data":"cycle6 steps=400/400 loss=0.000128\n"}
+,{"stream_name":"stdout","time":1754.255776768,"data":"[C6] seed=6301 uniform generation=5 current=0.984 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1755.662432612,"data":"cycle6 steps=100/400 loss=0.122703\n"}
+,{"stream_name":"stdout","time":1757.080109618,"data":"cycle6 steps=200/400 loss=0.001632\n"}
+,{"stream_name":"stdout","time":1758.478373274,"data":"cycle6 steps=300/400 loss=0.000931\n"}
+,{"stream_name":"stdout","time":1759.899113673,"data":"cycle6 steps=400/400 loss=0.000407\n"}
+,{"stream_name":"stdout","time":1759.997546742,"data":"[C6] seed=6301 uniform generation=6 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1761.46928529,"data":"cycle6 steps=100/400 loss=0.047030\n"}
+,{"stream_name":"stdout","time":1762.904321886,"data":"cycle6 steps=200/400 loss=0.020351\n"}
+,{"stream_name":"stdout","time":1764.329985601,"data":"cycle6 steps=300/400 loss=0.002072\n"}
+,{"stream_name":"stdout","time":1765.759704255,"data":"cycle6 steps=400/400 loss=0.051460\n"}
+,{"stream_name":"stdout","time":1765.871764563,"data":"[C6] seed=6301 uniform generation=7 current=0.953 prev_mean=0.917\n"}
+,{"stream_name":"stdout","time":1767.340810081,"data":"cycle6 steps=100/400 loss=0.131260\n"}
+,{"stream_name":"stdout","time":1768.790670366,"data":"cycle6 steps=200/400 loss=0.037968\n"}
+,{"stream_name":"stdout","time":1770.242472637,"data":"cycle6 steps=300/400 loss=0.010585\n"}
+,{"stream_name":"stdout","time":1771.726080038,"data":"cycle6 steps=400/400 loss=0.007868\n"}
+,{"stream_name":"stdout","time":1771.850609912,"data":"[C6] seed=6301 uniform generation=8 current=0.969 prev_mean=0.955\n"}
+,{"stream_name":"stdout","time":1773.342881061,"data":"cycle6 steps=100/400 loss=0.102114\n"}
+,{"stream_name":"stdout","time":1774.837087001,"data":"cycle6 steps=200/400 loss=0.035200\n"}
+,{"stream_name":"stdout","time":1776.321780749,"data":"cycle6 steps=300/400 loss=0.020487\n"}
+,{"stream_name":"stdout","time":1777.801475898,"data":"cycle6 steps=400/400 loss=0.007872\n"}
+,{"stream_name":"stdout","time":1777.938842982,"data":"[C6] seed=6301 uniform generation=9 current=0.891 prev_mean=0.957\n"}
+,{"stream_name":"stdout","time":1779.464381454,"data":"cycle6 steps=100/400 loss=0.150565\n"}
+,{"stream_name":"stdout","time":1781.01468122,"data":"cycle6 steps=200/400 loss=0.044615\n"}
+,{"stream_name":"stdout","time":1782.5874426,"data":"cycle6 steps=300/400 loss=0.022536\n"}
+,{"stream_name":"stdout","time":1784.098379079,"data":"cycle6 steps=400/400 loss=0.004415\n"}
+,{"stream_name":"stdout","time":1784.250327839,"data":"[C6] seed=6301 uniform generation=10 current=1.000 prev_mean=0.964\n"}
+,{"stream_name":"stdout","time":1784.58269779,"data":"[C6] seed=6301 sequential condition=feedback\n"}
+,{"stream_name":"stdout","time":1785.865163732,"data":"cycle6 steps=100/400 loss=0.000492\n"}
+,{"stream_name":"stdout","time":1787.157617094,"data":"cycle6 steps=200/400 loss=0.000286\n"}
+,{"stream_name":"stdout","time":1788.448205464,"data":"cycle6 steps=300/400 loss=0.000208\n"}
+,{"stream_name":"stdout","time":1789.7374929,"data":"cycle6 steps=400/400 loss=0.000167\n"}
+,{"stream_name":"stdout","time":1789.766374953,"data":"[C6] seed=6301 feedback generation=1 current=1.000 prev_mean=0.000\n"}
+,{"stream_name":"stdout","time":1791.133333681,"data":"cycle6 steps=100/400 loss=0.013152\n"}
+,{"stream_name":"stdout","time":1792.434866177,"data":"cycle6 steps=200/400 loss=0.000571\n"}
+,{"stream_name":"stdout","time":1793.752453282,"data":"cycle6 steps=300/400 loss=0.000266\n"}
+,{"stream_name":"stdout","time":1795.052952911,"data":"cycle6 steps=400/400 loss=0.000203\n"}
+,{"stream_name":"stdout","time":1795.095043275,"data":"[C6] seed=6301 feedback generation=2 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1796.409650074,"data":"cycle6 steps=100/400 loss=0.021523\n"}
+,{"stream_name":"stdout","time":1797.744198345,"data":"cycle6 steps=200/400 loss=0.000535\n"}
+,{"stream_name":"stdout","time":1799.104667848,"data":"cycle6 steps=300/400 loss=0.000294\n"}
+,{"stream_name":"stdout","time":1800.449074267,"data":"cycle6 steps=400/400 loss=0.000200\n"}
+,{"stream_name":"stdout","time":1800.505964774,"data":"[C6] seed=6301 feedback generation=3 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1801.913704819,"data":"cycle6 steps=100/400 loss=0.009947\n"}
+,{"stream_name":"stdout","time":1803.281335104,"data":"cycle6 steps=200/400 loss=0.000700\n"}
+,{"stream_name":"stdout","time":1804.612680987,"data":"cycle6 steps=300/400 loss=0.000350\n"}
+,{"stream_name":"stdout","time":1805.96697727,"data":"cycle6 steps=400/400 loss=0.000246\n"}
+,{"stream_name":"stdout","time":1806.039894791,"data":"[C6] seed=6301 feedback generation=4 current=0.953 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1807.413099597,"data":"cycle6 steps=100/400 loss=0.001349\n"}
+,{"stream_name":"stdout","time":1808.780970633,"data":"cycle6 steps=200/400 loss=0.000298\n"}
+,{"stream_name":"stdout","time":1810.151242424,"data":"cycle6 steps=300/400 loss=0.000190\n"}
+,{"stream_name":"stdout","time":1811.56294021,"data":"cycle6 steps=400/400 loss=0.000129\n"}
+,{"stream_name":"stdout","time":1811.648691894,"data":"[C6] seed=6301 feedback generation=5 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1813.056744187,"data":"cycle6 steps=100/400 loss=0.074060\n"}
+,{"stream_name":"stdout","time":1814.46245999,"data":"cycle6 steps=200/400 loss=0.001915\n"}
+,{"stream_name":"stdout","time":1815.872715871,"data":"cycle6 steps=300/400 loss=0.000420\n"}
+,{"stream_name":"stdout","time":1817.2849438,"data":"cycle6 steps=400/400 loss=0.000336\n"}
+,{"stream_name":"stdout","time":1817.384397578,"data":"[C6] seed=6301 feedback generation=6 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1818.836740992,"data":"cycle6 steps=100/400 loss=0.018597\n"}
+,{"stream_name":"stdout","time":1820.306076072,"data":"cycle6 steps=200/400 loss=0.017660\n"}
+,{"stream_name":"stdout","time":1821.773998685,"data":"cycle6 steps=300/400 loss=0.035852\n"}
+,{"stream_name":"stdout","time":1823.197092721,"data":"cycle6 steps=400/400 loss=0.000473\n"}
+,{"stream_name":"stdout","time":1823.308233184,"data":"[C6] seed=6301 feedback generation=7 current=1.000 prev_mean=1.000\n"}
+,{"stream_name":"stdout","time":1824.752859353,"data":"cycle6 steps=100/400 loss=0.084991\n"}
+,{"stream_name":"stdout","time":1826.209912237,"data":"cycle6 steps=200/400 loss=0.029770\n"}
+,{"stream_name":"stdout","time":1827.689826216,"data":"cycle6 steps=300/400 loss=0.005387\n"}
+,{"stream_name":"stdout","time":1829.13907572,"data":"cycle6 steps=400/400 loss=0.005371\n"}
+,{"stream_name":"stdout","time":1829.264160216,"data":"[C6] seed=6301 feedback generation=8 current=0.938 prev_mean=0.984\n"}
+,{"stream_name":"stdout","time":1830.762591133,"data":"cycle6 steps=100/400 loss=0.115018\n"}
+,{"stream_name":"stdout","time":1832.319735769,"data":"cycle6 steps=200/400 loss=0.031120\n"}
+,{"stream_name":"stdout","time":1833.826493681,"data":"cycle6 steps=300/400 loss=0.002893\n"}
+,{"stream_name":"stdout","time":1835.321544343,"data":"cycle6 steps=400/400 loss=0.010343\n"}
+,{"stream_name":"stdout","time":1835.462430508,"data":"[C6] seed=6301 feedback generation=9 current=0.969 prev_mean=0.969\n"}
+,{"stream_name":"stdout","time":1836.993629668,"data":"cycle6 steps=100/400 loss=0.232164\n"}
+,{"stream_name":"stdout","time":1838.532062109,"data":"cycle6 steps=200/400 loss=0.066889\n"}
+,{"stream_name":"stdout","time":1840.067970997,"data":"cycle6 steps=300/400 loss=0.006381\n"}
+,{"stream_name":"stdout","time":1841.750772443,"data":"cycle6 steps=400/400 loss=0.144461\n"}
+,{"stream_name":"stdout","time":1841.903071686,"data":"[C6] seed=6301 feedback generation=10 current=0.672 prev_mean=0.931\n"}
+,{"stream_name":"stdout","time":1842.235153012,"data":"[C6] seed=6301 composition pretraining=primitives_only\n"}
+,{"stream_name":"stdout","time":1843.548771199,"data":"cycle6 steps=100/2000 loss=0.950558\n"}
+,{"stream_name":"stdout","time":1844.862213834,"data":"cycle6 steps=200/2000 loss=0.594049\n"}
+,{"stream_name":"stdout","time":1846.189673935,"data":"cycle6 steps=300/2000 loss=0.332020\n"}
+,{"stream_name":"stdout","time":1847.520579496,"data":"cycle6 steps=400/2000 loss=0.274723\n"}
+,{"stream_name":"stdout","time":1848.842744299,"data":"cycle6 steps=500/2000 loss=0.096547\n"}
+,{"stream_name":"stdout","time":1850.179373562,"data":"cycle6 steps=600/2000 loss=0.040877\n"}
+,{"stream_name":"stdout","time":1851.539567239,"data":"cycle6 steps=700/2000 loss=0.047172\n"}
+,{"stream_name":"stdout","time":1852.866390123,"data":"cycle6 steps=800/2000 loss=0.068246\n"}
+,{"stream_name":"stdout","time":1854.21485709,"data":"cycle6 steps=900/2000 loss=0.000778\n"}
+,{"stream_name":"stdout","time":1855.551201289,"data":"cycle6 steps=1000/2000 loss=0.000275\n"}
+,{"stream_name":"stdout","time":1856.89116937,"data":"cycle6 steps=1100/2000 loss=0.000198\n"}
+,{"stream_name":"stdout","time":1858.209204108,"data":"cycle6 steps=1200/2000 loss=0.000144\n"}
+,{"stream_name":"stdout","time":1859.513105693,"data":"cycle6 steps=1300/2000 loss=0.000099\n"}
+,{"stream_name":"stdout","time":1860.865982151,"data":"cycle6 steps=1400/2000 loss=0.000101\n"}
+,{"stream_name":"stdout","time":1862.222444185,"data":"cycle6 steps=1500/2000 loss=0.000075\n"}
+,{"stream_name":"stdout","time":1863.514117692,"data":"cycle6 steps=1600/2000 loss=0.000072\n"}
+,{"stream_name":"stdout","time":1864.844241518,"data":"cycle6 steps=1700/2000 loss=0.000054\n"}
+,{"stream_name":"stdout","time":1866.163953955,"data":"cycle6 steps=1800/2000 loss=0.000072\n"}
+,{"stream_name":"stdout","time":1867.441896117,"data":"cycle6 steps=1900/2000 loss=0.000046\n"}
+,{"stream_name":"stdout","time":1868.744386651,"data":"cycle6 steps=2000/2000 loss=0.000048\n"}
+,{"stream_name":"stdout","time":1869.620657323,"data":"[C6] seed=6301 composition pretraining=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1870.941401703,"data":"cycle6 steps=100/2000 loss=1.288678\n"}
+,{"stream_name":"stdout","time":1872.242320174,"data":"cycle6 steps=200/2000 loss=1.079198\n"}
+,{"stream_name":"stdout","time":1873.539513754,"data":"cycle6 steps=300/2000 loss=0.932052\n"}
+,{"stream_name":"stdout","time":1874.829734942,"data":"cycle6 steps=400/2000 loss=0.715574\n"}
+,{"stream_name":"stdout","time":1876.111269369,"data":"cycle6 steps=500/2000 loss=0.513740\n"}
+,{"stream_name":"stdout","time":1877.415522067,"data":"cycle6 steps=600/2000 loss=0.489489\n"}
+,{"stream_name":"stdout","time":1878.713374948,"data":"cycle6 steps=700/2000 loss=0.436981\n"}
+,{"stream_name":"stdout","time":1880.008759561,"data":"cycle6 steps=800/2000 loss=0.299496\n"}
+,{"stream_name":"stdout","time":1881.349336063,"data":"cycle6 steps=900/2000 loss=0.280894\n"}
+,{"stream_name":"stdout","time":1882.670210377,"data":"cycle6 steps=1000/2000 loss=0.275129\n"}
+,{"stream_name":"stdout","time":1883.965021871,"data":"cycle6 steps=1100/2000 loss=0.219890\n"}
+,{"stream_name":"stdout","time":1885.260058416,"data":"cycle6 steps=1200/2000 loss=0.197840\n"}
+,{"stream_name":"stdout","time":1886.544323545,"data":"cycle6 steps=1300/2000 loss=0.221396\n"}
+,{"stream_name":"stdout","time":1887.841125337,"data":"cycle6 steps=1400/2000 loss=0.233888\n"}
+,{"stream_name":"stdout","time":1889.138174663,"data":"cycle6 steps=1500/2000 loss=0.222602\n"}
+,{"stream_name":"stdout","time":1890.423144587,"data":"cycle6 steps=1600/2000 loss=0.118256\n"}
+,{"stream_name":"stdout","time":1891.762033177,"data":"cycle6 steps=1700/2000 loss=0.127432\n"}
+,{"stream_name":"stdout","time":1893.047697937,"data":"cycle6 steps=1800/2000 loss=0.167659\n"}
+,{"stream_name":"stdout","time":1894.356376784,"data":"cycle6 steps=1900/2000 loss=0.062609\n"}
+,{"stream_name":"stdout","time":1895.654229444,"data":"cycle6 steps=2000/2000 loss=0.142378\n"}
+,{"stream_name":"stdout","time":1896.526202196,"data":"[C6] seed=6301 16-shot condition=random_init\n"}
+,{"stream_name":"stdout","time":1898.692692236,"data":"cycle6 steps=32/32 loss=0.008208\n"}
+,{"stream_name":"stdout","time":1899.120350414,"data":"cycle6 steps=32/32 loss=0.004461\n"}
+,{"stream_name":"stdout","time":1899.51793925,"data":"cycle6 steps=32/32 loss=0.090390\n"}
+,{"stream_name":"stdout","time":1899.931480962,"data":"cycle6 steps=32/32 loss=0.007123\n"}
+,{"stream_name":"stdout","time":1900.323445501,"data":"cycle6 steps=32/32 loss=0.037108\n"}
+,{"stream_name":"stdout","time":1900.737601468,"data":"cycle6 steps=32/32 loss=0.114207\n"}
+,{"stream_name":"stdout","time":1901.231111415,"data":"cycle6 steps=32/32 loss=0.143256\n"}
+,{"stream_name":"stdout","time":1901.650878812,"data":"cycle6 steps=32/32 loss=0.082379\n"}
+,{"stream_name":"stdout","time":1902.066090021,"data":"cycle6 steps=32/32 loss=0.011563\n"}
+,{"stream_name":"stdout","time":1902.465675044,"data":"cycle6 steps=32/32 loss=0.126163\n"}
+,{"stream_name":"stdout","time":1902.879598178,"data":"cycle6 steps=32/32 loss=0.003366\n"}
+,{"stream_name":"stdout","time":1903.296534941,"data":"cycle6 steps=32/32 loss=0.003136\n"}
+,{"stream_name":"stdout","time":1903.709291728,"data":"cycle6 steps=32/32 loss=0.037931\n"}
+,{"stream_name":"stdout","time":1904.117203197,"data":"cycle6 steps=32/32 loss=0.066988\n"}
+,{"stream_name":"stdout","time":1904.521197412,"data":"cycle6 steps=32/32 loss=0.033751\n"}
+,{"stream_name":"stdout","time":1904.949276418,"data":"cycle6 steps=32/32 loss=0.133514\n"}
+,{"stream_name":"stdout","time":1905.364551078,"data":"cycle6 steps=32/32 loss=0.067288\n"}
+,{"stream_name":"stdout","time":1905.776693603,"data":"cycle6 steps=32/32 loss=0.218253\n"}
+,{"stream_name":"stdout","time":1906.192260066,"data":"cycle6 steps=32/32 loss=0.128847\n"}
+,{"stream_name":"stdout","time":1906.610749597,"data":"cycle6 steps=32/32 loss=0.139589\n"}
+,{"stream_name":"stdout","time":1906.643535889,"data":"[C6] seed=6301 16-shot condition=primitives_only\n"}
+,{"stream_name":"stdout","time":1907.043840065,"data":"cycle6 steps=32/32 loss=0.015972\n"}
+,{"stream_name":"stdout","time":1907.445875896,"data":"cycle6 steps=32/32 loss=0.002208\n"}
+,{"stream_name":"stdout","time":1907.853956031,"data":"cycle6 steps=32/32 loss=0.008464\n"}
+,{"stream_name":"stdout","time":1908.259274859,"data":"cycle6 steps=32/32 loss=0.097765\n"}
+,{"stream_name":"stdout","time":1908.669539625,"data":"cycle6 steps=32/32 loss=0.013866\n"}
+,{"stream_name":"stdout","time":1909.087897735,"data":"cycle6 steps=32/32 loss=0.113378\n"}
+,{"stream_name":"stdout","time":1909.496098637,"data":"cycle6 steps=32/32 loss=0.089856\n"}
+,{"stream_name":"stdout","time":1909.908636255,"data":"cycle6 steps=32/32 loss=0.002980\n"}
+,{"stream_name":"stdout","time":1910.314195512,"data":"cycle6 steps=32/32 loss=0.002044\n"}
+,{"stream_name":"stdout","time":1910.731965433,"data":"cycle6 steps=32/32 loss=0.075230\n"}
+,{"stream_name":"stdout","time":1911.210526034,"data":"cycle6 steps=32/32 loss=0.001453\n"}
+,{"stream_name":"stdout","time":1911.622737631,"data":"cycle6 steps=32/32 loss=0.003750\n"}
+,{"stream_name":"stdout","time":1912.036749694,"data":"cycle6 steps=32/32 loss=0.002083\n"}
+,{"stream_name":"stdout","time":1912.444446536,"data":"cycle6 steps=32/32 loss=0.004279\n"}
+,{"stream_name":"stdout","time":1912.862528662,"data":"cycle6 steps=32/32 loss=0.000873\n"}
+,{"stream_name":"stdout","time":1913.296354604,"data":"cycle6 steps=32/32 loss=0.532413\n"}
+,{"stream_name":"stdout","time":1913.719122518,"data":"cycle6 steps=32/32 loss=0.011503\n"}
+,{"stream_name":"stdout","time":1914.138969001,"data":"cycle6 steps=32/32 loss=0.291202\n"}
+,{"stream_name":"stdout","time":1914.557505313,"data":"cycle6 steps=32/32 loss=0.124918\n"}
+,{"stream_name":"stdout","time":1914.973143164,"data":"cycle6 steps=32/32 loss=0.098140\n"}
+,{"stream_name":"stdout","time":1915.004643016,"data":"[C6] seed=6301 16-shot condition=pairs_and_primitives\n"}
+,{"stream_name":"stdout","time":1915.405264452,"data":"cycle6 steps=32/32 loss=0.001284\n"}
+,{"stream_name":"stdout","time":1915.819717436,"data":"cycle6 steps=32/32 loss=0.001418\n"}
+,{"stream_name":"stdout","time":1916.224821595,"data":"cycle6 steps=32/32 loss=0.001901\n"}
+,{"stream_name":"stdout","time":1916.640793379,"data":"cycle6 steps=32/32 loss=0.002535\n"}
+,{"stream_name":"stdout","time":1917.049812887,"data":"cycle6 steps=32/32 loss=0.001152\n"}
+,{"stream_name":"stdout","time":1917.470129234,"data":"cycle6 steps=32/32 loss=0.000306\n"}
+,{"stream_name":"stdout","time":1917.879233588,"data":"cycle6 steps=32/32 loss=0.000641\n"}
+,{"stream_name":"stdout","time":1918.282099451,"data":"cycle6 steps=32/32 loss=0.000461\n"}
+,{"stream_name":"stdout","time":1918.692039965,"data":"cycle6 steps=32/32 loss=0.001411\n"}
+,{"stream_name":"stdout","time":1919.101979724,"data":"cycle6 steps=32/32 loss=0.001059\n"}
+,{"stream_name":"stdout","time":1919.525447438,"data":"cycle6 steps=32/32 loss=0.000288\n"}
+,{"stream_name":"stdout","time":1919.943066393,"data":"cycle6 steps=32/32 loss=0.000148\n"}
+,{"stream_name":"stdout","time":1920.371948027,"data":"cycle6 steps=32/32 loss=0.000879\n"}
+,{"stream_name":"stdout","time":1920.805422117,"data":"cycle6 steps=32/32 loss=0.000431\n"}
+,{"stream_name":"stdout","time":1921.259865466,"data":"cycle6 steps=32/32 loss=0.001033\n"}
+,{"stream_name":"stdout","time":1921.696168309,"data":"cycle6 steps=32/32 loss=0.057678\n"}
+,{"stream_name":"stdout","time":1922.102961578,"data":"cycle6 steps=32/32 loss=0.002413\n"}
+,{"stream_name":"stdout","time":1922.5112365,"data":"cycle6 steps=32/32 loss=0.007627\n"}
+,{"stream_name":"stdout","time":1922.932369052,"data":"cycle6 steps=32/32 loss=0.002541\n"}
+,{"stream_name":"stdout","time":1923.355073285,"data":"cycle6 steps=32/32 loss=0.009342\n"}
+,{"stream_name":"stdout","time":1923.393234199,"data":"[C6] seed=6301 finished scientific_leap_gate=false\n"}
+,{"stream_name":"stdout","time":1923.722432502,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/cycle6-verify /kaggle/working/results/cycle6-20261118T073934Z/seed_6301\n"}
+,{"stream_name":"stdout","time":1924.31344546,"data":"[AUDIT PASS] seed=6301 acquired=10 retention=false composition=false joint_ood=0.1805\n"}
+,{"stream_name":"stdout","time":1924.319233632,"data":"[RUN] /tmp/moonshot-cycle6-source/target/release/cycle6-verify --all /kaggle/working/results/cycle6-20261118T073934Z\n"}
+,{"stream_name":"stdout","time":1924.908152358,"data":"[AUDIT PASS] seed=6109 acquired=10 retention=false composition=false joint_ood=0.1437\n"}
+,{"stream_name":"stdout","time":1925.482323313,"data":"[AUDIT PASS] seed=6203 acquired=10 retention=false composition=false joint_ood=0.1734\n"}
+,{"stream_name":"stdout","time":1926.03796727,"data":"[AUDIT PASS] seed=6301 acquired=10 retention=false composition=false joint_ood=0.1805\n"}
+,{"stream_name":"stdout","time":1926.04416741,"data":"[CROSS-SEED AUDIT PASS] {\"acquired_on_all_seeds\":[0,1,2,3,4,5,6,7,8,9],\"acquisition_gate\":true,\"composition_gate\":false,\"retention_gate\":false,\"scientific_leap_gate\":false}\n"}
+,{"stream_name":"stdout","time":1926.04641556,"data":"[DONE] infrastructure verified; scientific leap gate: False\n"}
+,{"stream_name":"stdout","time":1926.046695564,"data":"[ARTIFACTS] /kaggle/working/results/cycle6-20261118T073934Z\n"}
+,{"stream_name":"stderr","time":1928.449694029,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1928.449728757,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1928.810805991,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1928.810841295,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1930.76700916,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1931.861397329,"data":"[NbConvertApp] Writing 328822 bytes to __results__.html\n"}
+]

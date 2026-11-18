@@ -1,0 +1,1937 @@
+{
+  "pairs_and_primitives": {
+    "mean_exact_match": 0.1953125,
+    "per_pair": [
+      {
+        "pair": [
+          7,
+          4
+        ],
+        "test_exact_match": 0.421875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.1221845149993896
+            ],
+            [
+              25,
+              0.002717911032959819
+            ],
+            [
+              32,
+              0.003699439112097025
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.387584356,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          0,
+          7
+        ],
+        "test_exact_match": 0.28125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.3808226585388184
+            ],
+            [
+              25,
+              0.0011307349195703864
+            ],
+            [
+              32,
+              0.00047542984248138964
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.370242183,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          6
+        ],
+        "test_exact_match": 0.171875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.5189733505249023
+            ],
+            [
+              25,
+              0.0026341043412685394
+            ],
+            [
+              32,
+              0.002211775165051222
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.371152467,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          0
+        ],
+        "test_exact_match": 0.34375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.721479415893555
+            ],
+            [
+              25,
+              0.00754485372453928
+            ],
+            [
+              32,
+              0.003862276440486312
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.373366133,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          1
+        ],
+        "test_exact_match": 0.03125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.2093168497085571
+            ],
+            [
+              25,
+              0.008275204338133335
+            ],
+            [
+              32,
+              0.00807824358344078
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.373362044,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          9
+        ],
+        "test_exact_match": 0.046875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.9317166805267334
+            ],
+            [
+              25,
+              0.0032393282745033503
+            ],
+            [
+              32,
+              0.0020647563505917788
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.393822638,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          0
+        ],
+        "test_exact_match": 0.21875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.0006300210952759
+            ],
+            [
+              25,
+              0.0008097935351543128
+            ],
+            [
+              32,
+              0.0003665389376692474
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.376865253,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          9
+        ],
+        "test_exact_match": 0.234375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.9892359972000122
+            ],
+            [
+              25,
+              0.001118537038564682
+            ],
+            [
+              32,
+              0.0004121866659261286
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.37336458,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          9
+        ],
+        "test_exact_match": 0.078125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.6668736934661865
+            ],
+            [
+              25,
+              0.0030298286583274603
+            ],
+            [
+              32,
+              0.0008141280268318951
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.378612567,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          1
+        ],
+        "test_exact_match": 0.015625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.0183682441711426
+            ],
+            [
+              25,
+              0.08324595540761948
+            ],
+            [
+              32,
+              0.03829452767968178
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.378529733,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          2
+        ],
+        "test_exact_match": 0.703125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.2531356811523438
+            ],
+            [
+              25,
+              0.005021705292165279
+            ],
+            [
+              32,
+              0.0024935947731137276
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.398880099,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          4
+        ],
+        "test_exact_match": 0.46875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.5635715126991272
+            ],
+            [
+              25,
+              0.003955442924052477
+            ],
+            [
+              32,
+              0.001915845088660717
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.38121109,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          7
+        ],
+        "test_exact_match": 0.25,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.6761924028396606
+            ],
+            [
+              25,
+              0.04581007361412048
+            ],
+            [
+              32,
+              0.005694678984582424
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.385658727,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          6
+        ],
+        "test_exact_match": 0.078125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.0545682907104492
+            ],
+            [
+              25,
+              0.08955542743206024
+            ],
+            [
+              32,
+              0.0038880580104887486
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.426356067,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          6,
+          7
+        ],
+        "test_exact_match": 0.265625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.2083335518836975
+            ],
+            [
+              25,
+              0.0005208650254644454
+            ],
+            [
+              32,
+              0.0003365105949342251
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.38988756,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          6
+        ],
+        "test_exact_match": 0.046875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              3.7074429988861084
+            ],
+            [
+              25,
+              0.07248389720916748
+            ],
+            [
+              32,
+              0.0212731771171093
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.379116541,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          8
+        ],
+        "test_exact_match": 0.078125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              0.9905110597610474
+            ],
+            [
+              25,
+              0.035251595079898834
+            ],
+            [
+              32,
+              0.002169413724914193
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.381815239,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          3,
+          6
+        ],
+        "test_exact_match": 0.125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              1.1363106966018677
+            ],
+            [
+              25,
+              0.005104934796690941
+            ],
+            [
+              32,
+              0.0013573523610830307
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.388526753,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.219728946685791
+            ],
+            [
+              25,
+              0.023511772975325584
+            ],
+            [
+              32,
+              0.004432843532413244
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.390208323,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          6
+        ],
+        "test_exact_match": 0.046875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.728949785232544
+            ],
+            [
+              25,
+              0.10123687237501144
+            ],
+            [
+              32,
+              0.030170351266860962
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.407417064,
+          "weights_changed": true
+        }
+      }
+    ]
+  },
+  "primitives_only": {
+    "mean_exact_match": 0.11171875,
+    "per_pair": [
+      {
+        "pair": [
+          7,
+          4
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              5.363877296447754
+            ],
+            [
+              25,
+              0.3305181562900543
+            ],
+            [
+              32,
+              0.2213195115327835
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.38987288,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          0,
+          7
+        ],
+        "test_exact_match": 0.359375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.0789003372192383
+            ],
+            [
+              25,
+              0.005880735814571381
+            ],
+            [
+              32,
+              0.0021409597247838974
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.373884008,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          6
+        ],
+        "test_exact_match": 0.03125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.8160600662231445
+            ],
+            [
+              25,
+              0.00682686036452651
+            ],
+            [
+              32,
+              0.002321865875273943
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.368957869,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          0
+        ],
+        "test_exact_match": 0.609375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              7.635632038116455
+            ],
+            [
+              25,
+              0.012813622131943703
+            ],
+            [
+              32,
+              0.005050996784120798
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.385435399,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          1
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              7.548034191131592
+            ],
+            [
+              25,
+              0.26317185163497925
+            ],
+            [
+              32,
+              0.24807903170585632
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.377863367,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          9
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              3.758244514465332
+            ],
+            [
+              25,
+              0.5263737440109253
+            ],
+            [
+              32,
+              0.1929110437631607
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.39789137,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          0
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              9.253406524658203
+            ],
+            [
+              25,
+              0.3454280495643616
+            ],
+            [
+              32,
+              0.15717928111553192
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.388151451,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          9
+        ],
+        "test_exact_match": 0.015625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              5.507339000701904
+            ],
+            [
+              25,
+              0.10121172666549683
+            ],
+            [
+              32,
+              0.03160401061177254
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.376617739,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          9
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              5.310272216796875
+            ],
+            [
+              25,
+              0.05548039823770523
+            ],
+            [
+              32,
+              0.028697213158011436
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.391508316,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          1
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              5.277044296264648
+            ],
+            [
+              25,
+              0.28100311756134033
+            ],
+            [
+              32,
+              0.10437999665737152
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.409732947,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          2
+        ],
+        "test_exact_match": 0.421875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              6.083189964294434
+            ],
+            [
+              25,
+              0.021085411310195923
+            ],
+            [
+              32,
+              0.004448733292520046
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.398492373,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          4
+        ],
+        "test_exact_match": 0.03125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              3.9178948402404785
+            ],
+            [
+              25,
+              0.45410433411598206
+            ],
+            [
+              32,
+              0.29936906695365906
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.379367728,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          7
+        ],
+        "test_exact_match": 0.140625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.2115046977996826
+            ],
+            [
+              25,
+              0.044698700308799744
+            ],
+            [
+              32,
+              0.05803869664669037
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.380475135,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          6
+        ],
+        "test_exact_match": 0.34375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.36517333984375
+            ],
+            [
+              25,
+              0.005965483374893665
+            ],
+            [
+              32,
+              0.0016206522705033422
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.385073023,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          6,
+          7
+        ],
+        "test_exact_match": 0.234375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              2.58048939704895
+            ],
+            [
+              25,
+              0.03698965162038803
+            ],
+            [
+              32,
+              0.010687952861189842
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.370083194,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              8.983352661132812
+            ],
+            [
+              25,
+              1.0321452617645264
+            ],
+            [
+              32,
+              0.7954899668693542
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.395094045,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          8
+        ],
+        "test_exact_match": 0.046875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              5.644245624542236
+            ],
+            [
+              25,
+              0.0798136368393898
+            ],
+            [
+              32,
+              0.11170435696840286
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.381626829,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          3,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              7.729251384735107
+            ],
+            [
+              25,
+              0.5542879104614258
+            ],
+            [
+              32,
+              0.36778685450553894
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.386338428,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              9.157510757446289
+            ],
+            [
+              25,
+              0.349437415599823
+            ],
+            [
+              32,
+              0.13002245128154755
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.380258557,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              8.824328422546387
+            ],
+            [
+              25,
+              0.552254319190979
+            ],
+            [
+              32,
+              0.34154045581817627
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.388563252,
+          "weights_changed": true
+        }
+      }
+    ]
+  },
+  "random_init": {
+    "mean_exact_match": 0.17421875,
+    "per_pair": [
+      {
+        "pair": [
+          7,
+          4
+        ],
+        "test_exact_match": 0.28125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.558536052703857
+            ],
+            [
+              25,
+              0.09043247997760773
+            ],
+            [
+              32,
+              0.08648186177015305
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 2.902883837,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          0,
+          7
+        ],
+        "test_exact_match": 0.171875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.578006267547607
+            ],
+            [
+              25,
+              0.01115676574409008
+            ],
+            [
+              32,
+              0.005396166816353798
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.372734825,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.835911273956299
+            ],
+            [
+              25,
+              0.22698090970516205
+            ],
+            [
+              32,
+              0.06193198263645172
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.368288737,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          0
+        ],
+        "test_exact_match": 0.984375,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.8369364738464355
+            ],
+            [
+              25,
+              0.00403424771502614
+            ],
+            [
+              32,
+              0.002587259281426668
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.371360624,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          1
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.7719244956970215
+            ],
+            [
+              25,
+              0.07588532567024231
+            ],
+            [
+              32,
+              0.05349600687623024
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.380853435,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          9
+        ],
+        "test_exact_match": 0.015625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.965592861175537
+            ],
+            [
+              25,
+              0.2065165638923645
+            ],
+            [
+              32,
+              0.036340080201625824
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.41155578,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          0
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.593634128570557
+            ],
+            [
+              25,
+              0.14656314253807068
+            ],
+            [
+              32,
+              0.02095259726047516
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.370402299,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          9
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.890907287597656
+            ],
+            [
+              25,
+              0.13994984328746796
+            ],
+            [
+              32,
+              0.03803914040327072
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.404871239,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          9
+        ],
+        "test_exact_match": 0.015625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.83443546295166
+            ],
+            [
+              25,
+              0.0592888779938221
+            ],
+            [
+              32,
+              0.00853655580431223
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.38364371,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          1
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.599634170532227
+            ],
+            [
+              25,
+              0.22827288508415222
+            ],
+            [
+              32,
+              0.03966750577092171
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.382003494,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          4,
+          2
+        ],
+        "test_exact_match": 1.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.897784233093262
+            ],
+            [
+              25,
+              0.006629116367548704
+            ],
+            [
+              32,
+              0.004136877600103617
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.40172448,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          4
+        ],
+        "test_exact_match": 0.96875,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.954501628875732
+            ],
+            [
+              25,
+              0.008846649900078773
+            ],
+            [
+              32,
+              0.0035804547369480133
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.377964035,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          7
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.679276466369629
+            ],
+            [
+              25,
+              0.09410056471824646
+            ],
+            [
+              32,
+              0.08328396826982498
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.38348663,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          1,
+          6
+        ],
+        "test_exact_match": 0.015625,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.80075216293335
+            ],
+            [
+              25,
+              0.16753406822681427
+            ],
+            [
+              32,
+              0.014287303201854229
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.383916731,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          6,
+          7
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.75260066986084
+            ],
+            [
+              25,
+              0.3585078716278076
+            ],
+            [
+              32,
+              0.05873175710439682
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.375242739,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          2,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.667092323303223
+            ],
+            [
+              25,
+              0.26093024015426636
+            ],
+            [
+              32,
+              0.046570971608161926
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.404106403,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          9,
+          8
+        ],
+        "test_exact_match": 0.03125,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.603039741516113
+            ],
+            [
+              25,
+              0.30944105982780457
+            ],
+            [
+              32,
+              0.10074525326490402
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.385305413,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          3,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.603433132171631
+            ],
+            [
+              25,
+              0.21230733394622803
+            ],
+            [
+              32,
+              0.05365263670682907
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.379751358,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          5,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.564060211181641
+            ],
+            [
+              25,
+              0.26307573914527893
+            ],
+            [
+              32,
+              0.07246967405080795
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.377361379,
+          "weights_changed": true
+        }
+      },
+      {
+        "pair": [
+          8,
+          6
+        ],
+        "test_exact_match": 0.0,
+        "training": {
+          "batch": 16,
+          "gradients_per_step": 38,
+          "learning_rate": 0.001,
+          "losses": [
+            [
+              1,
+              4.630166530609131
+            ],
+            [
+              25,
+              0.31303513050079346
+            ],
+            [
+              32,
+              0.11093257367610931
+            ]
+          ],
+          "probe_forward_examples": 0,
+          "replay_probes": [],
+          "sampled_previous_task_counts": [],
+          "steps": 32,
+          "wall_seconds": 0.378132389,
+          "weights_changed": true
+        }
+      }
+    ]
+  }
+}

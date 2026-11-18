@@ -1,0 +1,662 @@
+[
+  {
+    "name": "build.log",
+    "size": 901,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cross_seed_audit.json",
+    "size": 938,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cross_seed_rust_audit.log",
+    "size": 949,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "failure_ledger.json",
+    "size": 931,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "gpu_telemetry.csv",
+    "size": 926,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "run_manifest.json",
+    "size": 926,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "composition_result.json",
+    "size": 989,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_pairs_and_primitives_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_primitives_only_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_progress.json",
+    "size": 983,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_random_init_predictions.json",
+    "size": 1028,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1021,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_heldout_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_primitive_predictions.json",
+    "size": 1061,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_heldout_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_primitive_predictions.json",
+    "size": 1046,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cycle6_run.json",
+    "size": 940,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "independent_rust_audit.log",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "operator_pair_splits.json",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitive_splits.json",
+    "size": 959,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 918,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_final_predictions.json",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_trajectory_predictions.json",
+    "size": 1026,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_predictions.json",
+    "size": 993,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "sequential_result.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1003,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_final_predictions.json",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_progress.json",
+    "size": 977,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_trajectory_predictions.json",
+    "size": 1020,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_final_predictions.json",
+    "size": 1008,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_progress.json",
+    "size": 981,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_trajectory_predictions.json",
+    "size": 1023,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "composition_result.json",
+    "size": 989,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_pairs_and_primitives_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_primitives_only_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_progress.json",
+    "size": 983,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_random_init_predictions.json",
+    "size": 1028,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1021,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_heldout_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_primitive_predictions.json",
+    "size": 1061,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_heldout_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_primitive_predictions.json",
+    "size": 1046,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cycle6_run.json",
+    "size": 940,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "independent_rust_audit.log",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "operator_pair_splits.json",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitive_splits.json",
+    "size": 959,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 918,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_final_predictions.json",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_trajectory_predictions.json",
+    "size": 1026,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_predictions.json",
+    "size": 993,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "sequential_result.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1003,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_final_predictions.json",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_progress.json",
+    "size": 977,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_trajectory_predictions.json",
+    "size": 1020,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_final_predictions.json",
+    "size": 1008,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_progress.json",
+    "size": 981,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_trajectory_predictions.json",
+    "size": 1023,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "composition_result.json",
+    "size": 989,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_pairs_and_primitives_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_primitives_only_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_progress.json",
+    "size": 983,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "fewshot_random_init_predictions.json",
+    "size": 1028,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1021,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_heldout_predictions.json",
+    "size": 1055,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "pairs_and_primitives_primitive_predictions.json",
+    "size": 1061,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_heldout_predictions.json",
+    "size": 1040,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitives_only_primitive_predictions.json",
+    "size": 1046,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "cycle6_run.json",
+    "size": 940,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "independent_rust_audit.log",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "operator_pair_splits.json",
+    "size": 971,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "primitive_splits.json",
+    "size": 959,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 918,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1007,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_final_predictions.json",
+    "size": 1011,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "feedback_trajectory_predictions.json",
+    "size": 1026,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 999,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_predictions.json",
+    "size": 993,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "isolated_progress.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "sequential_result.json",
+    "size": 984,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1003,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_final_predictions.json",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_progress.json",
+    "size": 977,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "shared_trajectory_predictions.json",
+    "size": 1020,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "model.safetensors",
+    "size": 1005,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_final_predictions.json",
+    "size": 1008,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_progress.json",
+    "size": 981,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "uniform_trajectory_predictions.json",
+    "size": 1023,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "rust.log",
+    "size": 909,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "smoke_result.json",
+    "size": 938,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  },
+  {
+    "name": "tests.log",
+    "size": 902,
+    "creationDate": "7:39 am, Wednesday 18 November 2026 UTC"
+  }
+]

@@ -1,0 +1,310 @@
+[C6] seed=6109 isolated-task capability ceiling
+cycle6 steps=100/400 loss=0.000562
+cycle6 steps=200/400 loss=0.000337
+cycle6 steps=300/400 loss=0.000238
+cycle6 steps=400/400 loss=0.000186
+[C6] seed=6109 isolated task=0 heldout=1.000
+cycle6 steps=100/400 loss=0.000522
+cycle6 steps=200/400 loss=0.000309
+cycle6 steps=300/400 loss=0.000225
+cycle6 steps=400/400 loss=0.000171
+[C6] seed=6109 isolated task=1 heldout=1.000
+cycle6 steps=100/400 loss=0.000587
+cycle6 steps=200/400 loss=0.000332
+cycle6 steps=300/400 loss=0.000232
+cycle6 steps=400/400 loss=0.000180
+[C6] seed=6109 isolated task=2 heldout=1.000
+cycle6 steps=100/400 loss=0.000707
+cycle6 steps=200/400 loss=0.000403
+cycle6 steps=300/400 loss=0.000278
+cycle6 steps=400/400 loss=0.000208
+[C6] seed=6109 isolated task=3 heldout=1.000
+cycle6 steps=100/400 loss=0.000610
+cycle6 steps=200/400 loss=0.000351
+cycle6 steps=300/400 loss=0.000250
+cycle6 steps=400/400 loss=0.000192
+[C6] seed=6109 isolated task=4 heldout=1.000
+cycle6 steps=100/400 loss=1.530362
+cycle6 steps=200/400 loss=0.029729
+cycle6 steps=300/400 loss=0.000660
+cycle6 steps=400/400 loss=0.000412
+[C6] seed=6109 isolated task=5 heldout=1.000
+cycle6 steps=100/400 loss=1.550267
+cycle6 steps=200/400 loss=0.550408
+cycle6 steps=300/400 loss=0.002591
+cycle6 steps=400/400 loss=0.000600
+[C6] seed=6109 isolated task=6 heldout=1.000
+cycle6 steps=100/400 loss=0.000924
+cycle6 steps=200/400 loss=0.000447
+cycle6 steps=300/400 loss=0.000321
+cycle6 steps=400/400 loss=0.000234
+[C6] seed=6109 isolated task=7 heldout=1.000
+cycle6 steps=100/400 loss=0.675679
+cycle6 steps=200/400 loss=0.028937
+cycle6 steps=300/400 loss=0.000567
+cycle6 steps=400/400 loss=0.000386
+[C6] seed=6109 isolated task=8 heldout=0.969
+cycle6 steps=100/400 loss=0.404822
+cycle6 steps=200/400 loss=0.002366
+cycle6 steps=300/400 loss=0.000476
+cycle6 steps=400/400 loss=0.000278
+[C6] seed=6109 isolated task=9 heldout=0.969
+[C6] seed=6109 sequential condition=shared
+cycle6 steps=100/400 loss=0.000537
+cycle6 steps=200/400 loss=0.000312
+cycle6 steps=300/400 loss=0.000224
+cycle6 steps=400/400 loss=0.000174
+[C6] seed=6109 shared generation=1 current=1.000 prev_mean=0.000
+cycle6 steps=100/400 loss=0.001231
+cycle6 steps=200/400 loss=0.000406
+cycle6 steps=300/400 loss=0.000265
+cycle6 steps=400/400 loss=0.000190
+[C6] seed=6109 shared generation=2 current=1.000 prev_mean=0.031
+cycle6 steps=100/400 loss=0.544914
+cycle6 steps=200/400 loss=0.001270
+cycle6 steps=300/400 loss=0.000679
+cycle6 steps=400/400 loss=0.000444
+[C6] seed=6109 shared generation=3 current=1.000 prev_mean=0.000
+cycle6 steps=100/400 loss=0.006429
+cycle6 steps=200/400 loss=0.001415
+cycle6 steps=300/400 loss=0.000680
+cycle6 steps=400/400 loss=0.000450
+[C6] seed=6109 shared generation=4 current=1.000 prev_mean=0.000
+cycle6 steps=100/400 loss=0.005270
+cycle6 steps=200/400 loss=0.001304
+cycle6 steps=300/400 loss=0.000621
+cycle6 steps=400/400 loss=0.000410
+[C6] seed=6109 shared generation=5 current=1.000 prev_mean=0.074
+cycle6 steps=100/400 loss=1.519922
+cycle6 steps=200/400 loss=0.930052
+cycle6 steps=300/400 loss=0.813037
+cycle6 steps=400/400 loss=0.501318
+[C6] seed=6109 shared generation=6 current=0.031 prev_mean=0.013
+cycle6 steps=100/400 loss=0.734386
+cycle6 steps=200/400 loss=0.188214
+cycle6 steps=300/400 loss=0.103764
+cycle6 steps=400/400 loss=0.005300
+[C6] seed=6109 shared generation=7 current=1.000 prev_mean=0.062
+cycle6 steps=100/400 loss=0.466304
+cycle6 steps=200/400 loss=0.041482
+cycle6 steps=300/400 loss=0.005089
+cycle6 steps=400/400 loss=0.002591
+[C6] seed=6109 shared generation=8 current=0.797 prev_mean=0.038
+cycle6 steps=100/400 loss=0.271800
+cycle6 steps=200/400 loss=0.023355
+cycle6 steps=300/400 loss=0.005711
+cycle6 steps=400/400 loss=0.001289
+[C6] seed=6109 shared generation=9 current=0.969 prev_mean=0.006
+cycle6 steps=100/400 loss=0.537878
+cycle6 steps=200/400 loss=0.318523
+cycle6 steps=300/400 loss=0.272252
+cycle6 steps=400/400 loss=0.053190
+[C6] seed=6109 shared generation=10 current=0.766 prev_mean=0.010
+[C6] seed=6109 sequential condition=uniform
+cycle6 steps=100/400 loss=0.000537
+cycle6 steps=200/400 loss=0.000312
+cycle6 steps=300/400 loss=0.000224
+cycle6 steps=400/400 loss=0.000174
+[C6] seed=6109 uniform generation=1 current=1.000 prev_mean=0.000
+cycle6 steps=100/400 loss=0.012137
+cycle6 steps=200/400 loss=0.001128
+cycle6 steps=300/400 loss=0.000406
+cycle6 steps=400/400 loss=0.000326
+[C6] seed=6109 uniform generation=2 current=1.000 prev_mean=0.938
+cycle6 steps=100/400 loss=0.040960
+cycle6 steps=200/400 loss=0.001254
+cycle6 steps=300/400 loss=0.000619
+cycle6 steps=400/400 loss=0.000336
+[C6] seed=6109 uniform generation=3 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.005215
+cycle6 steps=200/400 loss=0.000855
+cycle6 steps=300/400 loss=0.000519
+cycle6 steps=400/400 loss=0.000311
+[C6] seed=6109 uniform generation=4 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.002925
+cycle6 steps=200/400 loss=0.000446
+cycle6 steps=300/400 loss=0.000261
+cycle6 steps=400/400 loss=0.000196
+[C6] seed=6109 uniform generation=5 current=1.000 prev_mean=0.992
+cycle6 steps=100/400 loss=0.638592
+cycle6 steps=200/400 loss=0.386918
+cycle6 steps=300/400 loss=0.227057
+cycle6 steps=400/400 loss=0.112240
+[C6] seed=6109 uniform generation=6 current=0.469 prev_mean=0.969
+cycle6 steps=100/400 loss=0.236643
+cycle6 steps=200/400 loss=0.077369
+cycle6 steps=300/400 loss=0.028610
+cycle6 steps=400/400 loss=0.032549
+[C6] seed=6109 uniform generation=7 current=0.984 prev_mean=0.966
+cycle6 steps=100/400 loss=0.044656
+cycle6 steps=200/400 loss=0.023877
+cycle6 steps=300/400 loss=0.006097
+cycle6 steps=400/400 loss=0.006917
+[C6] seed=6109 uniform generation=8 current=0.984 prev_mean=0.953
+cycle6 steps=100/400 loss=0.081287
+cycle6 steps=200/400 loss=0.005950
+cycle6 steps=300/400 loss=0.041864
+cycle6 steps=400/400 loss=0.002247
+[C6] seed=6109 uniform generation=9 current=0.953 prev_mean=0.984
+cycle6 steps=100/400 loss=0.128762
+cycle6 steps=200/400 loss=0.034632
+cycle6 steps=300/400 loss=0.034370
+cycle6 steps=400/400 loss=0.040969
+[C6] seed=6109 uniform generation=10 current=0.797 prev_mean=0.887
+[C6] seed=6109 sequential condition=feedback
+cycle6 steps=100/400 loss=0.000537
+cycle6 steps=200/400 loss=0.000312
+cycle6 steps=300/400 loss=0.000224
+cycle6 steps=400/400 loss=0.000174
+[C6] seed=6109 feedback generation=1 current=1.000 prev_mean=0.000
+cycle6 steps=100/400 loss=0.004385
+cycle6 steps=200/400 loss=0.000705
+cycle6 steps=300/400 loss=0.000343
+cycle6 steps=400/400 loss=0.000240
+[C6] seed=6109 feedback generation=2 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.085541
+cycle6 steps=200/400 loss=0.001222
+cycle6 steps=300/400 loss=0.000389
+cycle6 steps=400/400 loss=0.000281
+[C6] seed=6109 feedback generation=3 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.001929
+cycle6 steps=200/400 loss=0.000607
+cycle6 steps=300/400 loss=0.000432
+cycle6 steps=400/400 loss=0.000282
+[C6] seed=6109 feedback generation=4 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.001843
+cycle6 steps=200/400 loss=0.000582
+cycle6 steps=300/400 loss=0.000323
+cycle6 steps=400/400 loss=0.000223
+[C6] seed=6109 feedback generation=5 current=1.000 prev_mean=1.000
+cycle6 steps=100/400 loss=0.624101
+cycle6 steps=200/400 loss=0.367552
+cycle6 steps=300/400 loss=0.126475
+cycle6 steps=400/400 loss=0.157076
+[C6] seed=6109 feedback generation=6 current=0.688 prev_mean=0.900
+cycle6 steps=100/400 loss=0.105317
+cycle6 steps=200/400 loss=0.058359
+cycle6 steps=300/400 loss=0.081369
+cycle6 steps=400/400 loss=0.059650
+[C6] seed=6109 feedback generation=7 current=0.922 prev_mean=0.896
+cycle6 steps=100/400 loss=0.043043
+cycle6 steps=200/400 loss=0.052041
+cycle6 steps=300/400 loss=0.060152
+cycle6 steps=400/400 loss=0.008712
+[C6] seed=6109 feedback generation=8 current=0.984 prev_mean=0.987
+cycle6 steps=100/400 loss=0.041175
+cycle6 steps=200/400 loss=0.009682
+cycle6 steps=300/400 loss=0.004491
+cycle6 steps=400/400 loss=0.031101
+[C6] seed=6109 feedback generation=9 current=0.984 prev_mean=0.924
+cycle6 steps=100/400 loss=0.039841
+cycle6 steps=200/400 loss=0.015342
+cycle6 steps=300/400 loss=0.019763
+cycle6 steps=400/400 loss=0.017439
+[C6] seed=6109 feedback generation=10 current=0.969 prev_mean=0.951
+[C6] seed=6109 composition pretraining=primitives_only
+cycle6 steps=100/2000 loss=0.882202
+cycle6 steps=200/2000 loss=0.662211
+cycle6 steps=300/2000 loss=0.400573
+cycle6 steps=400/2000 loss=0.219803
+cycle6 steps=500/2000 loss=0.167599
+cycle6 steps=600/2000 loss=0.034408
+cycle6 steps=700/2000 loss=0.034397
+cycle6 steps=800/2000 loss=0.015118
+cycle6 steps=900/2000 loss=0.002415
+cycle6 steps=1000/2000 loss=0.001517
+cycle6 steps=1100/2000 loss=0.000698
+cycle6 steps=1200/2000 loss=0.054258
+cycle6 steps=1300/2000 loss=0.034093
+cycle6 steps=1400/2000 loss=0.003863
+cycle6 steps=1500/2000 loss=0.000471
+cycle6 steps=1600/2000 loss=0.000147
+cycle6 steps=1700/2000 loss=0.000132
+cycle6 steps=1800/2000 loss=0.000120
+cycle6 steps=1900/2000 loss=0.000089
+cycle6 steps=2000/2000 loss=0.000063
+[C6] seed=6109 composition pretraining=pairs_and_primitives
+cycle6 steps=100/2000 loss=1.409071
+cycle6 steps=200/2000 loss=1.043782
+cycle6 steps=300/2000 loss=0.763379
+cycle6 steps=400/2000 loss=0.687229
+cycle6 steps=500/2000 loss=0.593864
+cycle6 steps=600/2000 loss=0.604834
+cycle6 steps=700/2000 loss=0.444604
+cycle6 steps=800/2000 loss=0.388833
+cycle6 steps=900/2000 loss=0.328212
+cycle6 steps=1000/2000 loss=0.417544
+cycle6 steps=1100/2000 loss=0.355214
+cycle6 steps=1200/2000 loss=0.404415
+cycle6 steps=1300/2000 loss=0.233043
+cycle6 steps=1400/2000 loss=0.313227
+cycle6 steps=1500/2000 loss=0.386305
+cycle6 steps=1600/2000 loss=0.318985
+cycle6 steps=1700/2000 loss=0.280861
+cycle6 steps=1800/2000 loss=0.193289
+cycle6 steps=1900/2000 loss=0.239074
+cycle6 steps=2000/2000 loss=0.197447
+[C6] seed=6109 16-shot condition=random_init
+cycle6 steps=32/32 loss=0.086482
+cycle6 steps=32/32 loss=0.005396
+cycle6 steps=32/32 loss=0.061932
+cycle6 steps=32/32 loss=0.002587
+cycle6 steps=32/32 loss=0.053496
+cycle6 steps=32/32 loss=0.036340
+cycle6 steps=32/32 loss=0.020953
+cycle6 steps=32/32 loss=0.038039
+cycle6 steps=32/32 loss=0.008537
+cycle6 steps=32/32 loss=0.039668
+cycle6 steps=32/32 loss=0.004137
+cycle6 steps=32/32 loss=0.003580
+cycle6 steps=32/32 loss=0.083284
+cycle6 steps=32/32 loss=0.014287
+cycle6 steps=32/32 loss=0.058732
+cycle6 steps=32/32 loss=0.046571
+cycle6 steps=32/32 loss=0.100745
+cycle6 steps=32/32 loss=0.053653
+cycle6 steps=32/32 loss=0.072470
+cycle6 steps=32/32 loss=0.110933
+[C6] seed=6109 16-shot condition=primitives_only
+cycle6 steps=32/32 loss=0.221320
+cycle6 steps=32/32 loss=0.002141
+cycle6 steps=32/32 loss=0.002322
+cycle6 steps=32/32 loss=0.005051
+cycle6 steps=32/32 loss=0.248079
+cycle6 steps=32/32 loss=0.192911
+cycle6 steps=32/32 loss=0.157179
+cycle6 steps=32/32 loss=0.031604
+cycle6 steps=32/32 loss=0.028697
+cycle6 steps=32/32 loss=0.104380
+cycle6 steps=32/32 loss=0.004449
+cycle6 steps=32/32 loss=0.299369
+cycle6 steps=32/32 loss=0.058039
+cycle6 steps=32/32 loss=0.001621
+cycle6 steps=32/32 loss=0.010688
+cycle6 steps=32/32 loss=0.795490
+cycle6 steps=32/32 loss=0.111704
+cycle6 steps=32/32 loss=0.367787
+cycle6 steps=32/32 loss=0.130022
+cycle6 steps=32/32 loss=0.341540
+[C6] seed=6109 16-shot condition=pairs_and_primitives
+cycle6 steps=32/32 loss=0.003699
+cycle6 steps=32/32 loss=0.000475
+cycle6 steps=32/32 loss=0.002212
+cycle6 steps=32/32 loss=0.003862
+cycle6 steps=32/32 loss=0.008078
+cycle6 steps=32/32 loss=0.002065
+cycle6 steps=32/32 loss=0.000367
+cycle6 steps=32/32 loss=0.000412
+cycle6 steps=32/32 loss=0.000814
+cycle6 steps=32/32 loss=0.038295
+cycle6 steps=32/32 loss=0.002494
+cycle6 steps=32/32 loss=0.001916
+cycle6 steps=32/32 loss=0.005695
+cycle6 steps=32/32 loss=0.003888
+cycle6 steps=32/32 loss=0.000337
+cycle6 steps=32/32 loss=0.021273
+cycle6 steps=32/32 loss=0.002169
+cycle6 steps=32/32 loss=0.001357
+cycle6 steps=32/32 loss=0.004433
+cycle6 steps=32/32 loss=0.030170
+[C6] seed=6109 finished scientific_leap_gate=false
