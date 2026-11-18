@@ -1,4 +1,7 @@
 #[cfg(feature = "cuda")]
+mod cycle7;
+
+#[cfg(feature = "cuda")]
 mod cycle5;
 #[cfg(feature = "cuda")]
 mod cycle6;
@@ -243,6 +246,20 @@ enum Commands {
         output_dir: PathBuf,
         #[arg(long)]
         git_commit: String,
+    },
+    /// Cycle 7 locked Rift proposal benchmark
+    #[cfg(feature = "cuda")]
+    Cycle7Research {
+        #[arg(long, value_parser = ["cuda"])]
+        device: String,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long)]
+        dataset_dir: PathBuf,
+        #[arg(long)]
+        git_commit: String,
+        #[arg(long)]
+        output_dir: PathBuf,
     },
 }
 
@@ -4759,6 +4776,10 @@ fn run_wave6d_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
 fn main() {
     let cli = Cli::parse();
     match cli.command {
+        #[cfg(feature = "cuda")]
+        Commands::Cycle7Research { seed, dataset_dir, git_commit, output_dir, .. } => {
+            cycle7::run(seed, &dataset_dir, &git_commit, &output_dir).unwrap();
+        }
         #[cfg(feature = "cuda")]
         Commands::Cycle5GpuSmoke { seed, output_dir, git_commit, .. } => {
             cycle5::run(seed, &output_dir, &git_commit, None).unwrap();
