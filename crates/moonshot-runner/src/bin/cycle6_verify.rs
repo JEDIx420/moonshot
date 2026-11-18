@@ -173,6 +173,42 @@ fn verify(root: &Path) -> Result<()> {
         check_checkpoint(&seq_dir.join(format!("{condition}_final")),
                          &metrics["checkpoint"],condition)?;
         require(array(metrics,"retention_matrix")?.len()==10,"incomplete retention matrix")?;
+        let traces=array(metrics,"training")?;
+        require(traces.len()==10,"missing per-generation optimizer traces")?;
+        for (generation,trace) in traces.iter().enumerate() {
+            require(num(&trace["steps"])?==400 && num(&trace["batch"])?==64 &&
+                    num(&trace["gradients_per_step"])?==38 &&
+                    boolean(&trace["weights_changed"])? &&
+                    !array(trace,"losses")?.is_empty(),
+                    "missing/invalid training evidence")?;
+            let sampled=array(trace,"sampled_previous_task_counts")?;
+            let probes=array(trace,"replay_probes")?;
+            require(sampled.len()==generation,"incorrect past-task count")?;
+            if generation==0 || condition=="shared" {
+                require(probes.is_empty() && sampled.iter().all(|v|v.as_u64()==Some(0)),
+                        "non-replay condition contains replay evidence")?;
+            } else {
+                require(probes.len()==8 &&
+                        sampled.iter().map(|v|v.as_u64().unwrap_or(0)).sum::<u64>()==12_800 &&
+                        num(&trace["probe_forward_examples"])?==generation*32*8,
+                        "replay policy evidence or sampling budget invalid")?;
+                for (index,probe) in probes.iter().enumerate() {
+                    require(num(&probe["step"])?==index*50,
+                            "probe timestamp mismatch")?;
+                    let scores=array(probe,"train_exact_match")?;
+                    let weights=array(probe,"task_sampling_weights")?;
+                    require(scores.len()==generation && weights.len()==generation,
+                            "probe did not cover all previous tasks")?;
+                    for (score,weight) in scores.iter().zip(weights) {
+                        let score=number(score)?;
+                        require((0.0..=1.0).contains(&score),"invalid probe score")?;
+                        let expected=if condition=="uniform" {1.0}
+                                     else {1.0+4.0*(1.0-score)};
+                        approx(number(weight)?,expected,"replay sampling policy")?;
+                    }
+                }
+            }
+        }
         let history=read(&seq_dir.join(format!("{condition}_trajectory_predictions.json")))?;
         let trajectory=history.as_array().ok_or("missing trajectory predictions")?;
         require(trajectory.len()==55,"retention trajectory must have 55 task-generation points")?;

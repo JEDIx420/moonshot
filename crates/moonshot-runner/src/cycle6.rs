@@ -72,12 +72,21 @@ enum Strategy {
 }
 
 #[derive(Serialize)]
+struct ReplayProbe {
+    step: usize,
+    train_exact_match: Vec<f64>,
+    task_sampling_weights: Vec<f64>,
+}
+
+#[derive(Serialize)]
 struct TrainTrace {
     steps: usize,
     batch: usize,
     learning_rate: f64,
     losses: Vec<(usize, f32)>,
     probe_forward_examples: usize,
+    replay_probes: Vec<ReplayProbe>,
+    sampled_previous_task_counts: Vec<usize>,
     wall_seconds: f64,
     gradients_per_step: usize,
     weights_changed: bool,
@@ -277,17 +286,30 @@ fn train(
     let mut losses = Vec::new();
     let mut probes = 0usize;
     let mut weights = vec![1.0f64; previous.len()];
+    let mut replay_probes = Vec::new();
+    let mut sampled_previous_task_counts = vec![0usize; previous.len()];
     assert!(!current.is_empty());
     assert!(mode != Strategy::Mixed || second.is_some());
     for step in 0..steps {
         if !previous.is_empty() && matches!(mode, Strategy::Uniform | Strategy::Feedback)
             && step % 50 == 0 {
+            let mut scores = Vec::with_capacity(previous.len());
             for (index, task) in previous.iter().enumerate() {
                 let probe = &task[..task.len().min(32)];
                 let score = evaluate(&model, probe, config, device).exact_match;
                 weights[index] = 1.0 + 4.0 * (1.0 - score);
+                scores.push(score);
                 probes += probe.len();
             }
+            replay_probes.push(ReplayProbe {
+                step,
+                train_exact_match: scores,
+                task_sampling_weights: if mode == Strategy::Uniform {
+                    vec![1.0; previous.len()]
+                } else {
+                    weights.clone()
+                },
+            });
         }
         let mut batch = Vec::with_capacity(batch_size);
         if mode == Strategy::Mixed {
@@ -301,6 +323,7 @@ fn train(
                 let task = if mode == Strategy::Feedback {
                     weighted_choice(&mut rng, &weights)
                 } else { rng.gen_range(0..previous.len()) };
+                sampled_previous_task_counts[task] += 1;
                 sample(&mut rng, &previous[task], 1, &mut batch);
             }
         }
@@ -329,7 +352,8 @@ fn train(
     assert!(changed, "Cycle 6 optimizer did not update weights");
     (model, TrainTrace {
         steps, batch: batch_size, learning_rate: LEARNING_RATE, losses,
-        probe_forward_examples: probes, wall_seconds: timer.elapsed().as_secs_f64(),
+        probe_forward_examples: probes, replay_probes, sampled_previous_task_counts,
+        wall_seconds: timer.elapsed().as_secs_f64(),
         gradients_per_step: GRADIENT_TENSORS, weights_changed: changed,
     })
 }
