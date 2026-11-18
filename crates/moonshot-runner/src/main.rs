@@ -1,3 +1,8 @@
+#[cfg(feature = "cuda")]
+mod cycle5;
+#[cfg(any(feature = "cuda", all(test, feature = "cycle5-forward-test")))]
+mod cycle5_model;
+
 use clap::{Parser, Subcommand};
 use moonshot_core::{
     EditPlan, HardwareInfo, OptimizerType, RunLedger, TaskExample,
@@ -196,6 +201,34 @@ enum Commands {
         seed: u64,
         #[arg(long, default_value_t = 0.80)]
         target_acc: f32,
+    },
+    /// Verify Burn CUDA forward, backward, and optimizer updates
+    #[cfg(feature = "cuda")]
+    Cycle5GpuSmoke {
+        #[arg(long, value_parser = ["cuda"])]
+        device: String,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long)]
+        git_commit: String,
+    },
+    /// Train and evaluate the preregistered tool-workflow capability baseline
+    #[cfg(feature = "cuda")]
+    Cycle5Capability {
+        #[arg(long, value_parser = ["cuda"])]
+        device: String,
+        #[arg(long)]
+        seed: u64,
+        #[arg(long, value_parser = ["tool-workflow-basic"])]
+        task_family: String,
+        #[arg(long)]
+        target_acc: f64,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long)]
+        git_commit: String,
     },
 }
 
@@ -4712,6 +4745,14 @@ fn run_wave6d_sweep(output_dir: &Path, _seed: u64, target_acc: f32) {
 fn main() {
     let cli = Cli::parse();
     match cli.command {
+        #[cfg(feature = "cuda")]
+        Commands::Cycle5GpuSmoke { seed, output_dir, git_commit, .. } => {
+            cycle5::run(seed, &output_dir, &git_commit, None).unwrap();
+        }
+        #[cfg(feature = "cuda")]
+        Commands::Cycle5Capability { seed, output_dir, git_commit, target_acc, .. } => {
+            cycle5::run(seed, &output_dir, &git_commit, Some(target_acc)).unwrap();
+        }
         Commands::Smoke { output_dir, git_commit } => {
             run_smoke(&output_dir, &git_commit);
         }

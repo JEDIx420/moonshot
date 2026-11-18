@@ -24,3 +24,9 @@ serde_json.workspace = true
 chrono.workspace = true
 rand.workspace = true
 rand_chacha.workspace = true
+burn = { version = "=0.22.1", default-features = false, features = ["std", "optim"], optional = true }
+sha2.workspace = true
+
+[features]
+cuda = ["dep:burn", "burn/cuda"]
+cycle5-forward-test = ["dep:burn", "burn/ndarray"]
