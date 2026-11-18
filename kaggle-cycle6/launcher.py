@@ -19,8 +19,8 @@ import threading
 import traceback
 
 REPOSITORY = "https://github.com/JEDIx420/moonshot.git"
-# Filled in after committing reviewed Cycle 6 Rust code, before the launcher commit.
-PINNED_COMMIT = "77ec78c2f4e76fc12d32c1b958f5eb0c00205ac6"
+# Immutable Git commit containing the full Cycle 6 Rust experiment and verifier.
+PINNED_COMMIT = "5055b89f335fbba9d08d7bbc3a7ab7585bede571"
 SOURCE = Path("/tmp/moonshot-cycle6-source")
 OUTPUT = Path("/kaggle/working/results")
 RUST = "1.96.1"
