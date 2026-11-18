@@ -20,7 +20,7 @@ import traceback
 
 REPOSITORY = "https://github.com/JEDIx420/moonshot.git"
 # Immutable Git commit containing the full Cycle 6 Rust experiment and verifier.
-PINNED_COMMIT = "5055b89f335fbba9d08d7bbc3a7ab7585bede571"
+PINNED_COMMIT = "770dc8f66d173539c253f6c2bd251ff0a175ac64"
 SOURCE = Path("/tmp/moonshot-cycle6-source")
 OUTPUT = Path("/kaggle/working/results")
 RUST = "1.96.1"
@@ -172,6 +172,7 @@ def main():
         manifest["status"] = status
         save(manifest_file, manifest)
 
+    save(evidence / "failure_ledger.json", [])
     update("starting")
     try:
         manifest["gpu"] = gpu_probe()
@@ -228,12 +229,21 @@ def main():
                     exec_cmd([str(verifier), str(seed_dir)],
                              log=seed_dir / "independent_rust_audit.log", cwd=SOURCE)
                     update(f"verified_seed_{seed}")
-        manifest["scientific_leap_gate"] = bool(stage == "all" and len(manifest["checks"]) == 3
-            and all(x["scientific_leap_gate"] for x in manifest["checks"]))
+        if stage == "all":
+            exec_cmd([str(verifier), "--all", str(evidence)],
+                     log=evidence / "cross_seed_rust_audit.log", cwd=SOURCE)
+            cross_seed = json.loads((evidence / "cross_seed_audit.json").read_text())
+            manifest["cross_seed_gates"] = cross_seed
+            manifest["scientific_leap_gate"] = cross_seed["scientific_leap_gate"]
         update("completed")
         print("[DONE] infrastructure verified; scientific leap gate:",
               manifest["scientific_leap_gate"], flush=True)
     except Exception as error:
+        save(evidence / "failure_ledger.json", [{
+            "utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "stage": manifest["status"],
+            "error": str(error),
+        }])
         manifest["error"] = str(error)
         update("failed")
         traceback.print_exc()
