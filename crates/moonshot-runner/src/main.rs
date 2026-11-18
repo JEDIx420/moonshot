@@ -1,5 +1,7 @@
 #[cfg(feature = "cuda")]
 mod cycle5;
+#[cfg(feature = "cuda")]
+mod cycle6;
 #[cfg(any(feature = "cuda", all(test, feature = "cycle5-forward-test")))]
 mod cycle5_model;
 
@@ -225,6 +227,18 @@ enum Commands {
         task_family: String,
         #[arg(long)]
         target_acc: f64,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long)]
+        git_commit: String,
+    },
+    /// Cycle 6: 10-task continual learning and unseen symbolic composition (Burn CUDA)
+    #[cfg(feature = "cuda")]
+    Cycle6Research {
+        #[arg(long, value_parser = ["cuda"])]
+        device: String,
+        #[arg(long)]
+        seed: u64,
         #[arg(long)]
         output_dir: PathBuf,
         #[arg(long)]
@@ -4752,6 +4766,10 @@ fn main() {
         #[cfg(feature = "cuda")]
         Commands::Cycle5Capability { seed, output_dir, git_commit, target_acc, .. } => {
             cycle5::run(seed, &output_dir, &git_commit, Some(target_acc)).unwrap();
+        }
+        #[cfg(feature = "cuda")]
+        Commands::Cycle6Research { seed, output_dir, git_commit, .. } => {
+            cycle6::run(seed, &output_dir, &git_commit).unwrap();
         }
         Commands::Smoke { output_dir, git_commit } => {
             run_smoke(&output_dir, &git_commit);

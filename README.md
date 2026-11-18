@@ -1,5 +1,15 @@
 # Moonshot
 
+> **CURRENT RESEARCH STATUS (2026-11-18):** The authoritative
+> [Cycle 4 erratum](docs/CYCLE4_ERRATUM_2026-11-17.md) overrides the historical
+> "PASSED" claims quoted further down this README. [Cycle 5](experiments/cycle5/)
+> demonstrated real Rust/Burn CUDA training and checkpoint reproducibility,
+> but its 36-prompt copying task is solved **108/108 by a zero-training rule**;
+> its 100% held-out score is **not** evidence of learned compositional reasoning.
+> **Next:** [Cycle 6 preregistered grand-stage protocol](experiments/cycle6/PROTOCOL.md)
+> and [Kaggle GPU launcher](kaggle-cycle6/README.md). The Cycle 6 gates are
+> hypotheses, not results; do not announce a leap before independent audit.
+
 > **Completed Research Cycle 4 (2026-11-17):** [Cycle 4 Final Research Report](experiments/CYCLE4_FINAL_RESEARCH_REPORT.md) | [Cycle 4 Scaling & Modular Subspace Plan](docs/RESEARCH_CYCLE_4_1M_SCALING_PLAN_2026-11-17.md) | [Cycle 3 Final Research Report](experiments/CYCLE3_FINAL_RESEARCH_REPORT.md) | [Scientific Protocol](docs/EXPERIMENT_PROTOCOL.md) | [Antigravity Instructions](ANTIGRAVITY_AGENT.md).
 >
 > **Historical evidence & run ledger:** [Run ledger](experiments/run_ledger.jsonl) (Runs 01–20 complete). Research Cycle 4 scaled the model to **1,095,744 parameters** ($d_{\text{model}}=256$) and evaluated **modular rank-4 low-rank adapters** ($r=4, \alpha=8.0$, 8,192 parameters/task, $< 0.75\%$ overhead) across 3 remote Kaggle executions (Versions 18, 19, 20), consuming 0 GPU hours and preserving >95.5% GPU quota.
