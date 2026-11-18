@@ -5,10 +5,8 @@ Kaggle requires a Python/R script or notebook as its entry point. This file
 uses only the Python standard library for deployment, logs, and evidence checks.
 All model computation and training MUST occur in the Rust/Burn CUDA binary.
 
-IMPORTANT: The current Moonshot main branch has no Burn CUDA implementation.
-This launcher intentionally refuses to run without new, independently verified
-Rust `cycle5-gpu-smoke` and `cycle5-capability` subcommands. Never redirect an
-old wave6 command or silently execute a CPU fallback.
+The pinned Rust revision supplies both Cycle 5 commands. Smoke verification
+gates the capability runs.
 """
 
 import csv
@@ -34,8 +32,9 @@ RESULTS_DIR = pathlib.Path("/kaggle/working/results")
 
 # The deploying agent MUST replace this with the exact reviewed Git commit
 # containing the Burn CUDA implementation, before `kaggle kernels push`.
-PINNED_COMMIT = "REPLACE_WITH_VERIFIED_40_CHARACTER_COMMIT_SHA"
+PINNED_COMMIT = "8f237e3c6f315759916b01e1b918b3d06ce849ef"
 
+RUST_TOOLCHAIN = "1.96.1"
 PARAMETERS = 1_095_744
 BACKEND = "burn-cuda"
 TASK_FAMILY = "tool-workflow-basic"
@@ -93,12 +92,14 @@ def require_gpu():
 def ensure_rust():
     cargo_dir = pathlib.Path.home() / ".cargo" / "bin"
     os.environ["PATH"] = f"{cargo_dir}{os.pathsep}{os.environ.get('PATH', '')}"
-    if shutil.which("cargo") is None:
+    if shutil.which("rustup") is None:
         command([
             "bash", "-c",
             "set -o pipefail; curl --proto '=https' --tlsv1.2 -sSf "
-            "https://sh.rustup.rs | sh -s -- -y --default-toolchain stable",
+            "https://sh.rustup.rs | sh -s -- -y --default-toolchain none",
         ])
+    command(["rustup", "toolchain", "install", RUST_TOOLCHAIN, "--profile", "minimal"])
+    os.environ["RUSTUP_TOOLCHAIN"] = RUST_TOOLCHAIN
     command(["cargo", "--version"])
     command(["rustc", "--version"])
 
@@ -119,12 +120,15 @@ def clone_pinned_revision():
     return actual
 
 
-def build_cuda_binary():
+def build_cuda_binary(log_path):
     manifests = list((REPO_DIR / "crates").glob("*/Cargo.toml"))
     if not any("burn" in p.read_text(encoding="utf-8").lower() for p in manifests):
         raise RuntimeError("No Burn dependency in Rust crates; CUDA integration not committed")
 
-    command(["cargo", "build", "--release", "-p", "moonshot-runner", "--features", "cuda"], cwd=REPO_DIR)
+    stream_command(
+        ["cargo", "build", "--locked", "--release", "-p", "moonshot-runner", "--features", "cuda"],
+        log_path, cwd=REPO_DIR,
+    )
     binary = REPO_DIR / "target" / "release" / "moonshot"
     if not binary.is_file():
         raise RuntimeError("Missing compiled Moonshot binary")
@@ -204,8 +208,9 @@ def require_result(path, *, smoke, expected_seed=None):
             score = result.get(key)
             if not isinstance(score, (float, int)) or not math.isfinite(score) or not 0 <= score <= 1:
                 raise RuntimeError(f"Invalid or missing {key} in {path}")
-        if not result.get("dataset_split_sha256"):
-            raise RuntimeError("Missing dataset split hash")
+        splits = path.parent / "dataset_splits.json"
+        if hashlib.sha256(splits.read_bytes()).hexdigest() != result.get("dataset_split_sha256"):
+            raise RuntimeError(f"Dataset split SHA-256 mismatch in {path}")
         checkpoint_file = result.get("checkpoint_file")
         if not isinstance(checkpoint_file, str) or not checkpoint_file:
             raise RuntimeError(f"Missing checkpoint file reference in {path}")
@@ -249,7 +254,7 @@ def main():
         manifest["git_commit"] = commit
         manifest["status"] = "building_cuda"
         save_manifest()
-        binary = build_cuda_binary()
+        binary = build_cuda_binary(evidence_dir / "build.log")
         manifest["status"] = "running_smoke"
         save_manifest()
         smoke_dir = evidence_dir / "smoke"
